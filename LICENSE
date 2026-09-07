@@ -1,0 +1,9 @@
+The original release scripts and documentation in this repository are licensed
+under MIT OR Apache-2.0, at your option. See LICENSE-MIT and LICENSE-APACHE.
+
+SPDX-License-Identifier: MIT OR Apache-2.0
+
+The packaged application in doc/ retains its own software, dependency, and
+branding terms. See doc/LICENSE, doc/licenses.html and BRANDING.md.
+The Capy Canvas / Capy Atelier names and capybara mark are excluded from the
+software license grant. No third-party material is relicensed by this file.

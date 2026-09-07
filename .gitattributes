@@ -1,0 +1,3 @@
+# Preserve upstream bytes: service-worker integrity hashes cover line endings.
+doc/** -text -whitespace linguist-generated=true
+doc/rust-toolchain-notices.html -diff

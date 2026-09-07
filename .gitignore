@@ -1,0 +1,16 @@
+/.release-work/
+/node_modules/
+/.env
+/.env.*
+/.agents/
+/.codex/
+/.claude/
+/.idea/
+/.vscode/
+*.log
+*.swp
+*~
+.DS_Store
+Thumbs.db
+*.pem
+*.key

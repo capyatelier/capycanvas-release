@@ -1,0 +1,134 @@
+# Initial web-release audit — 2026-09-07
+
+**Result: no GPL/LGPL code identified in the reviewed PWA build inputs or web
+dependency graph. The initial web release may proceed.** This conclusion applies
+to source commit `46010d54cd5f9a30b66a977f9fe64f19c307e493` and the toolchain pinned
+in `release/source.json`. It does not cover native application distribution or
+future dependency/source/toolchain changes.
+
+## Evidence and scope
+
+Reviewed the source workspace manifests and lockfile; `apps/layer-web/build.sh`,
+`package.mjs`, `about.toml` and service worker; Rust/WGSL/JS and runtime asset
+inventory; source publication/provenance notes; and installed Rust standard
+library sources and copyright inventory. The generated
+[`release/manifest.json`](release/manifest.json) records source/lockfile identity,
+all 59 packages in the web normal/build graph (53 external and six project
+crates), tool versions, Wasm imports and the SHA-256 of every published file.
+
+`cargo-deny 0.20.2` passed the license/source policy over the complete locked
+workspace, including build/dev dependencies and all target platforms. This
+broader check covers 201 external locked Rust packages. The web graph was
+separately resolved with:
+
+```bash
+cargo tree --locked -p layer-web --target wasm32-unknown-unknown --edges normal,build --prefix none --format '{p}|{l}'
+```
+
+The graph contains MIT/Apache alternatives, Unicode-3.0 and Zlib terms; no
+GPL-family license expression. `unicode-ident` requires Unicode-3.0 in addition
+to its MIT/Apache option. The packager ships original selected notices, including
+build-time crates, and retains project attribution and branding terms.
+
+| Area | Finding |
+| --- | --- |
+| Wasm compilation | `cargo build --locked --profile web-release -p layer-web --target wasm32-unknown-unknown`; no workspace/native build |
+| Native libraries | GTK/libadwaita have LGPL obligations, but `layer-linux`, GTK, GLib, Cairo, Pango and Wayland do not occur in the web graph or published runtime |
+| Bindings and UI | Matching `wasm-bindgen 0.2.128` generates web JS/Wasm; first-party JS/CSS copied directly, no npm bundler, CDN runtime or vendored UI toolkit |
+| Rust runtime | Rust 1.96.0 standard-library code is MIT OR Apache-2.0; compiler-builtins also carries MIT and Apache-2.0 WITH LLVM-exception terms. Full installed notices are retained |
+| Shaders and artwork | Project WGSL/brush masks/previews and generic SVGs; MIT Oklab adaptation attributed to Björn Ottosson; capybara mark under separate branding terms |
+| Artifact boundary | One web Wasm module, JS, CSS, icons/previews, manifest, worker and notices; no native library, Rust source tree, executable build tools or node_modules |
+
+`wasm32-unknown-unknown` uses Rust's LLVM/Wasm tooling and does not import a host
+operating system's C/GTK runtime. The generated Wasm imports only functions from
+the matching `./layer_web_bg.js` bindings. Import inspection supports the artifact
+boundary; absence of imports alone is not proof against statically linked code,
+which is why dependency and source review are included.
+[Rust target documentation](https://doc.rust-lang.org/stable/rustc/platform-support/wasm32-unknown-unknown.html)
+
+## Findings that need explanation
+
+**GPL text in the toolchain notice file is not a linked GPL component.** The
+15.4 MB `rust-toolchain-notices.html` is the installed toolchain's complete
+copyright document. Its GPL-only entries include `src/gcc`, GCC test fixtures,
+`gccjit` and `gccjit_sys` (the last two explicitly marked “In libstd: No”). These
+are outside the default LLVM-based Wasm build. Other entries offer permissive
+alternatives to GPL/LGPL, such as `r-efi` and `self_cell`, and concern other
+targets/tools. Rust's Wasm allocator is `dlmalloc`; the toolchain's `unwind`
+source selects Wasm support rather than its Linux `gcc_s` branch. The notices
+file intentionally includes more than the linked graph; keep it intact.
+
+**A missing notice is already a hard packaging failure.** `profiling 1.0.18`
+omits its license text from the crate archive. Source `about.toml` retrieves the
+MIT notice at the crate's recorded upstream revision and checks SHA-256
+`c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333`.
+An offline cargo-about invocation can return a placeholder even with `--fail`;
+the source packager's additional `dependencyNotices` check rejects it. Network
+access is therefore required for that notice unless the tool can retrieve a
+verified cached copy. Do not suppress the check or substitute generic MIT text.
+
+**Native LGPL is outside this release.** The full Cargo check audits Rust crate
+licenses, not linked system libraries. A native GTK/libadwaita package needs a
+separate binary distribution audit and LGPL compliance work. The target-specific
+web graph and curated package boundary are what exclude those libraries here.
+
+**Branding remains separately licensed.** This is a package of unmodified
+official source. Preserve `BRANDING.md`, the brand SVG notice and all generated
+app-icon terms. Normal packaging is allowed by those terms. Modified public
+applications must follow the source branding policy.
+
+## Packaging and release controls
+
+The upstream packager already locks dependencies, strips debug data, remaps
+private paths, renders its own icons, groups matching runtime files under a
+content hash and validates original license notices. Its worker hashes every
+precached file, rejects incomplete/mismatched updates and waits for existing
+tabs to close. The host wrapper preserves those bytes and adds only CNAME
+metadata outside the precache. No application build logic was duplicated here.
+
+The hosting wrapper exports a pinned source commit into its own temporary build
+directory; records dependency and artifact inventories; validates every precache
+hash; and leaves a previous release intact if build/test gates fail. Its independent
+permissive policy prevents a changed source `deny.toml` from silently loosening
+the release check. Compiler flags and tool versions are constrained. An official
+toolchain, reviewed Cargo configuration and trusted build tools remain inputs to
+the audit; the wrapper is not a hermetic supply-chain attestation.
+
+The Pages workflow publishes only the reviewed committed `doc/`, with content
+verification before upload and separate deployment permissions. Official Actions
+are pinned at the workflow level; nested dependencies of those actions remain
+upstream-managed. No source checkout or application compilation happens on CI.
+
+## Initial release validation
+
+The clean build passed the upstream launcher/packaging unit suite and both real
+Chrome package suites. Browser checks passed installability and offline cold
+Wasm startup with real GPU drawing/previews at `/` and `/nested/capy/`, failed
+update recovery, deferred activation, cache-scope isolation, and missing-API,
+missing-adapter, device-failure and pending-startup UI/retry cases. These tests
+used a disposable Chrome profile, not an installed OS PWA.
+
+The final host package has 90 files, 88 integrity-checked precache entries and
+one Wasm module. Hosting verification additionally checks the runtime directory's
+content hash, source/tool pins, original notice coverage and artifact inventory.
+Failure tests cover tampered runtime, stale precaches, worker-only changes,
+symlinks and a mismatched source pin.
+
+## Future release gate and path forward
+
+For every changed source pin, review the source/asset diff and repeat these
+checks. Toolchain changes require a fresh standard-library/toolchain notice
+review: Cargo metadata does not enumerate precompiled standard-library internals.
+Retain all required notices even when a dependency passes the license allowlist.
+
+If GPL/LGPL enters the web runtime, **stop publication**. Find its introducing
+dependency/feature, disable an unused native feature or replace it with a
+reviewed permissive implementation, then rebuild and re-audit. If it is essential,
+obtain a suitable alternative license or deliberately adopt and satisfy the
+applicable distribution obligations before release. Do not delete license text,
+raise the allowlist or assume the application's MIT option relicenses a dependency.
+
+This is an evidence-based build/provenance audit, not proof of authorship of
+every line. First-party asset provenance relies on the source's recorded author
+declarations. Device-specific PWA installation and browser storage eviction
+remain separate from license and packaging checks.
