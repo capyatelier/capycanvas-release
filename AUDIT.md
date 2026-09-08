@@ -1,5 +1,21 @@
 # Web-release audits
 
+## Update: source bce1bb6 — panel customization and drawers
+
+Reviewed `bce1bb6330e6c43db6e4b75e91706e780af2fd0e` against `3ef0eca`.
+Changes add shared panel customization, live configuration previews, panel
+expansion, clipped ribbon layout and refined drawer toggles, transitions and
+shadows. The web packager adds the first-party `customization.js` module to its
+explicit fingerprint graph and package inventory, alongside two interface icons
+covered by the existing project terms.
+
+Dependency manifests, lockfile, toolchain and license terms are unchanged.
+Locked license/source checks passed; no new GPL/LGPL runtime inputs were
+identified. The build, upstream packaging/launcher checks and artifact-integrity
+gates passed, producing 102 files and 100 precache entries. Browser tests were
+skipped at the owner's explicit request and are recorded as not run in the
+release manifest.
+
 ## Update: source 3ef0eca — menu, typography and theme refinements
 
 Reviewed `3ef0eca94f628a1ece050e8d72489b9dcc60eaa4` against `9632cc1`.

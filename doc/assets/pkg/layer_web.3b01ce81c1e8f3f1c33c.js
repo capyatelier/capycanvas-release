@@ -49,6 +49,17 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @param {any} target
+     * @returns {any}
+     */
+    context_menu(target) {
+        const ret = wasm.webapp_context_menu(this.__wbg_ptr, target);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @param {HTMLCanvasElement} canvas
      * @returns {WebApp}
      */
@@ -80,16 +91,22 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
-     * @param {number} width
-     * @param {number} height
-     * @param {number} x
-     * @param {number} y
-     * @param {any} tabs
-     * @param {any} item
+     * @param {any} query
      * @returns {any}
      */
-    drop_hint(width, height, x, y, tabs, item) {
-        const ret = wasm.webapp_drop_hint(this.__wbg_ptr, width, height, x, y, tabs, item);
+    drop_hint(query) {
+        const ret = wasm.webapp_drop_hint(this.__wbg_ptr, query);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} query
+     * @returns {any}
+     */
+    expanded_panel(query) {
+        const ret = wasm.webapp_expanded_panel(this.__wbg_ptr, query);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -154,6 +171,32 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @param {any} panel
+     * @param {number} width
+     * @param {number} height
+     * @param {any} axis
+     * @param {boolean} standalone
+     * @returns {any}
+     */
+    panel_tiles(panel, width, height, axis, standalone) {
+        const ret = wasm.webapp_panel_tiles(this.__wbg_ptr, panel, width, height, axis, standalone);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} panel
+     * @returns {any}
+     */
+    panel_view(panel) {
+        const ret = wasm.webapp_panel_view(this.__wbg_ptr, panel);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * Packed history records: id, phase, x, y, pressure, tilt x/y, twist,
      * timestamp milliseconds, flags, device kind (0 pen / 1 mouse / 2 eraser).
      * Returns consumed record count if the bounded input queue fills.
@@ -201,6 +244,16 @@ export class WebApp {
      */
     state() {
         const ret = wasm.webapp_state(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {any}
+     */
+    tool_picker() {
+        const ret = wasm.webapp_tool_picker(this.__wbg_ptr);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -1462,28 +1515,28 @@ function __wbg_get_imports() {
             arg0.writeTexture(arg1, getArrayU8FromWasm0(arg2, arg3), arg4, arg5);
         }, arguments); },
         __wbindgen_generic_0000000000000001: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 324, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 389, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__hd55bb211d6a08150);
             return ret;
         },
         __wbindgen_generic_0000000000000002: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 264, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 329, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa);
             return ret;
         },
         __wbindgen_generic_0000000000000003: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 273, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 338, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h72a8ec2c4e747663);
             return ret;
         },
         __wbindgen_generic_0000000000000004: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 264, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_22);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 329, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_27);
             return ret;
         },
         __wbindgen_generic_0000000000000005: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 264, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_23);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 329, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_28);
             return ret;
         },
         __wbindgen_generic_0000000000000006: function(arg0) {
@@ -1540,15 +1593,15 @@ function wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa(arg0, arg
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_22(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_22(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_27(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_27(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_23(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_23(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_28(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h3ab36ccdea3f32fa_28(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
@@ -1990,7 +2043,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL("layer_web_bg.436e8e8b27690ed251be.wasm", import.meta.url);
+        module_or_path = new URL("layer_web_bg.4b19805d55e383193122.wasm", import.meta.url);
     }
     const imports = __wbg_get_imports();
 
