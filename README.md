@@ -76,7 +76,7 @@ python3 -m http.server 4174 --bind 127.0.0.1 --directory doc
 ```
 
 The browser option checks offline startup, drawing, installation metadata,
-updates, scope isolation and GPU startup failures using the upstream harness.
+updates, scope isolation and GPU startup failure recovery using the upstream harness.
 The package can run at the domain root or a repository subpath. Drawing requires
 hardware WebGPU and HTTPS (localhost is allowed). Offline app availability is
 not artwork autosave: drawings are currently in memory, and closing/reloading

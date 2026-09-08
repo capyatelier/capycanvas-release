@@ -2,13 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Color-managed artwork and native themes must not be recolored. -->
+    <meta name="darkreader-lock" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#333333" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Capy Canvas — drawing workspace</title>
-    <link rel="icon" href="assets/170a65c11ca847877cca/icon-192.png" />
-    <link rel="stylesheet" href="assets/170a65c11ca847877cca/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/dddbffa641e3c91d870e/icon-32.png" />
+    <link rel="stylesheet" href="assets/dddbffa641e3c91d870e/style.css" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <meta name="theme-color" content="#333333" />
-    <link rel="apple-touch-icon" href="assets/170a65c11ca847877cca/icon-180.png" />
+    <link rel="apple-touch-icon" href="assets/dddbffa641e3c91d870e/icon-180.png" />
     <link rel="license" href="./licenses.html" />
   </head>
   <body data-theme="dark" data-gpu="starting">
@@ -40,7 +43,7 @@
     </main>
     <output id="status" role="status">Starting WebGPU…</output>
     <dialog id="settings" aria-labelledby="settings-title"></dialog>
-    <script type="module" src="assets/170a65c11ca847877cca/app.js"></script>
+    <script type="module" src="assets/dddbffa641e3c91d870e/app.js"></script>
   <script>addEventListener("load", () => { if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js", {updateViaCache: "none"}).catch(console.error); });</script>
   </body>
 </html>

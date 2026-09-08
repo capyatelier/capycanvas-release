@@ -1,4 +1,27 @@
-# Initial web-release audit — 2026-09-07
+# Web-release audits
+
+## Update: source ee35c09
+
+Reviewed source commit `ee35c09d8d88f992878f95720d9a0bf1d15c3726` against the
+initial `46010d5` release. Changes cover platform-specific GPU startup help,
+structured adapter/device/renderer failure diagnostics, theme metadata and
+Dark Reader opt-out, plus rounded mid-gray app icons and a dedicated 32px
+favicon. The existing project mark is retained; no new third-party assets,
+dependencies or license terms were introduced.
+
+Cargo.lock, Cargo manifests, build.sh, about.toml and the pinned toolchain are
+unchanged. The independent locked license/source gate passed again; the
+reviewed changes introduce no GPL/LGPL runtime inputs. The package still uses
+the upstream build process and preserves its service-worker integrity hashes.
+
+Validation passed: 15 upstream unit tests, both Chrome package suites (offline
+drawing, icon pixels, safe updates and 17 startup/help scenarios), and the host
+integrity checks. Browser identity overrides test help routing, not actual
+Safari/Firefox/mobile GPU implementations. This release contains 91 files and
+89 precache entries; exact dependency and artifact hashes are recorded in
+`release/manifest.json`.
+
+## Initial web-release audit — 2026-09-07
 
 **Result: no GPL/LGPL code identified in the reviewed PWA build inputs or web
 dependency graph. The initial web release may proceed.** This conclusion applies

@@ -10,16 +10,16 @@
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "assets/170a65c11ca847877cca/icon-192.png",
+      "src": "assets/dddbffa641e3c91d870e/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "assets/170a65c11ca847877cca/icon-512.png",
+      "src": "assets/dddbffa641e3c91d870e/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
