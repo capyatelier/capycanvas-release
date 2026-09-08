@@ -1,5 +1,5 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.2e230ef5e361c856d4ab.js";
-import { createPreferences } from "./preferences.db3c3b950ce667b1cb44.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.c5f2089afb3bbb690061.js";
+import { createPreferences } from "./preferences.9f12ce2386e7aa469088.js";
 import { showGpuNotice } from "./gpu.e083bc719f6b47754a12.js";
 
 // The static packager fills this map with fingerprinted artwork filenames.
@@ -735,7 +735,6 @@ function update(regions) {
       }
   if (regions & 16) {
     applyTheme(state.theme);
-    document.documentElement.style.setProperty("--panel-text-size", `${state.settings.panel_text_pt}pt`);
     for (const [id, button] of brushButtons)
       button.querySelector("img").src =
         asset(`brush-previews/${id}-${state.theme}.png`);
@@ -806,7 +805,7 @@ function updateZen() {
   chromeInput({ kind: "refresh" });
 }
 function buildHeader() {
-  function menu(label, ids, icon) {
+  function menu(label, sections, icon) {
     const details = element("details", "header-menu");
     details.name = "workspace-menu";
     const summary = element("summary", "", icon || label);
@@ -817,14 +816,17 @@ function buildHeader() {
         popup.hidePopover();
     });
     const contents = element("div", "popover");
-    for (const id of ids) {
-      const control = commandButton(id, id);
-      control.replaceChildren(element("span", "command-label"), element("span", "shortcut-hint"));
-      control.addEventListener("click", () => {
-        details.open = false;
-        updateZen();
-      });
-      contents.append(control);
+    for (const [index, ids] of sections.entries()) {
+      if (index) contents.append(element("hr"));
+      for (const id of ids) {
+        const control = commandButton(id, id);
+        control.replaceChildren(element("span", "command-label"), element("span", "shortcut-hint"));
+        control.addEventListener("click", () => {
+          details.open = false;
+          updateZen();
+        });
+        contents.append(control);
+      }
     }
     details.append(summary, contents);
     details.addEventListener("toggle", updateZen);
@@ -832,7 +834,7 @@ function buildHeader() {
   }
   $("header-start").append(iconButton("zen_mode"));
   for (const spec of catalog.menus)
-    $("header-start").append(menu(spec.label, spec.commands));
+    $("header-start").append(menu(spec.label, spec.sections));
   $("header-end").append(fullscreenButton(), iconButton("settings"));
 }
 function pointerStyle(e) {
@@ -1128,6 +1130,7 @@ try {
   systemTheme.addEventListener("change", () => dispatch(themeAction()));
   state = app.state();
   catalog = app.catalog();
+  document.documentElement.style.setProperty("--ui-text-size", `${catalog.text_size_pt}pt`);
   document.title = `${catalog.app_name} — drawing workspace`;
   await loadIcons();
   refreshPreferences = createPreferences({ element, button, icon, spin, setNumber, numericControl, panelFrame, dispatch, view: () => app.preferences() });

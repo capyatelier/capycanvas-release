@@ -1,5 +1,23 @@
 # Web-release audits
 
+## Update: source 3ef0eca — menu, typography and theme refinements
+
+Reviewed `3ef0eca94f628a1ece050e8d72489b9dcc60eaa4` against `9632cc1`.
+Changes group shared menus into sections, use consistent 11pt UI typography,
+remove the panel font-size preference while preserving other saved settings,
+and label the theme toggle Dark Mode with its effective theme reflected.
+
+The shared UI crate promotes its existing `serde_json` dev dependency to a
+runtime dependency for settings migration. It was already part of the web
+dependency graph; the lockfile, toolchain, web packager and asset licenses are
+unchanged. Locked license/source checks passed, with no new GPL/LGPL runtime
+inputs identified.
+
+The build, upstream packaging/launcher checks and artifact-integrity gates
+passed. The package contains 99 files and 97 precache entries. Browser tests
+were skipped at the owner's explicit request; the release manifest records
+them as not run.
+
 ## Update: source 9632cc1 — preferences and signed pointer IDs
 
 Reviewed `9632cc1477ac9aa735bd6fc662d93c76acb1bbe8` against `f562c9f`.
