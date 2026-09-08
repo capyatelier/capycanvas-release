@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "f562c9f5cb230f102f10ae0f188c5b4d16668340",
+    "commit": "9632cc1477ac9aa735bd6fc662d93c76acb1bbe8",
     "cargoLockSha256": "e478ce86f15e3dc641c6585a1904aad706c3ea99cbaedd758577c95b7cb18ead"
   },
   "domain": "editor.capycanvas.art",
@@ -20,9 +20,9 @@
     "licenses": "passed",
     "sources": "passed",
     "upstreamUnitTests": "passed",
-    "upstreamBrowserTests": "passed"
+    "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "a5c8c9b08a6af9b462d49e5bd508c2449c2aefd3c175dc74efec6c5fe11bb486",
+  "workerVersion": "86a014f841d4de15880a9e138b505172f3ad5a453f24d5e5c28ec6bbd0fbd277",
   "dependencies": [
     {
       "name": "arrayvec",
@@ -368,12 +368,12 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webgpu_new",
+      "name": "__wbg_call_6bcf8d3e20937e46",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
+      "name": "__wbg_webgpu_new",
       "kind": "function"
     },
     {
@@ -2021,9 +2021,9 @@
       "bytes": 2486,
       "sha256": "7f29f96e9bc6f423d6f1c90d5278100eda10ebda73876280e29df70b3d9b1f90"
     },
-    "assets/app.71472fa44e99c0db6e76.js": {
-      "bytes": 43933,
-      "sha256": "71472fa44e99c0db6e7699acac13b5b652127249c7d50f1d6aea48c4fdd3f9b3"
+    "assets/app.2b71080f7e9308f1a2b1.js": {
+      "bytes": 44775,
+      "sha256": "2b71080f7e9308f1a2b1b31922710bfd02e6672eba659336d868216db574fc85"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -2253,6 +2253,26 @@
       "bytes": 279,
       "sha256": "d57e12a7c6f7ac8f7046df9652193be4df651f3ad439953cda2d794c1b5d2592"
     },
+    "assets/icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg": {
+      "bytes": 300,
+      "sha256": "00af67c62fbc5f6b9ef05cbfece3269c098ff7455d0e192c10bbb19332fe5839"
+    },
+    "assets/icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg": {
+      "bytes": 288,
+      "sha256": "5f29fedd81117cb05a71c345f48d724ecb5cc08522c55abdcf93d0e36bcbb03c"
+    },
+    "assets/icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg": {
+      "bytes": 210,
+      "sha256": "4312a1e7d5c5754568e4f4a24c5b10f09148a1d8e410b336856d66bc2b232a33"
+    },
+    "assets/icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg": {
+      "bytes": 141,
+      "sha256": "dbb8054a0b207e1b7eb287db2c5fccea0e755a8641ec96bff97064ec77d444b8"
+    },
+    "assets/icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg": {
+      "bytes": 202,
+      "sha256": "b0b167dbd699d2b240fa13405babeab1516b77a7ad27214437490419bfceeb9e"
+    },
     "assets/icons/layer-down-symbolic.2077aefc6f508c80c30b.svg": {
       "bytes": 270,
       "sha256": "2077aefc6f508c80c30b5622a9824ef6d0093cde038b8cd2123c701b8e18c082"
@@ -2305,9 +2325,9 @@
       "bytes": 287,
       "sha256": "d6c2966e05601e4c9496facff589784b9a0850057360ef91a68ace9090156cfa"
     },
-    "assets/icons/layer-search-symbolic.8315d5808a91a4b27def.svg": {
-      "bytes": 271,
-      "sha256": "8315d5808a91a4b27defde6d60656d49f1e3943ce75c6e1afaf4ba4a0de15504"
+    "assets/icons/layer-search-symbolic.083808e07e9068e1f81a.svg": {
+      "bytes": 358,
+      "sha256": "083808e07e9068e1f81ad67b4c51326d3ec32a9062c401cc61230cda40d5fc34"
     },
     "assets/icons/layer-settings-symbolic.792d51cf281148198e77.svg": {
       "bytes": 365,
@@ -2325,25 +2345,25 @@
       "bytes": 937,
       "sha256": "0cecb363301b154f919485d18a40d88fea3eb22f121e920ac78c1bec07950bec"
     },
-    "assets/pkg/layer_web_bg.28d13823ae2eb0f49c66.wasm": {
-      "bytes": 1662770,
-      "sha256": "28d13823ae2eb0f49c66f9eeb27953196d9e70111db6ee63ab4cd0848f09ddf2"
+    "assets/pkg/layer_web_bg.f85b880298b413228acf.wasm": {
+      "bytes": 1688967,
+      "sha256": "f85b880298b413228acf890890a6cb1c8e33e07c72893aaaeea31e75e1590b4c"
     },
-    "assets/pkg/layer_web.a71bbb981753edcc208c.js": {
+    "assets/pkg/layer_web.2e230ef5e361c856d4ab.js": {
       "bytes": 80436,
-      "sha256": "a71bbb981753edcc208cd48dd366eb7c767a6a729d390cb18090a21586541b80"
+      "sha256": "2e230ef5e361c856d4ab59059ba2b15fa5a2d083bc9d35f14c722baa82b82fcf"
     },
-    "assets/preferences.f24a0f1b14ba5277c5e4.js": {
-      "bytes": 10666,
-      "sha256": "f24a0f1b14ba5277c5e437f861650bd66723b0e79c4daca9399c49de759518ed"
+    "assets/preferences.db3c3b950ce667b1cb44.js": {
+      "bytes": 16326,
+      "sha256": "db3c3b950ce667b1cb44dbbeb49a14399aa910040d1fb635c1edbc20bad5619e"
     },
-    "assets/style.070cb9918a86ee196a2f.css": {
-      "bytes": 21326,
-      "sha256": "070cb9918a86ee196a2f1cd5ef4a8eea956d0a1a1b4c4020bcec11f6dc349787"
+    "assets/style.fe50c762b7347902fc74.css": {
+      "bytes": 23278,
+      "sha256": "fe50c762b7347902fc74852a8a2d386b73ff28984fbcc515ffb7196eafc57099"
     },
     "BRANDING.md": {
-      "bytes": 3292,
-      "sha256": "6dc6e7aab12139efac0fc93a2c9faa834208e3295b2f384a94b97ed86a8f448d"
+      "bytes": 3304,
+      "sha256": "044e403fcd49d86525e541b61ffeb7d645ef85ca755cf5d7ab8e5d624a78f494"
     },
     "CNAME": {
       "bytes": 22,
@@ -2355,7 +2375,7 @@
     },
     "index.html": {
       "bytes": 2469,
-      "sha256": "bc078accdcc3d8c7bd6ad0bc9997dc4be4417fcda803cbf115fbd0ce76cfe407"
+      "sha256": "02a11870d19b9979fdd294431df528e3b788aaaef65c635efe2488ff9e085fab"
     },
     "LICENSE": {
       "bytes": 548,
@@ -2370,8 +2390,8 @@
       "sha256": "86d6bf54bb06e47b1967ade92cf3b73e4d0340f636b08ac4a4f3a4e40239d9bb"
     },
     "licenses.html": {
-      "bytes": 20171,
-      "sha256": "aa8e740a4a035ec207b59022635fe29c0ab9514a03f10fa9a8ae8aacd7b9ce42"
+      "bytes": 20183,
+      "sha256": "f3178c13be74ad77502f34047a55f1d32ecd5890b90886a079ede17179e6eeea"
     },
     "manifest.webmanifest": {
       "bytes": 561,
@@ -2382,8 +2402,8 @@
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 13484,
-      "sha256": "9ddc472c7a918c40ad5172469964095de77040ed4d6947172bd299753be47872"
+      "bytes": 14202,
+      "sha256": "9416982bbdc9a0f9dee0b617387a683af45538ebbdf6353d5a8030e2f033f01f"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 3291,

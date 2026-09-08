@@ -1,5 +1,28 @@
 # Web-release audits
 
+## Update: source 9632cc1 — preferences and signed pointer IDs
+
+Reviewed `9632cc1477ac9aa735bd6fc662d93c76acb1bbe8` against `f562c9f`.
+Changes add shared preference search, multi-binding shortcut editing, configurable
+panel typography and original cursor-mode icons. Signed DOM pointer IDs now
+preserve their bits at the unsigned Rust input boundary. The prediction horizon
+limit increases from 50ms to 64ms. Native UI and packaging changes are outside
+this PWA's build target.
+
+Dependencies, lockfile, web packaging and toolchain are unchanged. The branding
+scope now explicitly includes icons generated for GTK as well as the PWA; the
+current notice is preserved both at repository root and in the package. No new
+GPL/LGPL runtime inputs or third-party artwork were identified.
+
+Browser validation was unreliable on this machine: local Vulkan presentation
+failed and alternate configurations produced intermittent input/ink assertions.
+The owner confirmed the Vulkan driver is in a bad state and explicitly directed
+publication without further tests. This release therefore does not claim a
+complete reliable browser-validation pass; the manifest records browser tests
+as not run for the final packaging command. The 75 shared UI/engine Rust tests
+passed before that instruction. License and artifact-integrity gates remain in
+the normal packaging process.
+
 ## Update: source f562c9f — asset fingerprints and iPad fixes
 
 Reviewed `f562c9f5cb230f102f10ae0f188c5b4d16668340` against `f179b58`.
