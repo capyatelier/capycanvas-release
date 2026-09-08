@@ -1,9 +1,10 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.js";
-import { createPreferences } from "./preferences.js";
-import { showGpuNotice } from "./gpu.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.a71bbb981753edcc208c.js";
+import { createPreferences } from "./preferences.f24a0f1b14ba5277c5e4.js";
+import { showGpuNotice } from "./gpu.e083bc719f6b47754a12.js";
 
-// Resolve assets beside the module, including in a versioned static package.
-const asset = (path) => new URL(path, import.meta.url).href;
+// The static packager fills this map with fingerprinted artwork filenames.
+const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.8315d5808a91a4b27def.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-symbolic.svg":"icons/layer-zen-symbolic.0cecb363301b154f9194.svg"};
+const asset = (path) => new URL(assetPaths[path.replace(/^\.\//, "")] || path, import.meta.url).href;
 
 const panels = new Map(),
   groups = new Map(),
@@ -833,9 +834,16 @@ function buildHeader() {
     $("header-start").append(menu(spec.label, spec.commands));
   $("header-end").append(fullscreenButton(), iconButton("settings"));
 }
+function pointerStyle(e) {
+  // Touch leaves :hover stuck until the next tap; track actual pointer input
+  // instead of disabling hover for a whole device that may also have a pen/mouse.
+  const touch = e.pointerType === "touch", root = document.documentElement;
+  if (root.hasAttribute("data-touch") !== touch) root.toggleAttribute("data-touch", touch);
+}
 window.addEventListener(
   "pointermove",
   (e) => {
+    pointerStyle(e);
     if (!e.buttons) chromeHeld = false;
     chromeInput({ kind: "motion", position: [e.clientX, e.clientY] });
     cursorInput(e);
@@ -849,6 +857,7 @@ document.addEventListener("pointerleave", (e) => {
 window.addEventListener(
   "pointerdown",
   (e) => {
+    pointerStyle(e);
     revealPointer = null;
     if (e.target.closest("#header")) chromeHeld = true;
     const reply = chromeInput({

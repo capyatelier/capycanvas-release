@@ -65,6 +65,7 @@ try {
   if (browserTests) {
     run("node", ["apps/layer-web/test.mjs", "--package"], options);
     run("node", ["apps/layer-web/test.mjs", "--package", "--gpu-startup"], options);
+    run("node", ["apps/layer-web/test.mjs", "--package", "--preferences"], options);
   }
   const site = join(work, "doc");
   cpSync(join(snapshot, "dist/capycanvas"), site, { recursive: true });

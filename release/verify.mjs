@@ -26,6 +26,32 @@ export function inventory(directory) {
   }));
 }
 
+export function verifyRuntime(directory, files) {
+  const assets = Object.keys(files).filter((path) => path.startsWith("assets/"));
+  assert.ok(assets.length, "Missing runtime assets");
+  const legacy = assets[0].match(/^assets\/([a-f0-9]{20})\//);
+  if (legacy) {
+    // Retain verification of the previous release during replacement/rollback.
+    const prefix = `assets/${legacy[1]}/`, hash = createHash("sha256");
+    assert.ok(assets.every((path) => path.startsWith(prefix)), "Mixed runtime layouts");
+    for (const path of filesIn(join(directory, prefix)))
+      hash.update(path + "\0").update(readFileSync(join(directory, prefix, path)));
+    assert.equal(hash.digest("hex").slice(0, 20), legacy[1], "Runtime directory hash mismatch");
+  } else {
+    for (const path of assets) {
+      const fingerprint = path.match(/\.([a-f0-9]{20})\.[a-z0-9]+$/)?.[1];
+      assert.ok(fingerprint, `Missing asset filename fingerprint: ${path}`);
+      assert.equal(sha256(readFileSync(join(directory, path))).slice(0, 20), fingerprint, `Asset filename hash mismatch: ${path}`);
+    }
+    const apple = assets.filter((path) => /^assets\/icon-180\.[a-f0-9]{20}\.png$/.test(path));
+    assert.equal(apple.length, 1, "Missing fingerprinted Apple icon");
+    assert.deepEqual(readFileSync(join(directory, "apple-touch-icon.png")), readFileSync(join(directory, apple[0])), "Apple icon alias mismatch");
+    const html = readFileSync(join(directory, "index.html"), "utf8");
+    const iconUrl = html.match(/<link rel="apple-touch-icon"[^>]*href="([^"]+)"/)?.[1];
+    assert.equal(iconUrl, `./apple-touch-icon.png?v=${sha256(readFileSync(join(directory, apple[0]))).slice(0, 20)}`, "Apple icon query fingerprint mismatch");
+  }
+}
+
 export function verify(directory, record, config) {
   assert.equal(record.source.commit, config.commit, "Release must match the reviewed source pin");
   assert.equal(record.source.repository, config.repository);
@@ -65,18 +91,13 @@ export function verify(directory, record, config) {
 
   const wasm = Object.keys(record.files).filter((path) => path.endsWith(".wasm"));
   assert.equal(wasm.length, 1, "Expected only the web application's Wasm");
-  const runtimeDirectory = wasm[0].split("/").slice(0, 2).join("/");
-  const runtimeHash = createHash("sha256");
-  for (const path of filesIn(join(directory, runtimeDirectory)))
-    runtimeHash.update(path + "\0").update(readFileSync(join(directory, runtimeDirectory, path)));
-  assert.equal(runtimeHash.digest("hex").slice(0, 20), runtimeDirectory.split("/")[1], "Runtime directory hash mismatch");
+  verifyRuntime(directory, record.files);
   const module = new WebAssembly.Module(readFileSync(join(directory, wasm[0])));
   assert.deepEqual(WebAssembly.Module.imports(module), record.wasmImports);
   assert.ok(record.wasmImports.every((item) => item.module === "./layer_web_bg.js" && item.kind === "function"), "Unexpected non-JS Wasm imports");
   for (const path of Object.keys(record.files)) {
     assert.ok(!/\.(?:rs|toml|map|d\.ts|so|a|rlib|exe)$/.test(path), `Unexpected build/source artifact: ${path}`);
     if (path.startsWith("assets/")) {
-      assert.match(path, /^assets\/[a-f0-9]{20}\//);
       const text = readFileSync(join(directory, path)).toString("latin1");
       assert.ok(!/\/(?:home|Users)\/[^\s/]+|[A-Z]:\\Users\\|-----BEGIN (?:\w+ )?PRIVATE KEY-----/.test(text), `Private path/key in ${path}`);
     }

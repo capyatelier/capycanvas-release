@@ -109,5 +109,12 @@ Original release scripts and documentation: [MIT](LICENSE-MIT) OR
 [Apache-2.0](LICENSE-APACHE). The application has the same software license choice,
 with separate [branding terms](BRANDING.md). The full dependency/toolchain notices
 are shipped in [`doc/licenses.html`](doc/licenses.html). The branding scope's
-source path maps to `doc/assets/<content-hash>/icons/layer-zen-symbolic.svg` and the
+source path maps to `doc/assets/icons/layer-zen-symbolic.<hash>.svg` and the
 generated app-icon PNGs in this distribution.
+
+Runtime JS, CSS, Wasm and artwork use hashes of their final bytes in their
+filenames. The release verifier checks each fingerprint and every precache
+integrity entry. It also supports the older directory-hash layout when verifying
+the previous release before replacement. Apple's `apple-touch-icon.png` is a
+stable alias of its fingerprinted 180px asset; the HTML link carries the same
+hash as a query parameter. The verifier checks both copies and that parameter.

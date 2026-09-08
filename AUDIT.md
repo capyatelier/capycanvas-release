@@ -1,5 +1,31 @@
 # Web-release audits
 
+## Update: source f562c9f — asset fingerprints and iPad fixes
+
+Reviewed `f562c9f5cb230f102f10ae0f188c5b4d16668340` against `f179b58`.
+The upstream packager now fingerprints each asset after rewriting its dependency
+URLs. This covers JS, CSS, Wasm and artwork, with changed dependency hashes
+propagating into consumers. The service worker retains its integrity-checked,
+deferred update behavior. Apple receives opaque 180px icon artwork at both a
+fingerprinted URL and a stable `apple-touch-icon.png` alias with a query hash.
+
+Runtime changes prevent sticky touch hover and selectable/draggable cursor
+artwork, preserve mouse/pen hover after touch, and add shared About links.
+Native About-link changes are outside the PWA artifact. No dependencies,
+toolchain versions, license terms or third-party assets were added; no new
+GPL/LGPL inputs were identified. The release verifier was adapted to validate
+individual filename hashes and the Apple alias without weakening the precache
+or previous-release checks.
+
+Validation passed: locked license/source checks, 18 upstream packaging/launcher
+tests, eight hosting-verifier tests, all three packaged Chrome suites (PWA,
+GPU startup and preferences), and the shared Rust About-link test. Upgrade tests
+verify that changed JS/CSS actually execute with HTTP caching enabled and then
+work offline. Touch checks cover both themes and touch-to-mouse/pen switching;
+icon checks cover opaque Apple corners, the stable URL and offline retrieval.
+This is browser automation, not a physical iPad Home Screen installation test.
+The release contains 94 files and 92 precache entries.
+
 ## Update: source f179b58 — fullscreen
 
 Reviewed `f179b589238fc6b1142904d809fd0ec12747a5c0` against `ee35c09`.
