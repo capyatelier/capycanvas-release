@@ -1,5 +1,24 @@
 # Web-release audits
 
+## Update: source f179b58 — fullscreen
+
+Reviewed `f179b589238fc6b1142904d809fd0ec12747a5c0` against `ee35c09`.
+This release adds a browser fullscreen toggle beside Settings, with enter/exit
+icons, unavailable-API handling and error recovery. It also includes updated
+platform browser-support and Linux GPU troubleshooting help.
+
+The two new SVG icons are original project assets under the existing permissive
+terms, as documented in the source icon bank. Cargo dependencies, lockfile,
+build/packaging scripts, license policy and toolchain are unchanged. No new
+GPL/LGPL inputs were identified in the reviewed changes.
+
+The locked license/source gate, 15 upstream unit tests and both Chrome package
+suites passed. Fullscreen checks exercised real entry/exit, external exits,
+rejected requests, unavailable API, Settings access and GPU ink after resize.
+Offline drawing, safe updates and GPU startup/help checks also passed. This
+release contains 93 files and 91 precache entries, recorded with exact hashes
+in `release/manifest.json`.
+
 ## Update: source ee35c09
 
 Reviewed source commit `ee35c09d8d88f992878f95720d9a0bf1d15c3726` against the
