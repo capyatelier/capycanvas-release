@@ -1,11 +1,11 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.fe94e12fc5870d331a0d.js";
-import { createPreferences } from "./preferences.ff35d31c5b9f6a3e9fd0.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.e3a69c9fae84bdc0fbff.js";
+import { createPreferences } from "./preferences.d64768def535863f60a8.js";
 import { showGpuNotice } from "./gpu.e083bc719f6b47754a12.js";
-import { createCustomization } from "./customization.1475afe657bdeaf3f428.js";
-import { createNumberField } from "./numeric.636e6e7f5e1525850bfb.js";
+import { createCustomization } from "./customization.2f9827267610461fa283.js";
+import { createNumberField } from "./numeric.12ffe9b3369099ab5c33.js";
 
 // The static packager fills this map with fingerprinted artwork filenames.
-const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.fe55ef438d220f750c51.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-symbolic.svg":"icons/layer-zen-symbolic.0cecb363301b154f9194.svg"};
+const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.fe55ef438d220f750c51.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-bathing-symbolic.svg":"icons/layer-zen-bathing-symbolic.a638473e74f9e05000d7.svg","icons/layer-zen-facing-forward-symbolic.svg":"icons/layer-zen-facing-forward-symbolic.06a3a282919298af5baf.svg","icons/layer-zen-looking-up-symbolic.svg":"icons/layer-zen-looking-up-symbolic.702efa7f434780589e3e.svg","icons/layer-zen-sleeping-symbolic.svg":"icons/layer-zen-sleeping-symbolic.adc886ce0a33f63e8896.svg"};
 const asset = (path) => new URL(assetPaths[path.replace(/^\.\//, "")] || path, import.meta.url).href;
 
 const panels = new Map(),
@@ -41,11 +41,14 @@ const pending = [];
 const systemTheme = matchMedia("(prefers-color-scheme: dark)");
 applyTheme(systemTheme.matches ? "dark" : "light");
 
-function applyTheme(theme) {
+function applyTheme(theme, palette) {
   document.body.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
   document.querySelector('meta[name="color-scheme"]').content = theme;
-  document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#333333" : "#b8b8b8";
+  if (palette) for (const [name, color] of Object.entries(palette)) {
+    if (typeof color === "string") document.body.style.setProperty(`--${name.replaceAll("_", "-")}`, name === "button" ? `${color}0d` : color);
+  }
+  document.querySelector('meta[name="theme-color"]').content = palette?.bg || (theme === "dark" ? "#333333" : "#b8b8b8");
 }
 
 function element(tag, className, text) {
@@ -123,7 +126,7 @@ function commandButton(id, text) {
 const icons = new Map();
 async function loadIcons() {
   await Promise.all(
-    [...catalog.icons, "fullscreen-enter", "fullscreen-exit"].map(async (name) => {
+    [...catalog.icons, "fullscreen-enter", "fullscreen-exit", "chevron-down"].map(async (name) => {
       const response = await fetch(asset(`./icons/layer-${name}-symbolic.svg`));
       if (!response.ok) throw new Error(`Cannot load icon ${name}`);
       const svg = new DOMParser().parseFromString(
@@ -144,7 +147,11 @@ function iconButton(id) {
   const node = commandButton(id, "");
   node.dataset.icon = "true";
   node.classList.add("tile-button");
-  node.append(icon(state.commands.find((c) => c.id === id).icon));
+  const glyph = icon(state.commands.find((c) => c.id === id).icon);
+  if (id === "zen_mode") {
+    glyph.style.width = glyph.style.height = `${catalog.zen_icon_size}px`;
+  }
+  node.append(glyph);
   return node;
 }
 function fullscreenButton() {
@@ -175,6 +182,11 @@ function fullscreenButton() {
   return node;
 }
 function draggable(node, item) {
+  if (item.kind !== "tile") {
+    node.draggable = false;
+    node.dataset.workspaceDrag = JSON.stringify({ type: "drag_workspace", item });
+    return node;
+  }
   node.draggable = true;
   let pointer;
   node.addEventListener("workspace-context-claimed", () => { pointer = null; });
@@ -228,12 +240,23 @@ workspace.append(dropIndicator);
 
 function dispatch(action) {
   try {
-    if (["move_panel", "move_group", "move_tile"].includes(action.type))
+    if (["move_panel", "move_group", "move_tile", "double_click_panel_handle"].includes(action.type))
       action = {
         ...action,
         viewport: [workspace.clientWidth, workspace.clientHeight],
       };
+    const animated = ["double_click_panel_handle", "select_panel_tab"].includes(action.type) ? groups.get(action.group) : null;
+    const before = animated?.getBoundingClientRect();
     applyChange(app.dispatch(action));
+    if (before && animated?.classList.contains("floating-panel") && !animated.classList.contains("expanded-panel")
+      && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const after = animated.getBoundingClientRect();
+      if (before.width !== after.width || before.height !== after.height) {
+        animated.getAnimations().forEach(a => a.cancel());
+        const frame = r => ({ left: `${r.x}px`, top: `${r.y}px`, width: `${r.width}px`, height: `${r.height}px` });
+        animated.animate([frame(before), frame(after)], { duration: catalog.panel_expansion_ms, easing: "cubic-bezier(.2,0,0,1)" });
+      }
+    }
   } catch (error) {
     message(error);
   }
@@ -313,6 +336,10 @@ function place(node, rect) {
     height: `${rect.height}px`,
   });
 }
+function tabLabel(tab, view) {
+  if (view.tab.show_icon) tab.append(icon(view.icon));
+  if (view.tab.show_name) tab.append(element("span", "", view.title));
+}
 function arrange() {
   if (!app) return;
   layout = app.layout(workspace.clientWidth, workspace.clientHeight);
@@ -329,7 +356,7 @@ function arrange() {
       workspace.append(node);
     }
     const key = JSON.stringify([group.panels.map((id) => {
-      const view = customization.view(id); return [id, view.title, view.tab_style];
+      const view = customization.view(id); return [id, view.title, view.tab, view.icon];
     }), group.active, group.tabs_visible]);
     if (node.dataset.key !== key) {
       node.dataset.key = key;
@@ -339,6 +366,7 @@ function arrange() {
       node.classList.toggle("toolbar", !!group.tiles);
       const preview = node.querySelector(".panel-preview");
       const tabs = element("nav", "dock-tabs");
+      draggable(tabs, { kind: "group", group: group.id });
       customization.target(tabs, { kind: "group", group: group.id });
       tabs.setAttribute("aria-label", "Panel tabs");
       if (group.tabs_visible) {
@@ -354,21 +382,33 @@ function arrange() {
           tab.dataset.panel = panel;
           const view = customization.view(panel);
           tab.title = view.title; tab.setAttribute("aria-label", view.title);
-          if (view.tab_style === "icon") tab.append(icon(view.icon));
-          else tab.textContent = view.title;
+          tabLabel(tab, view);
           customization.target(tab, { kind: "panel", panel });
           tab.setAttribute("aria-selected", String(panel === group.active));
           labels.append(draggable(tab, { kind: "panel", panel }));
         });
         tabs.append(labels, grip({ kind: "group", group: group.id }));
         preview.replaceChildren(tabs, panels.get(group.active).parentElement);
-      } else preview.replaceChildren(panels.get(group.active).parentElement);
+      } else {
+        preview.replaceChildren(panels.get(group.active).parentElement);
+        if (group.footer_grip) {
+          const footer = element("div", "panel-footer");
+          footer.style.height = `${group.footer_grip.height}px`;
+          draggable(footer, { kind: "group", group: group.id });
+          customization.target(footer, { kind: "group", group: group.id });
+          footer.append(grip({ kind: "group", group: group.id })); preview.append(footer);
+        }
+      }
     }
+    node.classList.toggle("floating-panel", group.floating);
+    node.dataset.zIndex = group.floating ? String(100 + layout.groups.indexOf(group) * 2) : "0";
+    if (!node.classList.contains("expanded-panel")) node.style.zIndex = node.dataset.zIndex;
     place(node, group.bounds);
     if (group.tiles) {
       const strip = node.querySelector(".toolbar-controls");
       const geometry = group.tiles;
       strip.dataset.axis = group.axis;
+      strip.dataset.standalone = !group.tabs_visible;
       customization.layoutTiles(strip, geometry);
     }
   }
@@ -378,44 +418,38 @@ function arrange() {
       groups.delete(id);
     }
   const liveDividers = new Set();
-  for (const divider of layout.dividers) {
-    const key = `${divider.band}:${divider.id}`;
+  const handles = [
+    ...layout.dividers.map(d => ({ key: `${d.band}:${d.id}`, bounds: d.bounds,
+      axis: d.axis, action: { type: "drag_divider", id: d.id } })),
+    ...layout.groups.filter(g => g.floating).flatMap(g => g.resize_handles.map(h => ({
+      key: `floating:${g.id}:${h.edge}`, bounds: h.bounds, edge: h.edge,
+      zIndex: Number(groups.get(g.id).dataset.zIndex) + 1,
+      action: { type: "resize_floating", group: g.id, edge: h.edge },
+    }))),
+  ];
+  for (const handle of handles) {
+    const { key } = handle;
     liveDividers.add(key);
     let node = dividers.get(key);
     if (!node) {
-      node = element("div", `divider ${divider.axis}`);
+      node = element("div");
       node.tabIndex = 0;
       node.setAttribute("role", "separator");
       node.setAttribute("aria-label", "Resize dock");
-      node.setAttribute(
-        "aria-orientation",
-        divider.axis === "horizontal" ? "vertical" : "horizontal",
-      );
-      node.addEventListener("pointerdown", (e) => {
-        if (e.button !== 0) return;
-        dragDivider(node.divider.id, "down", e);
-        chromeHeld = true;
-        updateZen();
-        node.setPointerCapture(e.pointerId);
-        e.preventDefault();
-      });
-      node.addEventListener("pointermove", (e) => {
-        if (node.hasPointerCapture(e.pointerId))
-          dragDivider(node.divider.id, "move", e);
-      });
-      node.addEventListener("lostpointercapture", () => {
-        dragDivider(node.divider.id, "cancel");
-        chromeHeld = false;
-        updateZen();
-      });
       node.addEventListener("keydown", (e) => {
-        keyInput(e, true, node.divider.id);
+        if (node.dragAction.type === "drag_divider") keyInput(e, true, node.dragAction.id);
       });
       dividers.set(key, node);
       workspace.append(node);
     }
-    node.divider = divider;
-    place(node, divider.bounds);
+    node.dragAction = handle.action;
+    node.dataset.workspaceDrag = JSON.stringify(handle.action);
+    node.className = handle.edge ? "floating-resize" : `divider ${handle.axis}`;
+    if (handle.edge) {
+      node.dataset.edge = handle.edge; node.style.zIndex = handle.zIndex;
+      node.hidden = state.customization.expanded != null && layout.groups.find(g => g.id === handle.action.group)?.panels.includes(state.customization.expanded);
+    } else node.setAttribute("aria-orientation", handle.axis === "horizontal" ? "vertical" : "horizontal");
+    place(node, handle.bounds);
   }
   for (const [key, node] of dividers)
     if (!liveDividers.has(key)) {
@@ -429,14 +463,43 @@ function arrange() {
   place($("gpu-notice"), layout.work_area);
   resizeCanvas();
   updateZen();
+  queuePanelMeasurements();
 }
-function dragDivider(id, phase, e) {
-  dispatch({
-    type: "drag_divider",
-    id,
-    phase,
-    position: e ? [e.clientX, e.clientY] : [0, 0],
-    viewport: [workspace.clientWidth, workspace.clientHeight],
+// Measure intrinsic widget content only when its width/copy changes. Rust owns
+// tab growth and floating sizes; moving a float reuses these cached DOM facts.
+const panelMeasurements = new Map();
+let measuringPanels = false;
+const measureBox = element("div", "panel-measure");
+measureBox.setAttribute("aria-hidden", "true"); workspace.append(measureBox);
+function queuePanelMeasurements() {
+  if (measuringPanels) return;
+  measuringPanels = true;
+  requestAnimationFrame(() => {
+    measuringPanels = false;
+    const measurements = state.workspace.layout.panels.map(config => {
+      const view = customization.view(config.id);
+      const width = layout.groups.find(g => g.panels.includes(config.id))?.bounds.width || 232;
+      const key = JSON.stringify([width, view.title, view.tab, view.icon, view.controls, view.tile_style, state.layers.length]);
+      let cached = panelMeasurements.get(config.id);
+      if (cached?.key !== key) {
+        const tab = element("button", "dock-tab");
+        tab.style.width = "max-content";
+        tabLabel(tab, view);
+        measureBox.style.width = `${width}px`; measureBox.replaceChildren(tab);
+        const tabWidth = tab.getBoundingClientRect().width;
+        const content = panels.get(config.id).cloneNode(true);
+        content.style.height = "auto"; content.style.width = `${width}px`;
+        measureBox.replaceChildren(content);
+        cached = { key, value: { panel: config.id, tab_width: tabWidth,
+          content_height: config.content.kind === "toolbar" ? 0 : content.getBoundingClientRect().height } };
+        panelMeasurements.set(config.id, cached); measureBox.replaceChildren();
+      }
+      return cached.value;
+    });
+    for (const id of panelMeasurements.keys()) if (!panels.has(id)) panelMeasurements.delete(id);
+    // The core returns no change for identical measurements, including after
+    // workspace restore. This avoids keeping a second authoritative size cache.
+    dispatch({ type: "measure_panels", measurements });
   });
 }
 function resizeCanvas() {
@@ -586,6 +649,7 @@ function update(regions) {
     $("layer-opacity").update(state.layers.find((l) => l.selected).opacity);
   }
   if (regions & (1 | 4 | 128)) arrange();
+  if (regions & (1 | 4 | 8 | 128)) refreshWorkspaceMenu();
   if (regions & (4 | 8))
     for (const command of state.commands)
       for (const node of commands.get(command.id) || []) {
@@ -593,7 +657,14 @@ function update(regions) {
         node.title = command.label;
         node.setAttribute("aria-label", command.label);
         node.setAttribute("aria-pressed", String(command.selected));
-        if (node.dataset.icon !== "true") {
+        if (node.dataset.icon === "true") {
+          const glyph = node.querySelector("svg");
+          if (glyph?.dataset.asset !== command.icon) {
+            const next = icon(command.icon);
+            next.style.cssText = glyph?.style.cssText || "";
+            node.replaceChildren(next);
+          }
+        } else {
           if (node.querySelector(".command-label")) {
             node.querySelector(".command-label").textContent = command.label;
             node.querySelector(".shortcut-hint").textContent = command.shortcut;
@@ -601,7 +672,7 @@ function update(regions) {
         }
       }
   if (regions & 16) {
-    applyTheme(state.theme);
+    applyTheme(state.theme, state.palette);
     for (const [id, button] of brushButtons)
       button.querySelector("img").src =
         asset(`brush-previews/${id}-${state.theme}.png`);
@@ -633,11 +704,74 @@ function update(regions) {
 // Rust owns transient interaction policy. These are only DOM event/capture
 // records; CSS animates the returned visibility without resizing the canvas.
 let revealPointer = null;
+let workspaceGesture = null;
+function workspaceGestureEvent(phase, e) {
+  const drag = workspaceGesture;
+  if (!drag) return;
+  dispatch({ ...drag.action, phase, position: [e.clientX, e.clientY],
+    viewport: [workspace.clientWidth, workspace.clientHeight],
+    ...(drag.action.type === "drag_workspace" ? { tabs: tabHits() } : {}),
+  });
+}
+function endWorkspaceGesture(e, cancel = false) {
+  const drag = workspaceGesture;
+  if (!drag || (e && drag.id !== e.pointerId)) return;
+  if (drag.started) workspaceGestureEvent(cancel ? "cancel" : "up", e || drag.last);
+  workspaceGesture = null;
+  if (workspace.hasPointerCapture(drag.id)) workspace.releasePointerCapture(drag.id);
+  dropIndicator.hidden = true;
+  if (drag.started) { revealPointer = drag.id; e?.preventDefault(); e?.stopPropagation(); }
+  updateZen();
+}
+workspace.addEventListener("pointerdown", e => {
+  if (e.button !== 0 || workspaceGesture) return;
+  const node = e.target.closest("[data-workspace-drag]");
+  if (!node) return;
+  workspaceGesture = { id: e.pointerId, action: JSON.parse(node.dataset.workspaceDrag),
+    start: e, last: e, started: false };
+  // External resize strips are outside the unselectable panel. Prevent a
+  // native text-selection drag from stealing their pointer sequence.
+  if (workspaceGesture.action.type !== "drag_workspace") e.preventDefault();
+}, { capture: true });
+workspace.addEventListener("pointermove", e => {
+  const drag = workspaceGesture;
+  if (!drag || drag.id !== e.pointerId) return;
+  drag.last = e;
+  if (!drag.started) {
+    const distance = Math.hypot(e.clientX - drag.start.clientX, e.clientY - drag.start.clientY);
+    if (distance <= (drag.action.type === "drag_workspace" ? 8 : 0)) return;
+    drag.started = true;
+    // Capture on the stable workspace before Rust tears off/rebuilds a tab.
+    workspace.setPointerCapture(e.pointerId);
+    groups.forEach(node => node.getAnimations().forEach(a => a.cancel()));
+    workspaceGestureEvent("down", drag.start);
+  }
+  workspaceGestureEvent("move", e);
+  if (drag.action.type === "drag_workspace") showDropHint(dropHint(e, drag.action.item));
+  e.preventDefault(); e.stopPropagation();
+}, { capture: true });
+workspace.addEventListener("pointerup", e => endWorkspaceGesture(e), { capture: true });
+workspace.addEventListener("pointercancel", e => endWorkspaceGesture(e, true), { capture: true });
+workspace.addEventListener("lostpointercapture", e => endWorkspaceGesture(e, true));
+workspace.addEventListener("workspace-context-claimed", () => endWorkspaceGesture(null, true));
+workspace.addEventListener("dblclick", e => {
+  if (e.target.closest(".dock-tab")) return;
+  const node = e.target.closest("[data-workspace-drag]");
+  if (!node) return;
+  const action = JSON.parse(node.dataset.workspaceDrag);
+  if (action.type !== "drag_workspace") return;
+  const group = app.panel_handle_target(action.item);
+  if (group == null) return;
+  e.preventDefault(); e.stopPropagation();
+  dispatch({ type: "double_click_panel_handle", group });
+});
 function input(event) {
   if (!app) return {};
   try {
     const reply = app.input(event);
     workspace.classList.toggle("zen-hidden", reply.chrome_hidden);
+    workspace.classList.toggle("zen-hide-floating", reply.hide_floating_panels);
+    workspace.classList.toggle("zen-keep-button", reply.keep_zen_button);
     canvas.style.cursor = reply.pan_cursor ? "grab" : "";
     if (reply.dismiss_popups) {
       for (const popup of document.querySelectorAll(
@@ -687,6 +821,10 @@ function buildHeader() {
         popup.hidePopover();
     });
     const contents = element("div", "popover");
+    if (!sections.length) {
+      contents.id = "workspace-menu";
+      details.addEventListener("toggle", () => { if (details.open) refreshWorkspaceMenu(); });
+    }
     for (const [index, ids] of sections.entries()) {
       if (index) contents.append(element("hr"));
       for (const id of ids) {
@@ -703,10 +841,21 @@ function buildHeader() {
     details.addEventListener("toggle", updateZen);
     return details;
   }
-  $("header-start").append(iconButton("zen_mode"));
+  // Keep one button outside the fading header, with a matching layout spacer.
+  const zen = iconButton("zen_mode");
+  zen.id = "zen-button"; zen.classList.add("chrome");
+  zen.dataset.context = JSON.stringify({ kind: "zen_mode" });
+  workspace.prepend(zen);
+  $("header-start").append(element("span", "zen-spacer"));
   for (const spec of catalog.menus)
     $("header-start").append(menu(spec.label, spec.sections));
   $("header-end").append(fullscreenButton(), iconButton("settings"));
+}
+function refreshWorkspaceMenu() {
+  const contents = $("workspace-menu");
+  if (contents && customization) customization.renderMenu(contents, app.workspace_menu(), () => {
+    contents.parentElement.open = false; updateZen();
+  });
 }
 function pointerStyle(e) {
   // Touch leaves :hover stuck until the next tap; track actual pointer input
@@ -909,13 +1058,14 @@ function keyInput(e, pressed, divider = null) {
 window.addEventListener("keydown", (e) => keyInput(e, true));
 window.addEventListener("keyup", (e) => keyInput(e, false));
 window.addEventListener("blur", () => {
+  endWorkspaceGesture(null, true);
   cursorInput(null);
   chromeHeld = false;
   if (input({ type: "blur" }).cancel_paint && lastPenEvent)
     queuePen(lastPenEvent, 4);
 });
-function dropHint(e, item) {
-  const tabs = [...groups.entries()].flatMap(([group, node]) =>
+function tabHits() {
+  return [...groups.entries()].flatMap(([group, node]) =>
     [...node.querySelectorAll(".dock-tab")].map((tab) => {
       const b = tab.getBoundingClientRect();
       return {
@@ -925,11 +1075,13 @@ function dropHint(e, item) {
       };
     }),
   );
+}
+function dropHint(e, item) {
   try {
     return app.drop_hint({
       viewport: [workspace.clientWidth, workspace.clientHeight],
       position: [e.clientX, e.clientY],
-      tabs,
+      tabs: tabHits(),
       item,
       expansion: customization.placement(),
     });
@@ -940,7 +1092,8 @@ function dropHint(e, item) {
 function draggedItem(e) {
   if (dragItem) return dragItem;
   try {
-    return JSON.parse(e.dataTransfer.getData("text/layer-dock"));
+    const item = JSON.parse(e.dataTransfer.getData("text/layer-dock"));
+    return item.kind === "tile" ? item : null;
   } catch {
     /* External drags cannot provide data during protected dragover. */
   }
@@ -951,10 +1104,8 @@ function showDropHint(hint) {
   if (hint) { place(dropIndicator, hint.bounds); dropIndicator.dataset.kind = hint.target.kind; }
 }
 function dropItem(item, hint) {
-  if (!hint) return;
-  const { kind, ...source } = item;
-  dispatch({ type: kind === "group" ? "move_group" : kind === "tile" ? "move_tile" : "move_panel",
-    ...source, target: hint.target });
+  if (hint && item.kind === "tile")
+    dispatch({ type: "move_tile", panel: item.panel, tile: item.tile, target: hint.target });
 }
 workspace.addEventListener("dragover", (e) => {
   if (!e.dataTransfer.types.includes("text/layer-dock")) return;

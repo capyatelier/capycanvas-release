@@ -27,7 +27,7 @@ export function createNumberField({ control, label, resolve, onChange, icon }) {
   let value = control.min, display, editing = false, disabled = false;
   function show(next) {
     value = next.value; display = next; valueButton.textContent = next.text;
-    if (!editing) entry.value = next.edit;
+    if (!editing) entry.value = ranged ? next.edit : next.text;
     entry.setAttribute("aria-valuenow", value * control.scale);
     slider.value = next.fill; slider.style.setProperty("--fill", `${next.fill * 100}%`);
     slider.setAttribute("aria-valuetext", next.text);
@@ -50,7 +50,7 @@ export function createNumberField({ control, label, resolve, onChange, icon }) {
     if (!editing) return true;
     if (!cancel && !apply({ type: "expression", text: entry.value })) return false;
     editing = false; root.classList.remove("error"); entry.removeAttribute("aria-invalid"); entry.title = "";
-    entry.value = display.edit;
+    entry.value = ranged ? display.edit : display.text;
     if (ranged) { entry.hidden = true; valueButton.hidden = false; }
     return true;
   }
@@ -71,8 +71,12 @@ export function createNumberField({ control, label, resolve, onChange, icon }) {
   slider.addEventListener("input", () => { finish(true); apply({ type: "position", position: Number(slider.value) }); });
   root.update = next => show(resolve({ control, value: next, operation: { type: "format" } }));
   root.setDisabled = next => { disabled = next; entry.disabled = next; valueButton.disabled = next; slider.disabled = next; show(display); };
-  root.setDescription = text => { const p = node("p", "number-description"); p.textContent = text; labels.append(p); };
+  root.setDescription = text => {
+    labels.querySelector('.number-description')?.remove();
+    if (text) { const p = node("p", "number-description"); p.textContent = text; labels.append(p); }
+  };
   root.entry = entry;
+  root.cancelEditing = () => finish(true);
   entry.hidden = ranged; valueButton.hidden = !ranged;
   if (!ranged) { entry.setAttribute("role", "spinbutton"); entry.setAttribute("aria-valuemin", control.min * control.scale); entry.setAttribute("aria-valuemax", control.max * control.scale); }
   root.update(value);

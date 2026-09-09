@@ -1,5 +1,21 @@
 # Web-release audits
 
+## Update: source 9c857dc — workspace, settings and Zen icons
+
+Reviewed `9c857dc0fcefacd87c536338ff32f5e1ccc68c5c` against `3e1d3df`.
+Changes refine workspace management, group-level tab display styles, settings
+typography and spacing, and shared Zen controls. Four owner-supplied Zen marks
+replace the previous mark; the updated branding scope is preserved at the
+repository root and in the package. The upstream packager uses the new default
+mark and file input for icon rendering.
+
+Dependency manifests, lockfile and toolchain versions are unchanged. Locked
+license/source checks passed, with no new GPL/LGPL runtime inputs identified.
+The build, upstream packaging/launcher checks and artifact verification passed,
+producing 108 files and 106 precache entries. Browser tests remain skipped per
+the owner's instruction and are recorded as not run. The untracked source
+`._.DS_Store` is excluded by packaging the pinned commit.
+
 ## Update: source 3e1d3df — numeric controls and preferences
 
 Reviewed `3e1d3dffdab2f12aba06d9707b27e1be1cff89eb` against `bce1bb6`.

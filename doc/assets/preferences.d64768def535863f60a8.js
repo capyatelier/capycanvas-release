@@ -4,6 +4,85 @@ export function createPreferences({ element, button, icon, numberField, panelFra
   const dialog = document.getElementById("settings");
   const send = (action) => dispatch({ type: "preferences", action });
   const close = () => dispatch({ type: "close_settings" });
+  const context = element("div", "panel-context-menu preference-context-menu");
+  context.id = "preference-context-menu"; context.popover = "manual";
+  context.setAttribute("role", "menu"); dialog.append(context);
+  let contextId = null, hold = null, heldPointer = null;
+  const dismissContext = () => { context.hidePopover(); contextId = null; };
+  const cancelHold = () => { if (hold) clearTimeout(hold.timer); hold = null; };
+  const modelRow = id => view()?.pages.flatMap(p => p.groups.flatMap(g => g.rows)).find(r => r.id === id);
+  function showContext(line, x, y, target) {
+    const row = modelRow(line.dataset.preference);
+    if (!row?.reset) return;
+    contextId = row.id; context.replaceChildren(); context.setAttribute("aria-label", row.title);
+    // Preserve text operations when opening over an editor. Clipboard access
+    // remains a host operation; settings/reset policy stays in Rust.
+    const input = target.closest('input[type="text"]');
+    if (input) {
+      const start = input.selectionStart, end = input.selectionEnd, original = input.value;
+      for (const [label, operation] of [["Cut", "cut"], ["Copy", "copy"], ["Paste", "paste"], ["Select All", "select"]]) {
+        const item = button(label, async () => {
+          dismissContext(); input.focus(); input.setSelectionRange(start, end);
+          try {
+            if (operation === "select") { input.select(); return; }
+            if (operation === "copy" || operation === "cut") await navigator.clipboard.writeText(original.slice(start, end));
+            const replacement = operation === "paste" ? await navigator.clipboard.readText() : "";
+            if (operation !== "copy" && input.value === original) {
+              input.setRangeText(replacement, start, end, "end");
+              input.dispatchEvent(new Event("input", { bubbles: true }));
+            }
+          } catch { error.textContent = "Clipboard access was denied by your browser."; }
+        });
+        item.setAttribute("role", "menuitem");
+        item.disabled = ["cut", "copy"].includes(operation) ? start === end : operation === "select" && !original;
+        context.append(item);
+      }
+      context.append(element("hr"));
+    }
+    const reset = button("", () => {
+      dismissContext(); send({ type: "reset", id: row.id });
+      const field = fields.get(row.id), next = modelRow(row.id);
+      if (next.kind.type === "text") field.input.value = next.kind.value;
+      if (next.kind.type === "number") field.input.cancelEditing();
+    });
+    reset.dataset.reset = row.id; reset.setAttribute("role", "menuitem");
+    reset.disabled = !row.reset.enabled;
+    reset.append(element("span", "command-label", row.reset.label), element("span", "shortcut-hint", row.reset.value));
+    context.append(reset); context.showPopover();
+    const rect = context.getBoundingClientRect();
+    context.style.left = `${Math.max(6, Math.min(x, innerWidth - rect.width - 6))}px`;
+    context.style.top = `${Math.max(6, Math.min(y, innerHeight - rect.height - 6))}px`;
+    if (!input) reset.focus();
+  }
+  // Keep the focused text editor's selection/draft while using its menu.
+  context.addEventListener("pointerdown", e => e.preventDefault());
+  dialog.addEventListener("contextmenu", e => {
+    const line = e.target.closest("[data-preference]");
+    if (!line) return;
+    e.preventDefault(); cancelHold(); showContext(line, e.clientX, e.clientY, e.target);
+  });
+  dialog.addEventListener("pointerdown", e => {
+    cancelHold(); heldPointer = null;
+    if (!context.contains(e.target)) dismissContext();
+    const line = e.target.closest("[data-preference]");
+    // Native text selection owns long press while an input is being edited.
+    if (e.pointerType !== "touch" || !line || e.target.closest("input,select,textarea")) return;
+    hold = { x: e.clientX, y: e.clientY, timer: setTimeout(() => {
+      heldPointer = e.pointerId; cancelHold(); showContext(line, e.clientX, e.clientY, e.target);
+    }, 500) };
+  });
+  dialog.addEventListener("pointermove", e => { if (hold && Math.hypot(e.clientX - hold.x, e.clientY - hold.y) > 8) cancelHold(); });
+  for (const event of ["pointerup", "pointercancel", "scroll"]) dialog.addEventListener(event, cancelHold, { capture: true });
+  dialog.addEventListener("click", e => {
+    if (heldPointer !== null && (e.pointerId == null || heldPointer === e.pointerId)) { heldPointer = null; e.preventDefault(); e.stopImmediatePropagation(); }
+  }, { capture: true });
+  dialog.addEventListener("keydown", e => {
+    if (e.key === "Escape" && context.matches(":popover-open")) { dismissContext(); e.preventDefault(); e.stopImmediatePropagation(); }
+    else if (e.key === "ContextMenu" || (e.key === "F10" && e.shiftKey)) {
+      const line = e.target.closest("[data-preference]");
+      if (line) { const rect = line.getBoundingClientRect(); e.preventDefault(); e.stopImmediatePropagation(); showContext(line, rect.left, rect.bottom, e.target); }
+    }
+  }, { capture: true });
   const root = element("div", "preferences-layout");
   const sidebar = element("aside", "preferences-sidebar");
   const sidebarHeader = element("header", "dialog-header");
@@ -19,6 +98,7 @@ export function createPreferences({ element, button, icon, numberField, panelFra
   const back = button("‹", () => root.classList.remove("show-content"), "preferences-back");
   back.setAttribute("aria-label", "Preferences categories");
   const exit = button("×", close, "dialog-close"); exit.setAttribute("aria-label", "Close preferences");
+  exit.id = "close-settings";
   header.append(back, title, exit);
   const search = element("input", "preferences-search");
   search.type = "search"; search.placeholder = "Search preferences"; search.id = "settings-search";
@@ -29,11 +109,17 @@ export function createPreferences({ element, button, icon, numberField, panelFra
   const empty = element("p", "preferences-empty", "No matching preferences");
   sidebar.append(sidebarHeader, search, navigation, searchResults, empty);
   const pages = element("div", "preferences-pages");
-  content.append(header, panelFrame(pages));
-  const footer = element("footer");
+  // Match the native page's gently tightening width (400→600), then its
+  // 12px inner margins. This is layout only; no setting policy lives here.
+  new ResizeObserver(([entry]) => {
+    const width = entry.contentRect.width;
+    const t = Math.max(0, Math.min(1, (width - 400) / 600));
+    const clamped = width <= 400 ? width : Math.floor(400 + 200 * (1 - (1 - t) ** 3));
+    pages.style.setProperty("--preference-width", `${Math.max(0, clamped - 24)}px`);
+  }).observe(pages);
   const error = element("span", "preferences-error"); error.setAttribute("role", "status");
-  const done = button("Done", close); done.id = "close-settings";
-  footer.append(error, done); content.append(footer); root.append(sidebar, content); dialog.append(root);
+  content.append(header, error, panelFrame(pages));
+  root.append(sidebar, content); dialog.append(root);
   dialog.addEventListener("close", () => { if (!dialog.open && view()) close(); });
   dialog.addEventListener("cancel", (e) => { e.preventDefault(); close(); });
 
@@ -56,7 +142,7 @@ export function createPreferences({ element, button, icon, numberField, panelFra
   editor.addEventListener("cancel", e => { e.preventDefault(); closeEditor(); });
   editor.addEventListener("close", () => { if (!editor.open && view()?.shortcut_editor) closeEditor(); });
   document.body.append(editor);
-  let editorSignature = "", searchSignature = "", searchFocus = 0;
+  let editorSignature = "", searchSignature = "", searchFocus = 0, revealed = null;
 
   const fields = new Map(), pageNodes = new Map(), tabs = new Map(), groups = [];
   const shortcuts = new Map();
@@ -76,13 +162,42 @@ export function createPreferences({ element, button, icon, numberField, panelFra
         groups.push([group.rows.map((r) => r.id), section]);
         for (const row of group.rows) {
           const line = element("div", "preference-row"), text = element("div", "preference-text");
-          const label = element("label", "", row.title); text.append(label, element("p", "", row.description)); line.append(text);
+          if (row.reset) line.dataset.preference = row.id;
+          const label = element("label", "", row.title); text.append(label);
+          if (row.description) text.append(element("p", "", row.description));
+          line.append(text);
           const id = `setting-${row.id.replaceAll("_", "-")}`;
           label.htmlFor = id;
           let input, widget;
           switch (row.kind.type) {
+            case "text":
+              input = element("input", "preference-entry"); input.type = "text";
+              input.maxLength = row.kind.max_length; input.placeholder = row.kind.placeholder;
+              input.spellcheck = false; input.autocomplete = "off"; input.setAttribute("autocapitalize", "off");
+              input.value = row.kind.value;
+              const commit = () => {
+                send({ type: "edit", id: row.id, value: input.value });
+                if (!view()?.error) input.value = modelRow(row.id).kind.value;
+              };
+              input.addEventListener("change", commit);
+              input.addEventListener("keydown", e => {
+                if (e.key === "Enter") { e.preventDefault(); commit(); }
+              });
+              widget = input; break;
             case "choice":
-              if (row.kind.icons.length) {
+              if (row.kind.presentation.type === "image_tiles") {
+                input = element("input"); input.type = "hidden";
+                widget = element("div", "preference-image-tiles");
+                widget.setAttribute("role", "group"); widget.setAttribute("aria-label", row.title);
+                widget.style.setProperty("--columns", row.kind.presentation.columns);
+                line.classList.add("image-preference");
+                row.kind.options.forEach((name, index) => {
+                  const choice = button("", () => { input.value = index; input.dispatchEvent(new Event("input")); });
+                  choice.dataset.choice = index; choice.title = name; choice.setAttribute("aria-label", name);
+                  choice.append(icon(row.kind.icons[index])); widget.append(choice);
+                });
+                widget.append(input);
+              } else if (row.kind.icons.length) {
                 input = element("input"); input.type = "hidden";
                 widget = element("details", "preference-choice");
                 const summary = element("summary"); summary.setAttribute("aria-label", row.title);
@@ -113,7 +228,7 @@ export function createPreferences({ element, button, icon, numberField, panelFra
               widget = input; break;
           }
           input.id = id; input.setAttribute("aria-label", row.title);
-          if (row.kind.type !== "number") input.addEventListener("input", () => {
+          if (!["number", "text"].includes(row.kind.type)) input.addEventListener("input", () => {
             if (input.type === "number" && input.value === "") return;
             send({ type: "edit", id: row.id, value: row.kind.type === "switch" ? input.checked : Number(input.value) });
           });
@@ -125,7 +240,8 @@ export function createPreferences({ element, button, icon, numberField, panelFra
         shortcutSearch.id = "shortcuts-search"; shortcutSearch.placeholder = "Search shortcuts";
         shortcutSearch.setAttribute("aria-label", "Search shortcuts");
         shortcutSearch.addEventListener("input", () => send({ type: "search_shortcuts", query: shortcutSearch.value }));
-        node.append(shortcutSearch);
+        const searchBox = element("div", "shortcut-search");
+        searchBox.append(icon("search"), shortcutSearch); node.append(searchBox);
         const section = element("section", "settings-group");
         const heading = element("div", "shortcut-heading");
         const labels = element("div");
@@ -139,13 +255,20 @@ export function createPreferences({ element, button, icon, numberField, panelFra
   }
   return function refresh(model) {
     if (!model) {
+      dismissContext(); cancelHold();
       searchFocus = 0;
+      revealed = null;
       if (capture.open) capture.close();
       if (editor.open) editor.close();
       if (dialog.open) dialog.close();
       return;
     }
     if (!fields.size) build(model);
+    if (contextId) {
+      const row = model.pages.find(p => p.id === model.page)?.groups.flatMap(g => g.rows).find(r => r.id === contextId);
+      if (!row?.visible) dismissContext();
+      else context.querySelector("[data-reset]").disabled = !row.reset.enabled;
+    }
     empty.hidden = !model.empty;
     title.textContent = model.pages.find((p) => p.id === model.page).title;
     if (search.value !== model.query) search.value = model.query;
@@ -165,7 +288,8 @@ export function createPreferences({ element, button, icon, numberField, panelFra
       searchResults.replaceChildren();
       for (const result of model.search_results) {
         const row = button("", () => { send(result.action); root.classList.add("show-content"); });
-        row.append(element("span", "", result.title), element("small", "", result.description));
+        row.append(element("span", "", result.title));
+        if (result.description) row.append(element("small", "", result.description));
         searchResults.append(row);
       }
       searchSignature = resultsSignature;
@@ -182,12 +306,15 @@ export function createPreferences({ element, button, icon, numberField, panelFra
       if (row.kind.type === "number") { input.setDisabled(!row.enabled); input.update(row.kind.value); }
       else if (row.kind.type === "choice") {
         input.value = row.kind.selected;
-        if (row.kind.icons.length) {
-          widget.querySelector("summary").replaceChildren(icon(row.kind.icons[row.kind.selected]), element("span", "", row.kind.options[row.kind.selected]));
+        if (row.kind.presentation.type === "image_tiles") {
+          for (const choice of widget.querySelectorAll("[data-choice]")) choice.setAttribute("aria-pressed", String(Number(choice.dataset.choice) === row.kind.selected));
+        } else if (row.kind.icons.length) {
+          widget.querySelector("summary").replaceChildren(icon(row.kind.icons[row.kind.selected]), element("span", "", row.kind.options[row.kind.selected]), icon("chevron-down"));
           for (const choice of widget.querySelectorAll("[data-choice]")) choice.setAttribute("aria-selected", String(Number(choice.dataset.choice) === row.kind.selected));
         }
       }
       else if (row.kind.type === "switch") input.checked = row.kind.active;
+      else if (row.kind.type === "text" && document.activeElement !== input) input.value = row.kind.value;
     }
     for (const [ids, section] of groups) section.hidden = !ids.some((id) => visible.has(id));
     const shortcutIds = new Set(model.shortcuts.map((spec) => spec.id));
@@ -203,10 +330,20 @@ export function createPreferences({ element, button, icon, numberField, panelFra
         row.append(choose); shortcutList.append(row); shortcuts.set(spec.id, { row, text, binding });
       }
       const { row, binding } = shortcuts.get(spec.id);
-      row.hidden = !spec.visible; binding.textContent = spec.shortcut || "Disabled";
+      row.hidden = !spec.visible; binding.textContent = spec.shortcut;
+      row.classList.toggle("modified", spec.modified);
     }
     error.textContent = model.error || "";
     if (!dialog.open) { dialog.showModal(); root.classList.add("show-content"); }
+    if (revealed !== model.reveal) {
+      revealed = model.reveal;
+      const field = fields.get(revealed);
+      if (field) {
+        root.classList.add("show-content");
+        field.line.scrollIntoView({ block: "nearest" });
+        (field.widget.querySelector("button") || field.input).focus({ preventScroll: true });
+      }
+    }
     if (model.shortcut_editor) {
       const spec = model.shortcut_editor, signature = JSON.stringify([spec, model.error]);
       if (editorSignature !== signature) {
@@ -234,7 +371,7 @@ export function createPreferences({ element, button, icon, numberField, panelFra
     if (model.capture) {
       const c = model.capture;
       captureLabel.textContent = c.label; captureKey.textContent = c.shortcut;
-      captureError.textContent = c.error || (c.conflict ? `Already assigned to ${c.conflict}. Replace its shortcut?` : "");
+      captureError.textContent = c.notice;
       confirm.disabled = !c.chord || !!c.error; confirm.textContent = c.conflict ? "Replace Shortcut" : "Set Shortcut";
       if (!capture.open) capture.showModal();
     } else if (capture.open) capture.close();
