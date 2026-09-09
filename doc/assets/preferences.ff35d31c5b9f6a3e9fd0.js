@@ -1,9 +1,9 @@
 // DOM adapter for the same PreferencesView as GTK. Definitions, dependencies,
 // validation, search, recording and conflicts are all resolved in Rust.
-export function createPreferences({ element, button, icon, spin, setNumber, numericControl, panelFrame, dispatch, view }) {
+export function createPreferences({ element, button, icon, numberField, panelFrame, dispatch, view }) {
   const dialog = document.getElementById("settings");
   const send = (action) => dispatch({ type: "preferences", action });
-  const close = () => dispatch({ type: "cancel_settings" });
+  const close = () => dispatch({ type: "close_settings" });
   const root = element("div", "preferences-layout");
   const sidebar = element("aside", "preferences-sidebar");
   const sidebarHeader = element("header", "dialog-header");
@@ -32,9 +32,8 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
   content.append(header, panelFrame(pages));
   const footer = element("footer");
   const error = element("span", "preferences-error"); error.setAttribute("role", "status");
-  const cancel = button("Cancel", close); cancel.value = "cancel";
-  const apply = button("Apply", () => dispatch({ type: "apply_settings" }), "suggested-action"); apply.id = "apply-settings";
-  footer.append(error, cancel, apply); content.append(footer); root.append(sidebar, content); dialog.append(root);
+  const done = button("Done", close); done.id = "close-settings";
+  footer.append(error, done); content.append(footer); root.append(sidebar, content); dialog.append(root);
   dialog.addEventListener("close", () => { if (!dialog.open && view()) close(); });
   dialog.addEventListener("cancel", (e) => { e.preventDefault(); close(); });
 
@@ -57,7 +56,7 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
   editor.addEventListener("cancel", e => { e.preventDefault(); closeEditor(); });
   editor.addEventListener("close", () => { if (!editor.open && view()?.shortcut_editor) closeEditor(); });
   document.body.append(editor);
-  let editorSignature = "", searchSignature = "";
+  let editorSignature = "", searchSignature = "", searchFocus = 0;
 
   const fields = new Map(), pageNodes = new Map(), tabs = new Map(), groups = [];
   const shortcuts = new Map();
@@ -101,8 +100,9 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
               }
               break;
             case "number":
-              input = element("input"); input.type = "number"; numericControl(input, row.kind.control);
-              input.setAttribute("aria-label", row.title); widget = spin(input, row.kind.control.digits); break;
+              input = numberField(row.kind.control, row.title, value => send({ type: "edit", id: row.id, value }));
+              input.setDescription(row.description); text.remove();
+              line.classList.add("number-preference"); widget = input; break;
             case "switch":
               input = element("input", "settings-switch"); input.type = "checkbox"; input.setAttribute("role", "switch"); widget = input; break;
             case "info":
@@ -113,13 +113,9 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
               widget = input; break;
           }
           input.id = id; input.setAttribute("aria-label", row.title);
-          input.addEventListener("input", () => {
+          if (row.kind.type !== "number") input.addEventListener("input", () => {
             if (input.type === "number" && input.value === "") return;
             send({ type: "edit", id: row.id, value: row.kind.type === "switch" ? input.checked : Number(input.value) });
-          });
-          if (row.kind.type === "number") input.addEventListener("blur", () => {
-            const current = view()?.pages.flatMap((p) => p.groups.flatMap((g) => g.rows)).find((r) => r.id === row.id);
-            if (current) setNumber(input, current.kind.value);
           });
           line.append(widget); list.append(line); fields.set(row.id, { line, input, widget });
         }
@@ -143,6 +139,7 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
   }
   return function refresh(model) {
     if (!model) {
+      searchFocus = 0;
       if (capture.open) capture.close();
       if (editor.open) editor.close();
       if (dialog.open) dialog.close();
@@ -157,6 +154,12 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
     searchToggle.setAttribute("aria-pressed", String(model.searching));
     navigation.hidden = !!model.query;
     if (openingSearch) search.focus();
+    if (searchFocus !== model.search_focus) {
+      searchFocus = model.search_focus;
+      root.classList.remove("show-content");
+      search.focus();
+      search.setSelectionRange(search.value.length, search.value.length);
+    }
     const resultsSignature = JSON.stringify(model.search_results);
     if (searchSignature !== resultsSignature) {
       searchResults.replaceChildren();
@@ -176,7 +179,7 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
       line.hidden = !row.visible; if (row.visible) visible.add(row.id);
       line.classList.toggle("disabled", !row.enabled);
       for (const control of [input, ...widget.querySelectorAll("button")]) control.disabled = !row.enabled;
-      if (row.kind.type === "number") setNumber(input, row.kind.value);
+      if (row.kind.type === "number") { input.setDisabled(!row.enabled); input.update(row.kind.value); }
       else if (row.kind.type === "choice") {
         input.value = row.kind.selected;
         if (row.kind.icons.length) {
@@ -202,7 +205,7 @@ export function createPreferences({ element, button, icon, spin, setNumber, nume
       const { row, binding } = shortcuts.get(spec.id);
       row.hidden = !spec.visible; binding.textContent = spec.shortcut || "Disabled";
     }
-    error.textContent = model.error || ""; apply.disabled = !model.dirty || !!model.capture;
+    error.textContent = model.error || "";
     if (!dialog.open) { dialog.showModal(); root.classList.add("show-content"); }
     if (model.shortcut_editor) {
       const spec = model.shortcut_editor, signature = JSON.stringify([spec, model.error]);

@@ -1,5 +1,24 @@
 # Web-release audits
 
+## Update: source 3e1d3df — numeric controls and preferences
+
+Reviewed `3e1d3dffdab2f12aba06d9707b27e1be1cff89eb` against `bce1bb6`.
+Web changes include touch-first numeric controls, shared expression and slider
+policy, wider preferences and type-to-search, plus renderer and cursor updates.
+The packager includes the new first-party `numeric.js` in its fingerprint graph
+and preserves the updated third-party notices.
+
+The new web dependency `fasteval` 0.2.4 is MIT-licensed; its original notice is
+included in the package. The new Android frontend and its platform dependencies
+are outside the resolved web graph. Locked license/source checks and artifact
+verification passed; no GPL/LGPL inputs were identified in the reviewed web
+build. Toolchain versions and branding terms are unchanged.
+
+The build and upstream packaging/launcher checks passed, producing 105 files
+and 103 precache entries. Browser tests were skipped at the owner's explicit
+request and are recorded as not run. Packaging uses the committed source;
+the untracked `._.DS_Store` in the source checkout is excluded.
+
 ## Update: source bce1bb6 — panel customization and drawers
 
 Reviewed `bce1bb6330e6c43db6e4b75e91706e780af2fd0e` against `3ef0eca`.

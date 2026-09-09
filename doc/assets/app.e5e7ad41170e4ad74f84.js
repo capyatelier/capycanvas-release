@@ -1,10 +1,11 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.3b01ce81c1e8f3f1c33c.js";
-import { createPreferences } from "./preferences.9f12ce2386e7aa469088.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.fe94e12fc5870d331a0d.js";
+import { createPreferences } from "./preferences.ff35d31c5b9f6a3e9fd0.js";
 import { showGpuNotice } from "./gpu.e083bc719f6b47754a12.js";
-import { createCustomization } from "./customization.c39205c20d47f4fd8ff5.js";
+import { createCustomization } from "./customization.1475afe657bdeaf3f428.js";
+import { createNumberField } from "./numeric.636e6e7f5e1525850bfb.js";
 
 // The static packager fills this map with fingerprinted artwork filenames.
-const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.fe55ef438d220f750c51.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-symbolic.svg":"icons/layer-zen-symbolic.0cecb363301b154f9194.svg"};
+const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.fe55ef438d220f750c51.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-symbolic.svg":"icons/layer-zen-symbolic.0cecb363301b154f9194.svg"};
 const asset = (path) => new URL(assetPaths[path.replace(/^\.\//, "")] || path, import.meta.url).href;
 
 const panels = new Map(),
@@ -66,84 +67,8 @@ function button(text, action, className = "") {
   node.addEventListener("click", action);
   return node;
 }
-// Native DOM inputs keep editing, keyboard and assistive-technology behavior.
-// The adjacent buttons give number inputs the same compact layout as GTK spins.
-function spin(input, digits) {
-  const node = element("div", "spin");
-  input.dataset.digits = digits;
-  node.append(input);
-  for (const [label, direction] of [
-    ["Decrease", -1],
-    ["Increase", 1],
-  ]) {
-    const step = () => {
-      if (direction < 0) input.stepDown();
-      else input.stepUp();
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-    };
-    let timer,
-      repeated = false;
-    const control = button(direction < 0 ? "−" : "+", () => {
-      if (!repeated) step();
-      repeated = false;
-    });
-    control.replaceChildren(icon(direction < 0 ? "minus" : "plus"));
-    const stop = () => clearTimeout(timer);
-    control.addEventListener("pointerdown", (e) => {
-      if (e.button !== 0) return;
-      repeated = false;
-      control.setPointerCapture(e.pointerId);
-      timer = setTimeout(function repeat() {
-        repeated = true;
-        step();
-        timer = setTimeout(repeat, 50);
-      }, 400);
-    });
-    for (const event of ["pointerup", "pointercancel", "lostpointercapture"])
-      control.addEventListener(event, stop);
-    window.addEventListener("blur", stop);
-    control.setAttribute(
-      "aria-label",
-      `${label} ${input.getAttribute("aria-label")}`,
-    );
-    node.append(control);
-  }
-  input.addEventListener("blur", () => {
-    if (input.value !== "") input.value = Number(input.value).toFixed(digits);
-    syncSpin(input);
-  });
-  input.addEventListener("input", () => syncSpin(input));
-  input.addEventListener("keydown", (e) => {
-    // Enter commits the numeric edit, not the dialog's first submit button.
-    if (e.key === "Enter") {
-      e.preventDefault();
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-    }
-  });
-  return node;
-}
-function setNumber(input, value) {
-  if (document.activeElement !== input)
-    input.value = value.toFixed(Number(input.dataset.digits));
-  syncSpin(input);
-}
-function syncSpin(input) {
-  const [decrease, increase] = input.parentElement.querySelectorAll("button");
-  if (!decrease || !increase) return;
-  decrease.disabled = input.disabled || input.value === "" || Number(input.value) <= Number(input.min);
-  increase.disabled = input.disabled || input.value === "" || Number(input.value) >= Number(input.max);
-}
-function setRange(input, value) {
-  input.value = value;
-  const fraction =
-    (Number(input.value) - Number(input.min)) /
-    (Number(input.max) - Number(input.min));
-  input.style.setProperty("--fill", `${fraction * 100}%`);
-}
-function numericControl(input, spec) {
-  input.min = spec.min;
-  input.max = spec.max;
-  input.step = spec.step;
+function numberField(control, label, onChange) {
+  return createNumberField({ control, label, onChange, icon, resolve: request => app.number_input(request) });
 }
 // Overlay scrollbars do not take width away from previews or tiles. Scrolling
 // itself stays in the browser; this one thumb also supports pointer dragging.
@@ -556,26 +481,8 @@ function buildPanels() {
   panels.get("brushes").append(list);
   const controls = element("div", "size-controls");
   controls.dataset.control = "brush_size";
-  for (const type of ["range", "number"]) {
-    const input = element("input");
-    input.id = `size-${type}`;
-    input.type = type;
-    numericControl(
-      input,
-      type === "range" ? catalog.brush_size_slider : catalog.brush_size,
-    );
-    input.setAttribute("aria-label", "Brush diameter in pixels");
-    input.addEventListener("input", () => {
-      if (input.value !== "" && input.validity.valid)
-        dispatch({ type: "set_brush_size", value: Number(input.value) });
-    });
-    input.addEventListener("blur", () =>
-      setNumber(input, state.brush.diameter),
-    );
-    controls.append(
-      type === "number" ? spin(input, catalog.brush_size.digits) : input,
-    );
-  }
+  const size = numberField(catalog.brush_size, "Brush size", value => dispatch({ type: "set_brush_size", value }));
+  size.id = "size-number"; controls.append(size);
   const grid = element("div", "size-grid");
   grid.dataset.control = "size_presets";
   for (const value of catalog.brush_sizes) {
@@ -605,20 +512,10 @@ function buildPanels() {
   const rows = element("div", "layer-rows");
   rows.dataset.control = "layers";
   rows.id = "layer-rows";
-  const label = element("label", "", "Layer opacity");
-  label.htmlFor = "layer-opacity";
-  const layerOpacity = element("input");
+  const layerOpacity = numberField(catalog.opacity, "Layer opacity", opacity => dispatch({ type: "set_layer_opacity", opacity }));
   layerOpacity.id = "layer-opacity";
-  layerOpacity.type = "range";
-  numericControl(layerOpacity, catalog.opacity);
-  layerOpacity.addEventListener("input", () =>
-    dispatch({
-      type: "set_layer_opacity",
-      opacity: Number(layerOpacity.value),
-    }),
-  );
   const opacityRow = element("div", "layer-opacity-control");
-  opacityRow.dataset.control = "layer_opacity"; opacityRow.append(label, layerOpacity);
+  opacityRow.dataset.control = "layer_opacity"; opacityRow.append(layerOpacity);
   layers.append(tools, rows, opacityRow);
   panels.get("layers").append(layers);
 }
@@ -632,8 +529,7 @@ function update(regions) {
         "aria-pressed",
         String(size === state.brush.diameter),
       );
-    setRange($("size-range"), state.brush.diameter);
-    setNumber($("size-number"), state.brush.diameter);
+    $("size-number").update(state.brush.diameter);
   }
   if (regions & 4) {
     const tab = state.tabs[0];
@@ -687,7 +583,7 @@ function update(regions) {
         .querySelector("button")
         .setAttribute("aria-pressed", String(layer.selected));
     }
-    setRange($("layer-opacity"), state.layers.find((l) => l.selected).opacity);
+    $("layer-opacity").update(state.layers.find((l) => l.selected).opacity);
   }
   if (regions & (1 | 4 | 128)) arrange();
   if (regions & (4 | 8))
@@ -1108,12 +1004,12 @@ try {
   document.documentElement.style.setProperty("--ui-text-size", `${catalog.text_size_pt}pt`);
   document.title = `${catalog.app_name} — drawing workspace`;
   await loadIcons();
-  refreshPreferences = createPreferences({ element, button, icon, spin, setNumber, numericControl, panelFrame, dispatch, view: () => app.preferences() });
+  refreshPreferences = createPreferences({ element, button, icon, numberField, panelFrame, dispatch, view: () => app.preferences() });
   panelNames = Object.fromEntries(catalog.panels.map((p) => [p.id, p.label]));
   buildHeader();
   buildPanels();
   customization = createCustomization({ app, catalog, state: () => state, workspace, panels, groups,
-    element, button, icon, spin, setNumber, setRange, numericControl, panelFrame,
+    element, button, icon, numberField, panelFrame,
     dispatch, draggable, grip, place, updateZen });
   update(255);
   $("status").textContent = "";
