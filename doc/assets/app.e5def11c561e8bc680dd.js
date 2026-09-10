@@ -1,11 +1,12 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.e3a69c9fae84bdc0fbff.js";
-import { createPreferences } from "./preferences.d64768def535863f60a8.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.7647d08a40992642c70b.js";
+import { createPreferences } from "./preferences.63fd8f8678d7fe7b57dd.js";
 import { showGpuNotice } from "./gpu.e083bc719f6b47754a12.js";
-import { createCustomization } from "./customization.2f9827267610461fa283.js";
-import { createNumberField } from "./numeric.12ffe9b3369099ab5c33.js";
+import { createCustomization } from "./customization.38122330f8a072064497.js";
+import { createNumberField } from "./numeric.416ed7cab4a1eb3c90ea.js";
+import { createLayerPanel } from "./layers.6ee554a8d42675659dea.js";
 
 // The static packager fills this map with fingerprinted artwork filenames.
-const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.fe55ef438d220f750c51.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-bathing-symbolic.svg":"icons/layer-zen-bathing-symbolic.a638473e74f9e05000d7.svg","icons/layer-zen-facing-forward-symbolic.svg":"icons/layer-zen-facing-forward-symbolic.06a3a282919298af5baf.svg","icons/layer-zen-looking-up-symbolic.svg":"icons/layer-zen-looking-up-symbolic.702efa7f434780589e3e.svg","icons/layer-zen-sleeping-symbolic.svg":"icons/layer-zen-sleeping-symbolic.adc886ce0a33f63e8896.svg"};
+const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","icons/layer-alpha-lock-symbolic.svg":"icons/layer-alpha-lock-symbolic.ed3a94b7158e488752fd.svg","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-clip-symbolic.svg":"icons/layer-clip-symbolic.341127a0e3d6af76d3c7.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-eye-hidden-symbolic.svg":"icons/layer-eye-hidden-symbolic.b1858c25d1c16af1d0ec.svg","icons/layer-eye-symbolic.svg":"icons/layer-eye-symbolic.04b54df12211d2199eda.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-folder-open-symbolic.svg":"icons/layer-folder-open-symbolic.7f0c5e2245a8ff2985f4.svg","icons/layer-folder-symbolic.svg":"icons/layer-folder-symbolic.24783880a7fca1e85b73.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-image-symbolic.svg":"icons/layer-image-symbolic.bc9da83acc7f19ecea66.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-lasso-symbolic.svg":"icons/layer-lasso-symbolic.e623236322bb908bfe36.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.fe55ef438d220f750c51.svg","icons/layer-link-symbolic.svg":"icons/layer-link-symbolic.a6a00624308c98adcadc.svg","icons/layer-lock-symbolic.svg":"icons/layer-lock-symbolic.26c6678e1afb0323a0c6.svg","icons/layer-mask-symbolic.svg":"icons/layer-mask-symbolic.d40c054b958206fbdece.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-more-symbolic.svg":"icons/layer-more-symbolic.e1361ac974770920a5ea.svg","icons/layer-move-symbolic.svg":"icons/layer-move-symbolic.3d221b52837a0334f0c6.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-reference-symbolic.svg":"icons/layer-reference-symbolic.5b245b7829699a74bf0a.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-selection-checked-symbolic.svg":"icons/layer-selection-checked-symbolic.cb46fcf370ac812ec902.svg","icons/layer-selection-empty-symbolic.svg":"icons/layer-selection-empty-symbolic.3b1d5aaabc8a9e0426b7.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-zen-bathing-symbolic.svg":"icons/layer-zen-bathing-symbolic.a638473e74f9e05000d7.svg","icons/layer-zen-facing-forward-symbolic.svg":"icons/layer-zen-facing-forward-symbolic.06a3a282919298af5baf.svg","icons/layer-zen-looking-up-symbolic.svg":"icons/layer-zen-looking-up-symbolic.702efa7f434780589e3e.svg","icons/layer-zen-sleeping-symbolic.svg":"icons/layer-zen-sleeping-symbolic.adc886ce0a33f63e8896.svg"};
 const asset = (path) => new URL(assetPaths[path.replace(/^\.\//, "")] || path, import.meta.url).href;
 
 const panels = new Map(),
@@ -32,7 +33,7 @@ let app,
   chromeHeld = false,
   dragItem = null,
   statusTimer;
-let refreshPreferences, customization;
+let refreshPreferences, customization, layerPanel;
 let gpuStarting = false;
 let gpuReady = false;
 let servicingRequests = false;
@@ -70,8 +71,8 @@ function button(text, action, className = "") {
   node.addEventListener("click", action);
   return node;
 }
-function numberField(control, label, onChange) {
-  return createNumberField({ control, label, onChange, icon, resolve: request => app.number_input(request) });
+function numberField(control, label, onChange, inline = false) {
+  return createNumberField({ control, label, onChange, inline, icon, resolve: request => app.number_input(request) });
 }
 // Overlay scrollbars do not take width away from previews or tiles. Scrolling
 // itself stays in the browser; this one thumb also supports pointer dragging.
@@ -337,6 +338,7 @@ function place(node, rect) {
   });
 }
 function tabLabel(tab, view) {
+  tab.classList.toggle("icon-only-tab", !view.tab.show_name);
   if (view.tab.show_icon) tab.append(icon(view.icon));
   if (view.tab.show_name) tab.append(element("span", "", view.title));
 }
@@ -531,6 +533,7 @@ function buildPanels() {
         "brush-choice",
       );
       choice.dataset.brush = brush.id;
+      choice.onpointerenter = () => { choice.title = app.action_tooltip(brush.label, { type: "select_brush", id: brush.id }); };
       choice.dataset.category = category;
       const preview = element("img", "brush-preview");
       preview.src = asset(`brush-previews/${brush.id}-${state.theme}.png`);
@@ -555,6 +558,7 @@ function buildPanels() {
       "size-button",
     );
     choice.title = `${value} px`;
+    choice.onpointerenter = () => { choice.title = app.action_tooltip(`${value} px`, { type: "set_brush_size", value }); };
     choice.dataset.size = value;
     const dot = element("span", "size-dot");
     dot.style.width =
@@ -568,19 +572,7 @@ function buildPanels() {
     sizeButtons.set(value, choice);
   }
   panels.get("sizes").append(controls, grid);
-  const layers = element("div", "layers-content");
-  const tools = element("div", "layer-tools");
-  tools.dataset.control = "layer_actions";
-  for (const id of catalog.layer_commands) tools.append(iconButton(id));
-  const rows = element("div", "layer-rows");
-  rows.dataset.control = "layers";
-  rows.id = "layer-rows";
-  const layerOpacity = numberField(catalog.opacity, "Layer opacity", opacity => dispatch({ type: "set_layer_opacity", opacity }));
-  layerOpacity.id = "layer-opacity";
-  const opacityRow = element("div", "layer-opacity-control");
-  opacityRow.dataset.control = "layer_opacity"; opacityRow.append(layerOpacity);
-  layers.append(tools, rows, opacityRow);
-  panels.get("layers").append(layers);
+  layerPanel = createLayerPanel({ app, catalog, state: () => state, panel: panels.get("layers"), element, button, icon, dispatch, applyChange, message, numberField });
 }
 function update(regions) {
   if (regions & (1 | 2 | 4 | 8 | 128)) customization.refresh();
@@ -598,55 +590,7 @@ function update(regions) {
     const tab = state.tabs[0];
     $("document-title").textContent =
       `${tab.title} · ${tab.width} × ${tab.height}`;
-    const container = $("layer-rows");
-    const key = JSON.stringify(
-      state.layers.map(({ id, label, editable }) => [
-        String(id),
-        label,
-        editable,
-      ]),
-    );
-    if (container.dataset.key !== key) {
-      container.dataset.key = key;
-      container.replaceChildren(
-        ...state.layers.map((layer) => {
-          const row = element(
-            "div",
-            `layer-row ${layer.selected ? "selected" : ""}`,
-          );
-          row.dataset.layer = String(layer.id);
-          const visible = element("input");
-          visible.type = "checkbox";
-          visible.checked = layer.visible;
-          visible.setAttribute("aria-label", `Show ${layer.label}`);
-          visible.addEventListener("change", () =>
-            dispatch({
-              type: "set_layer_visibility",
-              id: layer.id,
-              visible: visible.checked,
-            }),
-          );
-          const select = button(
-            "",
-            () => dispatch({ type: "select_layer", id: layer.id }),
-            "layer-select",
-          );
-          select.disabled = !layer.editable;
-          select.textContent = layer.label;
-          row.append(visible, select);
-          return row;
-        }),
-      );
-    }
-    for (const [index, layer] of state.layers.entries()) {
-      const row = container.children[index];
-      row.classList.toggle("selected", layer.selected);
-      row.querySelector("input").checked = layer.visible;
-      row
-        .querySelector("button")
-        .setAttribute("aria-pressed", String(layer.selected));
-    }
-    $("layer-opacity").update(state.layers.find((l) => l.selected).opacity);
+    layerPanel.refresh();
   }
   if (regions & (1 | 4 | 128)) arrange();
   if (regions & (1 | 4 | 8 | 128)) refreshWorkspaceMenu();
@@ -654,7 +598,7 @@ function update(regions) {
     for (const command of state.commands)
       for (const node of commands.get(command.id) || []) {
         node.disabled = !command.enabled;
-        node.title = command.label;
+        node.title = command.tooltip;
         node.setAttribute("aria-label", command.label);
         node.setAttribute("aria-pressed", String(command.selected));
         if (node.dataset.icon === "true") {

@@ -1,5 +1,22 @@
 # Web-release audits
 
+## Update: source af8f2db — layers, shortcuts and docking
+
+Reviewed `af8f2dbf2fcae79075c59304a0650d7c21b0c38f` against `9c857dc`.
+The source commit was confirmed pushed to upstream main before packaging.
+Changes add the web layers UI, shared layer selection/reference controls, GPU
+masks and thumbnails, shortcut hints, docking tabs and workspace toolbar
+management. The packager adds first-party `layers.js` to its explicit asset
+fingerprint graph. New interface icons retain the project's existing permissive
+terms; branding terms are unchanged.
+
+Dependency manifests, lockfile and toolchain versions are unchanged. Locked
+license/source checks passed, with no new GPL/LGPL runtime inputs identified.
+The build, upstream packaging/launcher checks and artifact verification passed,
+producing 125 files and 123 precache entries. Browser tests remain skipped per
+the owner's instruction and are recorded as not run. Untracked source files
+are excluded by packaging the pinned commit.
+
 ## Update: source 9c857dc — workspace, settings and Zen icons
 
 Reviewed `9c857dc0fcefacd87c536338ff32f5e1ccc68c5c` against `3e1d3df`.
