@@ -1,5 +1,26 @@
 # Web-release audits
 
+## Update: source 69e5e7a — GPU filters and web filter picker
+
+Reviewed `69e5e7a47cab6a0fbb0a7fc143dae380a53e9b5e` against `af8f2db`
+and confirmed it was pushed to source main. Changes add forty WGSL filters,
+cached filter previews, incremental GPU image passes, clipping backdrops and
+the web filter picker. The source documents original shader implementations
+and explicitly excludes code/assets from its non-permissive inspiration
+references. New first-party `effects.js` joins the package fingerprint graph.
+
+The web graph now includes Naga, PNG encoding, web-time and their dependencies.
+All added graph entries offer permissive licenses; locked license/source gates
+passed. The libm clarification was checked against its original LICENSE.txt:
+the library is MIT-licensed and its complete contributor notices are retained.
+No GPL/LGPL runtime inputs were identified in the reviewed build. Toolchain
+versions and branding terms are unchanged.
+
+The build, upstream packaging/launcher checks and artifact verification passed,
+producing 141 files and 139 precache entries. Browser tests remain skipped per
+the owner's instruction and are recorded as not run. Uncommitted source work
+is excluded by packaging the pinned, pushed commit.
+
 ## Update: source af8f2db — layers, shortcuts and docking
 
 Reviewed `af8f2dbf2fcae79075c59304a0650d7c21b0c38f` against `9c857dc`.
