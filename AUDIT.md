@@ -1,5 +1,21 @@
 # Web-release audits
 
+## Update: source 1e27123 — WebGPU startup and shared tools
+
+Reviewed `1e27123f4d1c42f2b14c4222949e006c8a310c4e` against `71cefee`
+and confirmed it was pushed to source main. Changes include explicit WebGPU
+background bindings and startup error recovery, shared Hand/Eyedropper tools,
+and workspace, navigator, color and drawer infrastructure. New interface icons
+retain the existing project asset terms.
+
+Dependency manifests, lockfile, packaging scripts, branding terms and toolchain
+versions are unchanged. Locked license/source checks passed, with no new
+GPL/LGPL runtime inputs identified. The build, upstream packaging/launcher
+checks and artifact verification passed, producing 159 files and 157 precache
+entries. Browser tests remain skipped per the owner's instruction and are
+recorded as not run. Uncommitted source work is excluded by packaging the
+pinned, pushed commit.
+
 ## Update: source 71cefee — runtime filter resources
 
 Reviewed `71cefee4c6f713f3056d8a228d27e526d0622619` against `69e5e7a`
