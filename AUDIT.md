@@ -1,5 +1,22 @@
 # Web-release audits
 
+## Update: source 71cefee — runtime filter resources
+
+Reviewed `71cefee4c6f713f3056d8a228d27e526d0622619` against `69e5e7a`
+and confirmed it was pushed to source main. Changes load filter definitions
+from manifests, prepare shared lookup storage in WGSL, and validate runtime
+filter packages across hosts. The PWA includes the first-party filter manifest
+and three WGSL resources as fingerprinted, integrity-checked precache assets.
+The source build also embeds these resources as a startup fallback.
+
+The shared core adds serde_json, already present in the web graph; no external
+dependency versions, license terms or toolchain versions changed. Locked
+license/source checks passed, with no new GPL/LGPL runtime inputs identified.
+The build, upstream packaging/launcher checks and artifact verification passed,
+producing 145 files and 143 precache entries. Browser tests remain skipped per
+the owner's instruction and are recorded as not run. Untracked source files
+are excluded by packaging the pinned commit.
+
 ## Update: source 69e5e7a — GPU filters and web filter picker
 
 Reviewed `69e5e7a47cab6a0fbb0a7fc143dae380a53e9b5e` against `af8f2db`
