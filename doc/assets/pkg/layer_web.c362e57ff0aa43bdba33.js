@@ -54,6 +54,13 @@ export class WebApp {
         }
     }
     /**
+     * @returns {boolean}
+     */
+    brush_ready() {
+        const ret = wasm.webapp_brush_ready(this.__wbg_ptr);
+        return ret !== 0;
+    }
+    /**
      * @returns {any}
      */
     canvas_cursor() {
@@ -64,10 +71,29 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @returns {boolean}
+     */
+    canvas_presented() {
+        const ret = wasm.webapp_canvas_presented(this.__wbg_ptr);
+        return ret !== 0;
+    }
+    /**
      * @returns {any}
      */
     catalog() {
         const ret = wasm.webapp_catalog(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * Return an owned promise: UI/input may borrow the session while the
+     * browser validates this one job. No WebApp borrow survives an await.
+     * @returns {Promise<any>}
+     */
+    compile_startup_step() {
+        const ret = wasm.webapp_compile_startup_step(this.__wbg_ptr);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -391,6 +417,26 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @returns {boolean}
+     */
+    shader_work_pending() {
+        const ret = wasm.webapp_shader_work_pending(this.__wbg_ptr);
+        return ret !== 0;
+    }
+    startup_catalog_submitted() {
+        wasm.webapp_startup_catalog_submitted(this.__wbg_ptr);
+    }
+    /**
+     * @returns {any}
+     */
+    startup_progress() {
+        const ret = wasm.webapp_startup_progress(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @returns {any}
      */
     state() {
@@ -459,6 +505,16 @@ export class WebApp {
      */
     viewport(logical_width, logical_height, width, height) {
         const ret = wasm.webapp_viewport(this.__wbg_ptr, logical_width, logical_height, width, height);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {Promise<any>}
+     */
+    wait_for_canvas() {
+        const ret = wasm.webapp_wait_for_canvas(this.__wbg_ptr);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -1861,28 +1917,28 @@ function __wbg_get_imports() {
             arg0.writeTexture(arg1, getArrayU8FromWasm0(arg2, arg3), arg4, arg5);
         }, arguments); },
         __wbindgen_generic_0000000000000001: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1076, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1198, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h7697d3b1943426f5);
             return ret;
         },
         __wbindgen_generic_0000000000000002: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 1010, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 1132, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476);
             return ret;
         },
         __wbindgen_generic_0000000000000003: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 1020, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 1142, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c);
             return ret;
         },
         __wbindgen_generic_0000000000000004: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 1010, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_43);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 1132, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_50);
             return ret;
         },
         __wbindgen_generic_0000000000000005: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 1010, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_44);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 1132, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_51);
             return ret;
         },
         __wbindgen_generic_0000000000000006: function(arg0) {
@@ -1944,15 +2000,15 @@ function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476(arg0, arg
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_43(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_43(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_50(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_50(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_44(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_44(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_51(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_51(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
@@ -2404,7 +2460,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL("layer_web_bg.4667eb98575737bfc7de.wasm", import.meta.url);
+        module_or_path = new URL("layer_web_bg.c2653606a4fc3e7d306b.wasm", import.meta.url);
     }
     const imports = __wbg_get_imports();
 

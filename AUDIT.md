@@ -1,5 +1,22 @@
 # Web-release audits
 
+## Update: source 75c72f8 — watercolor and web input updates
+
+Reviewed `75c72f847c4610795038b065ee50261290104166` against `1e27123`
+and confirmed it was pushed to source main. Changes include watercolor pigment
+and wet-field refinements, shared tool/document infrastructure, and web pointer
+and startup updates. New interface icons retain the existing project terms.
+Native Apple and Android host additions are outside this PWA's target graph.
+
+The shared core now directly uses flate2 with its Rust backend, and the GPU
+renderer directly uses crc32fast; both were already web dependencies. External
+dependency versions, packaging scripts, branding terms and toolchain versions
+are unchanged. Locked license/source checks passed, with no new GPL/LGPL
+runtime inputs identified. The build, upstream packaging/launcher checks and
+artifact verification passed, producing 176 files and 174 precache entries.
+Browser tests remain skipped per the owner's instruction and are recorded
+as not run.
+
 ## Update: source 1e27123 — WebGPU startup and shared tools
 
 Reviewed `1e27123f4d1c42f2b14c4222949e006c8a310c4e` against `71cefee`
