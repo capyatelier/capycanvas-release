@@ -1,5 +1,22 @@
 # Web-release audits
 
+## Update: source a7c048c — web panels, documents and workspace
+
+Reviewed `a7c048c4db13185563fe010ef21209123a08be98` against `75c72f8`
+and fetched the latest pushed upstream commit for packaging. Web changes add
+document handling, editor panels, workspace chrome and system status modules
+to the explicit fingerprint graph. Shared changes include bounded GPU document
+replay and column expansion refinements.
+
+The web crate directly adds serde_json and enables the renderer's PNG feature;
+both dependencies were already in the web graph. External dependency versions,
+branding terms and release toolchain versions are unchanged. Native Windows
+additions remain outside the PWA target. Locked license/source checks passed,
+with no new GPL/LGPL runtime inputs identified. The build, upstream packaging/
+launcher checks and artifact verification passed, producing 180 files and
+178 precache entries. Browser tests remain skipped per the owner's instruction
+and are recorded as not run.
+
 ## Update: source 75c72f8 — watercolor and web input updates
 
 Reviewed `75c72f847c4610795038b065ee50261290104166` against `1e27123`

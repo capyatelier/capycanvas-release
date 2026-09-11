@@ -1,13 +1,17 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.c362e57ff0aa43bdba33.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.a2d6d3640920e7880e91.js";
 import { createPreferences } from "./preferences.63fd8f8678d7fe7b57dd.js";
-import { showGpuNotice } from "./gpu.e083bc719f6b47754a12.js";
-import { createCustomization } from "./customization.483ccf41a7694edfc922.js";
-import { createNumberField } from "./numeric.416ed7cab4a1eb3c90ea.js";
-import { createLayerPanel } from "./layers.8c958410618541dcb236.js";
-import { createEffectPanels, fetchFilterPackage } from "./effects.62d367f15a0427347118.js";
+import { showGpuNotice } from "./gpu.974d8febbbb3582fae28.js";
+import { createCustomization } from "./customization.8fe513e2f1febb9c6fe9.js";
+import { createEditorPanels } from "./editor-panels.e2c5f79bbc73ad160375.js";
+import { createWorkspaceChrome } from "./workspace-chrome.4e5ec5b8be6666feba2b.js";
+import { createDocuments } from "./documents.5002d3ca223c9f29c502.js";
+import { createSystemStatus } from "./system-status.488dd6d1a506ec139165.js";
+import { createNumberField } from "./numeric.9da6fc00fab7ed615c33.js";
+import { createLayerPanel } from "./layers.5b977782c4e455cdec63.js";
+import { createEffectPanels, fetchFilterPackage } from "./effects.32f7cf3f01aec0e95017.js";
 
 // The static packager fills this map with fingerprinted resource filenames.
-const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","filters/effects.wgsl":"filters/effects.61be4812695a7498684d.wgsl","filters/filter_library.wgsl":"filters/filter_library.3f4c72bcdbd900c6aca0.wgsl","filters/gaussian-prepare.wgsl":"filters/gaussian-prepare.b65389202b05796620e5.wgsl","filters/manifest.json":"filters/manifest.44cf8780fae5331b015a.json","icons/layer-adjustments-symbolic.svg":"icons/layer-adjustments-symbolic.3cef237b343ecde56892.svg","icons/layer-airbrush-symbolic.svg":"icons/layer-airbrush-symbolic.78e1a5cee2e2466b56e5.svg","icons/layer-alpha-lock-symbolic.svg":"icons/layer-alpha-lock-symbolic.ed3a94b7158e488752fd.svg","icons/layer-animation-symbolic.svg":"icons/layer-animation-symbolic.11c87a5b3c87ff5c2d18.svg","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-auto-select-symbolic.svg":"icons/layer-auto-select-symbolic.332992e18e98a96ae918.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-black_white-symbolic.svg":"icons/layer-black_white-symbolic.872598821f9884acd3a2.svg","icons/layer-blend-symbolic.svg":"icons/layer-blend-symbolic.04c0fb4f2a8f4b4282ff.svg","icons/layer-brightness_contrast-symbolic.svg":"icons/layer-brightness_contrast-symbolic.89387c572ed70b490515.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-clip-symbolic.svg":"icons/layer-clip-symbolic.341127a0e3d6af76d3c7.svg","icons/layer-color_balance-symbolic.svg":"icons/layer-color_balance-symbolic.0fc164956f5ff859ee9a.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-colors-symbolic.svg":"icons/layer-colors-symbolic.bd7ea01dc46286863cf3.svg","icons/layer-column-expand-symbolic.svg":"icons/layer-column-expand-symbolic.44f26da8a96a80900339.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-curves-symbolic.svg":"icons/layer-curves-symbolic.34d6320d5cb43fde1da1.svg","icons/layer-decoration-symbolic.svg":"icons/layer-decoration-symbolic.fab6db0f7dbf2a0695d1.svg","icons/layer-delete-symbolic.svg":"icons/layer-delete-symbolic.3fe343840fe1253261c1.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-ellipse-symbolic.svg":"icons/layer-ellipse-symbolic.ca6d5bcd5168a0110fef.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-export-document-symbolic.svg":"icons/layer-export-document-symbolic.6b989ba07964d0af2987.svg","icons/layer-exposure-symbolic.svg":"icons/layer-exposure-symbolic.e0482b14da72038b56c6.svg","icons/layer-eye-hidden-symbolic.svg":"icons/layer-eye-hidden-symbolic.520bf33852eac0c74a68.svg","icons/layer-eye-symbolic.svg":"icons/layer-eye-symbolic.fa3abcbf8ce5e4b30745.svg","icons/layer-eyedropper-symbolic.svg":"icons/layer-eyedropper-symbolic.cfc6decc86a1b97e00d1.svg","icons/layer-figure-symbolic.svg":"icons/layer-figure-symbolic.2a30a1ee2a6afa013656.svg","icons/layer-fill-symbolic.svg":"icons/layer-fill-symbolic.b32c4577e804936cc30b.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-flip-horizontal-symbolic.svg":"icons/layer-flip-horizontal-symbolic.e8736e08b28af37ce741.svg","icons/layer-flip-vertical-symbolic.svg":"icons/layer-flip-vertical-symbolic.e6b2396971afcb8a2ec1.svg","icons/layer-folder-open-symbolic.svg":"icons/layer-folder-open-symbolic.6ee6368524331b647b32.svg","icons/layer-folder-symbolic.svg":"icons/layer-folder-symbolic.be0904f291249af7827b.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-gradient_map-symbolic.svg":"icons/layer-gradient_map-symbolic.dcbb1ef9a592fff18b11.svg","icons/layer-gradient-symbolic.svg":"icons/layer-gradient-symbolic.d4d1ad1a98ff24fa796b.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-hand-symbolic.svg":"icons/layer-hand-symbolic.c5a9b4e90675a216f95e.svg","icons/layer-hue_saturation-symbolic.svg":"icons/layer-hue_saturation-symbolic.121bf9f7fcf95c20bbe6.svg","icons/layer-image-symbolic.svg":"icons/layer-image-symbolic.3d4764f002e54c5ce715.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-lasso-symbolic.svg":"icons/layer-lasso-symbolic.e623236322bb908bfe36.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.68c5097329d72a48a01d.svg","icons/layer-levels-symbolic.svg":"icons/layer-levels-symbolic.cd341232d3880dab5092.svg","icons/layer-line-symbolic.svg":"icons/layer-line-symbolic.d268b3bfa9c2d763616c.svg","icons/layer-link-symbolic.svg":"icons/layer-link-symbolic.4cd2d7081664ed727f16.svg","icons/layer-liquify-symbolic.svg":"icons/layer-liquify-symbolic.d3424fa71f0a103280dc.svg","icons/layer-lock-symbolic.svg":"icons/layer-lock-symbolic.bd3cd63801c343afe5ce.svg","icons/layer-mask-symbolic.svg":"icons/layer-mask-symbolic.e14671ba6bdc24fe08af.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-more-symbolic.svg":"icons/layer-more-symbolic.83a3457d1575caee0305.svg","icons/layer-move-symbolic.svg":"icons/layer-move-symbolic.3d221b52837a0334f0c6.svg","icons/layer-navigator-symbolic.svg":"icons/layer-navigator-symbolic.c2a5fa6a5fecf2371dee.svg","icons/layer-new-document-symbolic.svg":"icons/layer-new-document-symbolic.478481b2657e19025ada.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-open-document-symbolic.svg":"icons/layer-open-document-symbolic.fca15f9010e91362d0bc.svg","icons/layer-pen-symbolic.svg":"icons/layer-pen-symbolic.81809a79e688bbfd00cd.svg","icons/layer-pencil-symbolic.svg":"icons/layer-pencil-symbolic.a1af1dc64e78f17c9463.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-posterize-symbolic.svg":"icons/layer-posterize-symbolic.8463ce4dacd5498f5bb9.svg","icons/layer-properties-symbolic.svg":"icons/layer-properties-symbolic.63b4e797b87c93560b6c.svg","icons/layer-rectangle-symbolic.svg":"icons/layer-rectangle-symbolic.9301acf9a5ce8e3c03f2.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-reference-symbolic.svg":"icons/layer-reference-symbolic.5b245b7829699a74bf0a.svg","icons/layer-rotate-left-symbolic.svg":"icons/layer-rotate-left-symbolic.508e77c22c5b490cf651.svg","icons/layer-rotate-right-symbolic.svg":"icons/layer-rotate-right-symbolic.41bb4bb6c84097d9ff72.svg","icons/layer-ruler-parallel-symbolic.svg":"icons/layer-ruler-parallel-symbolic.3da39e680ef233d328fc.svg","icons/layer-ruler-radial-symbolic.svg":"icons/layer-ruler-radial-symbolic.a93909a534e85020e981.svg","icons/layer-ruler-snap-symbolic.svg":"icons/layer-ruler-snap-symbolic.a38e148c68a7bb7c8206.svg","icons/layer-ruler-symbolic.svg":"icons/layer-ruler-symbolic.8a5c8e9f35f180930ef1.svg","icons/layer-save-document-symbolic.svg":"icons/layer-save-document-symbolic.3d74e1be50abdf7a7585.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-selection-checked-symbolic.svg":"icons/layer-selection-checked-symbolic.cb46fcf370ac812ec902.svg","icons/layer-selection-empty-symbolic.svg":"icons/layer-selection-empty-symbolic.3b1d5aaabc8a9e0426b7.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-stats-symbolic.svg":"icons/layer-stats-symbolic.5381ed753736936f7f45.svg","icons/layer-swap-symbolic.svg":"icons/layer-swap-symbolic.41e20700834a3444ad8d.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-vibrance-symbolic.svg":"icons/layer-vibrance-symbolic.93957274aac3dea4f4f0.svg","icons/layer-zen-bathing-symbolic.svg":"icons/layer-zen-bathing-symbolic.a638473e74f9e05000d7.svg","icons/layer-zen-facing-forward-symbolic.svg":"icons/layer-zen-facing-forward-symbolic.06a3a282919298af5baf.svg","icons/layer-zen-looking-up-symbolic.svg":"icons/layer-zen-looking-up-symbolic.702efa7f434780589e3e.svg","icons/layer-zen-sleeping-symbolic.svg":"icons/layer-zen-sleeping-symbolic.adc886ce0a33f63e8896.svg"};
+const assetPaths = {"brush-previews/1-dark.png":"brush-previews/1-dark.35ec1a4918457c880720.png","brush-previews/1-light.png":"brush-previews/1-light.bee4559498a8376fe52f.png","brush-previews/10-dark.png":"brush-previews/10-dark.e47579a59864f7970777.png","brush-previews/10-light.png":"brush-previews/10-light.e47579a59864f7970777.png","brush-previews/11-dark.png":"brush-previews/11-dark.047f67c3f13a9a6eb99b.png","brush-previews/11-light.png":"brush-previews/11-light.f842bb41f2e36e1e9ea9.png","brush-previews/12-dark.png":"brush-previews/12-dark.fc5c25b87ebece789b7a.png","brush-previews/12-light.png":"brush-previews/12-light.fc5c25b87ebece789b7a.png","brush-previews/13-dark.png":"brush-previews/13-dark.7878ec28e845590266dd.png","brush-previews/13-light.png":"brush-previews/13-light.7878ec28e845590266dd.png","brush-previews/14-dark.png":"brush-previews/14-dark.a6cc6398ba846ed2333b.png","brush-previews/14-light.png":"brush-previews/14-light.12144ad5d9bbce9369ad.png","brush-previews/15-dark.png":"brush-previews/15-dark.5458d30800c4da9c1545.png","brush-previews/15-light.png":"brush-previews/15-light.6afbd60c5f66689c056f.png","brush-previews/16-dark.png":"brush-previews/16-dark.6fac7ba24240a4fd0a58.png","brush-previews/16-light.png":"brush-previews/16-light.a604fdfd4d866a979608.png","brush-previews/17-dark.png":"brush-previews/17-dark.da227d0b5145bdc58b5e.png","brush-previews/17-light.png":"brush-previews/17-light.bdc124bf88934e611913.png","brush-previews/18-dark.png":"brush-previews/18-dark.cbed83f4c2b48d46d26c.png","brush-previews/18-light.png":"brush-previews/18-light.328d2e717788f183bdae.png","brush-previews/19-dark.png":"brush-previews/19-dark.5d5f0fd9dd9891d5c858.png","brush-previews/19-light.png":"brush-previews/19-light.d713d171dc4c957f4f9b.png","brush-previews/2-dark.png":"brush-previews/2-dark.cefae5142b7dc81b0e55.png","brush-previews/2-light.png":"brush-previews/2-light.3ee7ad470d0c68043a63.png","brush-previews/20-dark.png":"brush-previews/20-dark.9661fe431beac189e49f.png","brush-previews/20-light.png":"brush-previews/20-light.834923c53af902867019.png","brush-previews/21-dark.png":"brush-previews/21-dark.e2e7bbdc9631e95121ba.png","brush-previews/21-light.png":"brush-previews/21-light.fd6bd04e2feee4c3bfe7.png","brush-previews/22-dark.png":"brush-previews/22-dark.242fa7e13844c69eba87.png","brush-previews/22-light.png":"brush-previews/22-light.ee6205c9e076bff465bb.png","brush-previews/23-dark.png":"brush-previews/23-dark.861181594623a794928e.png","brush-previews/23-light.png":"brush-previews/23-light.8cf65e3d783b829d8014.png","brush-previews/24-dark.png":"brush-previews/24-dark.85b74930aee61a192265.png","brush-previews/24-light.png":"brush-previews/24-light.85b74930aee61a192265.png","brush-previews/3-dark.png":"brush-previews/3-dark.e4190213e18ad0c90c78.png","brush-previews/3-light.png":"brush-previews/3-light.e4190213e18ad0c90c78.png","brush-previews/4-dark.png":"brush-previews/4-dark.5800de4355ae039a3bc2.png","brush-previews/4-light.png":"brush-previews/4-light.4c19bc1f0ea2dabc3127.png","brush-previews/5-dark.png":"brush-previews/5-dark.65f2b9fc447f2cdbbf2d.png","brush-previews/5-light.png":"brush-previews/5-light.5cd08ed93f1bdaa69679.png","brush-previews/6-dark.png":"brush-previews/6-dark.3442a23d66984b101b67.png","brush-previews/6-light.png":"brush-previews/6-light.25926b61bdd9b2e9536f.png","brush-previews/7-dark.png":"brush-previews/7-dark.03675f16205c23394553.png","brush-previews/7-light.png":"brush-previews/7-light.0a84514d678d7cb3a5eb.png","brush-previews/8-dark.png":"brush-previews/8-dark.c135f645abd4c57da6ab.png","brush-previews/8-light.png":"brush-previews/8-light.ca572e4f089f67af6f3a.png","brush-previews/9-dark.png":"brush-previews/9-dark.4609551d2240598560f3.png","brush-previews/9-light.png":"brush-previews/9-light.e782c2d1201096becd32.png","filters/effects.wgsl":"filters/effects.61be4812695a7498684d.wgsl","filters/filter_library.wgsl":"filters/filter_library.cf48a5a87149d5537115.wgsl","filters/gaussian-prepare.wgsl":"filters/gaussian-prepare.b65389202b05796620e5.wgsl","filters/manifest.json":"filters/manifest.44cf8780fae5331b015a.json","icons/layer-adjustments-symbolic.svg":"icons/layer-adjustments-symbolic.3cef237b343ecde56892.svg","icons/layer-airbrush-symbolic.svg":"icons/layer-airbrush-symbolic.78e1a5cee2e2466b56e5.svg","icons/layer-alpha-lock-symbolic.svg":"icons/layer-alpha-lock-symbolic.ed3a94b7158e488752fd.svg","icons/layer-animation-symbolic.svg":"icons/layer-animation-symbolic.11c87a5b3c87ff5c2d18.svg","icons/layer-appearance-symbolic.svg":"icons/layer-appearance-symbolic.effffbd0832cde145d56.svg","icons/layer-auto-select-symbolic.svg":"icons/layer-auto-select-symbolic.332992e18e98a96ae918.svg","icons/layer-back-symbolic.svg":"icons/layer-back-symbolic.13316926b7d26a1fc2b6.svg","icons/layer-black_white-symbolic.svg":"icons/layer-black_white-symbolic.872598821f9884acd3a2.svg","icons/layer-blend-symbolic.svg":"icons/layer-blend-symbolic.04c0fb4f2a8f4b4282ff.svg","icons/layer-brightness_contrast-symbolic.svg":"icons/layer-brightness_contrast-symbolic.89387c572ed70b490515.svg","icons/layer-brush-symbolic.svg":"icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg","icons/layer-check-symbolic.svg":"icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg","icons/layer-chevron-down-symbolic.svg":"icons/layer-chevron-down-symbolic.68da7053e2f57c63a593.svg","icons/layer-clip-symbolic.svg":"icons/layer-clip-symbolic.341127a0e3d6af76d3c7.svg","icons/layer-color_balance-symbolic.svg":"icons/layer-color_balance-symbolic.0fc164956f5ff859ee9a.svg","icons/layer-color-symbolic.svg":"icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg","icons/layer-colors-symbolic.svg":"icons/layer-colors-symbolic.bd7ea01dc46286863cf3.svg","icons/layer-column-expand-symbolic.svg":"icons/layer-column-expand-symbolic.44f26da8a96a80900339.svg","icons/layer-cursor-brush-cross-symbolic.svg":"icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg","icons/layer-cursor-brush-symbolic.svg":"icons/layer-cursor-brush-symbolic.5f29fedd81117cb05a71.svg","icons/layer-cursor-cross-symbolic.svg":"icons/layer-cursor-cross-symbolic.4312a1e7d5c5754568e4.svg","icons/layer-cursor-dot-symbolic.svg":"icons/layer-cursor-dot-symbolic.dbb8054a0b207e1b7eb2.svg","icons/layer-cursor-none-symbolic.svg":"icons/layer-cursor-none-symbolic.b0b167dbd699d2b240fa.svg","icons/layer-curves-symbolic.svg":"icons/layer-curves-symbolic.34d6320d5cb43fde1da1.svg","icons/layer-decoration-symbolic.svg":"icons/layer-decoration-symbolic.fab6db0f7dbf2a0695d1.svg","icons/layer-delete-symbolic.svg":"icons/layer-delete-symbolic.3fe343840fe1253261c1.svg","icons/layer-down-symbolic.svg":"icons/layer-down-symbolic.2077aefc6f508c80c30b.svg","icons/layer-ellipse-symbolic.svg":"icons/layer-ellipse-symbolic.ca6d5bcd5168a0110fef.svg","icons/layer-eraser-symbolic.svg":"icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg","icons/layer-export-document-symbolic.svg":"icons/layer-export-document-symbolic.6b989ba07964d0af2987.svg","icons/layer-exposure-symbolic.svg":"icons/layer-exposure-symbolic.e0482b14da72038b56c6.svg","icons/layer-eye-hidden-symbolic.svg":"icons/layer-eye-hidden-symbolic.520bf33852eac0c74a68.svg","icons/layer-eye-symbolic.svg":"icons/layer-eye-symbolic.fa3abcbf8ce5e4b30745.svg","icons/layer-eyedropper-symbolic.svg":"icons/layer-eyedropper-symbolic.cfc6decc86a1b97e00d1.svg","icons/layer-figure-symbolic.svg":"icons/layer-figure-symbolic.2a30a1ee2a6afa013656.svg","icons/layer-fill-symbolic.svg":"icons/layer-fill-symbolic.b32c4577e804936cc30b.svg","icons/layer-fit-symbolic.svg":"icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg","icons/layer-flip-horizontal-symbolic.svg":"icons/layer-flip-horizontal-symbolic.e8736e08b28af37ce741.svg","icons/layer-flip-vertical-symbolic.svg":"icons/layer-flip-vertical-symbolic.e6b2396971afcb8a2ec1.svg","icons/layer-folder-open-symbolic.svg":"icons/layer-folder-open-symbolic.6ee6368524331b647b32.svg","icons/layer-folder-symbolic.svg":"icons/layer-folder-symbolic.be0904f291249af7827b.svg","icons/layer-fullscreen-enter-symbolic.svg":"icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg","icons/layer-fullscreen-exit-symbolic.svg":"icons/layer-fullscreen-exit-symbolic.d70383f540802d1c1c13.svg","icons/layer-gradient_map-symbolic.svg":"icons/layer-gradient_map-symbolic.dcbb1ef9a592fff18b11.svg","icons/layer-gradient-symbolic.svg":"icons/layer-gradient-symbolic.d4d1ad1a98ff24fa796b.svg","icons/layer-grip-symbolic.svg":"icons/layer-grip-symbolic.258f461bcfa33a125d89.svg","icons/layer-hand-symbolic.svg":"icons/layer-hand-symbolic.c5a9b4e90675a216f95e.svg","icons/layer-hue_saturation-symbolic.svg":"icons/layer-hue_saturation-symbolic.121bf9f7fcf95c20bbe6.svg","icons/layer-image-symbolic.svg":"icons/layer-image-symbolic.3d4764f002e54c5ce715.svg","icons/layer-info-symbolic.svg":"icons/layer-info-symbolic.de87224179edc68417bb.svg","icons/layer-keyboard-symbolic.svg":"icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg","icons/layer-lasso-symbolic.svg":"icons/layer-lasso-symbolic.e623236322bb908bfe36.svg","icons/layer-layers-symbolic.svg":"icons/layer-layers-symbolic.68c5097329d72a48a01d.svg","icons/layer-levels-symbolic.svg":"icons/layer-levels-symbolic.cd341232d3880dab5092.svg","icons/layer-line-symbolic.svg":"icons/layer-line-symbolic.d268b3bfa9c2d763616c.svg","icons/layer-link-symbolic.svg":"icons/layer-link-symbolic.4cd2d7081664ed727f16.svg","icons/layer-liquify-symbolic.svg":"icons/layer-liquify-symbolic.d3424fa71f0a103280dc.svg","icons/layer-lock-symbolic.svg":"icons/layer-lock-symbolic.bd3cd63801c343afe5ce.svg","icons/layer-mask-symbolic.svg":"icons/layer-mask-symbolic.e14671ba6bdc24fe08af.svg","icons/layer-menu-symbolic.svg":"icons/layer-menu-symbolic.3162891262ac586b6742.svg","icons/layer-minus-symbolic.svg":"icons/layer-minus-symbolic.7deca782c8516d2be808.svg","icons/layer-more-symbolic.svg":"icons/layer-more-symbolic.83a3457d1575caee0305.svg","icons/layer-move-symbolic.svg":"icons/layer-move-symbolic.3d221b52837a0334f0c6.svg","icons/layer-navigator-symbolic.svg":"icons/layer-navigator-symbolic.c2a5fa6a5fecf2371dee.svg","icons/layer-new-document-symbolic.svg":"icons/layer-new-document-symbolic.478481b2657e19025ada.svg","icons/layer-opacity-symbolic.svg":"icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg","icons/layer-open-document-symbolic.svg":"icons/layer-open-document-symbolic.fca15f9010e91362d0bc.svg","icons/layer-pen-symbolic.svg":"icons/layer-pen-symbolic.81809a79e688bbfd00cd.svg","icons/layer-pencil-symbolic.svg":"icons/layer-pencil-symbolic.a1af1dc64e78f17c9463.svg","icons/layer-plus-symbolic.svg":"icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg","icons/layer-posterize-symbolic.svg":"icons/layer-posterize-symbolic.8463ce4dacd5498f5bb9.svg","icons/layer-properties-symbolic.svg":"icons/layer-properties-symbolic.63b4e797b87c93560b6c.svg","icons/layer-rectangle-symbolic.svg":"icons/layer-rectangle-symbolic.9301acf9a5ce8e3c03f2.svg","icons/layer-redo-symbolic.svg":"icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg","icons/layer-reference-symbolic.svg":"icons/layer-reference-symbolic.5b245b7829699a74bf0a.svg","icons/layer-rotate-left-symbolic.svg":"icons/layer-rotate-left-symbolic.508e77c22c5b490cf651.svg","icons/layer-rotate-right-symbolic.svg":"icons/layer-rotate-right-symbolic.41bb4bb6c84097d9ff72.svg","icons/layer-ruler-parallel-symbolic.svg":"icons/layer-ruler-parallel-symbolic.3da39e680ef233d328fc.svg","icons/layer-ruler-radial-symbolic.svg":"icons/layer-ruler-radial-symbolic.a93909a534e85020e981.svg","icons/layer-ruler-snap-symbolic.svg":"icons/layer-ruler-snap-symbolic.a38e148c68a7bb7c8206.svg","icons/layer-ruler-symbolic.svg":"icons/layer-ruler-symbolic.8a5c8e9f35f180930ef1.svg","icons/layer-save-document-symbolic.svg":"icons/layer-save-document-symbolic.3d74e1be50abdf7a7585.svg","icons/layer-search-symbolic.svg":"icons/layer-search-symbolic.083808e07e9068e1f81a.svg","icons/layer-selection-checked-symbolic.svg":"icons/layer-selection-checked-symbolic.cb46fcf370ac812ec902.svg","icons/layer-selection-empty-symbolic.svg":"icons/layer-selection-empty-symbolic.3b1d5aaabc8a9e0426b7.svg","icons/layer-settings-symbolic.svg":"icons/layer-settings-symbolic.792d51cf281148198e77.svg","icons/layer-size-symbolic.svg":"icons/layer-size-symbolic.25002ebc368eefcb7969.svg","icons/layer-stats-symbolic.svg":"icons/layer-stats-symbolic.5381ed753736936f7f45.svg","icons/layer-swap-symbolic.svg":"icons/layer-swap-symbolic.41e20700834a3444ad8d.svg","icons/layer-undo-symbolic.svg":"icons/layer-undo-symbolic.04adc640c989dc473065.svg","icons/layer-up-symbolic.svg":"icons/layer-up-symbolic.83375c5cd82ab6cde565.svg","icons/layer-vibrance-symbolic.svg":"icons/layer-vibrance-symbolic.93957274aac3dea4f4f0.svg","icons/layer-zen-bathing-symbolic.svg":"icons/layer-zen-bathing-symbolic.a638473e74f9e05000d7.svg","icons/layer-zen-facing-forward-symbolic.svg":"icons/layer-zen-facing-forward-symbolic.06a3a282919298af5baf.svg","icons/layer-zen-looking-up-symbolic.svg":"icons/layer-zen-looking-up-symbolic.702efa7f434780589e3e.svg","icons/layer-zen-sleeping-symbolic.svg":"icons/layer-zen-sleeping-symbolic.adc886ce0a33f63e8896.svg"};
 const asset = (path) => new URL(assetPaths[path.replace(/^\.\//, "")] || path, import.meta.url).href;
 
 const panels = new Map(),
@@ -21,9 +25,7 @@ const $ = (id) =>
 const workspace = $("workspace"),
   canvas = $("canvas"),
   center = $("center");
-const commands = new Map(),
-  brushButtons = new Map(),
-  sizeButtons = new Map();
+const commands = new Map(), sizeButtons = new Map();
 let app,
   catalog,
   panelNames,
@@ -34,7 +36,8 @@ let app,
   chromeHeld = false,
   dragItem = null,
   statusTimer;
-let refreshPreferences, customization, layerPanel, effectPanels;
+let refreshPreferences, customization, layerPanel, effectPanels, editor, workspaceChrome, documents, systemStatus;
+const fullscreenRequests = new Set();
 let gpuStarting = false;
 let gpuReady = false;
 let compilerScheduled = false, compilerFailed = false;
@@ -42,7 +45,8 @@ const startupTimes = { canvas: null, document: null, brush: null, complete: null
 let startupNotice;
 let firstCanvasRendered = false;
 let servicingRequests = false;
-const settingsKey = "layer.preferences.v1";
+const settingsKey = "layer.preferences.v1", workspaceKey = "layer.workspace.v1";
+let savedWorkspace = "", workspaceSaveTimer;
 const pending = [];
 const systemTheme = matchMedia("(prefers-color-scheme: dark)");
 applyTheme(systemTheme.matches ? "dark" : "light");
@@ -158,33 +162,6 @@ function iconButton(id) {
     glyph.style.width = glyph.style.height = `${catalog.zen_icon_size}px`;
   }
   node.append(glyph);
-  return node;
-}
-function fullscreenButton() {
-  // Browser-window state belongs to the host, not the shared drawing session.
-  const node = button("", async () => {
-    node.disabled = true;
-    try {
-      if (document.fullscreenElement) await document.exitFullscreen();
-      else await document.documentElement.requestFullscreen();
-    } catch {
-      message("Could not change fullscreen mode.");
-    } finally {
-      node.disabled = !document.fullscreenEnabled;
-      sync();
-    }
-  }, "tile-button");
-  node.id = "fullscreen";
-  node.disabled = !document.fullscreenEnabled;
-  function sync() {
-    const active = !!document.fullscreenElement;
-    node.title = !document.fullscreenEnabled ? "Fullscreen unavailable"
-      : active ? "Exit fullscreen" : "Enter fullscreen";
-    node.setAttribute("aria-label", node.title);
-    node.replaceChildren(icon(active ? "fullscreen-exit" : "fullscreen-enter"));
-  }
-  document.addEventListener("fullscreenchange", sync);
-  sync();
   return node;
 }
 function draggable(node, item) {
@@ -459,6 +436,7 @@ function arrange() {
     node.dataset.zIndex = group.floating ? String(100 + layout.groups.indexOf(group) * 2) : "0";
     if (!node.classList.contains("expanded-panel")) node.style.zIndex = node.dataset.zIndex;
     place(node, group.bounds);
+    node.style.setProperty("--panel-body-height", `${group.bounds.height - (group.tabs_visible ? layout.tab_bar_height : 0)}px`);
     if (group.tiles) {
       const strip = node.querySelector(".toolbar-controls");
       const geometry = group.tiles;
@@ -512,6 +490,8 @@ function arrange() {
       dividers.delete(key);
     }
   customization.arrange(layout);
+  workspaceChrome?.arrange(layout);
+  editor.queuePositions();
   place($("canvas-status"), layout.status);
   // The help occupies the same unobstructed area used for fitting the document.
   // Panels remain native UI siblings above the full-window drawing surface.
@@ -575,29 +555,9 @@ function buildPanels() {
     panels.set(name, panel);
     panelFrame(panel, kind !== "tiles");
   }
-  const list = element("div", "brush-list");
-  list.dataset.control = "brushes";
-  for (const { label: category, brushes } of catalog.brush_categories) {
-    list.append(element("h3", "", category));
-    for (const brush of brushes) {
-      const choice = button(
-        "",
-        () => dispatch({ type: "select_brush", id: brush.id }),
-        "brush-choice",
-      );
-      choice.dataset.brush = brush.id;
-      choice.onpointerenter = () => { choice.title = app.action_tooltip(brush.label, { type: "select_brush", id: brush.id }); };
-      choice.dataset.category = category;
-      const preview = element("img", "brush-preview");
-      preview.src = asset(`brush-previews/${brush.id}-${state.theme}.png`);
-      preview.alt = "";
-      preview.draggable = false;
-      choice.append(preview, element("span", "", brush.label));
-      brushButtons.set(brush.id, choice);
-      list.append(choice);
-    }
-  }
-  panels.get("brushes").append(list);
+  panels.get("brushes").append(editor.control("brushes"));
+  for (const [panel, control] of [["tool_settings","tool_settings"],["color","color_wheel"],["navigator","navigator"]])
+    panels.get(panel).append(editor.control(control));
   const controls = element("div", "size-controls");
   controls.dataset.control = "brush_size";
   const size = numberField(catalog.brush_size, "Brush size", value => dispatch({ type: "set_brush_size", value }));
@@ -629,11 +589,24 @@ function buildPanels() {
   effectPanels = createEffectPanels({app,catalog,state:()=>state,panels,element,button,icon,dispatch,numberField,
     contentChanged:id=>{panelMeasurements.delete(id);queuePanelMeasurements();}});
 }
+function contentPanel(id) {
+  const panel=element("div",`panel ${id}-panel`);
+  if(id==="layers") {
+    const view=createLayerPanel({app,catalog,state:()=>state,panel,element,button,icon,dispatch,applyChange,message,numberField});
+    panel.refreshPanel=view.refresh; panel.disposePanel=view.dispose;
+  } else if(["adjustments","properties","stats"].includes(id)) {
+    const copies=new Map(["adjustments","properties","stats"].map(name=>[name,name===id?panel:element("div","panel")]));
+    const view=createEffectPanels({app,catalog,state:()=>state,panels:copies,element,button,icon,dispatch,numberField,contentChanged:()=>{}});
+    panel.refreshPanel=view.refresh; panel.disposePanel=view.dispose;
+  } else {
+    for(const control of customization.view(id).controls.filter(c=>c.visible_in_panel)) panel.append(customization.field(control.control,control.label));
+    panel.refreshPanel=()=>{};
+  }
+  panel.refreshPanel();return panel;
+}
 function update(regions) {
   if (regions & (1 | 2 | 4 | 8 | 128)) customization.refresh();
   if (regions & 2) {
-    for (const [id, button] of brushButtons)
-      button.setAttribute("aria-pressed", String(id === state.brush.preset));
     for (const [size, button] of sizeButtons)
       button.setAttribute(
         "aria-pressed",
@@ -648,12 +621,14 @@ function update(regions) {
     layerPanel.refresh();
     effectPanels.refresh();
   }
+  if (regions & (1 | 2 | 4 | 8 | 16 | 32 | 128)) { editor.refresh(); workspaceChrome?.refresh(); }
   if (regions & (1 | 4 | 128)) arrange();
+  if (regions & (1 | 128)) persistWorkspace();
   if (regions & (1 | 4 | 8 | 128)) refreshWorkspaceMenu();
   if (regions & (4 | 8))
     for (const command of state.commands)
       for (const node of commands.get(command.id) || []) {
-        node.disabled = !command.enabled;
+        node.disabled = !command.enabled || (command.id === "fullscreen" && !document.fullscreenEnabled);
         node.title = command.tooltip;
         node.setAttribute("aria-label", command.label);
         node.setAttribute("aria-pressed", String(command.selected));
@@ -673,9 +648,7 @@ function update(regions) {
       }
   if (regions & 16) {
     applyTheme(state.theme, state.palette);
-    for (const [id, button] of brushButtons)
-      button.querySelector("img").src =
-        asset(`brush-previews/${id}-${state.theme}.png`);
+    systemStatus?.setClockVisibility(state.settings.show_clock);
     refreshPreferences(app.preferences());
   }
   if (regions & 32)
@@ -683,6 +656,7 @@ function update(regions) {
       `${Math.round(state.camera.zoom * 100)}% · ${Math.round((state.camera.rotation * 180) / Math.PI)}°`;
   if (regions & (1 | 16)) updateZen();
   if (regions & 64) {
+    documents?.refresh();
     if (state.host_error) message(state.host_error);
     // Small applied-settings snapshots only, never per-input/frame writes.
     if (!servicingRequests) {
@@ -691,7 +665,19 @@ function update(regions) {
         for (const request of state.requests) {
           let error = null;
           try {
-            if (request.kind.type !== "save_settings") throw new Error("Unsupported host request");
+            if (request.kind.type === "set_fullscreen") {
+              if (!fullscreenRequests.has(request.id)) {
+                fullscreenRequests.add(request.id);
+                systemStatus.setFullscreen(request.kind.fullscreen)
+                  .then(() => dispatch({type:"complete_request",id:request.id,error:null}),
+                    error => dispatch({type:"complete_request",id:request.id,error:String(error)}))
+                  .finally(() => fullscreenRequests.delete(request.id));
+              }
+              continue;
+            }
+            else if (request.kind.type === "open_link") { window.open(app.application_link(request.kind.link), "_blank", "noopener"); }
+            else if (request.kind.type !== "save_settings") { documents.handle(request); continue; }
+            else
             localStorage.setItem(settingsKey, JSON.stringify(request.kind.settings));
           } catch (e) { error = `Cannot save preferences: ${e}`; }
           dispatch({ type: "complete_request", id: request.id, error });
@@ -795,68 +781,63 @@ function chromeInput(event) {
     viewport: [workspace.clientWidth, workspace.clientHeight],
     facts: {
       expanded_panel: customization?.placement(),
+      ...workspaceChrome?.facts(),
       contact_tab: event.kind === "contact"
         ? document.elementFromPoint(...event.position)?.closest(".dock-tab")?.dataset.panel ?? null
         : null,
       held: chromeHeld,
       dragging: dragItem !== null,
       popup_open:
-        !!document.querySelector("details[open], :popover-open") ||
+        !!document.querySelector("details[open], :popover-open, dialog[open]") ||
         !!document.activeElement?.matches("select"),
     },
   });
 }
 function updateZen() {
   chromeInput({ kind: "refresh" });
+  workspaceChrome?.refresh();
+  editor?.queuePositions();
 }
 function buildHeader() {
-  function menu(label, sections, icon) {
-    const details = element("details", "header-menu");
-    details.name = "workspace-menu";
-    const summary = element("summary", "", icon || label);
-    summary.setAttribute("aria-label", label);
-    summary.title = label;
-    summary.addEventListener("click", () => {
-      for (const popup of document.querySelectorAll(":popover-open"))
-        popup.hidePopover();
-    });
-    const contents = element("div", "popover");
-    if (!sections.length) {
-      contents.id = "workspace-menu";
-      details.addEventListener("toggle", () => { if (details.open) refreshWorkspaceMenu(); });
-    }
-    for (const [index, ids] of sections.entries()) {
-      if (index) contents.append(element("hr"));
-      for (const id of ids) {
-        const control = commandButton(id, id);
-        control.replaceChildren(element("span", "command-label"), element("span", "shortcut-hint"));
-        control.addEventListener("click", () => {
-          details.open = false;
-          updateZen();
-        });
-        contents.append(control);
-      }
-    }
-    details.append(summary, contents);
-    details.addEventListener("toggle", updateZen);
-    return details;
-  }
-  // Keep one button outside the fading header, with a matching layout spacer.
   const zen = iconButton("zen_mode");
   zen.id = "zen-button"; zen.classList.add("chrome");
   zen.dataset.context = JSON.stringify({ kind: "zen_mode" });
   workspace.prepend(zen);
   $("header-start").append(element("span", "zen-spacer"));
-  for (const spec of catalog.menus)
-    $("header-start").append(menu(spec.label, spec.sections));
-  $("header-end").append(fullscreenButton(), iconButton("settings"));
+  for (const spec of app.editor_models(workspace.clientWidth, workspace.clientHeight).application_menus) {
+    const details = element("details", "header-menu"); details.name = "workspace-menu"; details.dataset.menu = spec.id;
+    const summary = element("summary", "", spec.label); summary.setAttribute("aria-label", spec.label);
+    const contents = element("div", "popover"); contents.setAttribute("role","menu");
+    if(spec.id === "window") contents.id = "workspace-menu";
+    details.append(summary,contents);
+    details.addEventListener("toggle",()=>{if(details.open) refreshWorkspaceMenu(); updateZen();});
+    $("header-start").append(details);
+  }
+  systemStatus = createSystemStatus({element, changed:fullscreen => {
+    if(customization && state.fullscreen !== fullscreen) dispatch({type:"window_fullscreen",fullscreen});
+  }});
+  $("header-end").append(systemStatus.root, iconButton("fullscreen"), iconButton("settings"));
+  $("header-end").querySelector('[data-command="fullscreen"]').id = "fullscreen";
 }
 function refreshWorkspaceMenu() {
-  const contents = $("workspace-menu");
-  if (contents && customization) customization.renderMenu(contents, app.workspace_menu(), () => {
-    contents.parentElement.open = false; updateZen();
-  });
+  if(!customization || !document.querySelector(".header-menu[open]")) return;
+  for(const spec of app.editor_models(workspace.clientWidth,workspace.clientHeight).application_menus) {
+    if (!document.fullscreenEnabled) for (const item of spec.model.sections.flat())
+      if (item.action?.type === "invoke" && item.action.command === "fullscreen") item.enabled = false;
+    const details = document.querySelector(`[data-menu="${spec.id}"]`);
+    if(details?.open) customization.renderMenu(details.querySelector(".popover"),spec.model,()=>{details.open=false;updateZen();});
+  }
 }
+function persistWorkspace() {
+  clearTimeout(workspaceSaveTimer);
+  workspaceSaveTimer = setTimeout(saveWorkspace, 250);
+}
+function saveWorkspace() {
+  if(!app) return;
+  try { const value=JSON.stringify(app.workspace_persistence()); if(value!==savedWorkspace){localStorage.setItem(workspaceKey,value);savedWorkspace=value;} }
+  catch(error){message(`Cannot save workspace: ${error}`);}
+}
+window.addEventListener("pagehide",saveWorkspace);
 function pointerStyle(e) {
   // Touch leaves :hover stuck until the next tap; track actual pointer input
   // instead of disabling hover for a whole device that may also have a pen/mouse.
@@ -1149,6 +1130,10 @@ try {
     const saved = localStorage.getItem(settingsKey);
     if (saved) app.dispatch({ type: "restore_settings", settings: JSON.parse(saved) });
   } catch (error) { restoreError = `Cannot restore preferences: ${error}`; }
+  try {
+    const saved = localStorage.getItem(workspaceKey);
+    if(saved) { app.dispatch({type:"restore_workspace", workspace:JSON.parse(saved)}); savedWorkspace=saved; }
+  } catch(error) { restoreError = `Cannot restore workspace: ${error}`; }
   const themeAction = () => ({
     type: "system_theme_changed",
     theme: systemTheme.matches ? "dark" : "light",
@@ -1167,12 +1152,16 @@ try {
   await loadIcons();
   refreshPreferences = createPreferences({ element, button, icon, numberField, panelFrame, dispatch, view: () => app.preferences() });
   panelNames = Object.fromEntries(catalog.panels.map((p) => [p.id, p.label]));
+  editor = createEditorPanels({app,state:()=>state,workspace,canvas,element,button,icon,numberField,dispatch,asset,wake});
   buildHeader();
   buildPanels();
   customization = createCustomization({ app, catalog, state: () => state, workspace, panels, groups,
     element, button, icon, numberField, panelFrame,
-    dispatch, draggable, grip, place, updateZen });
+    dispatch, draggable, grip, place, updateZen, editor });
+  workspaceChrome = createWorkspaceChrome({app,state:()=>state,workspace,element,button,icon,place,dispatch,customization,editor,panelFrame,panels,draggable,grip,contentPanel});
+  documents = createDocuments({app,dispatch,applyChange,wake,element,button,numberField,message,gpuOperation});
   update(255);
+  systemStatus.sync();
   $("status").textContent = "";
   if (restoreError) message(restoreError);
   new ResizeObserver(arrange).observe(workspace);

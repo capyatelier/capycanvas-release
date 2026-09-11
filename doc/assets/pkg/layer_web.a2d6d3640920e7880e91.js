@@ -43,6 +43,42 @@ export class WebApp {
         }
     }
     /**
+     * @param {WebProject} project
+     * @param {any} location
+     * @returns {any}
+     */
+    adopt_document(project, location) {
+        _assertClass(project, WebProject);
+        var ptr0 = project.__destroy_into_raw();
+        const ret = wasm.webapp_adopt_document(this.__wbg_ptr, ptr0, location);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} link
+     * @returns {string}
+     */
+    application_link(link) {
+        let deferred2_0;
+        let deferred2_1;
+        try {
+            const ret = wasm.webapp_application_link(this.__wbg_ptr, link);
+            var ptr1 = ret[0];
+            var len1 = ret[1];
+            if (ret[3]) {
+                ptr1 = 0; len1 = 0;
+                throw takeFromExternrefTable0(ret[2]);
+            }
+            deferred2_0 = ptr1;
+            deferred2_1 = len1;
+            return getStringFromWasm0(ptr1, len1);
+        } finally {
+            wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+        }
+    }
+    /**
      * @param {WebGpu} gpu
      */
     attach_gpu(gpu) {
@@ -82,6 +118,29 @@ export class WebApp {
      */
     catalog() {
         const ret = wasm.webapp_catalog(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {any}
+     */
+    color_panel() {
+        const ret = wasm.webapp_color_panel(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} size
+     * @param {number} x
+     * @param {number} y
+     * @returns {any}
+     */
+    color_wheel_hit(size, x, y) {
+        const ret = wasm.webapp_color_wheel_hit(this.__wbg_ptr, size, x, y);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -145,8 +204,43 @@ export class WebApp {
      * @param {any} query
      * @returns {any}
      */
+    drawer(query) {
+        const ret = wasm.webapp_drawer(this.__wbg_ptr, query);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} panel
+     * @param {number} width
+     * @returns {any}
+     */
+    drawer_toolbar(panel, width) {
+        const ret = wasm.webapp_drawer_toolbar(this.__wbg_ptr, panel, width);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} query
+     * @returns {any}
+     */
     drop_hint(query) {
         const ret = wasm.webapp_drop_hint(this.__wbg_ptr, query);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} width
+     * @param {number} height
+     * @returns {any}
+     */
+    editor_models(width, height) {
+        const ret = wasm.webapp_editor_models(this.__wbg_ptr, width, height);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -162,6 +256,24 @@ export class WebApp {
             throw takeFromExternrefTable0(ret[1]);
         }
         return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
+     * @returns {Promise<any>}
+     */
+    export_png(id) {
+        const ret = wasm.webapp_export_png(this.__wbg_ptr, id);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {boolean}
+     */
+    export_ready() {
+        const ret = wasm.webapp_export_ready(this.__wbg_ptr);
+        return ret !== 0;
     }
     /**
      * @param {string} manifest
@@ -181,6 +293,21 @@ export class WebApp {
      */
     filter_preview_revision() {
         const ret = wasm.webapp_filter_preview_revision(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
+     * @param {boolean} success
+     * @param {string | null} [error]
+     * @returns {any}
+     */
+    finish_document(id, success, error) {
+        var ptr0 = isLikeNone(error) ? 0 : passStringToWasm0(error, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len0 = WASM_VECTOR_LEN;
+        const ret = wasm.webapp_finish_document(this.__wbg_ptr, id, success, ptr0, len0);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -290,6 +417,27 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @param {number} width
+     * @param {number} height
+     * @returns {any}
+     */
+    navigator_geometry(width, height) {
+        const ret = wasm.webapp_navigator_geometry(this.__wbg_ptr, width, height);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} placements
+     */
+    navigator_placements(placements) {
+        const ret = wasm.webapp_navigator_placements(this.__wbg_ptr, placements);
+        if (ret[1]) {
+            throw takeFromExternrefTable0(ret[0]);
+        }
+    }
+    /**
      * @param {any} request
      * @returns {any}
      */
@@ -365,6 +513,24 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @param {number} id
+     * @param {Uint8Array | null | undefined} bytes
+     * @param {number} width
+     * @param {number} height
+     * @param {bigint} epoch
+     * @param {bigint} revision
+     * @returns {Promise<any>}
+     */
+    prepare_document(id, bytes, width, height, epoch, revision) {
+        var ptr0 = isLikeNone(bytes) ? 0 : passArray8ToWasm0(bytes, wasm.__wbindgen_malloc);
+        var len0 = WASM_VECTOR_LEN;
+        const ret = wasm.webapp_prepare_document(this.__wbg_ptr, id, ptr0, len0, width, height, epoch, revision);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @returns {any}
      */
     renderer_stats() {
@@ -399,6 +565,35 @@ export class WebApp {
             throw takeFromExternrefTable0(ret[1]);
         }
         return ret[0] !== 0;
+    }
+    reset_document_close() {
+        wasm.webapp_reset_document_close(this.__wbg_ptr);
+    }
+    /**
+     * @param {number} id
+     * @param {any} decision
+     * @returns {any}
+     */
+    respond_document(id, decision) {
+        const ret = wasm.webapp_respond_document(this.__wbg_ptr, id, decision);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
+     * @param {any} location
+     * @returns {Uint8Array}
+     */
+    save_project(id, location) {
+        const ret = wasm.webapp_save_project(this.__wbg_ptr, id, location);
+        if (ret[3]) {
+            throw takeFromExternrefTable0(ret[2]);
+        }
+        var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+        wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+        return v1;
     }
     /**
      * @param {number} x
@@ -530,6 +725,28 @@ export class WebApp {
         }
         return takeFromExternrefTable0(ret[0]);
     }
+    /**
+     * @returns {any}
+     */
+    workspace_persistence() {
+        const ret = wasm.webapp_workspace_persistence(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} width
+     * @param {number} height
+     * @returns {any}
+     */
+    workspace_projection(width, height) {
+        const ret = wasm.webapp_workspace_projection(this.__wbg_ptr, width, height);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
 }
 if (Symbol.dispose) WebApp.prototype[Symbol.dispose] = WebApp.prototype.free;
 
@@ -564,6 +781,26 @@ export class WebGpu {
     }
 }
 if (Symbol.dispose) WebGpu.prototype[Symbol.dispose] = WebGpu.prototype.free;
+
+export class WebProject {
+    static __wrap(ptr) {
+        const obj = Object.create(WebProject.prototype);
+        obj.__wbg_ptr = ptr;
+        WebProjectFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebProjectFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_webproject_free(ptr, 0);
+    }
+}
+if (Symbol.dispose) WebProject.prototype[Symbol.dispose] = WebProject.prototype.free;
 function __wbg_get_imports() {
     const import0 = {
         __proto__: null,
@@ -679,6 +916,10 @@ function __wbg_get_imports() {
         }, arguments); },
         __wbg_call_6bcf8d3e20937e46: function() { return handleError(function (arg0, arg1, arg2) {
             const ret = arg0.call(arg1, arg2);
+            return ret;
+        }, arguments); },
+        __wbg_call_7bbd9cceba9949ad: function() { return handleError(function (arg0, arg1, arg2, arg3) {
+            const ret = arg0.call(arg1, arg2, arg3);
             return ret;
         }, arguments); },
         __wbg_clearBuffer_3d5a3057c3c8a9bf: function(arg0, arg1, arg2, arg3) {
@@ -851,6 +1092,10 @@ function __wbg_get_imports() {
             const ret = arg0[arg1 >>> 0];
             return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
         },
+        __wbg_get_989d0a1309644f2b: function() { return handleError(function (arg0, arg1) {
+            const ret = Reflect.get(arg0, arg1);
+            return ret;
+        }, arguments); },
         __wbg_get_b1f0ab13c737f856: function(arg0, arg1) {
             const ret = arg0[arg1 >>> 0];
             return ret;
@@ -1137,6 +1382,24 @@ function __wbg_get_imports() {
             const ret = new Map();
             return ret;
         },
+        __wbg_new_8f72ed7c652bf5a2: function(arg0, arg1) {
+            try {
+                var state0 = {a: arg0, b: arg1};
+                var cb0 = (arg0, arg1) => {
+                    const a = state0.a;
+                    state0.a = 0;
+                    try {
+                        return wasm_bindgen__convert__closures_____invoke__ha794e5c89b95242d(a, state0.b, arg0, arg1);
+                    } finally {
+                        state0.a = a;
+                    }
+                };
+                const ret = new Promise(cb0);
+                return ret;
+            } finally {
+                state0.a = 0;
+            }
+        },
         __wbg_new_bebc3f4757acf305: function() {
             const ret = new Object();
             return ret;
@@ -1183,6 +1446,10 @@ function __wbg_get_imports() {
             const ret = arg0.next();
             return ret;
         }, arguments); },
+        __wbg_now_d1fb6650485d7f3e: function() {
+            const ret = Date.now();
+            return ret;
+        },
         __wbg_now_e7c6795a7f81e10f: function(arg0) {
             const ret = arg0.now();
             return ret;
@@ -1191,6 +1458,10 @@ function __wbg_get_imports() {
             const ret = arg0.onSubmittedWorkDone();
             return ret;
         },
+        __wbg_parse_6937a9050adfb0e1: function() { return handleError(function (arg0, arg1) {
+            const ret = JSON.parse(getStringFromWasm0(arg0, arg1));
+            return ret;
+        }, arguments); },
         __wbg_performance_3fcf6e32a7e1ed0a: function(arg0) {
             const ret = arg0.performance;
             return ret;
@@ -1906,6 +2177,10 @@ function __wbg_get_imports() {
             const ret = WebGpu.__wrap(arg0);
             return ret;
         },
+        __wbg_webproject_new: function(arg0) {
+            const ret = WebProject.__wrap(arg0);
+            return ret;
+        },
         __wbg_width_b5e609025d3f7451: function(arg0) {
             const ret = arg0.width;
             return ret;
@@ -1917,28 +2192,28 @@ function __wbg_get_imports() {
             arg0.writeTexture(arg1, getArrayU8FromWasm0(arg2, arg3), arg4, arg5);
         }, arguments); },
         __wbindgen_generic_0000000000000001: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1198, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1242, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h7697d3b1943426f5);
             return ret;
         },
         __wbindgen_generic_0000000000000002: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 1132, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 1172, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476);
             return ret;
         },
         __wbindgen_generic_0000000000000003: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 1142, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 1182, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c);
             return ret;
         },
         __wbindgen_generic_0000000000000004: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 1132, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_50);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 1172, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_68);
             return ret;
         },
         __wbindgen_generic_0000000000000005: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 1132, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_51);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 1172, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_69);
             return ret;
         },
         __wbindgen_generic_0000000000000006: function(arg0) {
@@ -2000,15 +2275,15 @@ function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476(arg0, arg
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_50(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_50(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_68(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_68(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_51(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_51(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_69(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_69(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
@@ -2110,6 +2385,9 @@ const WebAppFinalization = (typeof FinalizationRegistry === 'undefined')
 const WebGpuFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_webgpu_free(ptr, 1));
+const WebProjectFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_webproject_free(ptr, 1));
 
 function addToExternrefTable0(obj) {
     const idx = wasm.__externref_table_alloc();
@@ -2460,7 +2738,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL("layer_web_bg.c2653606a4fc3e7d306b.wasm", import.meta.url);
+        module_or_path = new URL("layer_web_bg.b53b7c8a747c9c3e81d7.wasm", import.meta.url);
     }
     const imports = __wbg_get_imports();
 
