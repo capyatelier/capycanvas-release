@@ -1,5 +1,19 @@
 # Web-release audits
 
+## Update: source 0a59ea5 — workspace switcher and mouse holds
+
+Reviewed `0a59ea50107a2fdba3d6c2a806cf88690f67e61a` against `bee29ce`
+and confirmed it was pushed to source main. Changes add the configurable web
+workspace switcher and separate mouse holds from context menus. The packager
+includes first-party workspace-switcher.js and rewrites its importing manager
+module before fingerprinting the application.
+
+Dependency manifests, lockfile, branding terms and toolchain versions are
+unchanged. Locked license/source checks passed, with no new GPL/LGPL runtime
+inputs identified. The build, upstream packaging/launcher checks and artifact
+verification passed, producing 185 files and 183 precache entries. Browser
+tests remain skipped per the owner's instruction and are recorded as not run.
+
 ## Update: source bee29ce — held pickup and workspace refinements
 
 Reviewed `bee29ce500575babc0a59acc1818e3625198c76b` against `c7b39d8`
