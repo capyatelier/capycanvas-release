@@ -1,5 +1,23 @@
 # Web-release audits
 
+## Update: source c7b39d8 — web workspace persistence and controls
+
+Reviewed upstream `879293f` against `6a89572`, then published packaging-fixture
+fix `c7b39d8518e1594f8ac9124a15bd7040654a1d4b`. The fixture now includes
+the new workspace modules and checks their fingerprint propagation. Changes
+add web workspace management/persistence, a workspace worker, resize handling
+and shared dropdown rendering. Worker imports and its application URL are
+fingerprinted by the upstream packager.
+
+The web graph adds layer-workspace, SHA-2, UUID and permissively licensed
+support crates. Native SQLite dependencies remain excluded. Locked license/
+source checks and original notice coverage passed; no new GPL/LGPL runtime
+inputs were identified. Branding and toolchain versions are unchanged.
+
+The build, all 19 upstream packaging/launcher checks and artifact verification
+passed, producing 183 files and 181 precache entries. Browser tests remain
+skipped per the owner's instruction and are recorded as not run.
+
 ## Update: source 6a89572 — workspace rendering and held-layer reordering
 
 Reviewed `6a895727fbee37904db4fc431ced777a98e378b3` against `9a1235e`
