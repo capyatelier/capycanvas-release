@@ -1,13 +1,13 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.92aa9364579febe9d54e.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.869827219329f2be1bee.js";
 import { createPreferences } from "./preferences.63fd8f8678d7fe7b57dd.js";
 import { showGpuNotice } from "./gpu.974d8febbbb3582fae28.js";
-import { createCustomization } from "./customization.ff1a992808c11d302d87.js";
+import { createCustomization } from "./customization.1b3cfe9a8c36ec63b1d3.js";
 import { createEditorPanels } from "./editor-panels.e2c5f79bbc73ad160375.js";
 import { createWorkspaceChrome } from "./workspace-chrome.106416c6c0326ce9f9a6.js";
 import { createDocuments } from "./documents.5002d3ca223c9f29c502.js";
 import { createSystemStatus } from "./system-status.488dd6d1a506ec139165.js";
 import { createNumberField } from "./numeric.9da6fc00fab7ed615c33.js";
-import { createLayerPanel } from "./layers.5b977782c4e455cdec63.js";
+import { createLayerPanel } from "./layers.260790a1b216eab8ef63.js";
 import { createEffectPanels, fetchFilterPackage } from "./effects.32f7cf3f01aec0e95017.js";
 
 // The static packager fills this map with fingerprinted resource filenames.
@@ -172,22 +172,27 @@ function draggable(node, item) {
   }
   node.draggable = true;
   let pointer;
-  node.addEventListener("workspace-context-claimed", () => { pointer = null; });
+  node.addEventListener("workspace-context-claimed", e => {
+    if (pointer?.dragging) e.preventDefault();
+    else if (pointer) pointer.context = true;
+  });
   node.addEventListener("pointerdown", (e) => {
-    if (e.pointerType !== "touch" || e.button !== 0) return;
+    if (e.pointerType === "mouse" || e.button !== 0) return;
     pointer = { id: e.pointerId, x: e.clientX, y: e.clientY, dragging: false };
     node.setPointerCapture(e.pointerId);
   });
   node.addEventListener("pointermove", (e) => {
     if (pointer?.id !== e.pointerId) return;
     if (!pointer.dragging && Math.hypot(e.clientX - pointer.x, e.clientY - pointer.y) > 8) {
+      customization.dismissContext();
       pointer.dragging = true; dragItem = item; node.classList.add("drag-source"); updateZen();
     }
     if (pointer.dragging) { e.preventDefault(); showDropHint(dropHint(e, item)); }
   });
   const endPointer = (e) => {
     if (pointer?.id !== e.pointerId) return;
-    const moved = pointer.dragging; pointer = null;
+    const moved = pointer.dragging, context = pointer.context; pointer = null;
+    if (context) revealPointer = e.pointerId;
     if (!moved) return;
     revealPointer = e.pointerId;
     if (e.type === "pointerup") dropItem(item, dropHint(e, item));
@@ -195,6 +200,8 @@ function draggable(node, item) {
   };
   for (const event of ["pointerup", "pointercancel", "lostpointercapture"]) node.addEventListener(event, endPointer);
   node.addEventListener("dragstart", (e) => {
+    if (pointer?.dragging) { e.preventDefault(); return; }
+    customization.dismissContext();
     e.dataTransfer.setData("text/layer-dock", JSON.stringify(item));
     e.dataTransfer.effectAllowed = "move";
     dragItem = item;
@@ -585,14 +592,14 @@ function buildPanels() {
     sizeButtons.set(value, choice);
   }
   panels.get("sizes").append(controls, grid);
-  layerPanel = createLayerPanel({ app, catalog, state: () => state, panel: panels.get("layers"), element, button, icon, dispatch, applyChange, message, numberField });
+  layerPanel = createLayerPanel({ app, catalog, state: () => state, panel: panels.get("layers"), element, button, icon, dispatch, applyChange, message, numberField, dismissContext: () => customization.dismissContext() });
   effectPanels = createEffectPanels({app,catalog,state:()=>state,panels,element,button,icon,dispatch,numberField,
     contentChanged:id=>{panelMeasurements.delete(id);queuePanelMeasurements();}});
 }
 function contentPanel(id) {
   const panel=element("div",`panel ${id}-panel`);
   if(id==="layers") {
-    const view=createLayerPanel({app,catalog,state:()=>state,panel,element,button,icon,dispatch,applyChange,message,numberField});
+    const view=createLayerPanel({app,catalog,state:()=>state,panel,element,button,icon,dispatch,applyChange,message,numberField,dismissContext:()=>customization.dismissContext()});
     panel.refreshPanel=view.refresh; panel.disposePanel=view.dispose;
   } else if(["adjustments","properties","stats"].includes(id)) {
     const copies=new Map(["adjustments","properties","stats"].map(name=>[name,name===id?panel:element("div","panel")]));
@@ -691,6 +698,73 @@ function update(regions) {
 // records; CSS animates the returned visibility without resizing the canvas.
 let revealPointer = null;
 let workspaceGesture = null;
+function grabTabSlide(drag) {
+  if (!drag.node.matches(".dock-tab")) return;
+  const strip = drag.node.parentElement;
+  if (!strip.matches(".tab-list, .drawer-tab-strip")) return;
+  const group = JSON.parse(strip.parentElement.dataset.workspaceDrag).item.group;
+  const rect = node => {
+    const b = node.getBoundingClientRect();
+    return { x: b.x, y: b.y, width: b.width, height: b.height };
+  };
+  drag.tabGrab = { clip: rect(strip), tabs: [...strip.children].map((source, index) =>
+    ({ source, hit: { group, index, bounds: rect(source) } })) };
+}
+function startTabSlide(drag) {
+  if (!drag.tabGrab) return;
+  const { clip, tabs: grabbed } = drag.tabGrab;
+  drag.tabGrab = null;
+  const overlay = element("div", "tab-slide-overlay");
+  Object.assign(overlay.style, { left: `${clip.x}px`, top: `${clip.y}px`,
+    width: `${clip.width}px`, height: `${clip.height}px` });
+  overlay.setAttribute("aria-hidden", "true"); overlay.inert = true;
+  // Freeze insertion geometry; only these noninteractive copies move.
+  const tabs = grabbed.map(({ source, hit }) => {
+    const bounds = hit.bounds, preview = source.cloneNode(true);
+    for (const name of [...preview.attributes].map(a => a.name)) {
+      if (name.startsWith("data-") || name === "id") preview.removeAttribute(name);
+    }
+    preview.classList.add(source === drag.node ? "dragged-tab-preview" : "neighbor-tab-preview");
+    Object.assign(preview.style, { left: `${bounds.x - clip.x}px`, top: `${bounds.y - clip.y}px`,
+      width: `${bounds.width}px`, height: `${bounds.height}px`, font: getComputedStyle(source).font, transform: "translateX(0px)" });
+    source.classList.add("dragged-tab-source");
+    overlay.append(preview);
+    return { source, preview, hit };
+  });
+  workspace.append(overlay);
+  overlay.getBoundingClientRect(); // Establish the neighbors' transition starting positions.
+  drag.tabSlide = { tabs, clip, overlay };
+}
+function clearTabSlide(drag) {
+  if (!drag.tabSlide) return;
+  for (const tab of drag.tabSlide.tabs) tab.source.classList.remove("dragged-tab-source");
+  drag.tabSlide.overlay.remove();
+  drag.tabSlide = null;
+}
+function updateTabSlide(drag, e) {
+  const slide = drag.tabSlide;
+  if (!slide) return;
+  const preview = app.tab_drag_preview([e.clientX, e.clientY]);
+  if (!preview) { clearTabSlide(drag); return; }
+  for (const tab of slide.tabs) {
+    const offset = tab.source === drag.node ? preview.bounds.x - tab.hit.bounds.x
+      : preview.offsets.find(o => Number(o.index) === tab.hit.index).x;
+    tab.preview.style.transform = `translateX(${offset}px)`;
+  }
+}
+function workspaceCursor(cursor) {
+  if (cursor) {
+    workspace.dataset.workspaceCursor = cursor;
+    workspace.style.setProperty("--workspace-cursor", cursor);
+  } else {
+    delete workspace.dataset.workspaceCursor;
+    workspace.style.removeProperty("--workspace-cursor");
+  }
+}
+// DEPRECATED workspace presentation path. Expose UiSession::workspace_update
+// through Wasm (crates/layer-ui/src/workspace_update.rs); retain DOM/content while
+// model_revision is unchanged and apply the absolute geometry once per frame.
+// Preserve every DragWorkspace input phase and shared cancellation/history.
 function workspaceGestureEvent(phase, e) {
   const drag = workspaceGesture;
   if (!drag) return;
@@ -705,9 +779,11 @@ function endWorkspaceGesture(e, cancel = false) {
   if (!drag || (e && drag.id !== e.pointerId)) return;
   if (drag.started) workspaceGestureEvent(cancel ? "cancel" : "up", e || drag.last);
   workspaceGesture = null;
+  clearTabSlide(drag);
+  workspaceCursor(null);
   if (workspace.hasPointerCapture(drag.id)) workspace.releasePointerCapture(drag.id);
   dropIndicator.hidden = true;
-  if (drag.started) { revealPointer = drag.id; e?.preventDefault(); e?.stopPropagation(); }
+  if (drag.started || drag.context) { revealPointer = drag.id; e?.preventDefault(); e?.stopPropagation(); }
   updateZen();
 }
 workspace.addEventListener("pointerdown", e => {
@@ -715,7 +791,8 @@ workspace.addEventListener("pointerdown", e => {
   const node = e.target.closest("[data-workspace-drag]");
   if (!node) return;
   workspaceGesture = { id: e.pointerId, action: JSON.parse(node.dataset.workspaceDrag),
-    start: e, last: e, started: false };
+    start: e, last: e, started: false, node, cursor: getComputedStyle(node).cursor };
+  grabTabSlide(workspaceGesture);
   // External resize strips are outside the unselectable panel. Prevent a
   // native text-selection drag from stealing their pointer sequence.
   if (workspaceGesture.action.type !== "drag_workspace") e.preventDefault();
@@ -727,14 +804,24 @@ workspace.addEventListener("pointermove", e => {
   if (!drag.started) {
     const distance = Math.hypot(e.clientX - drag.start.clientX, e.clientY - drag.start.clientY);
     if (distance <= (drag.action.type === "drag_workspace" ? 8 : 0)) return;
+    customization.dismissContext();
     drag.started = true;
     // Capture on the stable workspace before Rust tears off/rebuilds a tab.
     workspace.setPointerCapture(e.pointerId);
     groups.forEach(node => node.getAnimations().forEach(a => a.cancel()));
+    startTabSlide(drag);
     workspaceGestureEvent("down", drag.start);
+    if (drag.tabSlide) app.begin_tab_drag(drag.tabSlide.tabs.map(t => t.hit), drag.tabSlide.clip);
   }
   workspaceGestureEvent("move", e);
-  if (drag.action.type === "drag_workspace") showDropHint(dropHint(e, drag.action.item));
+  updateTabSlide(drag, e);
+  if (drag.action.type === "drag_workspace") {
+    const hint = dropHint(e, drag.action.item);
+    showDropHint(hint);
+    workspaceCursor("grabbing");
+  } else {
+    workspaceCursor(drag.cursor);
+  }
   e.preventDefault(); e.stopPropagation();
 }, { capture: true });
 workspace.addEventListener("pointerup", e => endWorkspaceGesture(e), { capture: true });
@@ -744,7 +831,16 @@ workspace.addEventListener("lostpointercapture", e => {
   // stable workspace releases that child; only losing our own capture cancels.
   if (e.target === workspace) endWorkspaceGesture(e, true);
 });
-workspace.addEventListener("workspace-context-claimed", () => endWorkspaceGesture(null, true));
+workspace.addEventListener("workspace-context-claimed", e => {
+  const drag = workspaceGesture;
+  if (drag && (drag.node.contains(e.target) || e.target.contains(drag.node))) {
+    // A late native contextmenu event must not interrupt an existing drag.
+    if (drag.started) { e.preventDefault(); return; }
+    drag.context = true;
+    // Keep receiving this contact even when the menu covers the original tab.
+    workspace.setPointerCapture(drag.id);
+  } else endWorkspaceGesture(null, true);
+});
 workspace.addEventListener("dblclick", e => {
   if (e.target.closest(".dock-tab")) return;
   const node = e.target.closest("[data-workspace-drag]");
@@ -1069,13 +1165,12 @@ window.addEventListener("blur", () => {
 });
 function tabHits() {
   return [...groups.entries()].flatMap(([group, node]) =>
-    [...node.querySelectorAll(".dock-tab")].map((tab) => {
-      const b = tab.getBoundingClientRect();
-      return {
-        group,
-        index: Number(tab.dataset.index),
-        bounds: { x: b.x, y: b.y, width: b.width, height: b.height },
-      };
+    [...node.querySelectorAll(".dock-tab")].flatMap(tab => {
+      const b = tab.getBoundingClientRect(), clip = tab.parentElement.getBoundingClientRect();
+      const x = Math.max(b.x, clip.x), y = Math.max(b.y, clip.y);
+      const width = Math.min(b.right, clip.right) - x, height = Math.min(b.bottom, clip.bottom) - y;
+      return width > 0 && height > 0 ? [{ group, index: Number(tab.dataset.index),
+        bounds: { x, y, width, height } }] : [];
     }),
   ).concat(workspaceChrome?.tabHits() ?? []);
 }

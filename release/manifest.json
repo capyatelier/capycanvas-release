@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "1bd5172fa0e72517e69bc767ac9e52d12a71a71a",
-    "cargoLockSha256": "7885818b79d7beec671d3b06b2d1b3f6d15d814833c92037442a75063e93d5e6"
+    "commit": "9a1235ee6998a4a16edcda48ed306484bf94cd90",
+    "cargoLockSha256": "f8294138ee14032683a778c9777f43be02d56ff00a073887dd5a8ef3c0f03277"
   },
   "domain": "editor.capycanvas.art",
   "target": "wasm32-unknown-unknown",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "passed",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "8793567a8f62bca25e9a0f9e8baa24eee0e42a303b6a506b8529d4909fb889ec",
+  "workerVersion": "802ecb9243473a344609603e4430b118bafc85619b636463da2dfdeabf455f0f",
   "dependencies": [
     {
       "name": "adler2",
@@ -478,46 +478,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_then_7a850dae4493f353",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_length_4e1adc0d42e23620",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_6f8b0d724fe26c07",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_webgpu_new",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_get_b1f0ab13c737f856",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_8f72ed7c652bf5a2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_13d25b81ab403f5e",
       "kind": "function"
     },
@@ -528,12 +488,52 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_webgpu_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_webproject_new",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_call_6bcf8d3e20937e46",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_8f72ed7c652bf5a2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_typed_6f8b0d724fe26c07",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_get_b1f0ab13c737f856",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_length_4e1adc0d42e23620",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_then_7a850dae4493f353",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_call_7bbd9cceba9949ad",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
       "kind": "function"
     },
     {
@@ -2411,9 +2411,9 @@
       "bytes": 2534,
       "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
     },
-    "assets/app.55bc4733c7d7c9bbcd1e.js": {
-      "bytes": 62636,
-      "sha256": "55bc4733c7d7c9bbcd1e13afee33a7d48f658f2a6e9345623678d50a9c9f87d3"
+    "assets/app.9b54c5710a5662492223.js": {
+      "bytes": 67243,
+      "sha256": "9b54c5710a56624922237ce109e72d54a00d60dcf952e5e8856156953efd58c1"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -2607,9 +2607,9 @@
       "bytes": 23682,
       "sha256": "e782c2d1201096becd32388462ae01236791dc5cb4e67a17331339abd2cf05f8"
     },
-    "assets/customization.ff1a992808c11d302d87.js": {
-      "bytes": 29845,
-      "sha256": "ff1a992808c11d302d87d605118e31c18248d4d3acc1a757b53cf54d252be194"
+    "assets/customization.1b3cfe9a8c36ec63b1d3.js": {
+      "bytes": 30036,
+      "sha256": "1b3cfe9a8c36ec63b1d3f19198d8cb92ac339692120ced22d98509f1f7878a43"
     },
     "assets/documents.5002d3ca223c9f29c502.js": {
       "bytes": 7660,
@@ -3043,29 +3043,29 @@
       "bytes": 1309,
       "sha256": "adc886ce0a33f63e8896c9c49c86383767cfd2421ae925a6ffdd6842f2c556ee"
     },
-    "assets/layers.5b977782c4e455cdec63.js": {
-      "bytes": 15499,
-      "sha256": "5b977782c4e455cdec63cd752aaa4dd7dd81d0746b5783afa47cc4a31f2f2bc8"
+    "assets/layers.260790a1b216eab8ef63.js": {
+      "bytes": 15688,
+      "sha256": "260790a1b216eab8ef633fd1346f067fe6949aaa767fdb4518cb2ad008a7988d"
     },
     "assets/numeric.9da6fc00fab7ed615c33.js": {
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.eafec6b22a53349135b1.wasm": {
-      "bytes": 8221040,
-      "sha256": "eafec6b22a53349135b192b7a960a28487b47774d3ea6cd639bc600f1214868c"
+    "assets/pkg/layer_web_bg.fbbf94ce8a969812c9c5.wasm": {
+      "bytes": 8403258,
+      "sha256": "fbbf94ce8a969812c9c51c65e552f4a9323ab3ce6def6060353fca7d54e2a587"
     },
-    "assets/pkg/layer_web.92aa9364579febe9d54e.js": {
-      "bytes": 105450,
-      "sha256": "92aa9364579febe9d54e2cc16ae8ec39a1ef4081dc5e15853ab0d0907c393ed7"
+    "assets/pkg/layer_web.869827219329f2be1bee.js": {
+      "bytes": 106202,
+      "sha256": "869827219329f2be1beef07e9bb3e7cc7472f0f0d3c2dd172e1b6a38212f3b13"
     },
     "assets/preferences.63fd8f8678d7fe7b57dd.js": {
       "bytes": 23902,
       "sha256": "63fd8f8678d7fe7b57dd0bfdc97e7d6778fd7b2edaa86e2bcd23c813f1adebbc"
     },
-    "assets/style.6acde0e741014293e813.css": {
-      "bytes": 50700,
-      "sha256": "6acde0e741014293e81333dc525af5307638861aba9bd40ac2a2bfac1c634f5e"
+    "assets/style.db12fec3a73ff16fb5c5.css": {
+      "bytes": 51367,
+      "sha256": "db12fec3a73ff16fb5c5eb7e67f0cfdc1eb88c168189b980ef177f93cbc62342"
     },
     "assets/system-status.488dd6d1a506ec139165.js": {
       "bytes": 4114,
@@ -3089,7 +3089,7 @@
     },
     "index.html": {
       "bytes": 2469,
-      "sha256": "e7ebc6c0a62d259e3a5afa54b3ec77c9c86e1bec82fd052c7931712c6167eab2"
+      "sha256": "b24b3d57e215b9c1f6f2430fb805c64390ef6bfdbcc38698091504e5e36f917e"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3117,7 +3117,7 @@
     },
     "sw.js": {
       "bytes": 25337,
-      "sha256": "2da2d11f65b0a025890d341e86288666d6e575299c777b7d96245fb9b1c146d8"
+      "sha256": "ce50663357c74eaca3c7cba549aa51e8d9c6986e4d94e76865f8ac5cb8489b82"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 5087,

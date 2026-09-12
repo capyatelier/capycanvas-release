@@ -1,5 +1,19 @@
 # Web-release audits
 
+## Update: source 9a1235e — long-press dragging and workspace motion
+
+Reviewed `9a1235ee6998a4a16edcda48ed306484bf94cd90` against `1bd5172`
+and confirmed it was pushed to source main. Web changes improve long-press
+dragging across targets, drag cursors and shared workspace motion. The new
+native workspace persistence crate and its SQLite-related dependencies are
+outside the PWA graph; the recorded web dependency inventory is unchanged.
+
+Packaging scripts, branding terms and toolchain versions are unchanged.
+Locked license/source checks passed, with no new GPL/LGPL runtime inputs
+identified. The build, upstream packaging/launcher checks and artifact
+verification passed, producing 180 files and 178 precache entries. Browser
+tests remain skipped per the owner's instruction and are recorded as not run.
+
 ## Update: source 1bd5172 — columns and drawer dragging
 
 Reviewed `1bd5172fa0e72517e69bc767ac9e52d12a71a71a` against `a7c048c`

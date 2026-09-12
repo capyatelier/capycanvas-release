@@ -9,20 +9,21 @@ body { margin: 0; overflow: hidden; background: var(--bg); color: var(--text); }
 button, input, select, summary { font: inherit; accent-color: var(--accent); }
 button, select, input[type="color"], summary { min-height: 34px; border: 0; border-radius: 6px; background: transparent; color: var(--text); padding: 5px 17px; }
 button, summary { cursor: default; font-weight: 700; line-height: 24px; }
-:where(:root:not([data-touch])) button:hover:not(:disabled):not(.panel-grip), :where(:root:not([data-touch])) summary:hover, :where(:root:not([data-touch])) select:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
-button:active:not(:disabled):not(.panel-grip), summary:active { background: color-mix(in srgb, var(--text) 16%, transparent); }
+:where(:root:not([data-touch])) button:hover:not(:disabled):not(.panel-grip):not(.dock-tab), :where(:root:not([data-touch])) summary:hover, :where(:root:not([data-touch])) select:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+button:active:not(:disabled):not(.panel-grip):not(.dock-tab), summary:active { background: color-mix(in srgb, var(--text) 16%, transparent); }
 button:disabled { opacity: .36; cursor: default; }
 button[aria-pressed="true"], button[aria-selected="true"] { background: var(--selected); }
 :focus-visible { outline: none; }
 /* Chrome is a control surface, not a text document. Preserve text editing and
    copyable labels. Pen-first chrome intentionally has no focus/tap halo. */
-.chrome, .dock-group, .tile-popover, dialog, #canvas, #canvas-cursor, #canvas-cursor * { user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.chrome, .dock-group, .dock-tab, .tile-popover, dialog, #canvas, #canvas-cursor, #canvas-cursor * { user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
 /* Safari can select SVG artwork independently of pointer hit testing. */
 #canvas, #canvas-cursor, #canvas-cursor * { -webkit-touch-callout: none; -webkit-user-drag: none; }
 #document-title, #view-info, #status, input:not([type="range"]):not([type="checkbox"]):not([type="color"]), textarea { user-select: text; -webkit-user-select: text; }
 .brush-preview, svg { -webkit-user-drag: none; pointer-events: none; }
 #canvas:focus { outline: none; }
 #workspace { position: relative; width: 100vw; height: 100dvh; min-height: 320px; }
+#workspace[data-workspace-cursor], #workspace[data-workspace-cursor] * { cursor: var(--workspace-cursor) !important; }
 #center { position: absolute; inset: 0; }
 body:not([data-gpu="ready"]) #canvas { visibility: hidden; }
 #gpu-notice { position: absolute; inset: 54px 6px 30px; display: flex; flex-direction: column; padding: 6px; overflow: auto; background: var(--bg); cursor: default; container-type: inline-size; }
@@ -60,7 +61,7 @@ body:not([data-gpu="ready"]) #canvas { visibility: hidden; }
 #canvas-cursor .cursor-outline-front { stroke: white; stroke-dasharray: 3 3; }
 #canvas-cursor .cursor-marker-back { stroke-width: 3; }
 #canvas-cursor .cursor-marker-front { stroke: white; }
-#header { --header-item-gap:6px; --header-text-padding:12px; position: absolute; inset: 0 0 auto; height: 48px; padding: 6px; display: flex; align-items: center; justify-content: space-between; gap:var(--header-item-gap); background: transparent; z-index: 1000; }
+#header { --header-item-gap:6px; --header-text-padding:6px; position: absolute; inset: 0 0 auto; height: 48px; padding: 6px; display: flex; align-items: center; justify-content: space-between; gap:var(--header-item-gap); background: transparent; z-index: 1000; }
 #header nav > button, .header-menu > summary, #document-title { background: var(--bg); border-radius: 6px; }
 :where(:root:not([data-touch])) #header nav > button:hover, :where(:root:not([data-touch])) .header-menu > summary:hover { background: color-mix(in srgb, var(--bg), var(--text) 8%); }
 #header nav > button:active, .header-menu > summary:active { background: color-mix(in srgb, var(--bg), var(--text) 16%); }
@@ -172,7 +173,14 @@ svg { width: 16px; height: 16px; flex: none; display: block; }
 .panel-grip { touch-action: none; }
 .dock-tab.icon-only-tab { width: 36px; justify-content: center; }
 .drag-source { opacity: .5; }
-.dock-tab[aria-selected="true"], .dock-tab[aria-selected="true"]:hover { background: var(--panel); z-index: 1; }
+.dock-tab[aria-selected="true"] { background: var(--panel); z-index: 1; }
+.dragged-tab-source { visibility: hidden; }
+.tab-slide-overlay { position: fixed; z-index: 2000; overflow: hidden; pointer-events: none; }
+.tab-slide-overlay > .dock-tab { position: absolute; pointer-events: none; margin: 0; background: var(--tabbar); }
+.tab-slide-overlay > .dock-tab[aria-selected="true"] { background: var(--panel); }
+.tab-slide-overlay > .dragged-tab-preview { z-index: 2; }
+.neighbor-tab-preview { transition: transform 120ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .neighbor-tab-preview { transition: none; } }
 /* Concave lower shoulders join the selected tab to the panel, without borders. */
 .dock-tab[aria-selected="true"]::before, .dock-tab[aria-selected="true"]::after { content: ""; position: absolute; bottom: 0; width: 6px; height: 6px; pointer-events: none; }
 .dock-tab[aria-selected="true"]::before { left: -6px; background: radial-gradient(circle at top left, transparent 6px, var(--panel) 6px); }
