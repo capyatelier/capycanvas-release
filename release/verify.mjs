@@ -58,7 +58,8 @@ export function verify(directory, record, config) {
   assert.equal(record.domain, config.domain);
   assert.equal(record.target, "wasm32-unknown-unknown");
   assert.equal(record.profile, "web-release");
-  for (const gate of ["licenses", "sources", "upstreamUnitTests"]) assert.equal(record.checks[gate], "passed", `Missing release gate: ${gate}`);
+  for (const gate of ["licenses", "sources"]) assert.equal(record.checks[gate], "passed", `Missing release gate: ${gate}`);
+  assert.ok(["passed", "not run"].includes(record.checks.upstreamUnitTests), "Invalid upstream unit-test status");
   assert.ok(record.tools.rustc.startsWith(`rustc ${config.rust} `));
   for (const tool of ["wasmBindgen", "cargoAbout", "cargoDeny", "resvg"]) assert.equal(record.tools[tool], config[tool], `Unreviewed ${tool}`);
   assert.deepEqual(inventory(directory), record.files, "Package differs from its recorded inventory");

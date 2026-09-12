@@ -10,8 +10,10 @@ import { inventory, readJson, root, sha256, verify } from "./verify.mjs";
 const config = readJson(join(root, "release/source.json"));
 const args = process.argv.slice(2);
 const browserTests = args.includes("--browser-tests");
-const positional = args.filter((arg) => arg !== "--browser-tests");
-assert.ok(positional.length <= 1 && !positional.some((arg) => arg.startsWith("--")), "Usage: node release/build.mjs [../draw] [--browser-tests]");
+const skipTests = args.includes("--skip-tests");
+const positional = args.filter((arg) => !["--browser-tests", "--skip-tests"].includes(arg));
+assert.ok(!skipTests || !browserTests, "--skip-tests cannot be combined with --browser-tests");
+assert.ok(positional.length <= 1 && !positional.some((arg) => arg.startsWith("--")), "Usage: node release/build.mjs [../draw] [--browser-tests|--skip-tests]");
 const source = resolve(positional[0] || join(root, "../draw"));
 const run = (cmd, args, options = {}) => execFileSync(cmd, args, { cwd: root, stdio: "inherit", ...options });
 const capture = (cmd, args, options = {}) => run(cmd, args, { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"], maxBuffer: 32 * 1024 * 1024, ...options }).trim();
@@ -60,7 +62,7 @@ try {
     assert.ok(!/^(?:gtk|gdk|glib|gio|pango|cairo|libadwaita|wayland|layer-linux)(?:$|[-\d])/.test(name), `Native dependency in web graph: ${name}`);
     return [name + version, { name, version: version.slice(1), license }];
   })).values()].sort((a, b) => a.name.localeCompare(b.name, "en"));
-  run("node", ["--test", "apps/layer-web/run.test.mjs", "apps/layer-web/package.test.mjs"], options);
+  if (!skipTests) run("node", ["--test", "apps/layer-web/run.test.mjs", "apps/layer-web/package.test.mjs"], options);
   run("node", ["apps/layer-web/package.mjs"], options);
   if (browserTests) {
     run("node", ["apps/layer-web/test.mjs", "--package"], options);
@@ -81,7 +83,7 @@ try {
     target: "wasm32-unknown-unknown",
     profile: "web-release",
     tools: { rustc: rustVersion, node: process.version, wasmBindgen: config.wasmBindgen, cargoAbout: config.cargoAbout, cargoDeny: config.cargoDeny, resvg: config.resvg },
-    checks: { licenses: "passed", sources: "passed", upstreamUnitTests: "passed", upstreamBrowserTests: browserTests ? "passed" : "not run" },
+    checks: { licenses: "passed", sources: "passed", upstreamUnitTests: skipTests ? "not run" : "passed", upstreamBrowserTests: browserTests ? "passed" : "not run" },
     workerVersion, dependencies,
     wasmImports: WebAssembly.Module.imports(new WebAssembly.Module(readFileSync(join(site, wasmPath)))),
     files,

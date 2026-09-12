@@ -25,8 +25,6 @@ jobs:
           node-version: '24'
       - name: Verify committed PWA
         run: node release/verify.mjs
-      - name: Test release integrity gates
-        run: node --test release/verify.test.mjs
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:

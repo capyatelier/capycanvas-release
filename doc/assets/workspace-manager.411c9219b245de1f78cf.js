@@ -1,4 +1,4 @@
-import { createWorkspaceSwitcher } from "./workspace-switcher.ff54d3bb24d41fdd09e0.js";
+import { createWorkspaceSwitcher } from "./workspace-switcher.8b76a270a8158b89a217.js";
 export function createWorkspaceManager({ app, store, applyChange, element, button, icon, message, dispatch, hasLegacy, legacyError }) {
   const dialog = element("dialog", "workspace-manager"), formDialog = element("dialog", "workspace-form");
   const heading = element("h2"), header = element("header", "dialog-header");

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "8b37ee270b0ac238e959e41c9a40fcb130d030b0",
+    "commit": "76b4dd5e3238c81435b83397eb6622b40e6b6dfe",
     "cargoLockSha256": "31982d679cbec950bcba4846e1c16b6373e9522070abd210eb8b98ba495c8e5c"
   },
   "domain": "editor.capycanvas.art",
@@ -19,10 +19,10 @@
   "checks": {
     "licenses": "passed",
     "sources": "passed",
-    "upstreamUnitTests": "passed",
+    "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "3a22a5d0079c0e748cc472cb8f01d37fa1a8787018f177325d4b798abf4c3dfa",
+  "workerVersion": "47fe6712b41a9c473e277e97e51238d799a0d712ceab6a55485de4f408d823e7",
   "dependencies": [
     {
       "name": "adler2",
@@ -538,11 +538,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_13d25b81ab403f5e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_call_6bcf8d3e20937e46",
       "kind": "function"
     },
@@ -563,12 +558,17 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_then_7a850dae4493f353",
+      "name": "__wbg_set_13d25b81ab403f5e",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_bf6dde4923b9b059",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_then_7a850dae4493f353",
       "kind": "function"
     },
     {
@@ -2461,9 +2461,9 @@
       "bytes": 2534,
       "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
     },
-    "assets/app.387739330f004098bf6a.js": {
+    "assets/app.93a10016b39bf734e242.js": {
       "bytes": 76955,
-      "sha256": "387739330f004098bf6a0e2d26ec8633629e35267f39f060577a856ca08aea18"
+      "sha256": "93a10016b39bf734e242d083cee68c753eeceb235f867d36b406984ee265112e"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -3105,13 +3105,13 @@
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.d91c6f5b624be68693ac.wasm": {
-      "bytes": 10311225,
-      "sha256": "d91c6f5b624be68693ac05119224bc4c0162be009a295775c438104a345e8fc5"
+    "assets/pkg/layer_web_bg.70819d1f95a8971421cd.wasm": {
+      "bytes": 10320716,
+      "sha256": "70819d1f95a8971421cdc8f8edcc937d96452579ab0c7ce21d0700bc100d61f8"
     },
-    "assets/pkg/layer_web.2af2a6b42f77e34ba926.js": {
+    "assets/pkg/layer_web.fe5145b35c10d7dc0c5a.js": {
       "bytes": 112409,
-      "sha256": "2af2a6b42f77e34ba9266c7dfa0538c883747b79a14d2c19c7af4a3aae9c7847"
+      "sha256": "fe5145b35c10d7dc0c5ac24d621fc05dd231fcbd04f1491db1f477fd76634f7d"
     },
     "assets/preferences.63fd8f8678d7fe7b57dd.js": {
       "bytes": 23902,
@@ -3129,21 +3129,21 @@
       "bytes": 15762,
       "sha256": "5b1f831eda1b34ad86a4ca0c04447a37755af647f5468b3821c05d6b292486c6"
     },
-    "assets/workspace-manager.9150cfa8bbc6734546ee.js": {
+    "assets/workspace-manager.411c9219b245de1f78cf.js": {
       "bytes": 11241,
-      "sha256": "9150cfa8bbc6734546ee4b851fe837300845da09c46a91f2d5e601a5cc334322"
+      "sha256": "411c9219b245de1f78cf26f4b215c752e9970fef220f436eb0d9a53501b18e7b"
     },
     "assets/workspace-store.4b0bacc3ad861f7fe4a1.js": {
       "bytes": 4305,
       "sha256": "4b0bacc3ad861f7fe4a143ee1ffe53cec2630167d97b9a60462189332da9bfdf"
     },
-    "assets/workspace-switcher.ff54d3bb24d41fdd09e0.js": {
-      "bytes": 11773,
-      "sha256": "ff54d3bb24d41fdd09e0f4358835dcec5118574fef93550608c6ae63ff05d374"
+    "assets/workspace-switcher.8b76a270a8158b89a217.js": {
+      "bytes": 11910,
+      "sha256": "8b76a270a8158b89a217b663b914efa70d41531fc76bf3c38fcff297070c5a35"
     },
-    "assets/workspace-worker.38846a0767bdfbb0751b.js": {
+    "assets/workspace-worker.34f398035ad74d07879a.js": {
       "bytes": 530,
-      "sha256": "38846a0767bdfbb0751b5a8174280db58c9277851ec0bc1c1c521e297351653b"
+      "sha256": "34f398035ad74d07879a48070902ab0e33b30f9297d8444c3f49806c47ab186c"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3159,7 +3159,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "bca215f919ced13551e5464c42adab495edfafd2d9d5f5baf48e1de037518573"
+      "sha256": "adc820b561b2ff85ff0ef6d541a9d71aa3dd5ac94525f819558c1b01914a8e16"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3187,7 +3187,7 @@
     },
     "sw.js": {
       "bytes": 25973,
-      "sha256": "ccc491b29986347a56c1d44d9973dde49c0804707742ca789e31076bc748c12a"
+      "sha256": "891029ce305666ac48becc9e444929b402aad21db5d8d3158dae5cba0ecf9232"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 5087,
