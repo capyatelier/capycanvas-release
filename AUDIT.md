@@ -1,5 +1,19 @@
 # Web-release audits
 
+## Update: source 1bd5172 — columns and drawer dragging
+
+Reviewed `1bd5172fa0e72517e69bc767ac9e52d12a71a71a` against `a7c048c`
+and confirmed it was pushed to source main. Changes refine shared column and
+tile customization and add collapsed-column drawer dragging on the web.
+Dependency manifests, lockfile, packaging scripts, branding terms and toolchain
+versions are unchanged. Locked license/source checks passed, with no new
+GPL/LGPL runtime inputs identified.
+
+The build, upstream packaging/launcher checks and artifact verification passed,
+producing 180 files and 178 precache entries. Browser tests remain skipped per
+the owner's instruction and are recorded as not run. Uncommitted source work
+is excluded by packaging the pinned, pushed commit.
+
 ## Update: source a7c048c — web panels, documents and workspace
 
 Reviewed `a7c048c4db13185563fe010ef21209123a08be98` against `75c72f8`

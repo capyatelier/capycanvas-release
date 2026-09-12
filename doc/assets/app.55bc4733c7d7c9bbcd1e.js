@@ -1,9 +1,9 @@
-import init, { WebApp, WebGpu } from "./pkg/layer_web.a2d6d3640920e7880e91.js";
+import init, { WebApp, WebGpu } from "./pkg/layer_web.92aa9364579febe9d54e.js";
 import { createPreferences } from "./preferences.63fd8f8678d7fe7b57dd.js";
 import { showGpuNotice } from "./gpu.974d8febbbb3582fae28.js";
-import { createCustomization } from "./customization.8fe513e2f1febb9c6fe9.js";
+import { createCustomization } from "./customization.ff1a992808c11d302d87.js";
 import { createEditorPanels } from "./editor-panels.e2c5f79bbc73ad160375.js";
-import { createWorkspaceChrome } from "./workspace-chrome.4e5ec5b8be6666feba2b.js";
+import { createWorkspaceChrome } from "./workspace-chrome.106416c6c0326ce9f9a6.js";
 import { createDocuments } from "./documents.5002d3ca223c9f29c502.js";
 import { createSystemStatus } from "./system-status.488dd6d1a506ec139165.js";
 import { createNumberField } from "./numeric.9da6fc00fab7ed615c33.js";
@@ -223,7 +223,7 @@ workspace.append(dropIndicator);
 
 function dispatch(action) {
   try {
-    if (["move_panel", "move_group", "move_tile", "double_click_panel_handle"].includes(action.type))
+    if (["move_panel", "move_group", "move_tile", "double_click_panel_handle", "reset_column_width"].includes(action.type))
       action = {
         ...action,
         viewport: [workspace.clientWidth, workspace.clientHeight],
@@ -694,6 +694,7 @@ let workspaceGesture = null;
 function workspaceGestureEvent(phase, e) {
   const drag = workspaceGesture;
   if (!drag) return;
+  workspaceChrome?.measureColumnDrawers();
   dispatch({ ...drag.action, phase, position: [e.clientX, e.clientY],
     viewport: [workspace.clientWidth, workspace.clientHeight],
     ...(drag.action.type === "drag_workspace" ? { tabs: tabHits() } : {}),
@@ -738,13 +739,24 @@ workspace.addEventListener("pointermove", e => {
 }, { capture: true });
 workspace.addEventListener("pointerup", e => endWorkspaceGesture(e), { capture: true });
 workspace.addEventListener("pointercancel", e => endWorkspaceGesture(e, true), { capture: true });
-workspace.addEventListener("lostpointercapture", e => endWorkspaceGesture(e, true));
+workspace.addEventListener("lostpointercapture", e => {
+  // Touch starts with implicit capture on the tab. Transferring capture to the
+  // stable workspace releases that child; only losing our own capture cancels.
+  if (e.target === workspace) endWorkspaceGesture(e, true);
+});
 workspace.addEventListener("workspace-context-claimed", () => endWorkspaceGesture(null, true));
 workspace.addEventListener("dblclick", e => {
   if (e.target.closest(".dock-tab")) return;
   const node = e.target.closest("[data-workspace-drag]");
   if (!node) return;
   const action = JSON.parse(node.dataset.workspaceDrag);
+  if (action.type === "drag_divider" && layout.dividers.some(d =>
+    d.id === action.id && d.band && d.axis === "horizontal")) {
+    e.preventDefault(); e.stopPropagation();
+    endWorkspaceGesture(null, true);
+    dispatch({ type: "reset_column_width", id: action.id });
+    return;
+  }
   if (action.type !== "drag_workspace") return;
   const group = app.panel_handle_target(action.item);
   if (group == null) return;
@@ -1065,7 +1077,7 @@ function tabHits() {
         bounds: { x: b.x, y: b.y, width: b.width, height: b.height },
       };
     }),
-  );
+  ).concat(workspaceChrome?.tabHits() ?? []);
 }
 function dropHint(e, item) {
   try {
