@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "c7b39d8518e1594f8ac9124a15bd7040654a1d4b",
+    "commit": "bee29ce500575babc0a59acc1818e3625198c76b",
     "cargoLockSha256": "31982d679cbec950bcba4846e1c16b6373e9522070abd210eb8b98ba495c8e5c"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "passed",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "942ad5e3bd8481338e6ca315c2d0d829e53ab5949e7e6e44e1587bb5d0460ecd",
+  "workerVersion": "2c16e68703bf3c3d712156dac569e02b8a7cd5ed5c5369cb7cf882f0da33b0c4",
   "dependencies": [
     {
       "name": "adler2",
@@ -523,17 +523,27 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_then_7a850dae4493f353",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_13d25b81ab403f5e",
+      "name": "__wbg_new_typed_6f8b0d724fe26c07",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_bf6dde4923b9b059",
+      "name": "__wbg_call_6bcf8d3e20937e46",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webgpu_new",
       "kind": "function"
     },
     {
@@ -548,27 +558,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_resolve_35ec7e0c6af4c82c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_webgpu_new",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_webproject_new",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_then_7a850dae4493f353",
+      "name": "__wbg_set_13d25b81ab403f5e",
       "kind": "function"
     },
     {
@@ -578,7 +568,17 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_6f8b0d724fe26c07",
+      "name": "__wbg_webproject_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_bf6dde4923b9b059",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_resolve_35ec7e0c6af4c82c",
       "kind": "function"
     },
     {
@@ -2461,9 +2461,9 @@
       "bytes": 2534,
       "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
     },
-    "assets/app.52c15f0a8a2e56c83161.js": {
-      "bytes": 77028,
-      "sha256": "52c15f0a8a2e56c83161cbbc13ef88f0fe83594d5d21bd68411b252dfff812c9"
+    "assets/app.aa89efb5bb2436945e1a.js": {
+      "bytes": 76679,
+      "sha256": "aa89efb5bb2436945e1a6f49ada9992c5ee836bfdef1402288043d59fabb0b16"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -2657,9 +2657,9 @@
       "bytes": 23682,
       "sha256": "e782c2d1201096becd32388462ae01236791dc5cb4e67a17331339abd2cf05f8"
     },
-    "assets/customization.7daf51b8bff68e359d0b.js": {
-      "bytes": 30087,
-      "sha256": "7daf51b8bff68e359d0b33676c80ac7533a51d88e12a9049d3e6d6d3db97104c"
+    "assets/customization.6c5a2c769aa72dc62480.js": {
+      "bytes": 30425,
+      "sha256": "6c5a2c769aa72dc624800e889707da675e807b3b288cd0f0dddfea10aa3aa798"
     },
     "assets/documents.5002d3ca223c9f29c502.js": {
       "bytes": 7660,
@@ -2985,6 +2985,10 @@
       "bytes": 439,
       "sha256": "a1af1dc64e78f17c94635c1081e5d5f84ca10323c608b7c21e0c908f53d45102"
     },
+    "assets/icons/layer-pin-symbolic.3009a8af945d9af41b88.svg": {
+      "bytes": 281,
+      "sha256": "3009a8af945d9af41b8864fa98ee1b1ca2fa7fa91b3c9d155225defd48ea5a36"
+    },
     "assets/icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg": {
       "bytes": 265,
       "sha256": "d5bcbc365c42d903955dcc0c66ab91d9af872d8229f19245c9a10c53d4d2f3b7"
@@ -3093,21 +3097,21 @@
       "bytes": 1309,
       "sha256": "adc886ce0a33f63e8896c9c49c86383767cfd2421ae925a6ffdd6842f2c556ee"
     },
-    "assets/layers.28a42ecfbf55685f67ca.js": {
-      "bytes": 16935,
-      "sha256": "28a42ecfbf55685f67caa900e8d7c6872aa730be89edbdf23a1515b06411276a"
+    "assets/layers.c958e31aa592443bd782.js": {
+      "bytes": 17883,
+      "sha256": "c958e31aa592443bd782d74689fae2205b47bb266e4cf1ffd69eb36b29b6c826"
     },
     "assets/numeric.9da6fc00fab7ed615c33.js": {
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.d17f312427c56862ced8.wasm": {
-      "bytes": 10206216,
-      "sha256": "d17f312427c56862ced8b16206595cd11af9db344d507aca48a7da478f384967"
+    "assets/pkg/layer_web_bg.02ef2fb1258f9b93a09d.wasm": {
+      "bytes": 10250617,
+      "sha256": "02ef2fb1258f9b93a09d11e41b4f63e389ba2d932c2a98221f2c4e467ef618d3"
     },
-    "assets/pkg/layer_web.485c58a724c50d84ee5f.js": {
+    "assets/pkg/layer_web.e16047e247ba3833fc9a.js": {
       "bytes": 112409,
-      "sha256": "485c58a724c50d84ee5fbfe128755e4ec81f712feda62a21eb302fe399d11ff6"
+      "sha256": "e16047e247ba3833fc9a6c61d9878d1c716f62958d150dc23de08663a08a88da"
     },
     "assets/preferences.63fd8f8678d7fe7b57dd.js": {
       "bytes": 23902,
@@ -3121,21 +3125,21 @@
       "bytes": 4114,
       "sha256": "488dd6d1a506ec1391654aa333155d199bc40f1e83600c6ffdc48cac4b7f2907"
     },
-    "assets/workspace-chrome.8d5d725b20a83d8d3071.js": {
-      "bytes": 15755,
-      "sha256": "8d5d725b20a83d8d3071fe0ae1ee1caca5dd6abb4f0aaea031710e84eb1e750a"
+    "assets/workspace-chrome.5b1f831eda1b34ad86a4.js": {
+      "bytes": 15762,
+      "sha256": "5b1f831eda1b34ad86a4ca0c04447a37755af647f5468b3821c05d6b292486c6"
     },
     "assets/workspace-manager.939e24a1406ffc15a491.js": {
       "bytes": 11543,
       "sha256": "939e24a1406ffc15a491a0eba0565ed605f7b71f7a5c23ee48d02d1a79bb838a"
     },
-    "assets/workspace-store.d0b6d9aa69b42184f4a9.js": {
-      "bytes": 4274,
-      "sha256": "d0b6d9aa69b42184f4a9674a7b78f7d1798c4e8fbebc8c944583acf589e709f3"
+    "assets/workspace-store.4b0bacc3ad861f7fe4a1.js": {
+      "bytes": 4305,
+      "sha256": "4b0bacc3ad861f7fe4a143ee1ffe53cec2630167d97b9a60462189332da9bfdf"
     },
-    "assets/workspace-worker.58e3c8406cd5e49507df.js": {
+    "assets/workspace-worker.dd6971030a8fe1bead7f.js": {
       "bytes": 530,
-      "sha256": "58e3c8406cd5e49507df3650b1f28960b8d24fce540e842c0e378319551a7137"
+      "sha256": "dd6971030a8fe1bead7f1e0ed5039cb7f7235c6ae6e0f93440aa537da167c163"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3151,7 +3155,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "174ef5ec1e439cfd6f2de0bec81228f0c222ef89f37c5787e550f7f1d4d28cc5"
+      "sha256": "5bc65d6c20d7609869276f55cf6fe0266d7498c9a9fd6c7ec900bafcb4d6805f"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3178,8 +3182,8 @@
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 25712,
-      "sha256": "97645dd97862913d18afd90dc6f2c506ef90d1dc629c919427b5020f85e817ea"
+      "bytes": 25846,
+      "sha256": "118fe04fa9eda943b848297880724579481c8e7410c9b2b00e45c3fac82afd86"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 5087,

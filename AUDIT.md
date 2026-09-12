@@ -1,5 +1,19 @@
 # Web-release audits
 
+## Update: source bee29ce — held pickup and workspace refinements
+
+Reviewed `bee29ce500575babc0a59acc1818e3625198c76b` against `c7b39d8`
+and confirmed it was pushed to source main. Changes refine held tile/layer
+pickup, workspace persistence and switcher policy. The new pin icon retains
+the existing project interface-asset terms.
+
+Dependency manifests, lockfile, packaging scripts, branding terms and toolchain
+versions are unchanged. Locked license/source checks passed, with no new
+GPL/LGPL runtime inputs identified. The build, upstream packaging/launcher
+checks and artifact verification passed, producing 184 files and 182 precache
+entries. Browser tests remain skipped per the owner's instruction and are
+recorded as not run.
+
 ## Update: source c7b39d8 — web workspace persistence and controls
 
 Reviewed upstream `879293f` against `6a89572`, then published packaging-fixture
