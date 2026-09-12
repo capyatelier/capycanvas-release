@@ -1,5 +1,18 @@
 # Web-release audits
 
+## Update: source 8b37ee2 — default workspace pinning
+
+Reviewed `8b37ee270b0ac238e959e41c9a40fcb130d030b0` against `0a59ea5`
+and confirmed it was pushed to source main. Changes pin new workspaces by
+default and refine shared switcher policy and web presentation.
+
+Dependency manifests, lockfile, packaging scripts, branding terms and toolchain
+versions are unchanged. Locked license/source checks passed, with no new
+GPL/LGPL runtime inputs identified. The build, upstream packaging/launcher
+checks and artifact verification passed, producing 185 files and 183 precache
+entries. Browser tests remain skipped per the owner's instruction and are
+recorded as not run.
+
 ## Update: source 0a59ea5 — workspace switcher and mouse holds
 
 Reviewed `0a59ea50107a2fdba3d6c2a806cf88690f67e61a` against `bee29ce`
