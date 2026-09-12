@@ -1,5 +1,19 @@
 # Web-release audits
 
+## Update: source 6a89572 — workspace rendering and held-layer reordering
+
+Reviewed `6a895727fbee37904db4fc431ced777a98e378b3` against `9a1235e`
+and confirmed it was pushed to source main. Web changes refine workspace
+motion/rendering, editor panel updates and continued reordering of held layer
+rows. Shared rendering and workspace state changes are included in the PWA.
+
+Dependency manifests, lockfile, packaging scripts, branding terms and toolchain
+versions are unchanged. Locked license/source checks passed, with no new
+GPL/LGPL runtime inputs identified. The build, upstream packaging/launcher
+checks and artifact verification passed, producing 180 files and 178 precache
+entries. Browser tests remain skipped per the owner's instruction and are
+recorded as not run.
+
 ## Update: source 9a1235e — long-press dragging and workspace motion
 
 Reviewed `9a1235ee6998a4a16edcda48ed306484bf94cd90` against `1bd5172`

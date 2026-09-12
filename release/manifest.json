@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "9a1235ee6998a4a16edcda48ed306484bf94cd90",
+    "commit": "6a895727fbee37904db4fc431ced777a98e378b3",
     "cargoLockSha256": "f8294138ee14032683a778c9777f43be02d56ff00a073887dd5a8ef3c0f03277"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "passed",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "802ecb9243473a344609603e4430b118bafc85619b636463da2dfdeabf455f0f",
+  "workerVersion": "ea53fc62b3b412d41dcd1e61e88007d01659ee205991778188540fb1afcb849b",
   "dependencies": [
     {
       "name": "adler2",
@@ -483,6 +483,11 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_new_typed_6f8b0d724fe26c07",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_bf6dde4923b9b059",
       "kind": "function"
     },
@@ -498,21 +503,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_8f72ed7c652bf5a2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_6f8b0d724fe26c07",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_get_b1f0ab13c737f856",
       "kind": "function"
     },
@@ -524,6 +514,16 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_then_7a850dae4493f353",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_call_6bcf8d3e20937e46",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_8f72ed7c652bf5a2",
       "kind": "function"
     },
     {
@@ -2411,9 +2411,9 @@
       "bytes": 2534,
       "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
     },
-    "assets/app.9b54c5710a5662492223.js": {
-      "bytes": 67243,
-      "sha256": "9b54c5710a56624922237ce109e72d54a00d60dcf952e5e8856156953efd58c1"
+    "assets/app.1efd32e96d0d5296aa1b.js": {
+      "bytes": 69912,
+      "sha256": "1efd32e96d0d5296aa1b7439fd9695dd69aa743ff60b5854c7494249816d77d0"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -2607,17 +2607,17 @@
       "bytes": 23682,
       "sha256": "e782c2d1201096becd32388462ae01236791dc5cb4e67a17331339abd2cf05f8"
     },
-    "assets/customization.1b3cfe9a8c36ec63b1d3.js": {
-      "bytes": 30036,
-      "sha256": "1b3cfe9a8c36ec63b1d3f19198d8cb92ac339692120ced22d98509f1f7878a43"
+    "assets/customization.7daf51b8bff68e359d0b.js": {
+      "bytes": 30087,
+      "sha256": "7daf51b8bff68e359d0b33676c80ac7533a51d88e12a9049d3e6d6d3db97104c"
     },
     "assets/documents.5002d3ca223c9f29c502.js": {
       "bytes": 7660,
       "sha256": "5002d3ca223c9f29c5025999ccf37fc484c064edc398f6a072bd5eef780218c0"
     },
-    "assets/editor-panels.e2c5f79bbc73ad160375.js": {
-      "bytes": 13592,
-      "sha256": "e2c5f79bbc73ad160375d52c916e918ddefe459febe32d8cf2e421963a76ccdd"
+    "assets/editor-panels.99e8ee13079f18b80c43.js": {
+      "bytes": 11559,
+      "sha256": "99e8ee13079f18b80c437083655aae8a5159bec8ff30df9bb7d62c662bb3adcd"
     },
     "assets/effects.32f7cf3f01aec0e95017.js": {
       "bytes": 15066,
@@ -3043,29 +3043,29 @@
       "bytes": 1309,
       "sha256": "adc886ce0a33f63e8896c9c49c86383767cfd2421ae925a6ffdd6842f2c556ee"
     },
-    "assets/layers.260790a1b216eab8ef63.js": {
-      "bytes": 15688,
-      "sha256": "260790a1b216eab8ef633fd1346f067fe6949aaa767fdb4518cb2ad008a7988d"
+    "assets/layers.28a42ecfbf55685f67ca.js": {
+      "bytes": 16935,
+      "sha256": "28a42ecfbf55685f67caa900e8d7c6872aa730be89edbdf23a1515b06411276a"
     },
     "assets/numeric.9da6fc00fab7ed615c33.js": {
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.fbbf94ce8a969812c9c5.wasm": {
-      "bytes": 8403258,
-      "sha256": "fbbf94ce8a969812c9c51c65e552f4a9323ab3ce6def6060353fca7d54e2a587"
+    "assets/pkg/layer_web_bg.dacb09fd7e6d871bd764.wasm": {
+      "bytes": 8416232,
+      "sha256": "dacb09fd7e6d871bd7649e344f8258b8ae7887dc6af55dab17f679327ba05eb9"
     },
-    "assets/pkg/layer_web.869827219329f2be1bee.js": {
-      "bytes": 106202,
-      "sha256": "869827219329f2be1beef07e9bb3e7cc7472f0f0d3c2dd172e1b6a38212f3b13"
+    "assets/pkg/layer_web.cd3010317942bb60946c.js": {
+      "bytes": 107307,
+      "sha256": "cd3010317942bb60946cfdab1791f9eb4b7c1f5e3c215273acc8eefccb300f36"
     },
     "assets/preferences.63fd8f8678d7fe7b57dd.js": {
       "bytes": 23902,
       "sha256": "63fd8f8678d7fe7b57dd0bfdc97e7d6778fd7b2edaa86e2bcd23c813f1adebbc"
     },
-    "assets/style.db12fec3a73ff16fb5c5.css": {
-      "bytes": 51367,
-      "sha256": "db12fec3a73ff16fb5c5eb7e67f0cfdc1eb88c168189b980ef177f93cbc62342"
+    "assets/style.5e38a42cc2fd86163a6f.css": {
+      "bytes": 51026,
+      "sha256": "5e38a42cc2fd86163a6f5363d73b12034001747dff376a0077b2420ce3bad8be"
     },
     "assets/system-status.488dd6d1a506ec139165.js": {
       "bytes": 4114,
@@ -3089,7 +3089,7 @@
     },
     "index.html": {
       "bytes": 2469,
-      "sha256": "b24b3d57e215b9c1f6f2430fb805c64390ef6bfdbcc38698091504e5e36f917e"
+      "sha256": "21fe270df80a963e72d5cccb4848e7ba7fefddaed526d4c3ea4d195531ea24f8"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3117,7 +3117,7 @@
     },
     "sw.js": {
       "bytes": 25337,
-      "sha256": "ce50663357c74eaca3c7cba549aa51e8d9c6986e4d94e76865f8ac5cb8489b82"
+      "sha256": "631dd974642bee74689a2fe133d166bf91b433e0e45143a5baeef11b73236139"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 5087,
