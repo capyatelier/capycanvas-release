@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "af09dfd0ab88c37927ae9bbd8e92b806a342399f",
+    "commit": "232cd2bea3282f89afc484aa945b6f271af131cf",
     "cargoLockSha256": "31982d679cbec950bcba4846e1c16b6373e9522070abd210eb8b98ba495c8e5c"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "08cf6531e672a39f6ffebeabbaf5306a086c684d0ce38f088c8dc968a1985aae",
+  "workerVersion": "f0d7b7bf5aa60d27dffc3114de0fe58a7ddf01d93c24f590db27a5733c4e72b5",
   "dependencies": [
     {
       "name": "adler2",
@@ -538,6 +538,16 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_call_6bcf8d3e20937e46",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_resolve_35ec7e0c6af4c82c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_13d25b81ab403f5e",
       "kind": "function"
     },
@@ -558,27 +568,17 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_resolve_35ec7e0c6af4c82c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_then_7a850dae4493f353",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_6f8b0d724fe26c07",
+      "name": "__wbg_new_8f72ed7c652bf5a2",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_new_8f72ed7c652bf5a2",
+      "name": "__wbg_new_typed_6f8b0d724fe26c07",
       "kind": "function"
     },
     {
@@ -2461,9 +2461,9 @@
       "bytes": 2534,
       "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
     },
-    "assets/app.334a6afe7b589c27e6a1.js": {
-      "bytes": 78081,
-      "sha256": "334a6afe7b589c27e6a150327b4fd39c66669185efd799529d22c771b7493e54"
+    "assets/app.fc84a9f4df8680eb4ca7.js": {
+      "bytes": 84032,
+      "sha256": "fc84a9f4df8680eb4ca7647785f455aeb032988bb5872a42d08b4e69a72cf4f7"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -2657,21 +2657,21 @@
       "bytes": 23682,
       "sha256": "e782c2d1201096becd32388462ae01236791dc5cb4e67a17331339abd2cf05f8"
     },
-    "assets/customization.709f59c52f8de1d172a4.js": {
-      "bytes": 30580,
-      "sha256": "709f59c52f8de1d172a485731b352c9972e54883f10c421999e38ec8f384a167"
+    "assets/customization.1027295e10222f4dd0dc.js": {
+      "bytes": 30614,
+      "sha256": "1027295e10222f4dd0dccca8714ea5cff6ecca63025dd473d70aa4e70fdd495e"
     },
     "assets/documents.5002d3ca223c9f29c502.js": {
       "bytes": 7660,
       "sha256": "5002d3ca223c9f29c5025999ccf37fc484c064edc398f6a072bd5eef780218c0"
     },
-    "assets/editor-panels.4c3c53f24bd237e918b1.js": {
-      "bytes": 12149,
-      "sha256": "4c3c53f24bd237e918b13925a33ff30c31566d2a17429af4b83ceabb129e1285"
+    "assets/editor-panels.c991fcbd7f94b4af47eb.js": {
+      "bytes": 12334,
+      "sha256": "c991fcbd7f94b4af47ebbfabe09ad435e95a093219240652c0a13e82fffa24cd"
     },
-    "assets/effects.32f7cf3f01aec0e95017.js": {
-      "bytes": 15066,
-      "sha256": "32f7cf3f01aec0e95017dc4c4cd8fef59e97410bc375139c124f226b58bb3867"
+    "assets/effects.03630b11ba3d78cdaddd.js": {
+      "bytes": 15501,
+      "sha256": "03630b11ba3d78cdaddd7832e1ec3cfe9f6b5996af27a231d1ada96c74a9cfbb"
     },
     "assets/filters/effects.61be4812695a7498684d.wgsl": {
       "bytes": 5498,
@@ -2685,9 +2685,9 @@
       "bytes": 1282,
       "sha256": "b65389202b05796620e5a9b8354ef31d58e211facda0a7e490db5f684ab918d0"
     },
-    "assets/filters/manifest.44cf8780fae5331b015a.json": {
-      "bytes": 57443,
-      "sha256": "44cf8780fae5331b015a77c55ff0a88d51c239fb5f12b4bf24f6e3a6133991ff"
+    "assets/filters/manifest.06cc8f2e94cfddbe2f5a.json": {
+      "bytes": 57360,
+      "sha256": "06cc8f2e94cfddbe2f5aadc19ace51ea431a8867bfd666e90af650691f7912f6"
     },
     "assets/gpu.974d8febbbb3582fae28.js": {
       "bytes": 5510,
@@ -2709,21 +2709,25 @@
       "bytes": 10027,
       "sha256": "1ae55ef1600dc51535a64ef2f9f3a0926bd0e27e28ae37559bf3b8cf2b1d2a34"
     },
-    "assets/icons/layer-adjustments-symbolic.3cef237b343ecde56892.svg": {
-      "bytes": 263,
-      "sha256": "3cef237b343ecde568928c925641c064ed7b3bcf7f128ddfc8d9b48f472fdcfe"
+    "assets/icons/layer-add-layer-symbolic.9285ee04bdb4cbd833a1.svg": {
+      "bytes": 253,
+      "sha256": "9285ee04bdb4cbd833a1aaae342a3c9617d7238a43c27ed7fe790a632a9eaea2"
     },
-    "assets/icons/layer-airbrush-symbolic.78e1a5cee2e2466b56e5.svg": {
-      "bytes": 503,
-      "sha256": "78e1a5cee2e2466b56e535727447c37bed412fdd41113fcf251f24dd54df218c"
+    "assets/icons/layer-adjustments-symbolic.def92718dc8189a67697.svg": {
+      "bytes": 433,
+      "sha256": "def92718dc8189a676976e428e8121426d7d072134af27f69ae7641c51856fd7"
+    },
+    "assets/icons/layer-airbrush-symbolic.91ad992953309f445734.svg": {
+      "bytes": 378,
+      "sha256": "91ad992953309f44573423d369b16f0a7da43403886777863061904e72df5278"
     },
     "assets/icons/layer-alpha-lock-symbolic.ed3a94b7158e488752fd.svg": {
       "bytes": 520,
       "sha256": "ed3a94b7158e488752fd96264da9430bb0fdbcf31eaa5e31baa6dc5b014f21b5"
     },
-    "assets/icons/layer-animation-symbolic.11c87a5b3c87ff5c2d18.svg": {
-      "bytes": 387,
-      "sha256": "11c87a5b3c87ff5c2d184a8f8eb6520d3572151e4cf6bb6faeaf4289b2d6f48f"
+    "assets/icons/layer-animation-symbolic.e365d19fd8c8edd71af2.svg": {
+      "bytes": 512,
+      "sha256": "e365d19fd8c8edd71af239fa7408353daf27d9df3acdcdd9a50f35268c1a9c01"
     },
     "assets/icons/layer-appearance-symbolic.effffbd0832cde145d56.svg": {
       "bytes": 291,
@@ -2737,21 +2741,29 @@
       "bytes": 221,
       "sha256": "13316926b7d26a1fc2b6f614b490689257e62043b4e60cb71f9952332720bce3"
     },
-    "assets/icons/layer-black_white-symbolic.872598821f9884acd3a2.svg": {
-      "bytes": 313,
-      "sha256": "872598821f9884acd3a282ea2f205e5d1f0bf3f7541aca7fd822a34783a72fb3"
+    "assets/icons/layer-black_white-symbolic.bfb700412b6783b82213.svg": {
+      "bytes": 235,
+      "sha256": "bfb700412b6783b82213ba4707c0111df1c10a4c5f925ee6a64b26e19d9e9d1b"
     },
-    "assets/icons/layer-blend-symbolic.04c0fb4f2a8f4b4282ff.svg": {
-      "bytes": 501,
-      "sha256": "04c0fb4f2a8f4b4282ffe0352caab733f95cf236f5070699086f86f14c2ca021"
+    "assets/icons/layer-blend-symbolic.d53b1afc875cdf0076fb.svg": {
+      "bytes": 346,
+      "sha256": "d53b1afc875cdf0076fb9625c4cbb375c8949fd0247078eab13accaadae940f6"
     },
-    "assets/icons/layer-brightness_contrast-symbolic.89387c572ed70b490515.svg": {
-      "bytes": 375,
-      "sha256": "89387c572ed70b4905157e67c7188bde9c46f80184e9fda7796f0f4d9e7c3576"
+    "assets/icons/layer-bloom-symbolic.082aaf62b867d530dfdb.svg": {
+      "bytes": 249,
+      "sha256": "082aaf62b867d530dfdb25217f4e8595f5d560af6b0f3566a71ecc5106a39d4f"
     },
-    "assets/icons/layer-brush-symbolic.95a107fa96f12f8b1dc1.svg": {
-      "bytes": 282,
-      "sha256": "95a107fa96f12f8b1dc1eecc3f021304182871ea8062efe7b3b6f37ec02b3078"
+    "assets/icons/layer-blur-symbolic.6eb2a615920c7268bdfd.svg": {
+      "bytes": 291,
+      "sha256": "6eb2a615920c7268bdfd06036a243ebd32e13bd0af87788b8e335fc746f16692"
+    },
+    "assets/icons/layer-brightness_contrast-symbolic.da27d13927b58c4d4c3c.svg": {
+      "bytes": 916,
+      "sha256": "da27d13927b58c4d4c3c6957e1f6c84852291a7c741f2bc9479d72feea9d4646"
+    },
+    "assets/icons/layer-brush-symbolic.ef96cdc37531f8bf2df2.svg": {
+      "bytes": 245,
+      "sha256": "ef96cdc37531f8bf2df2755edcd8de7d66397e7e8c6079ba7e19ba0c13055357"
     },
     "assets/icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg": {
       "bytes": 358,
@@ -2769,13 +2781,29 @@
       "bytes": 214,
       "sha256": "68da7053e2f57c63a5932eb597f0574d49699ccee5cf0c712add818a23859fd9"
     },
-    "assets/icons/layer-clip-symbolic.341127a0e3d6af76d3c7.svg": {
-      "bytes": 296,
-      "sha256": "341127a0e3d6af76d3c7c225e53a1dd9a9cd410860f5dd53d2c9b0791a3bdad6"
+    "assets/icons/layer-chromatic-aberration-symbolic.2805c454c81c8d9b8043.svg": {
+      "bytes": 265,
+      "sha256": "2805c454c81c8d9b80430c60fbed9b8e34b21ab569d14a042f4dcf3a975859b3"
     },
-    "assets/icons/layer-color_balance-symbolic.0fc164956f5ff859ee9a.svg": {
-      "bytes": 278,
-      "sha256": "0fc164956f5ff859ee9a04f5eedc6a5de55f4395ff0ec26d92439518778385b5"
+    "assets/icons/layer-clear-symbolic.623997b36b5648036421.svg": {
+      "bytes": 782,
+      "sha256": "623997b36b56480364212d4f1909522ea14c470702f52306714eac66e5739393"
+    },
+    "assets/icons/layer-clip-symbolic.4ba4337176ed940da0f5.svg": {
+      "bytes": 215,
+      "sha256": "4ba4337176ed940da0f554ba6dac6867e9dac4ed9406a99ef95d03d166ba9bdd"
+    },
+    "assets/icons/layer-close-document-symbolic.c5f4a987705b56027b0d.svg": {
+      "bytes": 225,
+      "sha256": "c5f4a987705b56027b0d0ec9aa461865cf3a599255555067ae675c310bbd2108"
+    },
+    "assets/icons/layer-close-symbolic.30f582a44542b0021f17.svg": {
+      "bytes": 210,
+      "sha256": "30f582a44542b0021f17fd9b9f1f1ccb86627d689689ee293d1dd9921d8a63c7"
+    },
+    "assets/icons/layer-color_balance-symbolic.dfef11fb4553fef16570.svg": {
+      "bytes": 369,
+      "sha256": "dfef11fb4553fef1657095bb6525e5b21b5c0ee980d938bb0f04ca1defcb9642"
     },
     "assets/icons/layer-color-symbolic.d57e12a7c6f7ac8f7046.svg": {
       "bytes": 279,
@@ -2785,9 +2813,17 @@
       "bytes": 524,
       "sha256": "bd7ea01dc46286863cf35351e745cedee6e98d116dc9feecf166c9698e4764e6"
     },
-    "assets/icons/layer-column-expand-symbolic.44f26da8a96a80900339.svg": {
-      "bytes": 219,
-      "sha256": "44f26da8a96a80900339bdacacbae3d032fd239258ccbff0eec13a7c265e1970"
+    "assets/icons/layer-column-expand-symbolic.e027ec5c354b026bd642.svg": {
+      "bytes": 247,
+      "sha256": "e027ec5c354b026bd642222d4d8ea2d4e41e0e5e3b0d2427e63f3aafdd963f86"
+    },
+    "assets/icons/layer-crosshatch-symbolic.759064ee9b372a22d271.svg": {
+      "bytes": 204,
+      "sha256": "759064ee9b372a22d271d82f33aa4e64187a4643322d02c1a0713d30e5d39a83"
+    },
+    "assets/icons/layer-crt-symbolic.11ad84534f7dbb53af4e.svg": {
+      "bytes": 370,
+      "sha256": "11ad84534f7dbb53af4ec2407d85eedef0a8d25c70ec6e7eed99cb5cf9491bd9"
     },
     "assets/icons/layer-cursor-brush-cross-symbolic.00af67c62fbc5f6b9ef0.svg": {
       "bytes": 300,
@@ -2809,57 +2845,89 @@
       "bytes": 202,
       "sha256": "b0b167dbd699d2b240fa13405babeab1516b77a7ad27214437490419bfceeb9e"
     },
-    "assets/icons/layer-curves-symbolic.34d6320d5cb43fde1da1.svg": {
-      "bytes": 302,
-      "sha256": "34d6320d5cb43fde1da1f4c24918c30e8cdf3a299dbd497b9cfff7668dcc1ca3"
+    "assets/icons/layer-curves-symbolic.50e3408021b4d38b9f97.svg": {
+      "bytes": 274,
+      "sha256": "50e3408021b4d38b9f972299135ff3115bbf3ab2a142161f58a2ee7afc09e238"
     },
-    "assets/icons/layer-decoration-symbolic.fab6db0f7dbf2a0695d1.svg": {
-      "bytes": 475,
-      "sha256": "fab6db0f7dbf2a0695d1e9949478b27d3c634b897e17c43d90d1932b3236f046"
+    "assets/icons/layer-decoration-symbolic.43d6f1314f1ffb2a271e.svg": {
+      "bytes": 325,
+      "sha256": "43d6f1314f1ffb2a271ee0278e7a5915031ec4e7b9986bbceec27e5f067252b3"
     },
-    "assets/icons/layer-delete-symbolic.3fe343840fe1253261c1.svg": {
-      "bytes": 268,
-      "sha256": "3fe343840fe1253261c1289f1960f76a3b50be99096675ba99b5038d54a5e1f5"
+    "assets/icons/layer-delete-symbolic.a3fa02a0625da34c3343.svg": {
+      "bytes": 272,
+      "sha256": "a3fa02a0625da34c3343a344c5a69b06d281026389745d8e0e6440837ece638a"
+    },
+    "assets/icons/layer-denoise-symbolic.5648770158f62093c71b.svg": {
+      "bytes": 306,
+      "sha256": "5648770158f62093c71ba25332535b0f4a682556e26b2a465edfaff27a616ab5"
+    },
+    "assets/icons/layer-deselect-symbolic.92f8ddd43f739cac8515.svg": {
+      "bytes": 294,
+      "sha256": "92f8ddd43f739cac8515133bbf97a60004ce835b04df2ae6932ca1e01e7885e4"
+    },
+    "assets/icons/layer-domain-warp-symbolic.0bc35e1036be6115ee8f.svg": {
+      "bytes": 233,
+      "sha256": "0bc35e1036be6115ee8f92b80459e6fe1c0b0c5ede0185736aa5105b5ce2a3d1"
     },
     "assets/icons/layer-down-symbolic.2077aefc6f508c80c30b.svg": {
       "bytes": 270,
       "sha256": "2077aefc6f508c80c30b5622a9824ef6d0093cde038b8cd2123c701b8e18c082"
     },
-    "assets/icons/layer-ellipse-symbolic.ca6d5bcd5168a0110fef.svg": {
-      "bytes": 230,
-      "sha256": "ca6d5bcd5168a0110fef9b89c2763cce408b71623931a11ddf0cc144102c9265"
+    "assets/icons/layer-edge-detect-symbolic.24dd8b00b870e4266fc5.svg": {
+      "bytes": 203,
+      "sha256": "24dd8b00b870e4266fc5b556796400fb8470e7a1ac0838a951eaa131c35851a9"
     },
-    "assets/icons/layer-eraser-symbolic.d36a1a78e891175bbb48.svg": {
-      "bytes": 286,
-      "sha256": "d36a1a78e891175bbb480291a3d54a1d29a367616a604f1d7d4e5225bb275aff"
+    "assets/icons/layer-ellipse-both-symbolic.c04e2ab09aacaa99d565.svg": {
+      "bytes": 262,
+      "sha256": "c04e2ab09aacaa99d5652d94af0e95503101ab6c992da45d07881af2487ba19e"
     },
-    "assets/icons/layer-export-document-symbolic.6b989ba07964d0af2987.svg": {
-      "bytes": 245,
-      "sha256": "6b989ba07964d0af298791379773388ea7be9ed6b6ac7c4edd0bb65fe698673b"
+    "assets/icons/layer-ellipse-fill-symbolic.8f5ef9c39514868c0eed.svg": {
+      "bytes": 152,
+      "sha256": "8f5ef9c39514868c0eed74458114db8259b5a097dcdaae23c8e847ff1b6b4c3a"
     },
-    "assets/icons/layer-exposure-symbolic.e0482b14da72038b56c6.svg": {
-      "bytes": 325,
-      "sha256": "e0482b14da72038b56c60eaeb0f647ba26c306d6720e4d4b9d800c0024986edb"
+    "assets/icons/layer-ellipse-symbolic.9eb9346888bfd11b5c13.svg": {
+      "bytes": 223,
+      "sha256": "9eb9346888bfd11b5c137d92b4e2569606abf7a46dbee470aceae320ad14a475"
     },
-    "assets/icons/layer-eye-hidden-symbolic.520bf33852eac0c74a68.svg": {
-      "bytes": 331,
-      "sha256": "520bf33852eac0c74a688fe9e6e6617775acb37c9da4a7bae3076d92df6bf4a8"
+    "assets/icons/layer-emboss-symbolic.26d48eeec7184770505a.svg": {
+      "bytes": 238,
+      "sha256": "26d48eeec7184770505afe9b70c3879f2b6bb8cda70d82d27f630f3e517a70d6"
     },
-    "assets/icons/layer-eye-symbolic.fa3abcbf8ce5e4b30745.svg": {
-      "bytes": 365,
-      "sha256": "fa3abcbf8ce5e4b3074581f10bd0536a6b6b52a240b838cee016075c9f1b153c"
+    "assets/icons/layer-eraser-symbolic.21b340783fe1619f368d.svg": {
+      "bytes": 288,
+      "sha256": "21b340783fe1619f368dfd756c31c78a8f87244fe3d98b67b3ee440f93ca20ee"
     },
-    "assets/icons/layer-eyedropper-symbolic.cfc6decc86a1b97e00d1.svg": {
-      "bytes": 318,
-      "sha256": "cfc6decc86a1b97e00d16aae2a112cb6edff859b013d0ff81c9492d70894c86d"
+    "assets/icons/layer-export-document-symbolic.b2d892ca422bf976c9af.svg": {
+      "bytes": 196,
+      "sha256": "b2d892ca422bf976c9afef50e8529f6c0f04aeb7792f8943476f542c13d4c293"
     },
-    "assets/icons/layer-figure-symbolic.2a30a1ee2a6afa013656.svg": {
-      "bytes": 370,
-      "sha256": "2a30a1ee2a6afa013656d2ba200503c95d65f07aa4a1da63b527d0091830133b"
+    "assets/icons/layer-exposure-symbolic.cac47e7f0798970a64b8.svg": {
+      "bytes": 274,
+      "sha256": "cac47e7f0798970a64b86326541a07b13aa22671e2ef41ac97ca2366b5f2bfc1"
     },
-    "assets/icons/layer-fill-symbolic.b32c4577e804936cc30b.svg": {
-      "bytes": 358,
-      "sha256": "b32c4577e804936cc30b55245d09ced51af57dfbd17d2b23e8a03f23b7548f93"
+    "assets/icons/layer-eye-hidden-symbolic.2e56d9fe2fc0e50d4439.svg": {
+      "bytes": 334,
+      "sha256": "2e56d9fe2fc0e50d44396cfd754fb1639f90a90b55f2f3ffb37cc8e79784fa08"
+    },
+    "assets/icons/layer-eye-symbolic.4281ba422fcdf3d6003e.svg": {
+      "bytes": 265,
+      "sha256": "4281ba422fcdf3d6003eafec7b23862f0e87debfd32baf945b677b97e709d8de"
+    },
+    "assets/icons/layer-eyedropper-symbolic.399ff357d0c436d08868.svg": {
+      "bytes": 303,
+      "sha256": "399ff357d0c436d08868bb477449ef06597c3538a1fcc48f44c745d0b161166c"
+    },
+    "assets/icons/layer-figure-symbolic.f589e38a8bd494a1681f.svg": {
+      "bytes": 231,
+      "sha256": "f589e38a8bd494a1681f7939ce588a78aaf19356249626059f242dac533e86b4"
+    },
+    "assets/icons/layer-fill-selection-symbolic.6554e498194c39481fd0.svg": {
+      "bytes": 322,
+      "sha256": "6554e498194c39481fd0f2f353e2fda1bd745f06a1001e31cac96dbbce3401c8"
+    },
+    "assets/icons/layer-fill-symbolic.fd10b68e366aeeaccb4e.svg": {
+      "bytes": 319,
+      "sha256": "fd10b68e366aeeaccb4e1ff3eabc96faae7473b50204a99853c76b888e25d543"
     },
     "assets/icons/layer-fit-symbolic.ac6a0b9c390c32598367.svg": {
       "bytes": 286,
@@ -2873,13 +2941,13 @@
       "bytes": 287,
       "sha256": "e6b2396971afcb8a2ec1ad09bda6f95a1dc364481165f6bb5aa1800c59170792"
     },
-    "assets/icons/layer-folder-open-symbolic.6ee6368524331b647b32.svg": {
-      "bytes": 283,
-      "sha256": "6ee6368524331b647b3205a5e25ebe455b934f9b4202230d61617f4d2292243f"
+    "assets/icons/layer-folder-open-symbolic.3a694dfc26ae41dfc059.svg": {
+      "bytes": 236,
+      "sha256": "3a694dfc26ae41dfc05986157401a26dc3a94c27f0f29528c9e61dbfa4d15195"
     },
-    "assets/icons/layer-folder-symbolic.be0904f291249af7827b.svg": {
-      "bytes": 272,
-      "sha256": "be0904f291249af7827bd0deaff0cc69363fe93f51b499f88f4d5d18f2086be7"
+    "assets/icons/layer-folder-symbolic.70891c5b72c3426dc84d.svg": {
+      "bytes": 194,
+      "sha256": "70891c5b72c3426dc84dfc8cad195942fe0105abcf6f02ccb13c1f5443c63ada"
     },
     "assets/icons/layer-fullscreen-enter-symbolic.21583f12193d5121f8c2.svg": {
       "bytes": 279,
@@ -2889,69 +2957,121 @@
       "bytes": 281,
       "sha256": "d70383f540802d1c1c1312220a1efe5fc46cbf67fe8fdab30ab514a48d58ee55"
     },
-    "assets/icons/layer-gradient_map-symbolic.dcbb1ef9a592fff18b11.svg": {
-      "bytes": 273,
-      "sha256": "dcbb1ef9a592fff18b11f11b1e7ca233471dd175300242499430740a40c7d5a6"
+    "assets/icons/layer-glass-symbolic.7ddf01fcb0cad7deeb9a.svg": {
+      "bytes": 224,
+      "sha256": "7ddf01fcb0cad7deeb9a7b2e308286fd66ef49345ecd62683ac8af84723dc87b"
     },
-    "assets/icons/layer-gradient-symbolic.d4d1ad1a98ff24fa796b.svg": {
-      "bytes": 553,
-      "sha256": "d4d1ad1a98ff24fa796b1e127b7e3878b74f78541e6facad0bb11840673215de"
+    "assets/icons/layer-gradient_map-symbolic.9eaa2b1aae4b17a07f35.svg": {
+      "bytes": 408,
+      "sha256": "9eaa2b1aae4b17a07f35f54813361eab6956737be25dfb0ad97c99f1d11fb84d"
+    },
+    "assets/icons/layer-gradient-radial-symbolic.8824e69cee455af8f06b.svg": {
+      "bytes": 340,
+      "sha256": "8824e69cee455af8f06baf8b058da7d4f1cd8d1187de0e496d133e6c01596e86"
+    },
+    "assets/icons/layer-gradient-radial-transparent-symbolic.edba6c7bd8ac8e8960d9.svg": {
+      "bytes": 374,
+      "sha256": "edba6c7bd8ac8e8960d99183e03f6b8a8dbe411f9ca043dc28b85bd10d6998a1"
+    },
+    "assets/icons/layer-gradient-symbolic.bcaf41ea8e236aec0516.svg": {
+      "bytes": 439,
+      "sha256": "bcaf41ea8e236aec05161e68d686aa20e680900537b7aec44f158d79e2b96f66"
+    },
+    "assets/icons/layer-gradient-transparent-symbolic.78cb957515459b4ca657.svg": {
+      "bytes": 352,
+      "sha256": "78cb957515459b4ca6576d65fafb0e06832668da18d6d3769baa53bacb740ccd"
+    },
+    "assets/icons/layer-grain-symbolic.0cd9f1a0ce90f9f365b4.svg": {
+      "bytes": 556,
+      "sha256": "0cd9f1a0ce90f9f365b46f12a991dbbd7bd05ffb55b0ff0e6c79ec7d69243648"
     },
     "assets/icons/layer-grip-symbolic.258f461bcfa33a125d89.svg": {
       "bytes": 313,
       "sha256": "258f461bcfa33a125d89113c05a84b89e015f8337e0ef4ef5042312a53735db2"
     },
-    "assets/icons/layer-hand-symbolic.c5a9b4e90675a216f95e.svg": {
-      "bytes": 400,
-      "sha256": "c5a9b4e90675a216f95e3c5bc2761e72412c347a7fc6484df26f307729320fc8"
+    "assets/icons/layer-halftone-symbolic.e686d1aed3cc2a8701a3.svg": {
+      "bytes": 408,
+      "sha256": "e686d1aed3cc2a8701a3934850b04e6fe5fe3f657437262ca75bdbbcdd34db43"
     },
-    "assets/icons/layer-hue_saturation-symbolic.121bf9f7fcf95c20bbe6.svg": {
-      "bytes": 277,
-      "sha256": "121bf9f7fcf95c20bbe6d90e427e829d995cf6cfa3dc4ed9d0f8483f885cacda"
+    "assets/icons/layer-hand-symbolic.041855c275d56ce39b29.svg": {
+      "bytes": 365,
+      "sha256": "041855c275d56ce39b29e14cc53e90450d2ac1f220bee8adc059583f3008ed79"
     },
-    "assets/icons/layer-image-symbolic.3d4764f002e54c5ce715.svg": {
-      "bytes": 444,
-      "sha256": "3d4764f002e54c5ce715ab15f88812f5dace645b124ff7dc6bc2547ed9f5bae3"
+    "assets/icons/layer-heat-haze-symbolic.b74d2060fdfdb4dc3980.svg": {
+      "bytes": 488,
+      "sha256": "b74d2060fdfdb4dc39801132b25ee16e65890a386b9effd2709d245eb5309470"
+    },
+    "assets/icons/layer-high-pass-symbolic.7122d950296d05e93c9c.svg": {
+      "bytes": 220,
+      "sha256": "7122d950296d05e93c9ce2b000327a638fb2b631290ffab71d878233e627f155"
+    },
+    "assets/icons/layer-hue_saturation-symbolic.ced9639d6d8f61fe6a71.svg": {
+      "bytes": 368,
+      "sha256": "ced9639d6d8f61fe6a71b4f1bbe413e14c5c13ff615ad74099a52bccd3cd6727"
+    },
+    "assets/icons/layer-image-symbolic.17ed1890abf8cc4b049c.svg": {
+      "bytes": 291,
+      "sha256": "17ed1890abf8cc4b049c2207c2233cf55b2c5d0c032311096617f4c56303f918"
     },
     "assets/icons/layer-info-symbolic.de87224179edc68417bb.svg": {
       "bytes": 308,
       "sha256": "de87224179edc68417bbbda51fcf8cd7a735faaa9111f1a593f1436400280975"
     },
+    "assets/icons/layer-invert-selection-symbolic.ca3f49d543dfa80a3675.svg": {
+      "bytes": 333,
+      "sha256": "ca3f49d543dfa80a3675fd1d3abd1f70a3ca4b3275c7c4055f73ce0b44786313"
+    },
+    "assets/icons/layer-iridescence-symbolic.35bd3a4a958140c94a78.svg": {
+      "bytes": 234,
+      "sha256": "35bd3a4a958140c94a78fed65631d3a7e4ea7d3055d83c28ca7ff02ab9a7ebe5"
+    },
+    "assets/icons/layer-kaleidoscope-symbolic.19735bd9676fe700c6f6.svg": {
+      "bytes": 561,
+      "sha256": "19735bd9676fe700c6f60421027ce57be09eeff3c4285e0fc37b473d6de51e99"
+    },
     "assets/icons/layer-keyboard-symbolic.807feffcdae0b3ec077a.svg": {
       "bytes": 260,
       "sha256": "807feffcdae0b3ec077a1d22dbb0517019150ab9655c3e43d61dd91cafcf3d73"
+    },
+    "assets/icons/layer-lasso-fill-symbolic.4e0782fee830ac6d2373.svg": {
+      "bytes": 426,
+      "sha256": "4e0782fee830ac6d2373fe0a141feaac7a53fa3423ab2a3dc774491a05f5f922"
     },
     "assets/icons/layer-lasso-symbolic.e623236322bb908bfe36.svg": {
       "bytes": 321,
       "sha256": "e623236322bb908bfe368b59fda2ad99c049315c5c529b8bd1757f7d6688b925"
     },
-    "assets/icons/layer-layers-symbolic.68c5097329d72a48a01d.svg": {
-      "bytes": 312,
-      "sha256": "68c5097329d72a48a01d344eb29a19758398040239037ece00db4ae267cff9e3"
+    "assets/icons/layer-layers-symbolic.7d7df15ac93c1be01025.svg": {
+      "bytes": 250,
+      "sha256": "7d7df15ac93c1be010258e89375059cdf46e85a953a76bcf24777943fb4c4515"
     },
-    "assets/icons/layer-levels-symbolic.cd341232d3880dab5092.svg": {
-      "bytes": 262,
-      "sha256": "cd341232d3880dab50925eda8a7e990d34f04b8d0b3ddcca9bc400604441be65"
+    "assets/icons/layer-levels-symbolic.e6f9efb0b2ede62e62d9.svg": {
+      "bytes": 186,
+      "sha256": "e6f9efb0b2ede62e62d9f2d3bf4c0000c74a8cee35f86ee4e499d7c2be90d5e6"
     },
-    "assets/icons/layer-line-symbolic.d268b3bfa9c2d763616c.svg": {
-      "bytes": 231,
-      "sha256": "d268b3bfa9c2d763616c1405001af6b14d6319f39112419d856d06326780d5e9"
+    "assets/icons/layer-line-symbolic.ba6adc86c9adf7fed0f1.svg": {
+      "bytes": 158,
+      "sha256": "ba6adc86c9adf7fed0f12190f981787e0fb417f64cdb43607ce64c228018a469"
     },
     "assets/icons/layer-link-symbolic.4cd2d7081664ed727f16.svg": {
       "bytes": 313,
       "sha256": "4cd2d7081664ed727f16f721b844fb6a5631a17502e7de41da240953772fb571"
     },
-    "assets/icons/layer-liquify-symbolic.d3424fa71f0a103280dc.svg": {
-      "bytes": 352,
-      "sha256": "d3424fa71f0a103280dc837de20ca8a6c64b5dc0f2c80d29a3125e92473297e2"
+    "assets/icons/layer-liquify-symbolic.6c3412784399da0232bc.svg": {
+      "bytes": 1651,
+      "sha256": "6c3412784399da0232bcda6ddf356d9ef6c208506da673b46819c0a9e2186fc2"
     },
-    "assets/icons/layer-lock-symbolic.bd3cd63801c343afe5ce.svg": {
-      "bytes": 365,
-      "sha256": "bd3cd63801c343afe5ce7bf702ce0d11e4b0468063bfdc81fde963755047daae"
+    "assets/icons/layer-lock-symbolic.34e461bf87f9ce3e599b.svg": {
+      "bytes": 322,
+      "sha256": "34e461bf87f9ce3e599b7536038d1b7884c4ac340d92e0a814021dced8ff722e"
     },
-    "assets/icons/layer-mask-symbolic.e14671ba6bdc24fe08af.svg": {
-      "bytes": 365,
-      "sha256": "e14671ba6bdc24fe08afed2184f8dc56c698df5457cf77df29d8b2bea0cc21ec"
+    "assets/icons/layer-marker-symbolic.fd6dce3cd46fa3b76eb9.svg": {
+      "bytes": 230,
+      "sha256": "fd6dce3cd46fa3b76eb913f159c28e1561bb08c5596592c0100a95a353fdced0"
+    },
+    "assets/icons/layer-mask-symbolic.89966f2ae567821888db.svg": {
+      "bytes": 248,
+      "sha256": "89966f2ae567821888dbea743e206399b45bc620a5f75433ac86c75002cbfbb6"
     },
     "assets/icons/layer-menu-symbolic.3162891262ac586b6742.svg": {
       "bytes": 220,
@@ -2965,61 +3085,113 @@
       "bytes": 417,
       "sha256": "83a3457d1575caee0305541b78339e6c49f10488fa77e3b063f5477e4351c85e"
     },
-    "assets/icons/layer-move-symbolic.3d221b52837a0334f0c6.svg": {
-      "bytes": 297,
-      "sha256": "3d221b52837a0334f0c670921d071f7e23a378918cc5aaad691ec09fcb8f8983"
+    "assets/icons/layer-mosaic-symbolic.ef35d0df50eea8ff4843.svg": {
+      "bytes": 303,
+      "sha256": "ef35d0df50eea8ff4843512e909407eaabb76548aee040c8f053e59a5de1680f"
     },
-    "assets/icons/layer-navigator-symbolic.c2a5fa6a5fecf2371dee.svg": {
-      "bytes": 410,
-      "sha256": "c2a5fa6a5fecf2371dee051f97f75d52e19b8998e03592bab3c83660695556e2"
+    "assets/icons/layer-motion-blur-symbolic.36ffc8ebbe4ef1af6c7c.svg": {
+      "bytes": 418,
+      "sha256": "36ffc8ebbe4ef1af6c7c6733a017f4d8c1d493fa575b0c8bb6e7014051d62a01"
     },
-    "assets/icons/layer-new-document-symbolic.478481b2657e19025ada.svg": {
-      "bytes": 259,
-      "sha256": "478481b2657e19025ada03e5c5dcaa194f4921f938bf2e37102a69669a22bcf9"
+    "assets/icons/layer-move-symbolic.14633d1eaa7e8adef343.svg": {
+      "bytes": 220,
+      "sha256": "14633d1eaa7e8adef3438e4b6a655beac4a51a84b4cf538cd7b9dc96cfc583cc"
+    },
+    "assets/icons/layer-navigator-symbolic.fa82f16c08e5a6b61148.svg": {
+      "bytes": 304,
+      "sha256": "fa82f16c08e5a6b6114843097551e80e2fd5387a504c9c8596b6f935fe4a186b"
+    },
+    "assets/icons/layer-new-document-symbolic.35e83352ab2f4d16825c.svg": {
+      "bytes": 227,
+      "sha256": "35e83352ab2f4d16825c7da9335f823568e247f19a52cedba9427a3af7fd545a"
+    },
+    "assets/icons/layer-new-toolbar-symbolic.b810142bd120a102e816.svg": {
+      "bytes": 403,
+      "sha256": "b810142bd120a102e816a70fcbe0f0fd90bf0d728f21bf2008d1e759772a13f1"
+    },
+    "assets/icons/layer-new-window-symbolic.1111bcf77190c7e92f93.svg": {
+      "bytes": 302,
+      "sha256": "1111bcf77190c7e92f93abf7f24f07b0255fbf86b0e6997f8741e2d299f8f6e9"
+    },
+    "assets/icons/layer-oil-paint-symbolic.e09be2d83a15e4b78658.svg": {
+      "bytes": 313,
+      "sha256": "e09be2d83a15e4b786588d6a7a709401129cad5fdd873c71c33cb6e2d3fa7b5c"
     },
     "assets/icons/layer-opacity-symbolic.4723f12783d40aa72aea.svg": {
       "bytes": 342,
       "sha256": "4723f12783d40aa72aea1988465dbcc422011ef1c5bd41c873c33cc8efadc339"
     },
-    "assets/icons/layer-open-document-symbolic.fca15f9010e91362d0bc.svg": {
-      "bytes": 223,
-      "sha256": "fca15f9010e91362d0bc49c6d7062a8043ac75026d79106063c73ac611b92acb"
+    "assets/icons/layer-open-document-symbolic.3a694dfc26ae41dfc059.svg": {
+      "bytes": 236,
+      "sha256": "3a694dfc26ae41dfc05986157401a26dc3a94c27f0f29528c9e61dbfa4d15195"
     },
-    "assets/icons/layer-pen-symbolic.81809a79e688bbfd00cd.svg": {
-      "bytes": 416,
-      "sha256": "81809a79e688bbfd00cd7003ad141fb33317dce3442eb016bffc00f9583b6227"
+    "assets/icons/layer-paint-symbolic.33f6a7c95a3b1085602c.svg": {
+      "bytes": 279,
+      "sha256": "33f6a7c95a3b1085602c77d1cf9dcc63c19873c6dd9bdc80e1fe88c7f8617d18"
     },
-    "assets/icons/layer-pencil-symbolic.a1af1dc64e78f17c9463.svg": {
-      "bytes": 439,
-      "sha256": "a1af1dc64e78f17c94635c1081e5d5f84ca10323c608b7c21e0c908f53d45102"
+    "assets/icons/layer-pastel-symbolic.c67ff809546956690a5c.svg": {
+      "bytes": 200,
+      "sha256": "c67ff809546956690a5c3e9f8b33659f28179c9c386dd770bb6f6cc4ec3f978a"
     },
-    "assets/icons/layer-pin-symbolic.3009a8af945d9af41b88.svg": {
-      "bytes": 281,
-      "sha256": "3009a8af945d9af41b8864fa98ee1b1ca2fa7fa91b3c9d155225defd48ea5a36"
+    "assets/icons/layer-pen-symbolic.a3bf085d22d7625e6184.svg": {
+      "bytes": 300,
+      "sha256": "a3bf085d22d7625e6184ebc91295e173bf0d81d751285bc2af25abed67363405"
+    },
+    "assets/icons/layer-pencil-symbolic.26aa7319d66ee0034428.svg": {
+      "bytes": 255,
+      "sha256": "26aa7319d66ee0034428a4116d4cd4aa70f91d283840c3d3c816829e693d62af"
+    },
+    "assets/icons/layer-pin-symbolic.6e006cd17ecacc7a825b.svg": {
+      "bytes": 194,
+      "sha256": "6e006cd17ecacc7a825b72f532a68ede27366c4900df0b03bf7c814dbbedc120"
     },
     "assets/icons/layer-plus-symbolic.d5bcbc365c42d903955d.svg": {
       "bytes": 265,
       "sha256": "d5bcbc365c42d903955dcc0c66ab91d9af872d8229f19245c9a10c53d4d2f3b7"
     },
-    "assets/icons/layer-posterize-symbolic.8463ce4dacd5498f5bb9.svg": {
-      "bytes": 245,
-      "sha256": "8463ce4dacd5498f5bb917544549bac18b8b188b5445f1c6ba6ed5964ae31261"
+    "assets/icons/layer-posterize-symbolic.6270a0eb95f722595759.svg": {
+      "bytes": 183,
+      "sha256": "6270a0eb95f72259575976dc21a1035cedd1d838792d2b8dbd949bf40bc85d0f"
     },
-    "assets/icons/layer-properties-symbolic.63b4e797b87c93560b6c.svg": {
-      "bytes": 256,
-      "sha256": "63b4e797b87c93560b6c56c2634d94ee7827d7e9f227aef237a7d7d3e94f8745"
+    "assets/icons/layer-properties-symbolic.040eb007e4ad1e0190d8.svg": {
+      "bytes": 401,
+      "sha256": "040eb007e4ad1e0190d8bdde5fd0de1d3d7bd6997ad47c49781715cbfc9a5f9d"
     },
-    "assets/icons/layer-rectangle-symbolic.9301acf9a5ce8e3c03f2.svg": {
-      "bytes": 241,
-      "sha256": "9301acf9a5ce8e3c03f21c36ffedef7e189ea8d7e8fa10cc0ca3bf60cff7afac"
+    "assets/icons/layer-rainy-glass-symbolic.c3353f37d3c7c8707ad4.svg": {
+      "bytes": 253,
+      "sha256": "c3353f37d3c7c8707ad43e0807218cbb18879e6dbc8054ee5b590fdebcbe37f0"
+    },
+    "assets/icons/layer-rectangle-both-symbolic.566ff083998fdad8ce63.svg": {
+      "bytes": 217,
+      "sha256": "566ff083998fdad8ce6381296461f696759e57a670d1ddf6a6de13206e58c194"
+    },
+    "assets/icons/layer-rectangle-fill-symbolic.57b1455c593796cc9cfe.svg": {
+      "bytes": 164,
+      "sha256": "57b1455c593796cc9cfe66aae32105647d59a9fa37ea3006b375c5d41b14c9f9"
+    },
+    "assets/icons/layer-rectangle-symbolic.584e910cd12f8f9e240e.svg": {
+      "bytes": 176,
+      "sha256": "584e910cd12f8f9e240ee23e37626062e4b8938408c86739049f4c76b8945f6f"
     },
     "assets/icons/layer-redo-symbolic.d6c2966e05601e4c9496.svg": {
       "bytes": 287,
       "sha256": "d6c2966e05601e4c9496facff589784b9a0850057360ef91a68ace9090156cfa"
     },
-    "assets/icons/layer-reference-symbolic.5b245b7829699a74bf0a.svg": {
-      "bytes": 446,
-      "sha256": "5b245b7829699a74bf0a0706c58de0558fc852d9964a09583ad4f88fdf57bd79"
+    "assets/icons/layer-reference-symbolic.018c4d47a9e794efa36f.svg": {
+      "bytes": 291,
+      "sha256": "018c4d47a9e794efa36f1a0591d701cdaddb4cb0f8f9d48e9d2b3eeae8678b3b"
+    },
+    "assets/icons/layer-reset-layout-symbolic.b536b038c49be3808680.svg": {
+      "bytes": 258,
+      "sha256": "b536b038c49be3808680976d66637ef8b1b777379f67198d7d56b17eaf4e8dee"
+    },
+    "assets/icons/layer-reset-symbolic.e136e3255ae4807c7e65.svg": {
+      "bytes": 219,
+      "sha256": "e136e3255ae4807c7e65f176d4f8c6539b7ec45a2dfb2b2e826958d863e1a9d2"
+    },
+    "assets/icons/layer-ripple-symbolic.a311b868210b21244194.svg": {
+      "bytes": 372,
+      "sha256": "a311b868210b212441947ed72aef89da44a02640dcac670983608eeb420e0323"
     },
     "assets/icons/layer-rotate-left-symbolic.508e77c22c5b490cf651.svg": {
       "bytes": 279,
@@ -3041,17 +3213,25 @@
       "bytes": 301,
       "sha256": "a38e148c68a7bb7c820610f72ab7df20a0707be5d40cad9d31c7ee62714b90ea"
     },
-    "assets/icons/layer-ruler-symbolic.8a5c8e9f35f180930ef1.svg": {
-      "bytes": 303,
-      "sha256": "8a5c8e9f35f180930ef1875026d55f5b2baf27ddd8c9ca4f087aeffbdb9e69db"
+    "assets/icons/layer-ruler-symbolic.a7616c3ddcf6b41726d7.svg": {
+      "bytes": 258,
+      "sha256": "a7616c3ddcf6b41726d7e260427da114d1716a6827c5d7314ae2b5a98be47c04"
     },
-    "assets/icons/layer-save-document-symbolic.3d74e1be50abdf7a7585.svg": {
-      "bytes": 227,
-      "sha256": "3d74e1be50abdf7a75851e742c89d48bf77233ec575264c5b513e1a34181ef94"
+    "assets/icons/layer-save-as-symbolic.7d3df194409c8f4865a4.svg": {
+      "bytes": 335,
+      "sha256": "7d3df194409c8f4865a491b083b9e81a1be2f6e76b9c57d3dd63c866cb98fffb"
+    },
+    "assets/icons/layer-save-document-symbolic.def04f2ed0e7c603482c.svg": {
+      "bytes": 284,
+      "sha256": "def04f2ed0e7c603482cd9132f6c7f38f96fff9e83f1eb617839d70241ed6e07"
     },
     "assets/icons/layer-search-symbolic.083808e07e9068e1f81a.svg": {
       "bytes": 358,
       "sha256": "083808e07e9068e1f81ad67b4c51326d3ec32a9062c401cc61230cda40d5fc34"
+    },
+    "assets/icons/layer-select-all-symbolic.0a976c0bdbcdd08ab0bd.svg": {
+      "bytes": 272,
+      "sha256": "0a976c0bdbcdd08ab0bd512d6e7e069a704b5da407c015889049b9cf9bcd7d28"
     },
     "assets/icons/layer-selection-checked-symbolic.cb46fcf370ac812ec902.svg": {
       "bytes": 459,
@@ -3065,9 +3245,33 @@
       "bytes": 365,
       "sha256": "792d51cf281148198e77e78c14708bc90ae53462bdef94b0177e66a8540ca1b3"
     },
+    "assets/icons/layer-sharpen-symbolic.3069633f500a3b966d8e.svg": {
+      "bytes": 177,
+      "sha256": "3069633f500a3b966d8eb918381bb0e3a31cb1b0877be446692a4ef576813164"
+    },
     "assets/icons/layer-size-symbolic.25002ebc368eefcb7969.svg": {
       "bytes": 177,
       "sha256": "25002ebc368eefcb7969389106c1b8536d40be5ae9aeb01c3d0236f15d80115d"
+    },
+    "assets/icons/layer-soft-focus-symbolic.db0834f6ee7dca3da9d9.svg": {
+      "bytes": 349,
+      "sha256": "db0834f6ee7dca3da9d954ee7bc1c6156d55d6b7db9ce6592356a1e802574db9"
+    },
+    "assets/icons/layer-solarize-symbolic.61c6b00247e783d117c7.svg": {
+      "bytes": 191,
+      "sha256": "61c6b00247e783d117c70da5a03aee745b122214abc33d939e12a01a0e19288d"
+    },
+    "assets/icons/layer-source-code-symbolic.5eded6af3883c0a51cf1.svg": {
+      "bytes": 270,
+      "sha256": "5eded6af3883c0a51cf1fa6023f3ebc5612d10087aa52aa1c871dd372d46327e"
+    },
+    "assets/icons/layer-split-tone-symbolic.265518082dc7ac3162dc.svg": {
+      "bytes": 231,
+      "sha256": "265518082dc7ac3162dc17b05f654ab860f20934b10387a2c67455c632942f40"
+    },
+    "assets/icons/layer-spray-symbolic.560bee252632c9558528.svg": {
+      "bytes": 388,
+      "sha256": "560bee252632c9558528535dc74f2bc7c0b0ed0e3e32030971f9bd8e680ab543"
     },
     "assets/icons/layer-stats-symbolic.5381ed753736936f7f45.svg": {
       "bytes": 272,
@@ -3077,6 +3281,14 @@
       "bytes": 226,
       "sha256": "41e20700834a3444ad8d9f79ca95f7b23042af690e764a52d43bb21919fa83d6"
     },
+    "assets/icons/layer-toolbar-symbolic.c28184cc043bd3145ceb.svg": {
+      "bytes": 387,
+      "sha256": "c28184cc043bd3145cebc0f48fbe50ad3868c78909afb18e01a8e4739d8d22cc"
+    },
+    "assets/icons/layer-transform-symbolic.5c27906aa92c60fc396f.svg": {
+      "bytes": 388,
+      "sha256": "5c27906aa92c60fc396f3ced05e02b439c9faa7c75990bc2913ecad6021cabd4"
+    },
     "assets/icons/layer-undo-symbolic.04adc640c989dc473065.svg": {
       "bytes": 285,
       "sha256": "04adc640c989dc4730655994b14d6f791fe8b642e59edb5d1ec84876b133ffa4"
@@ -3085,9 +3297,29 @@
       "bytes": 270,
       "sha256": "83375c5cd82ab6cde565c9b14ebf0d1e26f985ccc0f5027b47b39b1a0d81c972"
     },
-    "assets/icons/layer-vibrance-symbolic.93957274aac3dea4f4f0.svg": {
-      "bytes": 248,
-      "sha256": "93957274aac3dea4f4f0f8d12656722d99b7888da4798794d269da6002e0c14f"
+    "assets/icons/layer-vhs-symbolic.a6f4c576a2cb071a911f.svg": {
+      "bytes": 313,
+      "sha256": "a6f4c576a2cb071a911f8421a2c189059f0f19dab8f899b931706579faddef0f"
+    },
+    "assets/icons/layer-vibrance-symbolic.fb602db2ad7f0c790e75.svg": {
+      "bytes": 214,
+      "sha256": "fb602db2ad7f0c790e755da57c113456ebc70808a10c15c7297718dade5d14df"
+    },
+    "assets/icons/layer-vignette-symbolic.03f4becb08cf79268aa3.svg": {
+      "bytes": 191,
+      "sha256": "03f4becb08cf79268aa38682e1cd409aaa96c69673f8d0127d11ec69ba9eae17"
+    },
+    "assets/icons/layer-watercolor-symbolic.7ec40350a4539ad43303.svg": {
+      "bytes": 309,
+      "sha256": "7ec40350a4539ad43303fa3fc9011722223d099cb6102c723c657facbd210da1"
+    },
+    "assets/icons/layer-website-symbolic.b94a5974cd92ed44ab14.svg": {
+      "bytes": 450,
+      "sha256": "b94a5974cd92ed44ab1466b2ed5264e119f404b2ef608174be11c6a0b2657b8e"
+    },
+    "assets/icons/layer-white-balance-symbolic.061febd389681d6ce389.svg": {
+      "bytes": 391,
+      "sha256": "061febd389681d6ce389a9709e36b0ecfde2a09b70de3faa04273893b9288a84"
     },
     "assets/icons/layer-zen-bathing-symbolic.a638473e74f9e05000d7.svg": {
       "bytes": 3546,
@@ -3105,29 +3337,29 @@
       "bytes": 1309,
       "sha256": "adc886ce0a33f63e8896c9c49c86383767cfd2421ae925a6ffdd6842f2c556ee"
     },
-    "assets/layers.c958e31aa592443bd782.js": {
-      "bytes": 17883,
-      "sha256": "c958e31aa592443bd782d74689fae2205b47bb266e4cf1ffd69eb36b29b6c826"
+    "assets/layers.5325b1e8b5a029056c39.js": {
+      "bytes": 17888,
+      "sha256": "5325b1e8b5a029056c39c8d1551927bb96dca33b9da0d1c8623494e02b4cb227"
     },
     "assets/numeric.9da6fc00fab7ed615c33.js": {
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.2567eb70ac0ece9e8528.wasm": {
-      "bytes": 10328200,
-      "sha256": "2567eb70ac0ece9e85281aeec01ff60e12aa5f5ba2c4b439f607faf2b19ca716"
+    "assets/pkg/layer_web_bg.6cc8c9b2b7ee5adea6e3.wasm": {
+      "bytes": 10501264,
+      "sha256": "6cc8c9b2b7ee5adea6e3ccafc608ad86b4302d9843c3b8c326034ba188dc22f7"
     },
-    "assets/pkg/layer_web.643f99e5f33c4a03a3d0.js": {
-      "bytes": 112409,
-      "sha256": "643f99e5f33c4a03a3d04dcd68f72cdddc125b6a51dea8e8ea20d8ebef125a51"
+    "assets/pkg/layer_web.7fe91616965b10c26724.js": {
+      "bytes": 112653,
+      "sha256": "7fe91616965b10c267245e82d926cae7cd2039511ceaac5babaa831a8691c29d"
     },
-    "assets/preferences.63fd8f8678d7fe7b57dd.js": {
-      "bytes": 23902,
-      "sha256": "63fd8f8678d7fe7b57dd0bfdc97e7d6778fd7b2edaa86e2bcd23c813f1adebbc"
+    "assets/preferences.1be16afb49ea3c6a7aed.js": {
+      "bytes": 23988,
+      "sha256": "1be16afb49ea3c6a7aed221eac81f7abf91bb883224d866508137950b7d236a1"
     },
-    "assets/style.fdb4d476a795b8eb97d3.css": {
-      "bytes": 57664,
-      "sha256": "fdb4d476a795b8eb97d3455eef1d99ccb11be84fb71418fc9d4afc692e74237d"
+    "assets/style.2a3fee70fd034c7ffed5.css": {
+      "bytes": 63229,
+      "sha256": "2a3fee70fd034c7ffed55792cdd0a9ba19ab17dd274dbb85f072e8ef7f2f11f7"
     },
     "assets/system-status.488dd6d1a506ec139165.js": {
       "bytes": 4114,
@@ -3137,25 +3369,25 @@
       "bytes": 4479,
       "sha256": "349fe11a12ec28f16e5faae4ebe23f0f6173c4898febee7d9d51880dc45733b8"
     },
-    "assets/workspace-chrome.bb8bdc25e1b3ddf48d68.js": {
-      "bytes": 15961,
-      "sha256": "bb8bdc25e1b3ddf48d68de1cffe5c5a08cf87ee12fff4679f407db57a8fd0a95"
+    "assets/workspace-chrome.b984bad4b6ce6dea7d43.js": {
+      "bytes": 16130,
+      "sha256": "b984bad4b6ce6dea7d4352d5e0c817f486b39ff212bb9a1d66c38746424e6e77"
     },
-    "assets/workspace-manager.3138af2af51325bdd3c1.js": {
-      "bytes": 10853,
-      "sha256": "3138af2af51325bdd3c13b5851f229bf5b47e839b7e55f90eed7dc927da3baf4"
+    "assets/workspace-manager.542bf6d731f4322dbba9.js": {
+      "bytes": 10962,
+      "sha256": "542bf6d731f4322dbba90e11c71db0cfca475d3de8267fd98bb931eedbd0cbc5"
     },
     "assets/workspace-store.4b0bacc3ad861f7fe4a1.js": {
       "bytes": 4305,
       "sha256": "4b0bacc3ad861f7fe4a143ee1ffe53cec2630167d97b9a60462189332da9bfdf"
     },
-    "assets/workspace-switcher.8b76a270a8158b89a217.js": {
-      "bytes": 11910,
-      "sha256": "8b76a270a8158b89a217b663b914efa70d41531fc76bf3c38fcff297070c5a35"
+    "assets/workspace-switcher.51c53b2586737ff3a847.js": {
+      "bytes": 12287,
+      "sha256": "51c53b2586737ff3a847c4ec27f0c2e350e32c0e3418285ccacd66d01a77454a"
     },
-    "assets/workspace-worker.6abf96d3e459544a79d8.js": {
+    "assets/workspace-worker.4192a1db570172ce82e7.js": {
       "bytes": 530,
-      "sha256": "6abf96d3e459544a79d83d5ad4263cad3ab4522fe13eb26b719e5b158ef1d3db"
+      "sha256": "4192a1db570172ce82e732c3b0aeb03122bea856ea4302ae90415d940ed10053"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3171,7 +3403,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "3c17d7b4ef0792db21d2b8e9c8a027bc428d01b62cb304ba57eb1ff22a3f59a2"
+      "sha256": "473e1fb2e8ecd535d1b41f738b3168cd7031a4905e226e638d2d587ad4613971"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3198,8 +3430,8 @@
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 26391,
-      "sha256": "8c5144023e109290ccf9cc6c7183d7ffc440b41b1d201215aad9f43f542bd48f"
+      "bytes": 34543,
+      "sha256": "5f43680856abb466c13d3122ddb61c06a6b75ed1b8e6873c6500710a1c071de4"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 5087,
