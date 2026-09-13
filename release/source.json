@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/capyatelier/capycanvas",
-  "commit": "b56bca30d71873f493908ac262ebd32642bed398",
+  "commit": "39a772c2741931e9fd406330b9a3932684729338",
   "domain": "editor.capycanvas.art",
   "rust": "1.96.0",
   "wasmBindgen": "0.2.128",

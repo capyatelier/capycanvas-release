@@ -53,7 +53,7 @@ try {
   run("tar", ["-xf", "-", "-C", snapshot], { input: archive, stdio: ["pipe", "inherit", "inherit"] });
   const options = { cwd: snapshot, env: { ...process.env, CARGO_TARGET_DIR: join(snapshot, "target"), LAYER_WASM_BINDGEN: bindgen, LAYER_CARGO_ABOUT: about, LAYER_RESVG: resvg } };
   run(deny, ["--manifest-path", join(snapshot, "Cargo.toml"), "--locked", "--config", join(root, "release/deny.toml"), "check", "licenses", "sources"], options);
-  const tree = capture("cargo", ["tree", "--locked", "-p", "layer-web", "--target", "wasm32-unknown-unknown", "--edges", "normal,build", "--prefix", "none", "--format", "{p}|{l}"], options);
+  const tree = capture("cargo", ["tree", "--locked", "-p", "layer-web", "--target", "wasm32-unknown-unknown", "--edges", "normal", "--prefix", "none", "--format", "{p}|{l}"], options);
   const dependencies = [...new Map(tree.split("\n").map((line) => {
     const [pkg, rawLicense] = line.split("|");
     const [name, version] = pkg.split(" ");
