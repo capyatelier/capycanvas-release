@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "bc5615e19e0ca09f51af6ae17c670903a45d930e",
-    "cargoLockSha256": "00dfd51e35f008f8c85d156de6aac8bc57fa240b51b061f68db4f6d2d065a9d4"
+    "commit": "c949fbc41f155fb6b664aefe5cd90f36a3fc661e",
+    "cargoLockSha256": "381ef5a44ebdcce0cd935689da419037ca519ff1198845ce7ec0026981a276ff"
   },
   "domain": "editor.capycanvas.art",
   "target": "wasm32-unknown-unknown",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "4cff7250f6a05b0519a34c5914267ee50b2f8e64329e1a791131cb36be2e48cb",
+  "workerVersion": "274b4ef226bacefa409274a3242d3a357ac5fa7b6fc424a4130089da21adcc97",
   "dependencies": [
     {
       "name": "adler2",
@@ -523,12 +523,12 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
+      "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_resolve_35ec7e0c6af4c82c",
+      "name": "__wbg_call_6bcf8d3e20937e46",
       "kind": "function"
     },
     {
@@ -538,27 +538,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_13d25b81ab403f5e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_8f72ed7c652bf5a2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_6f8b0d724fe26c07",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_bf6dde4923b9b059",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_get_b1f0ab13c737f856",
+      "name": "__wbg_push_bfdf956ba476f65b",
       "kind": "function"
     },
     {
@@ -568,12 +548,27 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_then_7a850dae4493f353",
+      "name": "__wbg_get_b1f0ab13c737f856",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_7bbd9cceba9949ad",
+      "name": "__wbg_new_8f72ed7c652bf5a2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_bf6dde4923b9b059",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_13d25b81ab403f5e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_typed_6f8b0d724fe26c07",
       "kind": "function"
     },
     {
@@ -583,7 +578,22 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
+      "name": "__wbg_then_7a850dae4493f353",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_Promise_f6320f682f582ddf",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_resolve_35ec7e0c6af4c82c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_call_7bbd9cceba9949ad",
       "kind": "function"
     },
     {
@@ -844,6 +854,16 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_getBindGroupLayout_349f9101ad6d4d76",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_reason_b4fa3af867fc4430",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_message_ab4cad9eeb386607",
       "kind": "function"
     },
     {
@@ -1633,6 +1653,16 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_lost_bb454eb62101af1a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_then_8ebf7f4d2b402f98",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_limits_06bcb36c8409843b",
       "kind": "function"
     },
@@ -2068,11 +2098,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_setTimeout_7b1dfbeaccbf9bb6",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_document_c7f486c52d63d24e",
       "kind": "function"
     },
@@ -2455,6 +2480,16 @@
       "module": "./layer_web_bg.js",
       "name": "__wbindgen_generic_000000000000000a",
       "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbindgen_generic_000000000000000b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbindgen_generic_000000000000000c",
+      "kind": "function"
     }
   ],
   "files": {
@@ -2466,9 +2501,9 @@
       "bytes": 2534,
       "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
     },
-    "assets/app.b23e5f1eee682a176dc2.js": {
-      "bytes": 82303,
-      "sha256": "b23e5f1eee682a176dc20fd4724977d751666f83cdcd287e135de010462f79c8"
+    "assets/app.adc23881cbe47b402137.js": {
+      "bytes": 83022,
+      "sha256": "adc23881cbe47b40213792b3d927f767641fdd11ad9be82a6b97b972cae6df14"
     },
     "assets/brush-previews/1-dark.35ec1a4918457c880720.png": {
       "bytes": 9081,
@@ -2666,9 +2701,9 @@
       "bytes": 30972,
       "sha256": "465a14ad3b37e28703bfe21e232a6975bea10c573d41b2784327d4b1c018e5b9"
     },
-    "assets/documents.43f92b9c1e4eeb99fb9a.js": {
-      "bytes": 7666,
-      "sha256": "43f92b9c1e4eeb99fb9acee562e58c90ed0bd00a6aafe8f2d17c6629a5e6111a"
+    "assets/documents.bb75f2f988a9b7c08127.js": {
+      "bytes": 11160,
+      "sha256": "bb75f2f988a9b7c08127df4aed77e88afed767b7b9677d1b17f6d4dc1fe26a58"
     },
     "assets/editor-panels.71bcb8c83007e3d90d03.js": {
       "bytes": 18203,
@@ -3370,21 +3405,29 @@
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.84993bf74c66ac528989.wasm": {
-      "bytes": 11636673,
-      "sha256": "84993bf74c66ac528989d2a53af0a3d6a2624c45d0516ff7c71b0b0203eb072e"
+    "assets/pkg/layer_web_bg.beb4ad8e333d6c620d36.wasm": {
+      "bytes": 11981237,
+      "sha256": "beb4ad8e333d6c620d36a77c87337d94cc51724c5846db153ce86c15865c85b8"
     },
-    "assets/pkg/layer_web.480b2b6931c6fe916182.js": {
-      "bytes": 115903,
-      "sha256": "480b2b6931c6fe916182f55386849ccc9bc9c2b060752c34cd6bc2cd82e923cf"
+    "assets/pkg/layer_web.cc3953075465b0802394.js": {
+      "bytes": 121034,
+      "sha256": "cc3953075465b0802394fc39d98d00beea985fc266223bdd0268d19a31e2616f"
     },
     "assets/preferences.1be16afb49ea3c6a7aed.js": {
       "bytes": 23988,
       "sha256": "1be16afb49ea3c6a7aed221eac81f7abf91bb883224d866508137950b7d236a1"
     },
-    "assets/style.2228d2c7474f1e4c9cfa.css": {
-      "bytes": 71245,
-      "sha256": "2228d2c7474f1e4c9cfa5291f863722f8e52c665177c25aa642b9a4432208a1a"
+    "assets/raster-worker-client.38a2658b895e7ec4c198.js": {
+      "bytes": 1713,
+      "sha256": "38a2658b895e7ec4c198dc4ec87d72129b1def6c8678d092ad2819156e908d2c"
+    },
+    "assets/raster-worker.e7be7d567c06c7d6aac3.js": {
+      "bytes": 2585,
+      "sha256": "e7be7d567c06c7d6aac333713b02d839626a23dc1ac2a0cb21854bcbb94ca49b"
+    },
+    "assets/style.c075b913cbfbc372d576.css": {
+      "bytes": 71147,
+      "sha256": "c075b913cbfbc372d57619081905fa4fd24fd9d2ecd2a9c80c2d466f7f7031da"
     },
     "assets/system-status.0b65cd2ebafa25dc9cf0.js": {
       "bytes": 3948,
@@ -3410,9 +3453,9 @@
       "bytes": 12287,
       "sha256": "51c53b2586737ff3a847c4ec27f0c2e350e32c0e3418285ccacd66d01a77454a"
     },
-    "assets/workspace-worker.1c79b2cc32de5e2e885e.js": {
+    "assets/workspace-worker.60b5d28b51e8fc67e6db.js": {
       "bytes": 530,
-      "sha256": "1c79b2cc32de5e2e885e0278e9a2a79cb78a2a2c37060237b9317c72d80e03e9"
+      "sha256": "60b5d28b51e8fc67e6db02748110bc47eefbc6c979a054671275f5ec5201037a"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3428,7 +3471,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "63843ff621f8d41645b920373d9eecf1d4f8e8714ea4f21441181368092b4f0d"
+      "sha256": "8ca98f1e025f10fb86fb42edb19c7f41d10784a8208afb98c003e50670d37095"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3455,8 +3498,8 @@
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 35230,
-      "sha256": "1882c90884aa592891fe76d1c4e1d59e168d3cba2ec86355a71cf4720261c904"
+      "bytes": 35481,
+      "sha256": "fa549ddfc423d55ab92589fba12ab01c168ebbefb61904e388312bfdd20375f9"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 6495,
