@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "cfbd1f6ae6523987925163852410532ceacb15be",
+    "commit": "f051e61875c5360fb58a9c94070c8a0498f65386",
     "cargoLockSha256": "381ef5a44ebdcce0cd935689da419037ca519ff1198845ce7ec0026981a276ff"
   },
   "domain": "editor.capycanvas.art",
