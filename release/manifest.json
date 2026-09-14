@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "c949fbc41f155fb6b664aefe5cd90f36a3fc661e",
+    "commit": "e78746a8633d2b93e0c58582663efc74826f5a1d",
     "cargoLockSha256": "381ef5a44ebdcce0cd935689da419037ca519ff1198845ce7ec0026981a276ff"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "274b4ef226bacefa409274a3242d3a357ac5fa7b6fc424a4130089da21adcc97",
+  "workerVersion": "b8ae5aec3397302bf75bb5d0aa16552d58df8cb0da5b3c838caedfa7f7e6c780",
   "dependencies": [
     {
       "name": "adler2",
@@ -3425,9 +3425,9 @@
       "bytes": 2585,
       "sha256": "e7be7d567c06c7d6aac333713b02d839626a23dc1ac2a0cb21854bcbb94ca49b"
     },
-    "assets/style.c075b913cbfbc372d576.css": {
-      "bytes": 71147,
-      "sha256": "c075b913cbfbc372d57619081905fa4fd24fd9d2ecd2a9c80c2d466f7f7031da"
+    "assets/style.2d24117d49f407344de8.css": {
+      "bytes": 72374,
+      "sha256": "2d24117d49f407344de8330d3487c459737dda4fcedd1386187868dbb9488db8"
     },
     "assets/system-status.0b65cd2ebafa25dc9cf0.js": {
       "bytes": 3948,
@@ -3471,7 +3471,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "8ca98f1e025f10fb86fb42edb19c7f41d10784a8208afb98c003e50670d37095"
+      "sha256": "9e3176209957b4aa8433fdf55242e7bd238efc403d4b391a3bd7ef88a0d17b34"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3499,7 +3499,7 @@
     },
     "sw.js": {
       "bytes": 35481,
-      "sha256": "fa549ddfc423d55ab92589fba12ab01c168ebbefb61904e388312bfdd20375f9"
+      "sha256": "a2590e41b89144dd421468bfa229710582ddb5469e64b1ad0621a99ad0de71b9"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 6495,
