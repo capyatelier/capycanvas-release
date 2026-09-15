@@ -9,7 +9,7 @@ import { createEditorPanels } from "./editor-panels.3612b4c25479ab77da46.js";
 import { createWorkspaceChrome } from "./workspace-chrome.d80a00db242aa9400add.js";
 import { createDocuments } from "./documents.bb75f2f988a9b7c08127.js";
 import { createSystemStatus } from "./system-status.0b65cd2ebafa25dc9cf0.js";
-import { createHeader } from "./header.58660f743d9dd7ce2c07.js";
+import { createHeader } from "./header.d89342e65ca96cab1f88.js";
 import { createNumberField } from "./numeric.9da6fc00fab7ed615c33.js";
 import { createLayerPanel } from "./layers.5325b1e8b5a029056c39.js";
 import { createEffectPanels, fetchFilterPackage } from "./effects.b8ad5bf1e1c7779fac83.js";

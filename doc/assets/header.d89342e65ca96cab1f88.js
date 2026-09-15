@@ -1,6 +1,6 @@
 // Retained DOM projection of Rust's title bar. DOM measurements are inputs;
 // allocation, overflow, drag slots, validation and publication stay in Rust.
-import { workspaceSwitcherMenu } from './workspace-switcher.js';
+import { workspaceSwitcherMenu } from "./workspace-switcher.b820a710c252eebe86ce.js";
 
 export function createHeader({app, state, workspace, element, button, icon, place, dispatch, customization, systemStatus, updateZen}) {
   const root = document.querySelector('#header');
