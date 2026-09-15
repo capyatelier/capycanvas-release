@@ -3217,7 +3217,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL("layer_web_bg.9ace13033de021869422.wasm", import.meta.url);
+        module_or_path = new URL("layer_web_bg.659e96339b91e6ee5e31.wasm", import.meta.url);
     }
     const imports = __wbg_get_imports();
 

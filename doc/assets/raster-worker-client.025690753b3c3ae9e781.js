@@ -5,7 +5,7 @@ export function createRasterWorker() {
   let next = 0;
   function owner(kind) {
     if (owners.has(kind)) return owners.get(kind);
-    const worker = new Worker(new URL("./raster-worker.5118f70e41641b8beaad.js", import.meta.url), {type:"module"});
+    const worker = new Worker(new URL("./raster-worker.2efcc67e9bcd5d7296bd.js", import.meta.url), {type:"module"});
     const pending = new Map();
     const fail = error => {
       for (const job of pending.values()) { clearTimeout(job.timer); job.reject(error); }
