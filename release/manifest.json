@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "de623a9df32be8bdd83783c80d7779da5b3787cb",
+    "commit": "1b04c9c81ed0e7cbccad839a1c7f4df0c769424b",
     "cargoLockSha256": "381ef5a44ebdcce0cd935689da419037ca519ff1198845ce7ec0026981a276ff"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "0dbf58c401e3c9d72016a27af2e6f13c0ca519b4e10a58d70650ba0de31f7de8",
+  "workerVersion": "59efe3f3ec58b0f43a7bc3531d70587fecf22c4bb30941156bc6d7464cc02b11",
   "dependencies": [
     {
       "name": "adler2",
@@ -2498,12 +2498,12 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "apple-touch-icon.png": {
-      "bytes": 2534,
-      "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
+      "bytes": 3161,
+      "sha256": "7992eea20c5a9fbdaba31c5a62d0fa3606f3ee911666e4e7902277792d105e6d"
     },
-    "assets/app.4af1b79ebf1a3791146d.js": {
+    "assets/app.4e375e4090e002b957ff.js": {
       "bytes": 84760,
-      "sha256": "4af1b79ebf1a3791146d2efd389b982bbaa728b0c999aae27ff7ea5a9fe93270"
+      "sha256": "4e375e4090e002b957ff32ac7166d3e605a778c78d51db4c4bbf0aa450887423"
     },
     "assets/brush-previews/1-dark.77ee146647534933e2ef.png": {
       "bytes": 3708,
@@ -2817,21 +2817,21 @@
       "bytes": 25696,
       "sha256": "d89342e65ca96cab1f88087acba9ac61f9859a9c1470ee54d7fe7e44ce8a6d0a"
     },
-    "assets/icon-180.f6f8d506b99d8b5e55ae.png": {
-      "bytes": 2534,
-      "sha256": "f6f8d506b99d8b5e55ae81b1c11097aceed54b5177b4be08a309ca1f0cc0edcb"
+    "assets/icon-180.7992eea20c5a9fbdaba3.png": {
+      "bytes": 3161,
+      "sha256": "7992eea20c5a9fbdaba31c5a62d0fa3606f3ee911666e4e7902277792d105e6d"
     },
-    "assets/icon-192.afa33e7122a2327a7691.png": {
-      "bytes": 3437,
-      "sha256": "afa33e7122a2327a76916451325645b1b0ac8edb512f2f654264247a3a11c68e"
+    "assets/icon-192.94264b880c7f42aa4610.png": {
+      "bytes": 4222,
+      "sha256": "94264b880c7f42aa46105179ce855c95b73540617adcc74aea0ee2785e154a4c"
     },
-    "assets/icon-32.9af354a24ff5e8102fd3.png": {
-      "bytes": 698,
-      "sha256": "9af354a24ff5e8102fd3401aa0f49f984b21f56beb9d4dd9403b005f18f814df"
+    "assets/icon-32.3a5271c440d92a7f42e7.png": {
+      "bytes": 692,
+      "sha256": "3a5271c440d92a7f42e74d761803c695f0543061269e3b0168f9f5b4984d9b57"
     },
-    "assets/icon-512.1ae55ef1600dc51535a6.png": {
-      "bytes": 10027,
-      "sha256": "1ae55ef1600dc51535a64ef2f9f3a0926bd0e27e28ae37559bf3b8cf2b1d2a34"
+    "assets/icon-512.0f7dbabae7b0b5cb3a7e.png": {
+      "bytes": 12077,
+      "sha256": "0f7dbabae7b0b5cb3a7efde63aaaec0a0a009d05185c40535e56eb158743920f"
     },
     "assets/icons/layer-add-layer-symbolic.9285ee04bdb4cbd833a1.svg": {
       "bytes": 253,
@@ -3469,9 +3469,9 @@
       "bytes": 1510,
       "sha256": "06a3a282919298af5baf032957ccdd248e6defa584098839785f25aaa5daacc3"
     },
-    "assets/icons/layer-zen-looking-up-symbolic.702efa7f434780589e3e.svg": {
-      "bytes": 1453,
-      "sha256": "702efa7f434780589e3e6c328443f902dcac9e20bf4680841c2922a625109144"
+    "assets/icons/layer-zen-looking-up-symbolic.36d21b7e6ceb685b7b9e.svg": {
+      "bytes": 1455,
+      "sha256": "36d21b7e6ceb685b7b9efc3d8edff6af7b38cb3c090cc7a921d70d10179416e2"
     },
     "assets/icons/layer-zen-sleeping-symbolic.adc886ce0a33f63e8896.svg": {
       "bytes": 1309,
@@ -3485,29 +3485,29 @@
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.659e96339b91e6ee5e31.wasm": {
+    "assets/pkg/layer_web_bg.318057293ca57fbc06c6.wasm": {
       "bytes": 12021392,
-      "sha256": "659e96339b91e6ee5e31eadc24950f5551cde439e3de2410e31fea3de90c46e5"
+      "sha256": "318057293ca57fbc06c65e032dd5a150c550892af05d6bcf00c4926df0a5cd1f"
     },
-    "assets/pkg/layer_web.40d143405105d95e0d9d.js": {
+    "assets/pkg/layer_web.36f7ff7c0b02d586b8df.js": {
       "bytes": 121034,
-      "sha256": "40d143405105d95e0d9d326c63eb25fa493c0a4728b64d6c95c7732bb410144e"
+      "sha256": "36f7ff7c0b02d586b8dff3c10b7cfd4c2d05a90879bf348cac7fc929aa1b347b"
     },
     "assets/preferences.1be16afb49ea3c6a7aed.js": {
       "bytes": 23988,
       "sha256": "1be16afb49ea3c6a7aed221eac81f7abf91bb883224d866508137950b7d236a1"
     },
-    "assets/raster-worker-client.025690753b3c3ae9e781.js": {
+    "assets/raster-worker-client.8821bac4a696dcf0c290.js": {
       "bytes": 1713,
-      "sha256": "025690753b3c3ae9e781f1d4086d5d49b399b8b051b6ee0fd32dd50377e8434c"
+      "sha256": "8821bac4a696dcf0c290b3cf01585b341cc1fa002623e1101ab008fdefdc9b5a"
     },
-    "assets/raster-worker.2efcc67e9bcd5d7296bd.js": {
+    "assets/raster-worker.7f2a4e8d448a4d751645.js": {
       "bytes": 2585,
-      "sha256": "2efcc67e9bcd5d7296bd11c9bafe0e511aa12ca686dbed9e5f963cc3c3face37"
+      "sha256": "7f2a4e8d448a4d751645cacfef249a85cb40a416be6f8f218bc59fe914192299"
     },
-    "assets/style.f795a443564b71f3d9cd.css": {
-      "bytes": 72747,
-      "sha256": "f795a443564b71f3d9cdf608c016ba0d966c0d21e3f161dc52fcec68bb87fc53"
+    "assets/style.8e0bd197388860bfeaef.css": {
+      "bytes": 72989,
+      "sha256": "8e0bd197388860bfeaef9edb45c58152bdca04fa82089ea6d61196c7c3266d9d"
     },
     "assets/system-status.0b65cd2ebafa25dc9cf0.js": {
       "bytes": 3948,
@@ -3533,9 +3533,9 @@
       "bytes": 12634,
       "sha256": "b820a710c252eebe86cef769026a80cab3c104338eb43d354d80a331783f29e8"
     },
-    "assets/workspace-worker.5032c3c83cf72bff89e3.js": {
+    "assets/workspace-worker.36fb6e21838ef7e66096.js": {
       "bytes": 530,
-      "sha256": "5032c3c83cf72bff89e3aa824a04c477d891daed890caeca97b8c0e7bf1048e5"
+      "sha256": "36fb6e21838ef7e660964b69d3075e8ebdd9ca37c6db81aa43b683014f32d9af"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3551,7 +3551,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "a41321536b1c2381540fd978b056114d9dc6d4a51815591dc3e7a1cb27f8b84e"
+      "sha256": "105f404995fdf7915179abb6ca44da8cd56557c6f0820e2333207e7106404cbc"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3571,7 +3571,7 @@
     },
     "manifest.webmanifest": {
       "bytes": 561,
-      "sha256": "a58b9d36402434613f449883f89850e7927e21923e1ab72c2fe8173e31d1bcc6"
+      "sha256": "b7ddcc2c798c88f1fba066d42cebe1ab44c926968d0520e81082e665ffc415a7"
     },
     "rust-toolchain-notices.html": {
       "bytes": 15404403,
@@ -3579,7 +3579,7 @@
     },
     "sw.js": {
       "bytes": 38131,
-      "sha256": "f4314a1bdbee60d3285f37f48ae1fb53a87c13b4cb4b76d9e3195a68e14953e3"
+      "sha256": "5acf85b317183784b9edf154016214851abad11004fe42ae83f1391f0f5aa410"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 6495,
