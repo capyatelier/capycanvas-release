@@ -43,6 +43,19 @@ export class WebApp {
         }
     }
     /**
+     * @param {WebColorCandidate} candidate
+     * @returns {any}
+     */
+    adopt_color(candidate) {
+        _assertClass(candidate, WebColorCandidate);
+        var ptr0 = candidate.__destroy_into_raw();
+        const ret = wasm.webapp_adopt_color(this.__wbg_ptr, ptr0);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @param {WebProject} project
      * @param {any} location
      * @returns {any}
@@ -51,6 +64,32 @@ export class WebApp {
         _assertClass(project, WebProject);
         var ptr0 = project.__destroy_into_raw();
         const ret = wasm.webapp_adopt_document(this.__wbg_ptr, ptr0, location);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {WebPreparedImages} prepared
+     * @returns {any}
+     */
+    adopt_images(prepared) {
+        _assertClass(prepared, WebPreparedImages);
+        var ptr0 = prepared.__destroy_into_raw();
+        const ret = wasm.webapp_adopt_images(this.__wbg_ptr, ptr0);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {WebSourceCandidate} c
+     * @returns {any}
+     */
+    adopt_source(c) {
+        _assertClass(c, WebSourceCandidate);
+        var ptr0 = c.__destroy_into_raw();
+        const ret = wasm.webapp_adopt_source(this.__wbg_ptr, ptr0);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -145,6 +184,26 @@ export class WebApp {
         return ret !== 0;
     }
     /**
+     * @returns {WebCaptureControl}
+     */
+    capture_control() {
+        const ret = wasm.webapp_capture_control(this.__wbg_ptr);
+        return WebCaptureControl.__wrap(ret);
+    }
+    /**
+     * @param {number} id
+     * @param {any} screen
+     * @param {any} destination
+     * @returns {WebImageImport}
+     */
+    capture_image_import(id, screen, destination) {
+        const ret = wasm.webapp_capture_image_import(this.__wbg_ptr, id, screen, destination);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return WebImageImport.__wrap(ret[0]);
+    }
+    /**
      * @returns {any}
      */
     catalog() {
@@ -195,6 +254,17 @@ export class WebApp {
      */
     color_panel_layout(size) {
         const ret = wasm.webapp_color_panel_layout(this.__wbg_ptr, size);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} request
+     * @returns {any}
+     */
+    color_ui(request) {
+        const ret = wasm.webapp_color_ui(this.__wbg_ptr, request);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -268,6 +338,26 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @returns {any}
+     */
+    document_color() {
+        const ret = wasm.webapp_document_color(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {Promise<any>}
+     */
+    document_properties() {
+        const ret = wasm.webapp_document_properties(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @returns {boolean}
      */
     dragging_attached_tab() {
@@ -332,22 +422,63 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
-     * @param {number} id
-     * @returns {Promise<any>}
+     * @param {any} recipe
+     * @param {any} action
+     * @returns {any}
      */
-    export_png(id) {
-        const ret = wasm.webapp_export_png(this.__wbg_ptr, id);
+    export_draft(recipe, action) {
+        const ret = wasm.webapp_export_draft(this.__wbg_ptr, recipe, action);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
         return takeFromExternrefTable0(ret[0]);
     }
     /**
-     * @returns {boolean}
+     * @returns {any}
      */
-    export_ready() {
-        const ret = wasm.webapp_export_ready(this.__wbg_ptr);
-        return ret !== 0;
+    export_form() {
+        const ret = wasm.webapp_export_form(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
+     * @param {any} value
+     * @param {WebCaptureControl} control
+     * @param {boolean | null} [preview]
+     * @returns {Promise<any>}
+     */
+    export_image(id, value, control, preview) {
+        _assertClass(control, WebCaptureControl);
+        const ret = wasm.webapp_export_image(this.__wbg_ptr, id, value, control.__wbg_ptr, isLikeNone(preview) ? 0xFFFFFF : preview ? 1 : 0);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} action
+     * @returns {Promise<any>}
+     */
+    export_presets(action) {
+        const ret = wasm.webapp_export_presets(this.__wbg_ptr, action);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {any} recipe
+     * @returns {any}
+     */
+    export_validate(recipe) {
+        const ret = wasm.webapp_export_validate(this.__wbg_ptr, recipe);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
     }
     /**
      * @param {string} manifest
@@ -495,6 +626,30 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @param {WebCaptureControl} control
+     * @returns {Promise<any>}
+     */
+    histogram(control) {
+        _assertClass(control, WebCaptureControl);
+        const ret = wasm.webapp_histogram(this.__wbg_ptr, control.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {bigint} target
+     * @param {number} fraction
+     * @returns {any}
+     */
+    image_layer_drop(target, fraction) {
+        const ret = wasm.webapp_image_layer_drop(this.__wbg_ptr, target, fraction);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @param {string} name
      * @param {number} width
      * @param {number} height
@@ -633,6 +788,16 @@ export class WebApp {
         return takeFromExternrefTable0(ret[0]);
     }
     /**
+     * @returns {any}
+     */
+    panel_measurements() {
+        const ret = wasm.webapp_panel_measurements(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * @param {any} panel
      * @param {number} width
      * @param {number} height
@@ -676,6 +841,16 @@ export class WebApp {
         return ret[0] >>> 0;
     }
     /**
+     * @returns {any}
+     */
+    photo_formats() {
+        const ret = wasm.webapp_photo_formats(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
      * Transient browser API capability; the preference remains persisted.
      * @param {boolean} available
      */
@@ -694,16 +869,185 @@ export class WebApp {
     }
     /**
      * @param {number} id
+     * @param {any} choice
+     * @param {WebCaptureControl} control
+     * @param {boolean | null} [copy]
+     * @returns {Promise<any>}
+     */
+    prepare_color(id, choice, control, copy) {
+        _assertClass(control, WebCaptureControl);
+        const ret = wasm.webapp_prepare_color(this.__wbg_ptr, id, choice, control.__wbg_ptr, isLikeNone(copy) ? 0xFFFFFF : copy ? 1 : 0);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
      * @param {Uint8Array | null | undefined} bytes
      * @param {number} width
      * @param {number} height
      * @param {bigint} epoch
      * @param {bigint} revision
-     * @param {boolean | null} [recovered]
+     * @param {boolean | null | undefined} recovered
+     * @param {string | null | undefined} source_name
+     * @param {any} options
+     * @param {Function | null} [interpret]
      * @returns {Promise<any>}
      */
-    prepare_document(id, bytes, width, height, epoch, revision, recovered) {
-        const ret = wasm.webapp_prepare_document(this.__wbg_ptr, id, isLikeNone(bytes) ? 0 : addToExternrefTable0(bytes), width, height, epoch, revision, isLikeNone(recovered) ? 0xFFFFFF : recovered ? 1 : 0);
+    prepare_document(id, bytes, width, height, epoch, revision, recovered, source_name, options, interpret) {
+        var ptr0 = isLikeNone(source_name) ? 0 : passStringToWasm0(source_name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len0 = WASM_VECTOR_LEN;
+        const ret = wasm.webapp_prepare_document(this.__wbg_ptr, id, isLikeNone(bytes) ? 0 : addToExternrefTable0(bytes), width, height, epoch, revision, isLikeNone(recovered) ? 0xFFFFFF : recovered ? 1 : 0, ptr0, len0, options, isLikeNone(interpret) ? 0 : addToExternrefTable0(interpret));
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {WebImageImport} request
+     * @param {Array<any>} files
+     * @param {Function} interpret
+     * @param {WebCaptureControl} control
+     * @returns {Promise<any>}
+     */
+    prepare_images(request, files, interpret, control) {
+        _assertClass(request, WebImageImport);
+        _assertClass(control, WebCaptureControl);
+        const ret = wasm.webapp_prepare_images(this.__wbg_ptr, request.__wbg_ptr, files, interpret, control.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
+     * @param {any} profile
+     * @param {WebCaptureControl} control
+     * @returns {Promise<any>}
+     */
+    prepare_source(id, profile, control) {
+        _assertClass(control, WebCaptureControl);
+        const ret = wasm.webapp_prepare_source(this.__wbg_ptr, id, profile, control.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {WebSourceCandidate} c
+     * @returns {Promise<any>}
+     */
+    prepare_source_comparison(c) {
+        _assertClass(c, WebSourceCandidate);
+        var ptr0 = c.__destroy_into_raw();
+        const ret = wasm.webapp_prepare_source_comparison(this.__wbg_ptr, ptr0);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {string} operation
+     * @param {string | null} [id]
+     * @param {Uint8Array | null} [bytes]
+     * @returns {Promise<any>}
+     */
+    profile_library(operation, id, bytes) {
+        const ptr0 = passStringToWasm0(operation, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        var ptr1 = isLikeNone(id) ? 0 : passStringToWasm0(id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len1 = WASM_VECTOR_LEN;
+        const ret = wasm.webapp_profile_library(this.__wbg_ptr, ptr0, len0, ptr1, len1, isLikeNone(bytes) ? 0 : addToExternrefTable0(bytes));
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {WebProof} job
+     * @param {boolean} preserved
+     * @returns {any}
+     */
+    proof_apply(job, preserved) {
+        _assertClass(job, WebProof);
+        const ret = wasm.webapp_proof_apply(this.__wbg_ptr, job.__wbg_ptr, preserved);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {number} id
+     * @param {any} recipe
+     * @returns {WebProof}
+     */
+    proof_begin(id, recipe) {
+        const ret = wasm.webapp_proof_begin(this.__wbg_ptr, id, recipe);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return WebProof.__wrap(ret[0]);
+    }
+    /**
+     * @param {WebProof} job
+     */
+    proof_check(job) {
+        _assertClass(job, WebProof);
+        const ret = wasm.webapp_proof_check(this.__wbg_ptr, job.__wbg_ptr);
+        if (ret[1]) {
+            throw takeFromExternrefTable0(ret[0]);
+        }
+    }
+    /**
+     * @param {WebProof} job
+     * @param {string} error
+     */
+    proof_failed(job, error) {
+        _assertClass(job, WebProof);
+        const ptr0 = passStringToWasm0(error, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        wasm.webapp_proof_failed(this.__wbg_ptr, job.__wbg_ptr, ptr0, len0);
+    }
+    /**
+     * @returns {any}
+     */
+    proof_form() {
+        const ret = wasm.webapp_proof_form(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {any}
+     */
+    proof_status() {
+        const ret = wasm.webapp_proof_status(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {any}
+     */
+    recovery_document() {
+        const ret = wasm.webapp_recovery_document(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {string} state
+     * @param {any} event
+     * @returns {any}
+     */
+    recovery_update(state, event) {
+        const ptr0 = passStringToWasm0(state, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        const ret = wasm.webapp_recovery_update(this.__wbg_ptr, ptr0, len0, event);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -773,6 +1117,18 @@ export class WebApp {
      */
     respond_document(id, decision) {
         const ret = wasm.webapp_respond_document(this.__wbg_ptr, id, decision);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @param {WebColorCandidate} candidate
+     * @returns {Promise<any>}
+     */
+    save_color_copy(candidate) {
+        _assertClass(candidate, WebColorCandidate);
+        const ret = wasm.webapp_save_color_copy(this.__wbg_ptr, candidate.__wbg_ptr);
         if (ret[2]) {
             throw takeFromExternrefTable0(ret[1]);
         }
@@ -1075,6 +1431,83 @@ export class WebApp {
 }
 if (Symbol.dispose) WebApp.prototype[Symbol.dispose] = WebApp.prototype.free;
 
+export class WebCaptureControl {
+    static __wrap(ptr) {
+        const obj = Object.create(WebCaptureControl.prototype);
+        obj.__wbg_ptr = ptr;
+        WebCaptureControlFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebCaptureControlFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_webcapturecontrol_free(ptr, 0);
+    }
+    cancel() {
+        wasm.webcapturecontrol_cancel(this.__wbg_ptr);
+    }
+    /**
+     * @returns {boolean}
+     */
+    cancelled() {
+        const ret = wasm.webcapturecontrol_cancelled(this.__wbg_ptr);
+        return ret !== 0;
+    }
+}
+if (Symbol.dispose) WebCaptureControl.prototype[Symbol.dispose] = WebCaptureControl.prototype.free;
+
+export class WebColorCandidate {
+    static __wrap(ptr) {
+        const obj = Object.create(WebColorCandidate.prototype);
+        obj.__wbg_ptr = ptr;
+        WebColorCandidateFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebColorCandidateFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_webcolorcandidate_free(ptr, 0);
+    }
+    cancel() {
+        wasm.webcolorcandidate_cancel(this.__wbg_ptr);
+    }
+    /**
+     * @returns {number}
+     */
+    clipped_channels() {
+        const ret = wasm.webcolorcandidate_clipped_channels(this.__wbg_ptr);
+        return ret;
+    }
+    /**
+     * @returns {boolean}
+     */
+    is_copy() {
+        const ret = wasm.webcolorcandidate_is_copy(this.__wbg_ptr);
+        return ret !== 0;
+    }
+    /**
+     * @returns {any}
+     */
+    previews() {
+        const ret = wasm.webcolorcandidate_previews(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+}
+if (Symbol.dispose) WebColorCandidate.prototype[Symbol.dispose] = WebColorCandidate.prototype.free;
+
 /**
  * Created separately so an adapter request never holds a mutable UI borrow
  * across await. Settings and layout remain usable throughout GPU startup.
@@ -1098,14 +1531,55 @@ export class WebGpu {
     }
     /**
      * @param {HTMLCanvasElement} canvas
+     * @param {any} color
      * @returns {Promise<WebGpu>}
      */
-    static create(canvas) {
-        const ret = wasm.webgpu_create(canvas);
+    static create(canvas, color) {
+        const ret = wasm.webgpu_create(canvas, color);
         return ret;
     }
 }
 if (Symbol.dispose) WebGpu.prototype[Symbol.dispose] = WebGpu.prototype.free;
+
+export class WebImageImport {
+    static __wrap(ptr) {
+        const obj = Object.create(WebImageImport.prototype);
+        obj.__wbg_ptr = ptr;
+        WebImageImportFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebImageImportFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_webimageimport_free(ptr, 0);
+    }
+}
+if (Symbol.dispose) WebImageImport.prototype[Symbol.dispose] = WebImageImport.prototype.free;
+
+export class WebPreparedImages {
+    static __wrap(ptr) {
+        const obj = Object.create(WebPreparedImages.prototype);
+        obj.__wbg_ptr = ptr;
+        WebPreparedImagesFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebPreparedImagesFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_webpreparedimages_free(ptr, 0);
+    }
+}
+if (Symbol.dispose) WebPreparedImages.prototype[Symbol.dispose] = WebPreparedImages.prototype.free;
 
 export class WebProject {
     static __wrap(ptr) {
@@ -1127,11 +1601,155 @@ export class WebProject {
 }
 if (Symbol.dispose) WebProject.prototype[Symbol.dispose] = WebProject.prototype.free;
 
+export class WebProof {
+    static __wrap(ptr) {
+        const obj = Object.create(WebProof.prototype);
+        obj.__wbg_ptr = ptr;
+        WebProofFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebProofFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_webproof_free(ptr, 0);
+    }
+    /**
+     * @param {number} edge
+     * @param {boolean} dark
+     * @param {Uint8Array} bytes
+     */
+    load(edge, dark, bytes) {
+        const ret = wasm.webproof_load(this.__wbg_ptr, edge, dark, bytes);
+        if (ret[1]) {
+            throw takeFromExternrefTable0(ret[0]);
+        }
+    }
+    /**
+     * @returns {Uint8Array | undefined}
+     */
+    preservation() {
+        const ret = wasm.webproof_preservation(this.__wbg_ptr);
+        return ret;
+    }
+    /**
+     * @returns {string}
+     */
+    request() {
+        let deferred2_0;
+        let deferred2_1;
+        try {
+            const ret = wasm.webproof_request(this.__wbg_ptr);
+            var ptr1 = ret[0];
+            var len1 = ret[1];
+            if (ret[3]) {
+                ptr1 = 0; len1 = 0;
+                throw takeFromExternrefTable0(ret[2]);
+            }
+            deferred2_0 = ptr1;
+            deferred2_1 = len1;
+            return getStringFromWasm0(ptr1, len1);
+        } finally {
+            wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+        }
+    }
+}
+if (Symbol.dispose) WebProof.prototype[Symbol.dispose] = WebProof.prototype.free;
+
+export class WebSourceCandidate {
+    static __wrap(ptr) {
+        const obj = Object.create(WebSourceCandidate.prototype);
+        obj.__wbg_ptr = ptr;
+        WebSourceCandidateFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        WebSourceCandidateFinalization.unregister(this);
+        return ptr;
+    }
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_websourcecandidate_free(ptr, 0);
+    }
+    /**
+     * @returns {boolean}
+     */
+    adds_layer() {
+        const ret = wasm.websourcecandidate_adds_layer(this.__wbg_ptr);
+        return ret !== 0;
+    }
+    /**
+     * @returns {number}
+     */
+    clipped_channels() {
+        const ret = wasm.websourcecandidate_clipped_channels(this.__wbg_ptr);
+        return ret;
+    }
+    /**
+     * @returns {any}
+     */
+    previews() {
+        const ret = wasm.websourcecandidate_previews(this.__wbg_ptr);
+        if (ret[2]) {
+            throw takeFromExternrefTable0(ret[1]);
+        }
+        return takeFromExternrefTable0(ret[0]);
+    }
+    /**
+     * @returns {string}
+     */
+    source_profile() {
+        let deferred1_0;
+        let deferred1_1;
+        try {
+            const ret = wasm.websourcecandidate_source_profile(this.__wbg_ptr);
+            deferred1_0 = ret[0];
+            deferred1_1 = ret[1];
+            return getStringFromWasm0(ret[0], ret[1]);
+        } finally {
+            wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
+        }
+    }
+}
+if (Symbol.dispose) WebSourceCandidate.prototype[Symbol.dispose] = WebSourceCandidate.prototype.free;
+
 /**
  * @param {Function} worker
  */
 export function configure_raster_worker(worker) {
     wasm.configure_raster_worker(worker);
+}
+
+/**
+ * @param {string} request
+ * @returns {any}
+ */
+export function proof_worker_build(request) {
+    const ptr0 = passStringToWasm0(request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.proof_worker_build(ptr0, len0);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+
+/**
+ * @param {string} metadata
+ * @param {Array<any>} buffers
+ * @returns {Promise<any>}
+ */
+export function raster_worker_color(metadata, buffers) {
+    const ptr0 = passStringToWasm0(metadata, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_color(ptr0, len0, buffers);
+    return ret;
 }
 
 /**
@@ -1155,30 +1773,112 @@ export function raster_worker_encode(metadata, bytes) {
 
 /**
  * @param {string} metadata
- * @param {Array<any>} buffers
- * @returns {Uint8Array}
+ * @param {Uint8Array} bytes
+ * @returns {any}
  */
-export function raster_worker_png(metadata, buffers) {
+export function raster_worker_export_presets(metadata, bytes) {
     const ptr0 = passStringToWasm0(metadata, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.raster_worker_png(ptr0, len0, buffers);
-    if (ret[3]) {
-        throw takeFromExternrefTable0(ret[2]);
+    const ret = wasm.raster_worker_export_presets(ptr0, len0, bytes);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
     }
-    var v2 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
-    wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
-    return v2;
+    return takeFromExternrefTable0(ret[0]);
 }
 
 /**
- * @param {number} dimension
+ * @param {Uint8Array} bytes
+ * @param {boolean} include_bytes
+ * @returns {any}
+ */
+export function raster_worker_inspect_profile(bytes, include_bytes) {
+    const ret = wasm.raster_worker_inspect_profile(bytes, include_bytes);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+
+/**
+ * @param {string} metadata
+ * @param {Array<any>} buffers
+ * @param {Function} read
+ * @param {Function} write
+ * @returns {Promise<any>}
+ */
+export function raster_worker_output(metadata, buffers, read, write) {
+    const ptr0 = passStringToWasm0(metadata, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_output(ptr0, len0, buffers, read, write);
+    return ret;
+}
+
+/**
+ * @param {string} request
+ * @param {Uint8Array} bytes
+ * @returns {any}
+ */
+export function raster_worker_profile_library(request, bytes) {
+    const ptr0 = passStringToWasm0(request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_profile_library(ptr0, len0, bytes);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+
+/**
+ * @param {string} metadata
+ * @returns {any}
+ */
+export function raster_worker_properties(metadata) {
+    const ptr0 = passStringToWasm0(metadata, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_properties(ptr0, len0);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+
+/**
+ * @param {string} options
  * @param {Uint8Array} bytes
  * @returns {Promise<any>}
  */
-export function raster_worker_read(dimension, bytes) {
-    const ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_malloc);
+export function raster_worker_read(options, bytes) {
+    const ptr0 = passStringToWasm0(options, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.raster_worker_read(dimension, ptr0, len0);
+    const ptr1 = passArray8ToWasm0(bytes, wasm.__wbindgen_malloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_read(ptr0, len0, ptr1, len1);
+    return ret;
+}
+
+/**
+ * @param {string} metadata
+ * @returns {any}
+ */
+export function raster_worker_source_profile(metadata) {
+    const ptr0 = passStringToWasm0(metadata, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_source_profile(ptr0, len0);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+
+/**
+ * @param {string} metadata
+ * @param {Array<any>} buffers
+ * @returns {Promise<any>}
+ */
+export function raster_worker_source_rasterize(metadata, buffers) {
+    const ptr0 = passStringToWasm0(metadata, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.raster_worker_source_rasterize(ptr0, len0, buffers);
     return ret;
 }
 
@@ -1334,6 +2034,18 @@ function __wbg_get_imports() {
             const ret = arg0.beginRenderPass(arg1);
             return ret;
         }, arguments); },
+        __wbg_buffer_4a989bded7035f57: function(arg0) {
+            const ret = arg0.buffer;
+            return ret;
+        },
+        __wbg_buffer_c76fa2830d92f5bb: function(arg0) {
+            const ret = arg0.buffer;
+            return ret;
+        },
+        __wbg_byteOffset_46eb015f52b6ad7d: function(arg0) {
+            const ret = arg0.byteOffset;
+            return ret;
+        },
         __wbg_call_269c5566fbede3eb: function() { return handleError(function (arg0, arg1) {
             const ret = arg0.call(arg1);
             return ret;
@@ -1364,6 +2076,9 @@ function __wbg_get_imports() {
         }, arguments); },
         __wbg_copyBufferToBuffer_9c174b96fb08d551: function() { return handleError(function (arg0, arg1, arg2, arg3, arg4, arg5) {
             arg0.copyBufferToBuffer(arg1, arg2, arg3, arg4, arg5);
+        }, arguments); },
+        __wbg_copyBufferToTexture_ff632a21ab3fe3a7: function() { return handleError(function (arg0, arg1, arg2, arg3) {
+            arg0.copyBufferToTexture(arg1, arg2, arg3);
         }, arguments); },
         __wbg_copyTextureToBuffer_1234b3210431ad05: function() { return handleError(function (arg0, arg1, arg2, arg3) {
             arg0.copyTextureToBuffer(arg1, arg2, arg3);
@@ -1425,6 +2140,12 @@ function __wbg_get_imports() {
             const len1 = WASM_VECTOR_LEN;
             getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
             getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+        },
+        __wbg_destroy_249478e98a7943d5: function(arg0) {
+            arg0.destroy();
+        },
+        __wbg_destroy_275564a0a8b8d071: function(arg0) {
+            arg0.destroy();
         },
         __wbg_dispatchWorkgroups_56b943172790add0: function(arg0, arg1, arg2, arg3) {
             arg0.dispatchWorkgroups(arg1 >>> 0, arg2 >>> 0, arg3 >>> 0);
@@ -1652,6 +2373,10 @@ function __wbg_get_imports() {
             const ret = arg0.length;
             return ret;
         },
+        __wbg_length_8768c6f6941913e3: function(arg0) {
+            const ret = arg0.length;
+            return ret;
+        },
         __wbg_limits_06bcb36c8409843b: function(arg0) {
             const ret = arg0.limits;
             return ret;
@@ -1848,12 +2573,20 @@ function __wbg_get_imports() {
                 state0.a = 0;
             }
         },
+        __wbg_new_a32a1ab6c6655abe: function(arg0, arg1) {
+            const ret = new Error(getStringFromWasm0(arg0, arg1));
+            return ret;
+        },
         __wbg_new_bebc3f4757acf305: function() {
             const ret = new Object();
             return ret;
         },
         __wbg_new_ffa92086ea89f79c: function() {
             const ret = new Array();
+            return ret;
+        },
+        __wbg_new_from_slice_2221cabb71753908: function(arg0, arg1) {
+            const ret = new Float32Array(getArrayF32FromWasm0(arg0, arg1));
             return ret;
         },
         __wbg_new_from_slice_4ee02165f9de919e: function(arg0, arg1) {
@@ -1880,6 +2613,10 @@ function __wbg_get_imports() {
         },
         __wbg_new_typed_7d4574ab4b8446c8: function() {
             const ret = new Object();
+            return ret;
+        },
+        __wbg_new_with_byte_offset_and_length_0c2d39ee6aa209f8: function(arg0, arg1, arg2) {
+            const ret = new Float32Array(arg0, arg1 >>> 0, arg2 >>> 0);
             return ret;
         },
         __wbg_new_with_byte_offset_and_length_492c969e8b5da8a4: function(arg0, arg1, arg2) {
@@ -1917,6 +2654,9 @@ function __wbg_get_imports() {
         __wbg_popErrorScope_182b8e03671d81ef: function(arg0) {
             const ret = arg0.popErrorScope();
             return ret;
+        },
+        __wbg_prototypesetcall_804a1eb1b047ccb9: function(arg0, arg1, arg2) {
+            Float32Array.prototype.set.call(getArrayF32FromWasm0(arg0, arg1), arg2);
         },
         __wbg_prototypesetcall_ae9f5e7459250748: function(arg0, arg1, arg2) {
             Uint8Array.prototype.set.call(getArrayU8FromWasm0(arg0, arg1), arg2);
@@ -2360,6 +3100,9 @@ function __wbg_get_imports() {
         __wbg_set_multisampled_039f032dc4b67367: function(arg0, arg1) {
             arg0.multisampled = arg1 !== 0;
         },
+        __wbg_set_name_6e2a5da46a9ae1e7: function(arg0, arg1, arg2) {
+            arg0.name = getStringFromWasm0(arg1, arg2);
+        },
         __wbg_set_offset_f64_127e8a0aa5c5485a: function(arg0, arg1) {
             arg0.offset = arg1;
         },
@@ -2573,6 +3316,10 @@ function __wbg_get_imports() {
         __wbg_set_z_2e6820ef0f5821ed: function(arg0, arg1) {
             arg0.z = arg1 >>> 0;
         },
+        __wbg_slice_ec88db741786524b: function(arg0, arg1, arg2) {
+            const ret = arg0.slice(arg1 >>> 0, arg2 >>> 0);
+            return ret;
+        },
         __wbg_stack_3b0d974bbf31e44f: function(arg0, arg1) {
             const ret = arg1.stack;
             const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -2633,12 +3380,24 @@ function __wbg_get_imports() {
             const ret = arg0.value;
             return ret;
         },
+        __wbg_webcolorcandidate_new: function(arg0) {
+            const ret = WebColorCandidate.__wrap(arg0);
+            return ret;
+        },
         __wbg_webgpu_new: function(arg0) {
             const ret = WebGpu.__wrap(arg0);
             return ret;
         },
+        __wbg_webpreparedimages_new: function(arg0) {
+            const ret = WebPreparedImages.__wrap(arg0);
+            return ret;
+        },
         __wbg_webproject_new: function(arg0) {
             const ret = WebProject.__wrap(arg0);
+            return ret;
+        },
+        __wbg_websourcecandidate_new: function(arg0) {
+            const ret = WebSourceCandidate.__wrap(arg0);
             return ret;
         },
         __wbg_width_b5e609025d3f7451: function(arg0) {
@@ -2652,33 +3411,33 @@ function __wbg_get_imports() {
             arg0.writeTexture(arg1, getArrayU8FromWasm0(arg2, arg3), arg4, arg5);
         }, arguments); },
         __wbindgen_generic_0000000000000001: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 1719, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [Externref], shim_idx: 2672, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h7697d3b1943426f5);
             return ret;
         },
         __wbindgen_generic_0000000000000002: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 1451, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDevice")], shim_idx: 2074, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5);
             return ret;
         },
         __wbindgen_generic_0000000000000003: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDeviceLostInfo")], shim_idx: 1461, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUDeviceLostInfo")], shim_idx: 2094, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h255e96d4a0c3d056);
             return ret;
         },
         __wbindgen_generic_0000000000000004: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 1461, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c_102);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("GPUUncapturedErrorEvent")], shim_idx: 2094, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h255e96d4a0c3d056_152);
             return ret;
         },
         __wbindgen_generic_0000000000000005: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 1451, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_103);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("any")], shim_idx: 2074, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5_153);
             return ret;
         },
         __wbindgen_generic_0000000000000006: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 1451, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_104);
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [NamedExternref("undefined")], shim_idx: 2074, ret: Result(Unit), inner_ret: Some(Result(Unit)) }, mutable: true }) -> Externref`.
+            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5_154);
             return ret;
         },
         __wbindgen_generic_0000000000000007: function(arg0) {
@@ -2729,12 +3488,12 @@ function __wbg_get_imports() {
     };
 }
 
-function wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h255e96d4a0c3d056(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h255e96d4a0c3d056(arg0, arg1, arg2);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c_102(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h5ab7a42137baf19c_102(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h255e96d4a0c3d056_152(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h255e96d4a0c3d056_152(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h7697d3b1943426f5(arg0, arg1, arg2) {
@@ -2744,22 +3503,22 @@ function wasm_bindgen__convert__closures_____invoke__h7697d3b1943426f5(arg0, arg
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_103(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_103(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5_153(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5_153(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_104(arg0, arg1, arg2) {
-    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h12db495378bc9476_104(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5_154(arg0, arg1, arg2) {
+    const ret = wasm.wasm_bindgen__convert__closures_____invoke__h9d46bfe82c9719e5_154(arg0, arg1, arg2);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }
@@ -2861,12 +3620,30 @@ const __wbindgen_enum_GpuVertexStepMode = ["vertex", "instance"];
 const WebAppFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_webapp_free(ptr, 1));
+const WebCaptureControlFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_webcapturecontrol_free(ptr, 1));
+const WebColorCandidateFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_webcolorcandidate_free(ptr, 1));
 const WebGpuFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_webgpu_free(ptr, 1));
+const WebImageImportFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_webimageimport_free(ptr, 1));
+const WebPreparedImagesFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_webpreparedimages_free(ptr, 1));
 const WebProjectFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_webproject_free(ptr, 1));
+const WebProofFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_webproof_free(ptr, 1));
+const WebSourceCandidateFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_websourcecandidate_free(ptr, 1));
 
 function addToExternrefTable0(obj) {
     const idx = wasm.__externref_table_alloc();
@@ -2949,6 +3726,11 @@ function debugString(val) {
     return className;
 }
 
+function getArrayF32FromWasm0(ptr, len) {
+    ptr = ptr >>> 0;
+    return getFloat32ArrayMemory0().subarray(ptr / 4, ptr / 4 + len);
+}
+
 function getArrayJsValueViewFromWasm0(ptr, len) {
     ptr = ptr >>> 0;
     const mem = getDataViewMemory0();
@@ -2975,6 +3757,14 @@ function getDataViewMemory0() {
         cachedDataViewMemory0 = new DataView(wasm.memory.buffer);
     }
     return cachedDataViewMemory0;
+}
+
+let cachedFloat32ArrayMemory0 = null;
+function getFloat32ArrayMemory0() {
+    if (cachedFloat32ArrayMemory0 === null || cachedFloat32ArrayMemory0.byteLength === 0) {
+        cachedFloat32ArrayMemory0 = new Float32Array(wasm.memory.buffer);
+    }
+    return cachedFloat32ArrayMemory0;
 }
 
 let cachedFloat64ArrayMemory0 = null;
@@ -3138,6 +3928,7 @@ function __wbg_finalize_init(instance, module) {
     wasm = instance.exports;
     wasmModule = module;
     cachedDataViewMemory0 = null;
+    cachedFloat32ArrayMemory0 = null;
     cachedFloat64ArrayMemory0 = null;
     cachedUint32ArrayMemory0 = null;
     cachedUint8ArrayMemory0 = null;
@@ -3217,7 +4008,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (module_or_path === undefined) {
-        module_or_path = new URL("layer_web_bg.318057293ca57fbc06c6.wasm", import.meta.url);
+        module_or_path = new URL("layer_web_bg.731a3242203c41907531.wasm", import.meta.url);
     }
     const imports = __wbg_get_imports();
 

@@ -5,25 +5,34 @@ export function createRasterWorker() {
   let next = 0;
   function owner(kind) {
     if (owners.has(kind)) return owners.get(kind);
-    const worker = new Worker(new URL("./raster-worker.7f2a4e8d448a4d751645.js", import.meta.url), {type:"module"});
+    const worker = new Worker(new URL("./raster-worker.579bee88f4cccc7e718f.js", import.meta.url), {type:"module"});
     const pending = new Map();
+    let idleTimer;
     const fail = error => {
       for (const job of pending.values()) { clearTimeout(job.timer); job.reject(error); }
-      pending.clear(); worker.terminate(); owners.delete(kind);
+      clearTimeout(idleTimer); pending.clear(); worker.terminate(); owners.delete(kind);
     };
     worker.onmessage = ({data}) => {
       const job = pending.get(data.id);
       if (!job) return;
       pending.delete(data.id); clearTimeout(job.timer);
       if (data.error) job.reject(new Error(data.error)); else job.resolve(data.result);
+      // Wasm heaps cannot shrink. Release an oversized idle file arena after
+      // its transferred result is owned by the editor and no OPFS job is live.
+      if(kind==="files" && data.retire && !pending.size)idleTimer=setTimeout(()=>{
+        if(!pending.size){worker.terminate();owners.delete(kind);}
+      },5000);
     };
     worker.onerror = event => { event.preventDefault(); fail(new Error(event.message || "Raster worker stopped")); };
     worker.onmessageerror = () => fail(new Error("Invalid raster worker response"));
-    const state = {worker,pending,fail}; owners.set(kind,state); return state;
+    const state = {worker,pending,fail,active(){clearTimeout(idleTimer);}}; owners.set(kind,state); return state;
   }
   return request => new Promise((resolve,reject) => {
     const state = owner(request.operation === "encode" ? "codec" : "files"), id = ++next;
-    const timer = setTimeout(() => state.fail(new Error("Raster worker timed out")), 30000);
+    state.active();
+    // Full-resolution file codecs can outlast an interactive compression block.
+    const timeout=request.operation === "encode" ? 30000 : 180000;
+    const timer = setTimeout(() => state.fail(new Error("Raster worker timed out")), timeout);
     state.pending.set(id,{resolve,reject,timer});
     const transfers = (request.buffers || []).map(bytes => bytes.buffer);
     try { state.worker.postMessage({id,request},transfers); }

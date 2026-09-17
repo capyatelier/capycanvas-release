@@ -5,13 +5,26 @@ Capy Canvas's original code and non-brand assets are licensed under
 retains its own terms; our dual license does not relicense dependencies.
 The project-owned capybara mark is a separate exception under [BRANDING.md](BRANDING.md).
 
+## Native HEIF/AVIF photo decoders
+
+GTK packages include dynamically loaded libheif 1.23.4 and libde265 1.1.3
+(LGPL-3.0-or-later), plus libavif 1.4.2 and dav1d 1.5.3 (BSD-2-Clause). Their original licenses,
+corresponding source archives, pinned checksums, local patch and build recipe
+are included in `share/doc/capycanvas-photo-codecs/` in the native package.
+These shared libraries remain replaceable in `lib/capycanvas/photo/`.
+
+The narrow Capy Canvas C bridge uses the project's MIT OR Apache-2.0 terms.
+The libheif patch preserves source color metadata after RGB conversion and
+retains libheif's original license. See [codec provenance](vendor/README.md#heifavif-source-color-preservation).
+
 ## Oklab color conversion — MIT
 
-The `linear_to_oklab` and `oklab_to_linear` functions in
-`crates/layer-render-wgpu/src/material_brush.wgsl` adapt Björn Ottosson's
+The `working_to_oklab` and `working_from_oklab` functions in
+`crates/layer-render-wgpu/src/working_color.wgsl` adapt Björn Ottosson's
 [reference implementation](https://bottosson.github.io/posts/oklab/).
-The local implementation uses WGSL vectors, signed cube roots, and clamps
-negative RGB output. We use the author's MIT license option and preserve the
+The local implementation uses WGSL vectors, signed cube roots and document-primary
+transforms. Native Float32 output preserves extended RGB. We use the author's
+MIT license option and preserve the
 [original notice](https://bottosson.github.io/misc/License.txt) below.
 
 ```text
@@ -59,6 +72,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## Output dithering hash — public domain
+
+`crates/layer-color/src/icc/output/quantize.rs` adapts the SplitMix64 mixing
+function from [Sebastiano Vigna's 2015 reference](https://prng.di.unimi.it/splitmix64.c).
+The author dedicates the code to the public domain and permits use, copying,
+modification and distribution. The source is supplied without warranty. We use
+pixel coordinates instead of mutable generator state for repeatable output.
+
 ## fasteval — MIT
 
 Numeric expressions use `fasteval` 0.2.4, downloaded as a Cargo dependency.
@@ -98,9 +119,13 @@ NDK and emulator packages are development tools installed separately, not vendor
 or included as source assets. Android binary releases must collect notices for
 their exact Maven and native dependencies as well as the notices below.
 
-Cargo downloads dependencies separately; their sources and compiled libraries
-are not vendored in this repository. `Cargo.lock` records exact versions and
-checksums. [deny.toml](deny.toml) enforces the reviewed Rust license allowlist,
+The published wgpu 30.0.1 `wgpu`, `wgpu-hal` and `wgpu-types` crates are included
+under [vendor](vendor/README.md) with a local Vulkan color pass-through patch.
+They retain their MIT OR Apache-2.0 licenses and copyright notices; each package
+contains `LICENSE.MIT` and `LICENSE.APACHE`.
+
+Cargo downloads other dependencies separately. `Cargo.lock` records exact
+versions and registry checksums. [deny.toml](deny.toml) enforces the reviewed Rust license allowlist,
 including build/dev dependencies and non-Linux targets. An allowed license is
 not permission to omit its copyright notices or other distribution conditions.
 

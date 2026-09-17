@@ -1,7 +1,7 @@
 let thumbnailRequest=0n;
 const thumbnailPending=new Map();
 // Layer widgets only. Selection, references, hierarchy and menu policy are Rust.
-export function createLayerPanel({ app, catalog, state, panel, element, button, icon, dispatch, applyChange, message, numberField, dismissContext }) {
+export function createLayerPanel({ app, catalog, state, panel, element, button, icon, dispatch, applyChange, message, numberField, dismissContext, contentChanged = () => {} }) {
   const send = action => dispatch({ type: "layer", action });
   const header = element("div", "layer-header"), footer = element("div", "layer-footer");
   header.dataset.control = "layer_opacity"; footer.dataset.control = "layer_actions";
@@ -33,7 +33,7 @@ export function createLayerPanel({ app, catalog, state, panel, element, button, 
   header.append(flags);
   const rows = element("div", "layer-rows"); rows.id = "layer-rows"; rows.dataset.control = "layers";
   const records = new Map();
-  let documentEpoch;
+  let documentEpoch, measurementKey;
   const menu = (node, getLayer, mask = false) => {
     node.dataset.context = "{}";
     node.layerMenu = () => { const id = getLayer().id, targetMask = typeof mask === "function" ? mask() : mask;
@@ -45,19 +45,7 @@ export function createLayerPanel({ app, catalog, state, panel, element, button, 
   }
   const addMask = () => ({ op: "add_mask", id: active().id, replace: false });
   const maskButton = glyphButton("mask", "Add layer mask", () => send(addMask()), "", addMask); footer.append(maskButton);
-  const file = element("input"); file.type = "file"; file.accept = "image/*"; file.hidden = true;
-  file.onchange = async () => {
-    const source = file.files[0]; if (!source) return;
-    try {
-      const image = await createImageBitmap(source);
-      // Decode an imported file only; this is not a canvas raster fallback.
-      const buffer = new OffscreenCanvas(image.width, image.height), context = buffer.getContext("2d");
-      context.drawImage(image, 0, 0); const rgba = context.getImageData(0, 0, image.width, image.height);
-      applyChange(app.import_layer_image(source.name, image.width, image.height, rgba.data)); image.close();
-    } catch (error) { message(error); }
-    file.value = "";
-  };
-  footer.append(glyphButton("image", "Import image as layer", () => file.click()), file);
+  footer.append(glyphButton("image", "Import image as layer", () => dispatch({type:"invoke",command:"import_image"})));
   const deleteAction = () => ({ op: "delete_selected" });
   const deleteButton = glyphButton("delete", "Delete selected layers", () => send(deleteAction()), "", deleteAction);
   footer.append(deleteButton);
@@ -195,6 +183,12 @@ export function createLayerPanel({ app, catalog, state, panel, element, button, 
       const id = String(layer.id); if (!records.has(id)) records.set(id, makeRow(layer));
       const r = records.get(id); r.layer = layer;
       if (rows.children[index] !== r.row) rows.insertBefore(r.row, rows.children[index] || null);
+      const {paint_revision,mask_revision,...presentation}=layer;
+      const key=JSON.stringify([presentation,view.rename_layer===layer.id],(_,value)=>typeof value==="bigint"?String(value):value);
+      // Keep the latest thumbnail revisions above, but retain unchanged row
+      // widgets, SVGs and text through canvas movement and raster publications.
+      if(r.presentation===key)return;
+      r.presentation=key;
       r.row.classList.toggle("selected", layer.selected);
       r.eye.replaceChildren(icon(layer.visible ? "eye" : "eye-hidden")); r.eye.title = r.eye.ariaLabel = layer.visible ? "Hide layer" : "Show layer";
       r.check.replaceChildren(icon(nameIcon(layer.selection_icon)));
@@ -220,6 +214,11 @@ export function createLayerPanel({ app, catalog, state, panel, element, button, 
         input.focus(); input.select();
       }
     });
+    // Bitmap revisions do not change row geometry. Native text, hierarchy and
+    // controls do, including when this retained panel is currently offscreen.
+    const next = JSON.stringify([view.rename_layer?.toString(), state().layers.map(({paint_revision,mask_revision,...row})=>row)],
+      (_,value)=>typeof value==="bigint"?String(value):value);
+    if (next !== measurementKey) { measurementKey=next; contentChanged("layers"); }
   }
   const pending = thumbnailPending, revisions = new Map();
   const owned = new Set();

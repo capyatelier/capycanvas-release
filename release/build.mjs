@@ -2,7 +2,7 @@
 // Host packaging only; compilation and PWA generation belong to capycanvas.
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { inventory, readJson, root, sha256, verify } from "./verify.mjs";
@@ -38,6 +38,7 @@ const about = tool("cargo-about", process.env.LAYER_CARGO_ABOUT, config.cargoAbo
 const deny = tool("cargo-deny", process.env.CAPY_CARGO_DENY, config.cargoDeny);
 const resvg = tool("resvg", process.env.LAYER_RESVG, config.resvg);
 const output = join(root, "doc"), manifestPath = join(root, "release/manifest.json");
+const escapeHtml = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 if (existsSync(output)) {
   assert.ok(existsSync(manifestPath), "Refusing to replace an unowned doc directory");
   const previous = readJson(manifestPath);
@@ -71,7 +72,37 @@ try {
   }
   const site = join(work, "doc");
   cpSync(join(snapshot, "dist/capycanvas"), site, { recursive: true });
-  const workerVersion = readFileSync(join(site, ".capy-package"), "utf8").trim();
+  let notices = readFileSync(join(site, "dependency-licenses.html"), "utf8");
+  // cargo-about omits patched crates because Cargo reports them as local
+  // sources. Preserve their shipped license texts in the published notice.
+  for (const entry of readdirSync(join(snapshot, "vendor"), { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const vendor = join(snapshot, "vendor", entry.name);
+    const cargo = readFileSync(join(vendor, "Cargo.toml"), "utf8");
+    const name = cargo.match(/^name\s*=\s*"([^"]+)"/m)?.[1];
+    const version = cargo.match(/^version\s*=\s*"([^"]+)"/m)?.[1];
+    if (!name || !version || !dependencies.some((dependency) => dependency.name === name && dependency.version === version)) continue;
+    if (notices.includes(`<li>${name} ${version}</li>`)) continue;
+    const licenses = ["LICENSE", "LICENSE.txt", "LICENSE-MIT", "LICENSE-APACHE", "LICENSE.MIT", "LICENSE.APACHE", "COPYING"].filter((path) => existsSync(join(vendor, path)));
+    assert.ok(licenses.length, `Missing vendor license notice: ${name}`);
+    notices += `\n<section><h2>${escapeHtml(name)}</h2><ul><li>${escapeHtml(name)} ${escapeHtml(version)}</li></ul><pre>${escapeHtml(licenses.map((path) => readFileSync(join(vendor, path), "utf8")).join("\n\n"))}</pre></section>\n`;
+  }
+  // zune-core 0.4.12 and zune-jpeg 0.4.21 declare their licenses but omit
+  // the text from their crate archives. Use the upstream 0.4.21-jpeg tag,
+  // pinned by this SHA-256, as their original shared license notice.
+  const zune = readFileSync(join(root, "release/notices/zune-image-0.4.21-jpeg-LICENSE.md"), "utf8");
+  assert.equal(sha256(zune), "c6dff146a9f31848ac296faa5a08a4253caf2c384c86f906dc99e7fc0a39cc8c", "Unexpected Zune upstream license notice");
+  const zuneDependencies = dependencies.filter((dependency) => ["zune-core", "zune-jpeg"].includes(dependency.name) && !notices.includes(`<li>${dependency.name} ${dependency.version}</li>`));
+  if (zuneDependencies.length)
+    notices += `\n<section><h2>zune-image upstream license notice</h2><ul>${zuneDependencies.map((dependency) => `<li>${dependency.name} ${dependency.version}</li>`).join("")}</ul><pre>${escapeHtml(zune)}</pre></section>\n`;
+  writeFileSync(join(site, "dependency-licenses.html"), notices);
+  const workerTemplate = readFileSync(join(snapshot, "apps/layer-web/sw.js"), "utf8");
+  const precache = Object.keys(inventory(site)).filter((path) => !["sw.js", ".capy-package", "CNAME"].includes(path)).map((path) => ({
+    path, integrity: "sha256-" + sha256(readFileSync(join(site, path)), "base64"),
+  }));
+  const workerVersion = sha256(workerTemplate + "\0" + JSON.stringify(precache));
+  writeFileSync(join(site, "sw.js"), workerTemplate.replace('"__CAPY_VERSION__"', JSON.stringify(workerVersion)).replace("__CAPY_FILES__", JSON.stringify(precache)));
+  writeFileSync(join(site, ".capy-package"), workerVersion + "\n");
   rmSync(join(site, ".capy-package"));
   writeFileSync(join(site, "CNAME"), config.domain + "\n");
   const files = inventory(site);

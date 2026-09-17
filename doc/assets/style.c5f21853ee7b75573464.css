@@ -166,6 +166,7 @@ summary::-webkit-details-marker { display: none; }
 .command-label { flex: 1; }
 .shortcut-hint { opacity: .55; font-weight: 400; white-space: nowrap; }
 #canvas-status { position: absolute; padding: 0 4px; display: flex; justify-content: flex-end; align-items: flex-end; background: transparent; color: var(--text); font-size: var(--ui-text-size); }
+.proof-status { background: var(--surround); border-radius: 16px; padding: 4px 8px; margin-right: 6px; max-width: 32em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #view-info { padding: 3px 10px; line-height: 1.25; border-radius: 20px; background: var(--bg); }
 svg { width: 16px; height: 16px; flex: none; display: block; }
 #header button, #header summary { height: 36px; display: flex; align-items: center; justify-content: center; }
@@ -752,3 +753,37 @@ body[data-theme="light"] #header.header-editing .header-item { background:transp
 @media(prefers-reduced-motion:reduce) { .header-dragging .header-item { transition:none; } }
 .header-tool.brush-color .success { fill:var(--header-foreground); }
 .header-tool.brush-color .warning { fill:var(--header-background); }
+
+/* Tagged color forms use the same shared numeric editor as native hosts. */
+.color-dialog { max-width: min(420px, calc(100vw - 24px)); }
+.color-dialog form { display: flex; flex-direction: column; gap: 10px; }
+.color-form-preview { min-height: 48px; border: 1px solid var(--border); border-radius: 6px; }
+.property-color { min-width: 56px; min-height: 28px; max-width: 120px; overflow: hidden; text-indent: -9999px; border: 1px solid currentColor; border-radius: 6px; }
+
+.color-library { width: min(640px, 90vw); }
+.color-library-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 6px; }
+.color-library-list { max-height: 50vh; overflow: auto; }
+.color-library-row { display: flex; align-items: center; gap: 6px; margin-block: 6px; }
+.color-library-row input { width: 100px; flex: 1; min-width: 60px; }
+.color-library-swatch { width: 42px; height: 32px; font-size: 0; border: 1px solid currentColor; }
+
+.histogram-dialog { position:fixed; inset:6rem 1rem auto auto; margin:0; width:min(26rem,calc(100vw - 2rem)); box-sizing:border-box; border:1px solid var(--border); border-radius:12px; padding:1rem; background:var(--panel-bg,#292929); color:inherit; z-index:30; box-shadow:0 8px 30px #0006; }
+.histogram-dialog header { display:flex; align-items:center; justify-content:space-between; }
+.histogram-dialog h2 { margin:0; font-size:1.1rem; }
+.histogram-dialog canvas { width:100%; height:140px; }
+.histogram-dialog p { white-space:pre-line; font-size:.85rem; }
+.histogram-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.6rem 0; }
+.file-progress { position:fixed; bottom:1rem; left:50%; transform:translateX(-50%); display:flex; gap:1rem; align-items:center; padding:.6rem 1rem; border-radius:10px; background:var(--panel-bg,#292929); box-shadow:0 2px 15px #0006; z-index:50; }
+.color-comparison { display: flex; flex-wrap: wrap; gap: 12px; }
+.color-comparison figure { margin: 0; flex: 1 1 180px; text-align: center; }
+.color-comparison canvas { width: 100%; height: auto; background: repeating-conic-gradient(#777 0 25%,#aaa 0 50%) 0 0/16px 16px; }
+.source-details { white-space: pre-wrap; }
+.image-placement-controls {
+  position: fixed; z-index: 100; bottom: max(48px, env(safe-area-inset-bottom));
+  left: 50%; transform: translateX(-50%); display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 8px; width: max-content; max-width: calc(100vw - 24px);
+  padding: 8px; border-radius: 12px; background: var(--panel);
+  box-shadow: 0 2px 12px #0006;
+}
+.image-placement-controls[hidden] { display: none; }
+.image-placement-controls button { min-height: 44px; }
