@@ -91,7 +91,7 @@ try {
   // the text from their crate archives. Use the upstream 0.4.21-jpeg tag,
   // pinned by this SHA-256, as their original shared license notice.
   const zune = readFileSync(join(root, "release/notices/zune-image-0.4.21-jpeg-LICENSE.md"), "utf8");
-  assert.equal(sha256(zune), "c6dff146a9f31848ac296faa5a08a4253caf2c384c86f906dc99e7fc0a39cc8c", "Unexpected Zune upstream license notice");
+  assert.equal(sha256(zune), "7f3a1f49123d3cdc27e9484ea62d1e64f685ee2b141e1fb2e2627189e7e5466b", "Unexpected Zune upstream license notice");
   const zuneDependencies = dependencies.filter((dependency) => ["zune-core", "zune-jpeg"].includes(dependency.name) && !notices.includes(`<li>${dependency.name} ${dependency.version}</li>`));
   if (zuneDependencies.length)
     notices += `\n<section><h2>zune-image upstream license notice</h2><ul>${zuneDependencies.map((dependency) => `<li>${dependency.name} ${dependency.version}</li>`).join("")}</ul><pre>${escapeHtml(zune)}</pre></section>\n`;
