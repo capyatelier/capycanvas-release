@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "7beb55b74889c42986520bd164cc1e56a6d29444",
+    "commit": "bc9593b2c0730111984480d82b48bd753d58206c",
     "cargoLockSha256": "6abe57feca7067a4ef1a0c1a54b47f85dde6702bb43d677c506527854e3e87d7"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "291a385897277f4b2d676125684d8862a742a795e7e3ea4c6d643db48130ebd7",
+  "workerVersion": "7e9cb71540a810c8f6a75cc9faaac05a0ec5259fa72d372aa8524d069b53b71b",
   "dependencies": [
     {
       "name": "adler2",
@@ -668,7 +668,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_7bbd9cceba9949ad",
+      "name": "__wbg_instanceof_Promise_f6320f682f582ddf",
       "kind": "function"
     },
     {
@@ -678,7 +678,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_Promise_f6320f682f582ddf",
+      "name": "__wbg_call_7bbd9cceba9949ad",
       "kind": "function"
     },
     {
@@ -1233,6 +1233,226 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_set_module_392eeaa269f203b0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entry_point_71cef95c137b5774",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_buffers_5d0e0c50791f710e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_75dc1ca3f2421cff",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_gpu_auto_layout_mode_06a2b95af1043098",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_vertex_77ed7a1229239b5a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_e02179cf97e95763",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_23f7f32549751d43",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_compare_a90de4e3714397ab",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_write_enabled_31a821ee1fb3b0b3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_bias_95abf479cae3f3cd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_bias_clamp_ba3d0b8348151350",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_bias_slope_scale_6b2584d93f5b9cd2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_compare_080c9e492ff36990",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_fail_op_b5c64541d1b6b482",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_fail_op_d59d0187e4111dfe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_pass_op_3cf10feb3d76ab97",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_back_c54d0443b8b6a957",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_front_3ff3f8385852efff",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_read_mask_021ef4271b24352c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_write_mask_ec1c12237e094bdd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_stencil_b7cffc59ad4da529",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_module_715d37652c4998ec",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_targets_674b33931e512fb1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entry_point_b70f98f5025a114d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_fragment_d2b0ec97d7cf8d47",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_count_8ff0c9474e39a849",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mask_c1079e551ec360dc",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_alpha_to_coverage_enabled_3372ce329447b8f1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_multisample_ff72a7a5456cbeb7",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_cull_mode_85d2b4ab0ce3a564",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_front_face_d3f8a2e07e7b25dd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_strip_index_format_70313df755145d5e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_topology_b92cfe523bd9653b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_unclipped_depth_32b7caf29fa5633d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_primitive_e796cf76f0ff89f3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_module_c9946af218d23b53",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entry_point_ac8db535971761fe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_4b5d5b12fbb72a76",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_gpu_auto_layout_mode_ee432e515c357fa8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_compute_bc754d9e37f6e4c9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_09e2da5f8522dbe8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createRenderPipelineAsync_5d1472d1f672d6b6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createComputePipelineAsync_51f59036dc7fb5e2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_a_82818effc94f6256",
       "kind": "function"
     },
@@ -1528,217 +1748,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_module_392eeaa269f203b0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entry_point_71cef95c137b5774",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_buffers_5d0e0c50791f710e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_75dc1ca3f2421cff",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_gpu_auto_layout_mode_06a2b95af1043098",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_vertex_77ed7a1229239b5a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_e02179cf97e95763",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_23f7f32549751d43",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_compare_a90de4e3714397ab",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_write_enabled_31a821ee1fb3b0b3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_bias_95abf479cae3f3cd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_bias_clamp_ba3d0b8348151350",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_bias_slope_scale_6b2584d93f5b9cd2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_compare_080c9e492ff36990",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_fail_op_b5c64541d1b6b482",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_fail_op_d59d0187e4111dfe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_pass_op_3cf10feb3d76ab97",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_back_c54d0443b8b6a957",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_front_3ff3f8385852efff",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_read_mask_021ef4271b24352c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_write_mask_ec1c12237e094bdd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_stencil_b7cffc59ad4da529",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_module_715d37652c4998ec",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_targets_674b33931e512fb1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entry_point_b70f98f5025a114d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_fragment_d2b0ec97d7cf8d47",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_count_8ff0c9474e39a849",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mask_c1079e551ec360dc",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_alpha_to_coverage_enabled_3372ce329447b8f1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_multisample_ff72a7a5456cbeb7",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_cull_mode_85d2b4ab0ce3a564",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_front_face_d3f8a2e07e7b25dd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_strip_index_format_70313df755145d5e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_topology_b92cfe523bd9653b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_unclipped_depth_32b7caf29fa5633d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_primitive_e796cf76f0ff89f3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_createRenderPipeline_0ebb7ebc653e9207",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_module_c9946af218d23b53",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entry_point_ac8db535971761fe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_4b5d5b12fbb72a76",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_gpu_auto_layout_mode_ee432e515c357fa8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_compute_bc754d9e37f6e4c9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_09e2da5f8522dbe8",
       "kind": "function"
     },
     {
@@ -1993,6 +2003,21 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_GpuValidationError_7659e07b12d4e184",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_message_2aad50368e15e8f1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_GpuOutOfMemoryError_5c3b8a2499f59adb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_format_5080a858117ad2c1",
       "kind": "function"
     },
@@ -2013,6 +2038,31 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_7f2bdbfb101b1ae1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_write_mask_42d89f182ade6b2d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_blend_1a801617945f7945",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_alpha_106f21a936a85eba",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_color_8ecace4011f47d2e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_has_dynamic_offset_0c72ffa900c5a269",
       "kind": "function"
     },
@@ -2028,32 +2078,17 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_alpha_106f21a936a85eba",
+      "name": "__wbg_set_access_a099cfbbeec9b96f",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_color_8ecace4011f47d2e",
+      "name": "__wbg_set_format_92732ea75d3b79f5",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_binding_b6cee57f35ac5190",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_8fd8658b30d86ecf",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_gpu_texture_view_4cffe7bc7c8e5cbe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_gpu_buffer_binding_33099b25da65b610",
+      "name": "__wbg_set_view_dimension_f2c5fe4bf927c3fe",
       "kind": "function"
     },
     {
@@ -2093,26 +2128,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_GpuOutOfMemoryError_5c3b8a2499f59adb",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_7f2bdbfb101b1ae1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_blend_1a801617945f7945",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_write_mask_42d89f182ade6b2d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_array_stride_f64_6816040e5e7598c3",
       "kind": "function"
     },
@@ -2148,17 +2163,17 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_92732ea75d3b79f5",
+      "name": "__wbg_set_binding_b6cee57f35ac5190",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_access_a099cfbbeec9b96f",
+      "name": "__wbg_set_resource_8fd8658b30d86ecf",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_view_dimension_f2c5fe4bf927c3fe",
+      "name": "__wbg_set_resource_gpu_texture_view_4cffe7bc7c8e5cbe",
       "kind": "function"
     },
     {
@@ -2174,6 +2189,11 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_size_f64_2f591b0654540477",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_resource_gpu_buffer_binding_33099b25da65b610",
       "kind": "function"
     },
     {
@@ -2199,16 +2219,6 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_resolve_target_gpu_texture_view_e4c1e3bbb8c27d87",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_GpuValidationError_7659e07b12d4e184",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_message_2aad50368e15e8f1",
       "kind": "function"
     },
     {
@@ -2650,6 +2660,16 @@
       "module": "./layer_web_bg.js",
       "name": "__wbindgen_generic_000000000000000c",
       "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbindgen_generic_000000000000000d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbindgen_generic_000000000000000e",
+      "kind": "function"
     }
   ],
   "files": {
@@ -2661,9 +2681,9 @@
       "bytes": 3161,
       "sha256": "7992eea20c5a9fbdaba31c5a62d0fa3606f3ee911666e4e7902277792d105e6d"
     },
-    "assets/app.d5532da6954fec292c90.js": {
-      "bytes": 85608,
-      "sha256": "d5532da6954fec292c9079ad67eedcb5aa977bb5e0ee4a99fd772abed8940849"
+    "assets/app.4e5b48a5c200d57bd4f0.js": {
+      "bytes": 85655,
+      "sha256": "4e5b48a5c200d57bd4f0df67f2a53c0980a5e2cc3d3a15e4b77e832a61cf08d6"
     },
     "assets/brush-previews/1-dark.77ee146647534933e2ef.png": {
       "bytes": 3708,
@@ -2949,9 +2969,9 @@
       "bytes": 7618,
       "sha256": "3ae3a1d25bd44ec466094231cc71d99490f1dc75b5f4cd7571da20e23c3cb803"
     },
-    "assets/documents.ec1cd56e4d7879eb2679.js": {
+    "assets/documents.8d2d8b2a556c1d50b91d.js": {
       "bytes": 20967,
-      "sha256": "ec1cd56e4d7879eb267910ffd9c931cdf008e77fd0f51088eb1ffd0cceac9cc9"
+      "sha256": "8d2d8b2a556c1d50b91d4320990eaa49f8bbe9ecf77f33301ee85acf6e37f503"
     },
     "assets/editor-panels.39c6dc76ae5b7c45bce0.js": {
       "bytes": 18220,
@@ -3665,33 +3685,33 @@
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.b281a4408d6a5d788f34.wasm": {
-      "bytes": 16746092,
-      "sha256": "b281a4408d6a5d788f342447d702560745bb4482f2ee4f26926471ea397d7203"
+    "assets/pkg/layer_web_bg.c0b47c024eb5cf656af3.wasm": {
+      "bytes": 16768479,
+      "sha256": "c0b47c024eb5cf656af39d16418859b9354d700944e17bfd9adee1d071792a05"
     },
-    "assets/pkg/layer_web.f8ff482276739bd79802.js": {
-      "bytes": 147449,
-      "sha256": "f8ff482276739bd79802063b9fc9fa440294396a8cd710a401c1de8f30e8f99a"
+    "assets/pkg/layer_web.c4a01ec050de74cbcbf3.js": {
+      "bytes": 149276,
+      "sha256": "c4a01ec050de74cbcbf3c851414b611a7e14e743a8efccf06c3fda329cf98493"
     },
     "assets/preferences.c4f924e68f2d7a1d6fc6.js": {
       "bytes": 24208,
       "sha256": "c4f924e68f2d7a1d6fc6575feec6260d14ba5e8f2f9f02d44dc22514c710db8c"
     },
-    "assets/proof-worker.71e4709c169bda265b54.js": {
+    "assets/proof-worker.b65dc5ae610340380cde.js": {
       "bytes": 360,
-      "sha256": "71e4709c169bda265b548606024fd4d91ef220cb01ce3abb09b127be7567ca61"
+      "sha256": "b65dc5ae610340380cde80293979a4d6b086ffb970acef18c99ed6f5bb28b3fc"
     },
-    "assets/proof.d37153a0c7709ac314d8.js": {
+    "assets/proof.4dfc6c95866c90416763.js": {
       "bytes": 7863,
-      "sha256": "d37153a0c7709ac314d82ee0cda9503b22c69b8e7d436a06434bbdcb268b0469"
+      "sha256": "4dfc6c95866c9041676366a29f71760037205675501a68d86d7ff7996d472462"
     },
-    "assets/raster-worker-client.d0d1eab3cbc77161188d.js": {
+    "assets/raster-worker-client.6242213c717d859a861d.js": {
       "bytes": 2285,
-      "sha256": "d0d1eab3cbc77161188d1f147978b615501319c679edea5ef33f51884133979f"
+      "sha256": "6242213c717d859a861dc77515ea2a7775cbb182fd11e993ebe94b878ec5b3d4"
     },
-    "assets/raster-worker.071ab6591270a8262c4d.js": {
+    "assets/raster-worker.810f6a173223942b9b81.js": {
       "bytes": 10210,
-      "sha256": "071ab6591270a8262c4d05f4f88527ade6620f9a892b8f10e6883c1fe6fdec7a"
+      "sha256": "810f6a173223942b9b818e98fc7871dfbc9b68168ade831bd227b281cf128752"
     },
     "assets/style.c5f21853ee7b75573464.css": {
       "bytes": 75793,
@@ -3709,21 +3729,21 @@
       "bytes": 16250,
       "sha256": "d80a00db242aa9400add33e2933fbcdf2fa0515669d5b547828603a2cf0b007c"
     },
-    "assets/workspace-manager.24e8b9a3c0fc1e379575.js": {
-      "bytes": 10962,
-      "sha256": "24e8b9a3c0fc1e379575907f01b05d9763f60f6aaf05584a4c66c80215904a9e"
+    "assets/workspace-manager.fb1e4efd27335879017f.js": {
+      "bytes": 11279,
+      "sha256": "fb1e4efd27335879017f343ae57a688c494feb2caa6e4029a9c37851680e165d"
     },
-    "assets/workspace-store.4b0bacc3ad861f7fe4a1.js": {
-      "bytes": 4305,
-      "sha256": "4b0bacc3ad861f7fe4a143ee1ffe53cec2630167d97b9a60462189332da9bfdf"
+    "assets/workspace-store.47d94f330959acc88fb7.js": {
+      "bytes": 4355,
+      "sha256": "47d94f330959acc88fb741a0d00c004a2db665bb716f3d1a506cb86a15725417"
     },
     "assets/workspace-switcher.b820a710c252eebe86ce.js": {
       "bytes": 12634,
       "sha256": "b820a710c252eebe86cef769026a80cab3c104338eb43d354d80a331783f29e8"
     },
-    "assets/workspace-worker.07f6985c18f1950b9105.js": {
+    "assets/workspace-worker.e5ca57dcfa345ffe57c7.js": {
       "bytes": 530,
-      "sha256": "07f6985c18f1950b9105496d79cd38c45b6b63557fef494b08c976dadc495329"
+      "sha256": "e5ca57dcfa345ffe57c71f23c3830758db87ee09d0b7e52188ee78439cad1633"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3739,7 +3759,7 @@
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "10092e87a8cd0b577154de581fb24dd7543667b98ec0a3e8e075d6b7d9ca60b2"
+      "sha256": "719599b585f887f357a04848eb05721b734cdbf0da2691e63ad33a861b1e9091"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3767,7 +3787,7 @@
     },
     "sw.js": {
       "bytes": 38975,
-      "sha256": "066536475f228426e2f6ddfa65b5e9c336f889a68d759fc672336d2a7fadfa28"
+      "sha256": "7843eae982d04d7a8e665691cef1ffb007dbed3cd7025f90e70c65e1c2470a84"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 7914,

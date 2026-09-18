@@ -1,5 +1,5 @@
 import {chooseDocumentColor} from "./document-color.3ae3a1d25bd44ec46609.js";
-import {createProof} from "./proof.d37153a0c7709ac314d8.js";
+import {createProof} from "./proof.4dfc6c95866c90416763.js";
 import {createHistogram} from "./histogram.8ba83ca4ccfe22c3f0ad.js";
 import {chooseExport,chooseSourceProfile} from "./export-controls.853f4a29e848d7e52cea.js";
 import {createImageImport} from "./image-import.c75821b0c873b666dfe3.js";
