@@ -10,7 +10,7 @@ export function createProof({app,dialog,element,button,applyChange,wake}) {
   function prepare(candidate,generation){
     cancel();
     return new Promise((resolve,reject)=>{
-      const worker=new Worker(new URL("./proof-worker.b65dc5ae610340380cde.js",import.meta.url),{type:"module"});
+      const worker=new Worker(new URL("./proof-worker.d9836c7dd9bdbe13253d.js",import.meta.url),{type:"module"});
       let timer;
       const job={generation,cancel:()=>finish(new DOMException("Proof preparation cancelled","AbortError"))};
       work=job;
