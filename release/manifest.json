@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "aeb2a5c425c73a9b8598be293e9cf0c3ab111d29",
-    "cargoLockSha256": "6abe57feca7067a4ef1a0c1a54b47f85dde6702bb43d677c506527854e3e87d7"
+    "commit": "e32ded49fcdc3b620109725f0396e6b341a83e2a",
+    "cargoLockSha256": "08f2953df7c0d75c6372fc8a7931a878daf775b0b7efc3c5e68f7b7e6b2f5375"
   },
   "domain": "editor.capycanvas.art",
   "target": "wasm32-unknown-unknown",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "751fb8ea03a6ad9e09c8e9a60ca99e8ed1dff8d043dc02ee931426d4adac14cd",
+  "workerVersion": "9ad2bc25dd82297af3f6867d2054761e0193dfeadd36f8d3456aca1d64b987e3",
   "dependencies": [
     {
       "name": "adler2",
@@ -30,9 +30,64 @@
       "license": "0BSD OR MIT OR Apache-2.0"
     },
     {
+      "name": "aligned",
+      "version": "0.4.3",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "aligned-vec",
+      "version": "0.6.4",
+      "license": "MIT"
+    },
+    {
+      "name": "anyhow",
+      "version": "1.0.104",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "arg_enum_proc_macro",
+      "version": "0.3.4",
+      "license": "MIT"
+    },
+    {
       "name": "arrayvec",
       "version": "0.7.8",
       "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "as-slice",
+      "version": "0.2.1",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "assert_matches",
+      "version": "1.5.0",
+      "license": "MIT/Apache-2.0"
+    },
+    {
+      "name": "atomig",
+      "version": "0.4.3",
+      "license": "MIT/Apache-2.0"
+    },
+    {
+      "name": "atomig-macro",
+      "version": "0.4.0",
+      "license": "MIT/Apache-2.0"
+    },
+    {
+      "name": "av-scenechange",
+      "version": "0.14.1",
+      "license": "MIT"
+    },
+    {
+      "name": "av1-grain",
+      "version": "0.2.5",
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "bit_field",
+      "version": "0.10.3",
+      "license": "Apache-2.0/MIT"
     },
     {
       "name": "bit-set",
@@ -55,6 +110,16 @@
       "license": "MIT/Apache-2.0"
     },
     {
+      "name": "bitstream-io",
+      "version": "4.10.0",
+      "license": "MIT/Apache-2.0"
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.12.1",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "block-buffer",
       "version": "0.10.4",
       "license": "MIT OR Apache-2.0"
@@ -73,6 +138,11 @@
       "name": "bytemuck_derive",
       "version": "1.12.0",
       "license": "Zlib OR Apache-2.0 OR MIT"
+    },
+    {
+      "name": "byteorder",
+      "version": "1.5.0",
+      "license": "Unlicense OR MIT"
     },
     {
       "name": "byteorder-lite",
@@ -100,13 +170,43 @@
       "license": "Apache-2.0/MIT"
     },
     {
+      "name": "const-oid",
+      "version": "0.10.2",
+      "license": "Apache-2.0 OR MIT"
+    },
+    {
       "name": "crc32fast",
       "version": "1.5.1",
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "crossbeam-deque",
+      "version": "0.8.8",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "crossbeam-epoch",
+      "version": "0.9.21",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "crossbeam-utils",
+      "version": "0.8.23",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "crypto-common",
       "version": "0.1.7",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
       "license": "MIT OR Apache-2.0"
     },
     {
@@ -120,9 +220,29 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "either",
+      "version": "1.18.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "equator",
+      "version": "0.4.2",
+      "license": "MIT"
+    },
+    {
+      "name": "equator-macro",
+      "version": "0.4.2",
+      "license": "MIT"
+    },
+    {
       "name": "equivalent",
       "version": "1.0.2",
       "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "name": "exr",
+      "version": "1.74.0",
+      "license": "BSD-3-Clause"
     },
     {
       "name": "fasteval",
@@ -185,6 +305,21 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "heck",
+      "version": "0.5.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "heif-oxide",
+      "version": "0.1.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "image",
       "version": "0.25.9",
       "license": "MIT OR Apache-2.0"
@@ -198,6 +333,11 @@
       "name": "indexmap",
       "version": "2.14.2",
       "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "name": "itertools",
+      "version": "0.14.0",
+      "license": "MIT OR Apache-2.0"
     },
     {
       "name": "itoa",
@@ -250,6 +390,16 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "lebe",
+      "version": "0.5.3",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "libc",
+      "version": "0.2.189",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "libjpeg-turbo-rs",
       "version": "0.8.0",
       "license": "MIT OR Apache-2.0"
@@ -275,18 +425,28 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "lz4_flex",
+      "version": "0.14.0",
+      "license": "MIT"
+    },
+    {
+      "name": "maybe-rayon",
+      "version": "0.1.1",
+      "license": "MIT"
+    },
+    {
       "name": "memchr",
       "version": "2.8.3",
       "license": "Unlicense OR MIT"
     },
     {
       "name": "miniz_oxide",
-      "version": "0.9.1",
+      "version": "0.8.9",
       "license": "MIT OR Zlib OR Apache-2.0"
     },
     {
       "name": "miniz_oxide",
-      "version": "0.8.9",
+      "version": "0.9.1",
       "license": "MIT OR Zlib OR Apache-2.0"
     },
     {
@@ -310,6 +470,46 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "new_debug_unreachable",
+      "version": "1.0.6",
+      "license": "MIT"
+    },
+    {
+      "name": "no_std_io2",
+      "version": "0.9.4",
+      "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "name": "nom",
+      "version": "8.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "noop_proc_macro",
+      "version": "0.3.0",
+      "license": "MIT"
+    },
+    {
+      "name": "num-bigint",
+      "version": "0.4.8",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "num-derive",
+      "version": "0.4.2",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "num-integer",
+      "version": "0.1.47",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "num-rational",
+      "version": "0.4.2",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "num-traits",
       "version": "0.2.19",
       "license": "MIT OR Apache-2.0"
@@ -320,6 +520,16 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "oxideav-av1",
+      "version": "0.1.16",
+      "license": "MIT"
+    },
+    {
+      "name": "oxideav-core",
+      "version": "0.1.36",
+      "license": "MIT"
+    },
+    {
       "name": "parking_lot",
       "version": "0.12.5",
       "license": "MIT OR Apache-2.0"
@@ -327,6 +537,16 @@
     {
       "name": "parking_lot_core",
       "version": "0.9.12",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "paste",
+      "version": "1.0.15",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "pastey",
+      "version": "0.1.1",
       "license": "MIT OR Apache-2.0"
     },
     {
@@ -360,6 +580,11 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "profiling-procmacros",
+      "version": "1.0.18",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "pxfm",
       "version": "0.1.27",
       "license": "BSD-3-Clause OR Apache-2.0"
@@ -370,9 +595,29 @@
       "license": "MIT/Apache-2.0"
     },
     {
+      "name": "quick-xml",
+      "version": "0.41.0",
+      "license": "MIT"
+    },
+    {
       "name": "quote",
       "version": "1.0.47",
       "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "rav1d",
+      "version": "1.1.0",
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "rav1e",
+      "version": "0.8.1",
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "raw-cpuid",
+      "version": "11.6.0",
+      "license": "MIT"
     },
     {
       "name": "raw-window-handle",
@@ -380,14 +625,34 @@
       "license": "MIT OR Apache-2.0 OR Zlib"
     },
     {
+      "name": "rayon",
+      "version": "1.12.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "rayon-core",
+      "version": "1.13.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "rtrb",
       "version": "0.4.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "rust_h265",
+      "version": "0.1.0",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "rustc-hash",
       "version": "1.1.0",
       "license": "Apache-2.0/MIT"
+    },
+    {
+      "name": "rustversion",
+      "version": "1.0.23",
+      "license": "MIT OR Apache-2.0"
     },
     {
       "name": "scopeguard",
@@ -421,8 +686,18 @@
     },
     {
       "name": "sha2",
+      "version": "0.11.0",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "sha2",
       "version": "0.10.9",
       "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "simd_helpers",
+      "version": "0.1.0",
+      "license": "MIT"
     },
     {
       "name": "simd-adler32",
@@ -440,9 +715,24 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "stable_deref_trait",
+      "version": "1.2.1",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "static_assertions",
       "version": "1.1.0",
       "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "strum",
+      "version": "0.26.3",
+      "license": "MIT"
+    },
+    {
+      "name": "strum_macros",
+      "version": "0.26.4",
+      "license": "MIT"
     },
     {
       "name": "syn",
@@ -470,6 +760,11 @@
       "license": "MIT"
     },
     {
+      "name": "to_method",
+      "version": "1.1.0",
+      "license": "CC0-1.0"
+    },
+    {
       "name": "typenum",
       "version": "1.20.1",
       "license": "MIT OR Apache-2.0"
@@ -488,6 +783,11 @@
       "name": "uuid",
       "version": "1.26.1",
       "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "name": "v_frame",
+      "version": "0.3.9",
+      "license": "BSD-2-Clause"
     },
     {
       "name": "wasm-bindgen",
@@ -540,8 +840,18 @@
       "license": "MIT OR Apache-2.0"
     },
     {
+      "name": "y4m",
+      "version": "0.8.0",
+      "license": "MIT"
+    },
+    {
       "name": "zerocopy",
       "version": "0.8.56",
+      "license": "BSD-2-Clause OR Apache-2.0 OR MIT"
+    },
+    {
+      "name": "zerocopy",
+      "version": "0.7.35",
       "license": "BSD-2-Clause OR Apache-2.0 OR MIT"
     },
     {
@@ -550,28 +860,23 @@
       "license": "BSD-2-Clause OR Apache-2.0 OR MIT"
     },
     {
+      "name": "zerocopy-derive",
+      "version": "0.7.35",
+      "license": "BSD-2-Clause OR Apache-2.0 OR MIT"
+    },
+    {
       "name": "zmij",
       "version": "1.0.21",
       "license": "MIT"
     },
     {
-      "name": "zstd",
-      "version": "0.13.3",
-      "license": "MIT"
-    },
-    {
-      "name": "zstd-safe",
-      "version": "7.2.4",
-      "license": "MIT OR Apache-2.0"
-    },
-    {
-      "name": "zstd-sys",
-      "version": "2.0.16+zstd.1.5.7",
-      "license": "MIT/Apache-2.0"
-    },
-    {
       "name": "zune-core",
       "version": "0.4.12",
+      "license": "MIT OR Apache-2.0 OR Zlib"
+    },
+    {
+      "name": "zune-inflate",
+      "version": "0.2.54",
       "license": "MIT OR Apache-2.0 OR Zlib"
     },
     {
@@ -608,17 +913,32 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_new_typed_6f8b0d724fe26c07",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_13d25b81ab403f5e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_push_bfdf956ba476f65b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_bf6dde4923b9b059",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_websourcecandidate_new",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webcolorcandidate_new",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_length_4e1adc0d42e23620",
+      "name": "__wbg_webgpu_new",
       "kind": "function"
     },
     {
@@ -633,12 +953,17 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webgpu_new",
+      "name": "__wbg_webcolorcandidate_new",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_push_bfdf956ba476f65b",
+      "name": "__wbg_length_4e1adc0d42e23620",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webtone_new",
       "kind": "function"
     },
     {
@@ -648,17 +973,12 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_get_b1f0ab13c737f856",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_new_8f72ed7c652bf5a2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_webpreparedimages_new",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_webproject_new",
       "kind": "function"
     },
     {
@@ -668,32 +988,22 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_get_b1f0ab13c737f856",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_then_7a850dae4493f353",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_6f8b0d724fe26c07",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_13d25b81ab403f5e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_bf6dde4923b9b059",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_call_7bbd9cceba9949ad",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webproject_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webpreparedimages_new",
       "kind": "function"
     },
     {
@@ -2003,21 +2313,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_GpuValidationError_7659e07b12d4e184",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_message_2aad50368e15e8f1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_GpuOutOfMemoryError_5c3b8a2499f59adb",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_format_5080a858117ad2c1",
       "kind": "function"
     },
@@ -2029,11 +2324,6 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_shader_location_3fb9f6a012eba494",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_unconfigure_835307f58dc68d80",
       "kind": "function"
     },
     {
@@ -2053,12 +2343,47 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_GpuValidationError_7659e07b12d4e184",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_alpha_106f21a936a85eba",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_color_8ecace4011f47d2e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_message_2aad50368e15e8f1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_GpuOutOfMemoryError_5c3b8a2499f59adb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_unconfigure_835307f58dc68d80",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_buffer_1548ae88a9188037",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_size_f64_2f591b0654540477",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_offset_f64_127e8a0aa5c5485a",
       "kind": "function"
     },
     {
@@ -2128,21 +2453,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_array_stride_f64_6816040e5e7598c3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_attributes_9e38cb1dde387a5b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_step_mode_3cbbdeba1e5dfd62",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_type_43e0092f16775979",
       "kind": "function"
     },
@@ -2159,41 +2469,6 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_view_dimension_893e2d16561e56e8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_binding_b6cee57f35ac5190",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_8fd8658b30d86ecf",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_gpu_texture_view_4cffe7bc7c8e5cbe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_buffer_1548ae88a9188037",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_offset_f64_127e8a0aa5c5485a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_size_f64_2f591b0654540477",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_gpu_buffer_binding_33099b25da65b610",
       "kind": "function"
     },
     {
@@ -2219,6 +2494,41 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_resolve_target_gpu_texture_view_e4c1e3bbb8c27d87",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_binding_b6cee57f35ac5190",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_resource_8fd8658b30d86ecf",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_resource_gpu_texture_view_4cffe7bc7c8e5cbe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_resource_gpu_buffer_binding_33099b25da65b610",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_array_stride_f64_6816040e5e7598c3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_attributes_9e38cb1dde387a5b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_step_mode_3cbbdeba1e5dfd62",
       "kind": "function"
     },
     {
@@ -2670,6 +2980,11 @@
       "module": "./layer_web_bg.js",
       "name": "__wbindgen_generic_000000000000000e",
       "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbindgen_generic_000000000000000f",
+      "kind": "function"
     }
   ],
   "files": {
@@ -2681,9 +2996,9 @@
       "bytes": 3161,
       "sha256": "7992eea20c5a9fbdaba31c5a62d0fa3606f3ee911666e4e7902277792d105e6d"
     },
-    "assets/app.94fa87217e35890deaf8.js": {
-      "bytes": 85655,
-      "sha256": "94fa87217e35890deaf8d63ae7114a1a44fb542b14a9f2efb0f47f2b89f27613"
+    "assets/app.80c57285930df9b8f187.js": {
+      "bytes": 88243,
+      "sha256": "80c57285930df9b8f187f13899ee741d55ac804d5d130c7bb0e748e0d0695206"
     },
     "assets/brush-previews/1-dark.77ee146647534933e2ef.png": {
       "bytes": 3708,
@@ -2957,65 +3272,77 @@
       "bytes": 23682,
       "sha256": "e782c2d1201096becd32388462ae01236791dc5cb4e67a17331339abd2cf05f8"
     },
-    "assets/color-controls.730b6e6982214a927a70.js": {
-      "bytes": 7365,
-      "sha256": "730b6e6982214a927a703e9367ad5a99ba69831ae924871eeb4735afe213db25"
+    "assets/color-controls.7d583cfb31bbd586a9ee.js": {
+      "bytes": 5813,
+      "sha256": "7d583cfb31bbd586a9ee737a13a31a598013291ca9c1d7e303c2619c7c842ceb"
     },
-    "assets/customization.221e9ff82edb34190bf7.js": {
-      "bytes": 31121,
-      "sha256": "221e9ff82edb34190bf77353fde14be2336d9ca9eb953f0d67d1bf1cb9dd40ea"
+    "assets/customization.06ce872cbb37ff69453f.js": {
+      "bytes": 31701,
+      "sha256": "06ce872cbb37ff69453f9c3765819da985e41a6da8c7f33315767c0346a7c83b"
     },
-    "assets/document-color.3ae3a1d25bd44ec46609.js": {
-      "bytes": 7618,
-      "sha256": "3ae3a1d25bd44ec466094231cc71d99490f1dc75b5f4cd7571da20e23c3cb803"
+    "assets/document-color.3614c45dec2b24e6da7a.js": {
+      "bytes": 7672,
+      "sha256": "3614c45dec2b24e6da7ad71fb722363d866866e983cfe9d0ca8da24d749a1511"
     },
-    "assets/documents.d01e2193cf51b77bd7a6.js": {
-      "bytes": 20967,
-      "sha256": "d01e2193cf51b77bd7a62f97178adc54b8693678af0c342601bc22ab9eb77475"
+    "assets/document-recovery.dd5da27bcbeff84f5860.js": {
+      "bytes": 5931,
+      "sha256": "dd5da27bcbeff84f5860d29234067e4c157afca3494553a286e851a309a540d7"
     },
-    "assets/editor-panels.39c6dc76ae5b7c45bce0.js": {
-      "bytes": 18220,
-      "sha256": "39c6dc76ae5b7c45bce027ce79e07f9845c227703660fb3d0cac346d8f3e0928"
+    "assets/document-storage.0cd79375ad1454702a49.js": {
+      "bytes": 2594,
+      "sha256": "0cd79375ad1454702a49e8425a972eb407e0db63cd15fb4c83cc7df0a27578d7"
     },
-    "assets/effects.aac3a44979806c2bcf3b.js": {
-      "bytes": 14467,
-      "sha256": "aac3a44979806c2bcf3bd5af450a0c77c7277474d50e88f4e9a68daa4f435134"
+    "assets/documents.2117c818a6073348c110.js": {
+      "bytes": 22986,
+      "sha256": "2117c818a6073348c1109960d86cc24675cbb12f472861f2c78aedc0c40a60fa"
     },
-    "assets/export-controls.853f4a29e848d7e52cea.js": {
-      "bytes": 14366,
-      "sha256": "853f4a29e848d7e52ceaf90596f84149c74110ea240f8db3816de7ddaccff9fd"
+    "assets/drawing-tabs.6cc4ef1a21fff3a567be.js": {
+      "bytes": 13376,
+      "sha256": "6cc4ef1a21fff3a567bebea014d484c3fd94a5939a8eeedfdbd33a2d0a4156e3"
+    },
+    "assets/editor-panels.cb3029495b81acd8bf15.js": {
+      "bytes": 23164,
+      "sha256": "cb3029495b81acd8bf15ba0dc890a03e16c56bde5e80fe9413c3a0f06c1deb20"
+    },
+    "assets/effects.a3cd30a59aac730ff475.js": {
+      "bytes": 14872,
+      "sha256": "a3cd30a59aac730ff4750ae2b8bbe6b5fac917fcfbc26ef11816efbbe4e5d767"
+    },
+    "assets/export-controls.a1e7df8e9d3ef007df7e.js": {
+      "bytes": 17289,
+      "sha256": "a1e7df8e9d3ef007df7e32fc49ad3092d0a19f4c763589fedb613252fba87705"
     },
     "assets/filter-previews.4920d0deb39aa6bd36b7.js": {
       "bytes": 2241,
       "sha256": "4920d0deb39aa6bd36b7f4b3efa8047d2f725aec4914858a69b9e7acf1fd990d"
     },
-    "assets/filters/effects.eeaeccda923dfec4a4b7.wgsl": {
-      "bytes": 8243,
-      "sha256": "eeaeccda923dfec4a4b7d73d977180f39945cc84458fb6910f90685eeec695a8"
+    "assets/filters/effects.3a040b46ca6f324f1316.wgsl": {
+      "bytes": 8480,
+      "sha256": "3a040b46ca6f324f13167b4a151debd8f3723916bb7db387b506634be6e557fb"
     },
-    "assets/filters/filter_library.9c6baf2195557e7f8af5.wgsl": {
-      "bytes": 14890,
-      "sha256": "9c6baf2195557e7f8af5524d91728fd13197c839636b54cf4ad3d743b3d51cd3"
+    "assets/filters/filter_library.84e4328977d86535eb65.wgsl": {
+      "bytes": 15045,
+      "sha256": "84e4328977d86535eb653096048437eb967f72b71c1e5fb718e3b1d54b6f1d60"
     },
     "assets/filters/gaussian-prepare.b65389202b05796620e5.wgsl": {
       "bytes": 1282,
       "sha256": "b65389202b05796620e5a9b8354ef31d58e211facda0a7e490db5f684ab918d0"
     },
-    "assets/filters/manifest.d12937a0e9c6c50d6796.json": {
-      "bytes": 58074,
-      "sha256": "d12937a0e9c6c50d67960bdaad9864e85adc3be3f4bed259e5ab4d94ebe2ec8d"
+    "assets/filters/manifest.72d57510bb0039af16ec.json": {
+      "bytes": 58525,
+      "sha256": "72d57510bb0039af16ece575e695d04321e81636a0e03526d51018fcb853d124"
     },
     "assets/gpu.974d8febbbb3582fae28.js": {
       "bytes": 5510,
       "sha256": "974d8febbbb3582fae28627d4fc08522d24c0c26df6b17b4a1f65a38034ec535"
     },
-    "assets/header.301171dff4f594b91df7.js": {
-      "bytes": 26260,
-      "sha256": "301171dff4f594b91df7bc2dc94ff14c99e10c9d14f24d62851cd714bf9d10af"
+    "assets/header.9fa2db05f9dc4f9bae8c.js": {
+      "bytes": 26435,
+      "sha256": "9fa2db05f9dc4f9bae8c3b21f156b8fc65cb9591b9aab945aab5a88869715780"
     },
-    "assets/histogram.8ba83ca4ccfe22c3f0ad.js": {
-      "bytes": 4414,
-      "sha256": "8ba83ca4ccfe22c3f0adfefd624417da05292236eba32c3ac549e21011212c54"
+    "assets/histogram.81a9fffcfcea60ca8b5f.js": {
+      "bytes": 5404,
+      "sha256": "81a9fffcfcea60ca8b5f81d8be9666b613c7cc3fe40dcf27a5daf03f717947cb"
     },
     "assets/icon-180.7992eea20c5a9fbdaba3.png": {
       "bytes": 3161,
@@ -3681,45 +4008,45 @@
       "bytes": 3984,
       "sha256": "c75821b0c873b666dfe34fc45e4dd85da19a88af11cabe7dc6fa0b1c8334f717"
     },
-    "assets/layers.a44b6e01f27205b4a44a.js": {
-      "bytes": 18107,
-      "sha256": "a44b6e01f27205b4a44ad146a360135cf945a65f2c8cf3e932ed55f9c636d1f4"
+    "assets/layers.f4d13d8472e4dabfea32.js": {
+      "bytes": 18196,
+      "sha256": "f4d13d8472e4dabfea323245c52a11dc941506f9ddf03f92d853ce2b46ec22de"
     },
     "assets/numeric.9da6fc00fab7ed615c33.js": {
       "bytes": 5699,
       "sha256": "9da6fc00fab7ed615c33680edcf31288d254e5d362a4d4bb5f82dc73df5ddc1b"
     },
-    "assets/pkg/layer_web_bg.1da5f2c8a237fd3b6815.wasm": {
-      "bytes": 16851405,
-      "sha256": "1da5f2c8a237fd3b6815274569c821ee9a6b4d05bfb56978169b9b7bf3f657dc"
+    "assets/pkg/layer_web_bg.2afbe2973c8076f04c71.wasm": {
+      "bytes": 21455560,
+      "sha256": "2afbe2973c8076f04c716640c7263e76eae2c359e3a12ff8386079db458a3d6b"
     },
-    "assets/pkg/layer_web.daba33050a398566851f.js": {
-      "bytes": 148768,
-      "sha256": "daba33050a398566851f0c66232b4e4c5873f781a9a6ec6563c46bb73dc8d8d3"
+    "assets/pkg/layer_web.80fb2705272771082186.js": {
+      "bytes": 160146,
+      "sha256": "80fb2705272771082186f8e6504bfd2b5404d32d1422801cdec863819857271c"
     },
-    "assets/preferences.c4f924e68f2d7a1d6fc6.js": {
+    "assets/preferences.f69b35efd6744b389c53.js": {
       "bytes": 24208,
-      "sha256": "c4f924e68f2d7a1d6fc6575feec6260d14ba5e8f2f9f02d44dc22514c710db8c"
+      "sha256": "f69b35efd6744b389c5337c99aa0b9735b0e112eaae5033e636d827cc1c512b8"
     },
-    "assets/proof-worker.d9836c7dd9bdbe13253d.js": {
-      "bytes": 360,
-      "sha256": "d9836c7dd9bdbe13253d887b0ecd560230117a6d9347e7cecbd0a258b2a4e5fd"
+    "assets/proof-worker.5d3d97d57ebdb3826639.js": {
+      "bytes": 436,
+      "sha256": "5d3d97d57ebdb382663968c7109031b797db94cacae58feb01c387f307e29b10"
     },
-    "assets/proof.317bd09120a633bef1c1.js": {
-      "bytes": 7863,
-      "sha256": "317bd09120a633bef1c11fcde8587753b4df69af207c6829bd90419ef54aab9f"
+    "assets/proof.7b64874c199ee89aa655.js": {
+      "bytes": 25210,
+      "sha256": "7b64874c199ee89aa6550d8d365e91de4dae0600b827e997ff275466e7a30b88"
     },
-    "assets/raster-worker-client.ea0406519ad96c98925f.js": {
-      "bytes": 2285,
-      "sha256": "ea0406519ad96c98925f7a122706f5b4c867a2ae4ca5ffa1076bf6b1cca775ff"
+    "assets/raster-worker-client.1ae67106e48a3e969eac.js": {
+      "bytes": 4383,
+      "sha256": "1ae67106e48a3e969eacab3344aea77e11f100586250d946f45d343c5ef7e436"
     },
-    "assets/raster-worker.8616147fcc2c420a6bc6.js": {
-      "bytes": 10210,
-      "sha256": "8616147fcc2c420a6bc616f767d59217f7bbffcb2d99f9d3e29f5503c831343b"
+    "assets/raster-worker.09fafaf185b9518adbd7.js": {
+      "bytes": 10593,
+      "sha256": "09fafaf185b9518adbd7155866d50ece293dab089f65996cb31e214777e36a91"
     },
-    "assets/style.c5f21853ee7b75573464.css": {
-      "bytes": 75793,
-      "sha256": "c5f21853ee7b75573464f8762ff46f15ff2a1e2e5742da3b31062daf99c54708"
+    "assets/style.3dfafe8663e8de368e8f.css": {
+      "bytes": 81529,
+      "sha256": "3dfafe8663e8de368e8faa0aefe181aca1312943814114040ca86c8bf7d1f9b1"
     },
     "assets/system-status.0b65cd2ebafa25dc9cf0.js": {
       "bytes": 3948,
@@ -3745,9 +4072,9 @@
       "bytes": 12634,
       "sha256": "b820a710c252eebe86cef769026a80cab3c104338eb43d354d80a331783f29e8"
     },
-    "assets/workspace-worker.7852487699e691083571.js": {
+    "assets/workspace-worker.c26d50560abf65cbaa32.js": {
       "bytes": 530,
-      "sha256": "7852487699e69108357133041d51b6e8312b40b47dfc837efbed749cb0f93036"
+      "sha256": "c26d50560abf65cbaa325e7845b4af4b206e018a215bcb8a1da816bcea47b0e5"
     },
     "BRANDING.md": {
       "bytes": 3535,
@@ -3758,12 +4085,12 @@
       "sha256": "3eaa15e649adb0c90c294f61fe7c631e63202c415bb528e6113ce8e513e55248"
     },
     "dependency-licenses.html": {
-      "bytes": 144810,
-      "sha256": "7fa864b17d0b672b2e14b377e4781a67bdc2ca45b037c0cf0f4e328fecb98069"
+      "bytes": 169037,
+      "sha256": "fa02d7ef43693c92ad5aa8037e81ae5082010439e79fca960fffeb22715ebc28"
     },
     "index.html": {
       "bytes": 2490,
-      "sha256": "8f7112c8d612a955370716f6b25c4f0d39f907de31d8b05def979745f93c6a34"
+      "sha256": "c48326c084c9e14fec602f5dea7dd2dd70264798498157a303daee4ea89390db"
     },
     "LICENSE": {
       "bytes": 548,
@@ -3778,24 +4105,24 @@
       "sha256": "86d6bf54bb06e47b1967ade92cf3b73e4d0340f636b08ac4a4f3a4e40239d9bb"
     },
     "licenses.html": {
-      "bytes": 25037,
-      "sha256": "73bdade071a04e1baa7f3030c5c8dd25b72e7f21c8a0924d434cc596031264d7"
+      "bytes": 49073,
+      "sha256": "36485419d7b2cc31ad2635f69e3892c0f8ce097f86f1e918133e5c82a5f5ee46"
     },
     "manifest.webmanifest": {
-      "bytes": 561,
-      "sha256": "b7ddcc2c798c88f1fba066d42cebe1ab44c926968d0520e81082e665ffc415a7"
+      "bytes": 1012,
+      "sha256": "851edaf19d3478236bb81ad7f4874e40e0cb029c4ec7486fbaff34db73c66f1b"
     },
     "rust-toolchain-notices.html": {
       "bytes": 15404403,
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 39099,
-      "sha256": "1d14b8ae71bd54adccf5a0dcb757037f4990358b39fffbb1ed31596004f83a7a"
+      "bytes": 39471,
+      "sha256": "ebeea3b0de0c424cdf837ec4fec1b8c2707810be167ae20b359e52db05e2b86b"
     },
     "THIRD_PARTY_NOTICES.md": {
-      "bytes": 7914,
-      "sha256": "400c5011ecbc9f95595faebd0c80ebe59c766812be56b2bb2ca561d9f76577c7"
+      "bytes": 31944,
+      "sha256": "d9ed8d48e76c16027ec485207d7fd9edf98b69f75bf75226c5d3a517a4e21e59"
     }
   }
 }

@@ -50,7 +50,7 @@ try {
   const snapshot = join(work, "source");
   mkdirSync(snapshot);
   // Export the reviewed commit, never a dirty worktree or stale dist directory.
-  const archive = run("git", ["-C", source, "archive", "--format=tar", config.commit], { stdio: ["ignore", "pipe", "inherit"], maxBuffer: 32 * 1024 * 1024 });
+  const archive = run("git", ["-C", source, "archive", "--format=tar", config.commit], { stdio: ["ignore", "pipe", "inherit"], maxBuffer: 256 * 1024 * 1024 });
   run("tar", ["-xf", "-", "-C", snapshot], { input: archive, stdio: ["pipe", "inherit", "inherit"] });
   const options = { cwd: snapshot, env: { ...process.env, CARGO_TARGET_DIR: join(snapshot, "target"), LAYER_WASM_BINDGEN: bindgen, LAYER_CARGO_ABOUT: about, LAYER_RESVG: resvg } };
   run(deny, ["--manifest-path", join(snapshot, "Cargo.toml"), "--locked", "--config", join(root, "release/deny.toml"), "check", "licenses", "sources"], options);
@@ -87,12 +87,12 @@ try {
     assert.ok(licenses.length, `Missing vendor license notice: ${name}`);
     notices += `\n<section><h2>${escapeHtml(name)}</h2><ul><li>${escapeHtml(name)} ${escapeHtml(version)}</li></ul><pre>${escapeHtml(licenses.map((path) => readFileSync(join(vendor, path), "utf8")).join("\n\n"))}</pre></section>\n`;
   }
-  // zune-core 0.4.12 and zune-jpeg 0.4.21 declare their licenses but omit
-  // the text from their crate archives. Use the upstream 0.4.21-jpeg tag,
-  // pinned by this SHA-256, as their original shared license notice.
+  // Zune crates declare their licenses but omit the text from their crate
+  // archives. Use the upstream 0.4.21-jpeg tag, pinned by this SHA-256, as
+  // their original shared license notice.
   const zune = readFileSync(join(root, "release/notices/zune-image-0.4.21-jpeg-LICENSE.md"), "utf8");
   assert.equal(sha256(zune), "7f3a1f49123d3cdc27e9484ea62d1e64f685ee2b141e1fb2e2627189e7e5466b", "Unexpected Zune upstream license notice");
-  const zuneDependencies = dependencies.filter((dependency) => ["zune-core", "zune-jpeg"].includes(dependency.name) && !notices.includes(`<li>${dependency.name} ${dependency.version}</li>`));
+  const zuneDependencies = dependencies.filter((dependency) => dependency.name.startsWith("zune-") && !notices.includes(`<li>${dependency.name} ${dependency.version}</li>`));
   if (zuneDependencies.length)
     notices += `\n<section><h2>zune-image upstream license notice</h2><ul>${zuneDependencies.map((dependency) => `<li>${dependency.name} ${dependency.version}</li>`).join("")}</ul><pre>${escapeHtml(zune)}</pre></section>\n`;
   writeFileSync(join(site, "dependency-licenses.html"), notices);

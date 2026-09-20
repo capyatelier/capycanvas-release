@@ -5,6 +5,33 @@
   "description": "A GPU-powered drawing workspace.",
   "start_url": "./",
   "scope": "./",
+  "file_handlers": [
+    {
+      "action": "./",
+      "accept": {
+        "application/octet-stream": [
+          ".capy"
+        ],
+        "image/png": [
+          ".png"
+        ],
+        "image/jpeg": [
+          ".jpg",
+          ".jpeg"
+        ],
+        "image/tiff": [
+          ".tif",
+          ".tiff"
+        ],
+        "image/avif": [
+          ".avif"
+        ],
+        "image/x-exr": [
+          ".exr"
+        ]
+      }
+    }
+  ],
   "display": "standalone",
   "background_color": "#333333",
   "theme_color": "#333333",
