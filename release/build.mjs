@@ -78,6 +78,7 @@ try {
   for (const entry of readdirSync(join(snapshot, "vendor"), { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
     const vendor = join(snapshot, "vendor", entry.name);
+    if (!existsSync(join(vendor, "Cargo.toml"))) continue;
     const cargo = readFileSync(join(vendor, "Cargo.toml"), "utf8");
     const name = cargo.match(/^name\s*=\s*"([^"]+)"/m)?.[1];
     const version = cargo.match(/^version\s*=\s*"([^"]+)"/m)?.[1];
