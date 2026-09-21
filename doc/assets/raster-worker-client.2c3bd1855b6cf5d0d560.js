@@ -6,7 +6,7 @@ export function createRasterWorker() {
   const outputs=new Map(),reads=new Set();
   function owner(kind) {
     if (owners.has(kind)) return owners.get(kind);
-    const worker = new Worker(new URL("./raster-worker.2e17602797a4216d2051.js", import.meta.url), {type:"module"});
+    const worker = new Worker(new URL("./raster-worker.dcd65ea361defc900a3b.js", import.meta.url), {type:"module"});
     const pending = new Map();
     let closed=false;
     let idleTimer;
