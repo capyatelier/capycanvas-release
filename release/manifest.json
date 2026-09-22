@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "b1b9f93ea1f2a78da958563e56a73ae059b89aa9",
+    "commit": "0591b22c25ed1822ef9d0143b84ed6c46bbe09df",
     "cargoLockSha256": "5ea04dab0026e174e943f7508bcca616256c37e52984de3f8a76342940bd965d"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "d1fdff227a8404bf7a82f026792c4ad5981a0d4aebf68f7cf039ac693e4042fa",
+  "workerVersion": "b6cb9a2eb327e32ddb0778b5914b55e5d92759103686208a985364b7f62a1bb9",
   "dependencies": [
     {
       "name": "adler2",
@@ -4192,8 +4192,8 @@
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 42302,
-      "sha256": "e022691e325ef5d28f1c39ccfc675b0bf36524cb92b2507cefc67eeb895c52a7"
+      "bytes": 44921,
+      "sha256": "8cfdc32c4147c1e5d8930556474d920ce47274cfc3f5a8ce0acfec86125ea724"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 32129,
