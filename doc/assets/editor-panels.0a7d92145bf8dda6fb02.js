@@ -1,4 +1,5 @@
 import { chooseColor } from "./color-controls.7d583cfb31bbd586a9ee.js";
+const selectionModes = new Set(['selection_new', 'selection_add', 'selection_subtract', 'selection_intersect']);
 // DOM widgets for shared editor models. Rust owns tool/color/geometry policy.
 export function createEditorPanels({ app, state, element, button, icon, numberField, dispatch, asset, wake, applyChange, contentChanged }) {
   const updates = new Map(), navigators = new Set(), pendingPaints = new Set();
@@ -9,7 +10,7 @@ export function createEditorPanels({ app, state, element, button, icon, numberFi
     const root = element("div", `${kind.replaceAll("_", "-")}-control`);
     root.dataset.control = kind;
     let refresh;
-    if (kind === "brushes") refresh = toolSet(root);
+    if (["brushes", "brush_sets", "sculpt_sets", "tools"].includes(kind)) refresh = toolSet(root, kind);
     else if (kind === "tool_settings") refresh = toolSettings(root);
     else if (kind === "color_wheel") refresh = colorWheel(root);
     else if (kind === "navigator") refresh = navigatorPanel(root);
@@ -18,14 +19,15 @@ export function createEditorPanels({ app, state, element, button, icon, numberFi
     root.disposeEditor = () => { updates.delete(root); root.navigatorDispose?.(); };
     return root;
   };
-  function toolSet(root) {
+  function toolSet(root, panel) {
     let key = "", rows = [];
     return () => {
-      const view = state().tool_set;
+      const view = state().tool_panels[panel] || state().tool_set;
       const next = JSON.stringify([view.groups, view.subtools].map(items => items.map(({selected, ...item}) => item))) + state().theme;
       if (next !== key) {
         key = next; rows = []; root.replaceChildren();
         for (const [kind, items] of [["groups",view.groups], ["subtools",view.subtools]]) {
+          if (!items.length) continue;
           const list = element("div", `tool-${kind}`); root.append(list);
           for (const item of items) {
             const node = button("", () => dispatch(item.action), "tool-choice-button");
@@ -41,7 +43,7 @@ export function createEditorPanels({ app, state, element, button, icon, numberFi
             node.append(label); list.append(node); rows.push({node,kind,index:rows.filter(r=>r.kind===kind).length});
           }
         }
-        contentChanged("brushes");
+        contentChanged(panel);
       }
       for (const {node,kind,index} of rows) {
         const pressed=String(view[kind][index].selected);if(node.getAttribute("aria-pressed")!==pressed)node.setAttribute("aria-pressed",pressed);
@@ -55,6 +57,9 @@ export function createEditorPanels({ app, state, element, button, icon, numberFi
       const next = JSON.stringify([s.tool_settings.map(({value,...field})=>field),s.tool_actions]);
       if (next !== key) {
         key = next; root.replaceChildren(); numbers=[]; actions=[]; let group="";
+        const modes = element("div", "selection-modes");
+        modes.setAttribute("role", "group"); modes.setAttribute("aria-label", "Selection mode");
+        if (s.tool_actions.some(spec => selectionModes.has(spec.command))) root.append(modes);
         for (const field of s.tool_settings) {
           if (field.group && field.group !== group) root.append(element("h3", "", field.group)); group=field.group;
           const node=numberField(field.numeric,field.label,value=>dispatch({type:"set_tool_setting",id:field.id,value}));
@@ -62,14 +67,19 @@ export function createEditorPanels({ app, state, element, button, icon, numberFi
         }
         for (const spec of s.tool_actions) {
           const node=button("",()=>dispatch({type:"invoke",command:spec.command}),"tool-setting-action");
-          node.dataset.toolAction=spec.command; root.append(node); actions.push([spec,node]);
+          node.dataset.toolAction=spec.command;
+          (selectionModes.has(spec.command) ? modes : root).append(node); actions.push([spec,node]);
         }
         contentChanged("tool_settings");
       }
       for (const [id,node] of numbers) node.update(s.tool_settings.find(f=>f.id===id).value);
       for (const [spec,node] of actions) {
         const c=s.commands.find(c=>c.id===spec.command);
-        if(!node.firstChild) node.append(icon(c.icon),element("span","",c.label));
+        if(!node.firstChild) {
+          node.append(icon(c.icon));
+          if (!selectionModes.has(spec.command)) node.append(element("span","",c.label));
+        }
+        node.setAttribute("aria-label", c.label);
         node.disabled=!c.enabled; node.title=c.tooltip;
         if(spec.checkable) node.setAttribute("aria-pressed",String(c.selected));
       }

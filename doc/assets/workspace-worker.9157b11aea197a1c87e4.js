@@ -1,4 +1,4 @@
-import init, {workspace_database} from "./pkg/layer_web.40dd59b98e7065306600.js";
+import init, {workspace_database} from "./pkg/layer_web.05822c2c54ffa0fafee4.js";
 import {createWorkspaceStore} from "./workspace-store.684c28e6d75d22608cfb.js";
 let ready;
 const store = createWorkspaceStore(workspace_database);
