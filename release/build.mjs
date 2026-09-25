@@ -13,8 +13,8 @@ const browserTests = args.includes("--browser-tests");
 const skipTests = args.includes("--skip-tests");
 const positional = args.filter((arg) => !["--browser-tests", "--skip-tests"].includes(arg));
 assert.ok(!skipTests || !browserTests, "--skip-tests cannot be combined with --browser-tests");
-assert.ok(positional.length <= 1 && !positional.some((arg) => arg.startsWith("--")), "Usage: node release/build.mjs [../draw] [--browser-tests|--skip-tests]");
-const source = resolve(positional[0] || join(root, "../draw"));
+assert.ok(positional.length <= 1 && !positional.some((arg) => arg.startsWith("--")), "Usage: node release/build.mjs [../capycanvas] [--browser-tests|--skip-tests]");
+const source = resolve(positional[0] || join(root, "../capycanvas"));
 const run = (cmd, args, options = {}) => execFileSync(cmd, args, { cwd: root, stdio: "inherit", ...options });
 const capture = (cmd, args, options = {}) => run(cmd, args, { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"], maxBuffer: 32 * 1024 * 1024, ...options }).trim();
 function tool(name, override, version) {

@@ -3,7 +3,7 @@
 Built releases of [Capy Canvas](https://github.com/capyatelier/capycanvas) for
 **https://editor.capycanvas.art/**. This repository owns hosting and final release
 layout. Application code, compilation, icons, license harvesting and PWA generation
-live in the source repository, normally checked out alongside this one as `../draw`.
+live in the source repository, normally checked out alongside this one as `../capycanvas`.
 
 The upstream remote is `git@github.com:capyatelier/capycanvas-release.git` (`origin`),
 with releases on `main`.
@@ -34,7 +34,7 @@ cargo install wasm-bindgen-cli --version 0.2.128 --locked
 cargo install cargo-about --version 0.9.2 --features cli --locked
 cargo install cargo-deny --version 0.20.2 --locked
 cargo install resvg --version 0.48.1 --locked
-node release/build.mjs ../draw
+node release/build.mjs ../capycanvas
 ```
 
 Tools can be on `PATH` or in Cargo's bin directory. Optional executable overrides:
@@ -46,7 +46,7 @@ that substitutes dependencies or adds linker inputs.
 
 The wrapper exports exactly the pinned source commit with `git archive` into an
 ignored temporary directory here. It never compiles the source worktree or copies
-an old `../draw/dist` bundle. Uncommitted source edits and a newer source HEAD do
+an old `../capycanvas/dist` bundle. Uncommitted source edits and a newer source HEAD do
 not enter the release. All application build work calls the exported source's
 `apps/layer-web/package.mjs`, which calls its `build.sh`.
 
@@ -69,7 +69,7 @@ For the full browser suite, use Chrome with a working Wayland session and hardwa
 WebGPU (the harness uses a disposable browser profile):
 
 ```bash
-node release/build.mjs ../draw --browser-tests
+node release/build.mjs ../capycanvas --browser-tests
 node --test release/verify.test.mjs
 node release/verify.mjs
 python3 -m http.server 4174 --bind 127.0.0.1 --directory doc
