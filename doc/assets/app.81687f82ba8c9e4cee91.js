@@ -10,7 +10,7 @@ import { createCustomization } from "./customization.7990b6b2b5eb75840baa.js";
 import { createCanvasBar } from "./canvas-bar.63d36bc0fd8885fe483e.js";
 import { createEditorPanels } from "./editor-panels.9cd1b234d07669296012.js";
 import { createWorkspaceChrome } from "./workspace-chrome.1be78322ba1262a870a9.js";
-import { createGlass } from "./glass.1a05bc5161bf8e137e12.js";
+import { createGlass } from "./glass.b2f9cad3a6941b8bb26b.js";
 import { createDocuments } from "./documents.2e73504bed7fc3339d02.js";
 import { createSystemStatus } from "./system-status.0b65cd2ebafa25dc9cf0.js";
 import { createHeader } from "./header.dd279c0974318efb215a.js";
