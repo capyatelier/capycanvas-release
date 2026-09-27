@@ -1,4 +1,4 @@
-import {importProfile,chooseProfileLibrary} from "./export-controls.a1e7df8e9d3ef007df7e.js";
+import {importProfile,chooseProfileLibrary} from './export-controls.a1e7df8e9d3ef007df7e.js';
 // A comparison owns one immutable candidate. Cancel drains its work before the
 // document request is released; Apply publishes that exact prepared result.
 export async function chooseDocumentColor({app,dialog,element,button,gpuOperation,request,id}) {

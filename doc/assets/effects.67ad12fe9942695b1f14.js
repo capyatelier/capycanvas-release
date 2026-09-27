@@ -1,6 +1,6 @@
-import {strokeRecordingControl} from "./stroke-recording.e95b7b5e16aab167ab0e.js";
-import {colorButton, colorCss} from "./color-controls.fb677c4858302ee6f2b0.js";
-import {filterPreviewView} from "./filter-previews.778083869ae298b95e00.js";
+import {strokeRecordingControl} from './stroke-recording.e95b7b5e16aab167ab0e.js';
+import {colorButton, colorCss} from './color-controls.fb677c4858302ee6f2b0.js';
+import {filterPreviewView} from './filter-previews.778083869ae298b95e00.js';
 // Views of the shared Rust effect/property schema; no filter-specific UI logic.
 export function createEffectPanels({app,wake,catalog,state,panels,element,button,icon,dispatch,numberField,contentChanged,splitPicker=false,message}) {
   const send=action=>dispatch({type:"effect",action});

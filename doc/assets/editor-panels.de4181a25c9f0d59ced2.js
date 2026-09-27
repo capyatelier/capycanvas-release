@@ -1,6 +1,6 @@
-import { createRasterWorker } from "./raster-worker-client.9d012a22ddca2e4932b8.js";
-import { chooseColor } from "./color-controls.fb677c4858302ee6f2b0.js";
-import { createRangeControl } from "./range-control.2ae52bd8fd00f807195c.js";
+import { createRasterWorker } from './raster-worker-client.f83237b2a6fd0d02c27f.js';
+import { chooseColor } from './color-controls.fb677c4858302ee6f2b0.js';
+import { createRangeControl } from './range-control.926788f987dac80475ef.js';
 const selectionModes = new Set(['selection_new', 'selection_add', 'selection_subtract', 'selection_intersect']);
 // DOM widgets for shared editor models. Rust owns tool/color/geometry policy.
 export function createEditorPanels({ selectionUi, app, state, element, button, icon, numberField, dispatch, asset, wake, applyChange, contentChanged }) {

@@ -1,5 +1,5 @@
-import { createNumberField } from "./numeric.beb99a7a1a251cb3dbee.js";
-import { createRangeControl } from "./range-control.2ae52bd8fd00f807195c.js";
+import { createNumberField } from './numeric.beb99a7a1a251cb3dbee.js';
+import { createRangeControl } from './range-control.926788f987dac80475ef.js';
 const key = value => JSON.stringify(value, (_, v) => typeof v === 'bigint' ? String(v) : v);
 
 export function actionField({ element, button, icon }, spec, send, { label, ariaDisabled = false, reason } = {}) {

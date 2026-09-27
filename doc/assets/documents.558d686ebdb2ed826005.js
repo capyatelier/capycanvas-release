@@ -1,9 +1,9 @@
-import {createDrawingTabs} from "./drawing-tabs.fa4f384b7a998c5b92fe.js";
-import {createDocumentRecovery} from "./document-recovery.5fdb416041d589c20aec.js";
-import {chooseDocumentColor} from "./document-color.3614c45dec2b24e6da7a.js";
-import {createProof} from "./proof.018418fbe0dd43e0d553.js";
-import {createHistogram} from "./histogram.81a9fffcfcea60ca8b5f.js";
-import {chooseExport,chooseSourceProfile} from "./export-controls.a1e7df8e9d3ef007df7e.js";
+import {createDrawingTabs} from './drawing-tabs.fa4f384b7a998c5b92fe.js';
+import {createDocumentRecovery} from './document-recovery.5fdb416041d589c20aec.js';
+import {chooseDocumentColor} from './document-color.5a04ff1ade424f33eb19.js';
+import {createProof} from './proof.1ed0c872ec0f28c2be90.js';
+import {createHistogram} from './histogram.81a9fffcfcea60ca8b5f.js';
+import {chooseExport,chooseSourceProfile} from './export-controls.a1e7df8e9d3ef007df7e.js';
 
 const exportFormats={
   Exr:["exr","image/x-exr","OpenEXR image"],
@@ -12,7 +12,7 @@ const exportFormats={
   AvifHdr:["avif","image/avif","HDR gain-map AVIF"],AvifHdrMapped:["avif","image/avif","HDR gain-map AVIF"],
   Png:["png","image/png","PNG image"],Tiff:["tif","image/tiff","TIFF image"],Jpeg:["jpg","image/jpeg","JPEG image"],
 };
-import {createImageImport} from "./image-import.2fd690230ecc3f6aca1b.js";
+import {createImageImport} from './image-import.2fd690230ecc3f6aca1b.js';
 // Browser file transport; document checkpoints, stale-edit guards and unsaved
 // decisions stay in UiSession. File handles never enter a project or localStorage.
 export function createDocuments({app,state,canvas,dispatch,applyChange,wake,element,button,icon,message,gpuOperation,rasterWorker,resumeCanvas,contentChanged}) {
