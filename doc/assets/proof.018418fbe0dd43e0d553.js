@@ -1,7 +1,7 @@
 import {importProfile,chooseProfileLibrary} from "./export-controls.a1e7df8e9d3ef007df7e.js";
 
 // A single package-rewritten URL for the illustration and print LUT workers.
-const proofWorkerUrl=new URL("./proof-worker.ba51af4749bdc71a3baf.js",import.meta.url);
+const proofWorkerUrl=new URL("./proof-worker.e416cb070623568fdb86.js",import.meta.url);
 
 // One CPU worker per editor. Termination cancels synchronous Wasm immediately
 // and releases its high-water heap. A replacement never queues behind old work.
