@@ -4,7 +4,7 @@ import { createDocumentStorage } from "./document-storage.4431d5dfe1ef88a97567.j
 import { workspaceStore, modulePromise, setWorkspaceWake } from "./workspace-preload.42cbad716cf2c0b88f76.js";
 import { createWorkspaceManager } from "./workspace-manager.c0b3b10fb12576dda058.js";
 import { createPreferences } from "./preferences.d6e75afc9f8815fba920.js";
-import { createCommandBar } from "./command-bar.js";
+import { createCommandBar } from "./command-bar.1792e1ab53a2ece4eca5.js";
 import { showGpuNotice } from "./gpu.974d8febbbb3582fae28.js";
 import { createCustomization } from "./customization.0cfa721a9eb743889c6c.js";
 import { createCanvasBar } from "./canvas-bar.9637cacda8bafc038f37.js";

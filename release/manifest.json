@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "12cca4f6ffbb568a009d9b8ffc5097b72611cabd",
+    "commit": "b5bca40706f21a06c55bb5eda57428909df97814",
     "cargoLockSha256": "cd2bdeba60de62e1b56c426fabb09de8909844dfcd7ad56fd49320653a8a8b94"
   },
   "domain": "editor.capycanvas.art",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "9f98d77dd1d63470f13f9305ea7b27a275075a0eb3a438811ad17899a82c092c",
+  "workerVersion": "6f447556c7e183c53cf77105d8fb578967531852419071a7e90b1b9dc947e553",
   "dependencies": [
     {
       "name": "adler2",
@@ -3006,9 +3006,9 @@
       "bytes": 3161,
       "sha256": "7992eea20c5a9fbdaba31c5a62d0fa3606f3ee911666e4e7902277792d105e6d"
     },
-    "assets/app.edaef7fc717191fd246a.js": {
-      "bytes": 111134,
-      "sha256": "edaef7fc717191fd246a0d151ddc47896483e008cd9a6fedb59b19dbe314582b"
+    "assets/app.f1051a3773a6ae61ce7c.js": {
+      "bytes": 111155,
+      "sha256": "f1051a3773a6ae61ce7ca3ce9c11e20f3b4994242928104e546145c41ab45079"
     },
     "assets/brush-previews/1-dark.77ee146647534933e2ef.png": {
       "bytes": 3708,
@@ -3289,6 +3289,10 @@
     "assets/color-controls.fb677c4858302ee6f2b0.js": {
       "bytes": 6447,
       "sha256": "fb677c4858302ee6f2b0902e93900abc9c275334f33b3db98d6cb812e193a9f5"
+    },
+    "assets/command-bar.1792e1ab53a2ece4eca5.js": {
+      "bytes": 7630,
+      "sha256": "1792e1ab53a2ece4eca5d33794602c1420b541be0979ae3486413f015734a5b7"
     },
     "assets/customization.0cfa721a9eb743889c6c.js": {
       "bytes": 33646,
@@ -4331,8 +4335,8 @@
       "sha256": "1f3b6f139b5a9d3d879a7d7db4521a38978b3bb7f15c3f97681432a40b4fde47"
     },
     "index.html": {
-      "bytes": 5609,
-      "sha256": "f8745d8f757f5b9e118fd2c6b7303071f5daa8927c9218cfc37885afdf2ba445"
+      "bytes": 5692,
+      "sha256": "7f88a4540932fab303c2f121f62ccccf6c5e8e28eb9e1beb2c25fda60e324c85"
     },
     "LICENSE": {
       "bytes": 548,
@@ -4359,8 +4363,8 @@
       "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
     },
     "sw.js": {
-      "bytes": 50174,
-      "sha256": "f196ab9597354941bbb7360ed2762936403c73219fb7d73903d1026c6c5c81ea"
+      "bytes": 50294,
+      "sha256": "9a8c4326d1cf25a4724de2fa36f0b56c5030fab2adf38592b4b5e2bf8654e15c"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 29267,
