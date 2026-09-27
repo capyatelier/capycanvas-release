@@ -1,4 +1,4 @@
-import { createRasterWorker } from './raster-worker-client.094aff26d894fec641b1.js';
+import { createRasterWorker } from './raster-worker-client.f836079d895f3e4e57b7.js';
 import { chooseColor } from './color-controls.fb677c4858302ee6f2b0.js';
 import { createRangeControl } from './range-control.926788f987dac80475ef.js';
 const selectionModes = new Set(['selection_new', 'selection_add', 'selection_subtract', 'selection_intersect']);

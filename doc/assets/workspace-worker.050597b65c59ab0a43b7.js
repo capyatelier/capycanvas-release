@@ -1,5 +1,5 @@
-import init, {workspace_database} from "./pkg/layer_web.0abbe3b471c47005717a.js";
-import {createWorkspaceStore} from "./workspace-store.bcf00214205abe1e8c3c.js";
+import init, {workspace_database} from "./pkg/layer_web.c115e9ade422943a16b5.js";
+import {createWorkspaceStore} from "./workspace-store.f591a06acda7e2734597.js";
 let ready;
 const store = createWorkspaceStore(workspace_database);
 self.onmessage = async ({data}) => {
