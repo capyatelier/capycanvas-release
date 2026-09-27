@@ -1,4 +1,4 @@
-import init, {proof_worker_build,proof_texture_build} from "./pkg/layer_web.93c2e517ecb572e59873.js";
+import init, {proof_worker_build,proof_texture_build} from "./pkg/layer_web.b305fcf065b14a29e7d8.js";
 // Exactly one build, followed by host termination to release the Wasm arena.
 self.onmessage=async({data})=>{
   try{await init();const result=data?.type==="texture"?{bytes:proof_texture_build(512)}:proof_worker_build(data);self.postMessage({result},[result.bytes.buffer]);}
