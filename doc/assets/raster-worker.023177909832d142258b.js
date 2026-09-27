@@ -1,4 +1,4 @@
-import init, * as wasm from "./pkg/layer_web.b305fcf065b14a29e7d8.js";
+import init, * as wasm from "./pkg/layer_web.1cd4845c99193c0575d5.js";
 let ready;
 let pending = Promise.resolve();
 self.onmessage = ({data}) => { pending = pending.then(() => execute(data)); };
