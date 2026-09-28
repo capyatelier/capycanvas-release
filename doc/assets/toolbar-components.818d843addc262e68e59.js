@@ -1,5 +1,5 @@
-import { createNumberField } from './numeric.07730a0808c5473fced8.js';
-import { createRangeControl } from './range-control.e8992be4163419a574d8.js';
+import { captureSliderContacts, createNumberField } from './numeric.deb3d4eec594080a7074.js';
+import { createRangeControl } from './range-control.e5fd92cef5e99947ce35.js';
 const key = value => JSON.stringify(value, (_, v) => typeof v === 'bigint' ? String(v) : v);
 
 export function actionField({ element, button, icon }, spec, send, { label, ariaDisabled = false, explain } = {}) {
@@ -207,21 +207,7 @@ export function createToolbarComponent({ app, tile, view, element, button, icon,
     const number = createNumberField({ control: field.numeric, label: field.label, icon, inline: true,
       widthSamples: info.samples, onChange: change,
       resolve: request => app.toolbar_ui({ type: 'number', request, compact: true, units }) });
-    // Chromium's native range drag does not consistently consume tablet
-    // contacts. Keep the native keyboard control and capture pointer input here.
-    let trackContact;
-    const pick = e => {
-      const b = number.slider.getBoundingClientRect();
-      const position = (e.clientX - b.x) / b.width;
-      number.cancelEditing(); number.apply({ type: 'position', position });
-    };
-    number.slider.addEventListener('pointerdown', e => {
-      if (e.button || number.slider.disabled) return;
-      e.preventDefault(); e.stopPropagation(); trackContact = e.pointerId;
-      number.slider.setPointerCapture(e.pointerId); pick(e);
-    });
-    number.slider.addEventListener('pointermove', e => { if (trackContact === e.pointerId) { e.preventDefault(); pick(e); } });
-    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) number.slider.addEventListener(type, () => { trackContact = null; });
+    captureSliderContacts(number);
     const label = element('span', 'toolbar-option-label', field.label), glyph = icon(info.icon);
     const face = button('', () => {}, 'toolbar-number-face');
     const faceIcon = icon(info.icon), faceLabel = element('span', 'toolbar-face-label', field.label), faceValue = element('span', 'toolbar-face-value');

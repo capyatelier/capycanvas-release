@@ -1,4 +1,4 @@
-import { createNumberField } from './numeric.07730a0808c5473fced8.js';
+import { createNumberField } from './numeric.deb3d4eec594080a7074.js';
 
 // Shared panel/toolbar presentation. Rust owns numeric resolution and edits;
 // the browser owns contact capture, focus and native keyboard adjustment.

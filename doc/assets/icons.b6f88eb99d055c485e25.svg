@@ -416,6 +416,7 @@
 <svg data-asset="selection-add" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <path d="M1.5 1.5h8v5h5v8h-8v-5h-5z" fill="currentColor"/>
 </svg>
+<svg data-asset="selection-border" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h12v12H2Zm3.5 3.5v5h5v-5Z" fill-rule="evenodd"/></svg>
 <svg data-asset="selection-brush" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2H2v10h3M10 2h3v3" stroke-dasharray="1.5 1.5"/><path d="m8 10 4.8-4.8a1.15 1.15 0 0 1 1.6 1.6L9.6 11.6z"/><path d="M7.6 10.8c-1.8 0-1.1 2.1-3 3.2 2.7 1 4.4.2 4.4-1.4 0-.8-.5-1.4-1.4-1.8" fill="currentColor" stroke="none"/></svg>
 <svg data-asset="selection-checked" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
   <rect class="transparent-fill foreground-stroke" x="2.5" y="2.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1" opacity=".65"/>
@@ -424,6 +425,7 @@
 <svg data-asset="selection-empty" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <rect class="transparent-fill foreground-stroke" x="2.5" y="2.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
 </svg>
+<svg data-asset="selection-grow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h4v4H6Z" fill="currentColor" stroke="none"/><path d="M1.5 5V1.5H5m6 0h3.5V5m0 6v3.5H11m-6 0H1.5V11M4.5 4.5l-2-2m9 2 2-2m-2 9 2 2m-9-2-2 2"/></svg>
 <svg data-asset="selection-intersect" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <path d="M1.5 1.5h8v8h-8zM6.5 6.5h8v8h-8z" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
   <rect x="6.5" y="6.5" width="3" height="3" fill="currentColor"/>
@@ -434,6 +436,7 @@
 <svg data-asset="selection-new" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <rect x="3" y="3" width="10" height="10" rx=".5" fill="currentColor"/>
 </svg>
+<svg data-asset="selection-shrink" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h3v3h-3Z" fill="currentColor" stroke="none"/><path d="M1.5 1.5l3 3m0-2.5v2.5H2m12.5-3.5-3 3m0-2.5v2.5H14m.5 9.5-3-3m0 2.5v-2.5H14m-12.5 3.5 3-3m0 2.5v-2.5H2"/></svg>
 <svg data-asset="selection-subtract" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <rect x="6.5" y="6.5" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
   <path d="M1.5 1.5h8v5h-3v3h-5z" fill="currentColor"/>
@@ -506,6 +509,7 @@
 <svg data-asset="toolbar" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
   <path d="M1 2h14v12H1zM2.5 3.5v9.0h11.0V3.5z" fill-rule="evenodd"/><rect x="3" y="4" width="2" height="2" rx="0.25" /><rect x="7" y="4" width="2" height="2" rx="0.25" /><rect x="11" y="4" width="2" height="2" rx="0.25" /><rect x="3" y="9" width="10" height="3" rx="0.25" />
 </svg>
+<svg data-asset="transform-outline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 3.75h2v1.5h-2zm3 0h2v1.5h-2zm-4.75 1.75h1.5v2h-1.5zm0 3h1.5v2h-1.5zm7 -3h1.5v2h-1.5zm0 3h1.5v2h-1.5zm-6.25 2.25h2v1.5h-2zm3 0h2v1.5h-2z"/><rect x="1" y="1" width="3" height="3" rx="0.25"/><rect x="12" y="1" width="3" height="3" rx="0.25"/><rect x="1" y="12" width="3" height="3" rx="0.25"/><rect x="12" y="12" width="3" height="3" rx="0.25"/></svg>
 <svg data-asset="transform" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
   <path d="M3 3h10v10H3zM4.5 4.5v7.0h7.0V4.5z" fill-rule="evenodd"/><rect x="1" y="1" width="3" height="3" rx="0.25" /><rect x="12" y="1" width="3" height="3" rx="0.25" /><rect x="1" y="12" width="3" height="3" rx="0.25" /><rect x="12" y="12" width="3" height="3" rx="0.25" />
 </svg>

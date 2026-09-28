@@ -1,7 +1,7 @@
 import {createDrawingTabs} from './drawing-tabs.fa4f384b7a998c5b92fe.js';
 import {createDocumentRecovery} from './document-recovery.5fdb416041d589c20aec.js';
 import {chooseDocumentColor} from './document-color.f981b4a05a9d0d4067f9.js';
-import {createProof} from './proof.4b77927d63c02b78b727.js';
+import {createProof} from './proof.4dfbd11760c722fe2336.js';
 import {createHistogram} from './histogram.81a9fffcfcea60ca8b5f.js';
 import {chooseExport,chooseSourceProfile} from './export-controls.f57d3cfae92eec28461d.js';
 
