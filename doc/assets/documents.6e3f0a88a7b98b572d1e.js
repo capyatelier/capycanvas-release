@@ -1,16 +1,17 @@
 import {createDrawingTabs} from './drawing-tabs.fa4f384b7a998c5b92fe.js';
 import {createDocumentRecovery} from './document-recovery.5fdb416041d589c20aec.js';
-import {chooseDocumentColor} from './document-color.5a04ff1ade424f33eb19.js';
-import {createProof} from './proof.823d3542910fe12930a4.js';
+import {chooseDocumentColor} from './document-color.f981b4a05a9d0d4067f9.js';
+import {createProof} from './proof.4b77927d63c02b78b727.js';
 import {createHistogram} from './histogram.81a9fffcfcea60ca8b5f.js';
-import {chooseExport,chooseSourceProfile} from './export-controls.a1e7df8e9d3ef007df7e.js';
+import {chooseExport,chooseSourceProfile} from './export-controls.f57d3cfae92eec28461d.js';
 
-const exportFormats={
+export const exportFormats={
   Exr:["exr","image/x-exr","OpenEXR image"],
   PngHdr:["png","image/png","HDR PQ PNG"],PngHdrMapped:["png","image/png","HDR PQ PNG"],
   JpegHdr:["jpg","image/jpeg","HDR gain-map JPEG"],JpegHdrMapped:["jpg","image/jpeg","HDR gain-map JPEG"],
   AvifHdr:["avif","image/avif","HDR gain-map AVIF"],AvifHdrMapped:["avif","image/avif","HDR gain-map AVIF"],
   Png:["png","image/png","PNG image"],Tiff:["tif","image/tiff","TIFF image"],Jpeg:["jpg","image/jpeg","JPEG image"],
+  Webp:["webp","image/webp","WebP image"],
 };
 import {createImageImport} from './image-import.2fd690230ecc3f6aca1b.js';
 // Browser file transport; document checkpoints, stale-edit guards and unsaved

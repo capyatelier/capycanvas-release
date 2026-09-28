@@ -1,4 +1,4 @@
-import { createToolbarComponent } from "./toolbar-components.a1a8dbeebe5b8cf915ff.js";
+import { createToolbarComponent } from "./toolbar-components.8a0c70324bd7537c5584.js";
 import { colorButton, pickerButtonAction } from './color-controls.fb677c4858302ee6f2b0.js';
 // DOM presentation of the shared Rust customization models. This module owns
 // widgets and animation, not catalogs, validation, selection or docking policy.

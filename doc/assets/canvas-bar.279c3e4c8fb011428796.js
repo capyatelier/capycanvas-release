@@ -1,4 +1,4 @@
-import { actionField, choiceField } from "./toolbar-components.a1a8dbeebe5b8cf915ff.js";
+import { actionField, choiceField } from "./toolbar-components.8a0c70324bd7537c5584.js";
 import { revealTooltip } from "./tooltips.2b80f073e1d4b785fb52.js";
 
 export const GAP = 4, PADDING = 6;
