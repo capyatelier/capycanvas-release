@@ -14,6 +14,7 @@ with releases on `main`.
 | `release/` | Packaging, verification, license policy and pinned source/tools |
 | `release/manifest.json` | Source revision, lockfile hash, dependency inventory, checks, Wasm imports and every published file's SHA-256 |
 | `.github/workflows/pages.yml` | Verify the committed package and deploy `doc/` |
+| [AGENTS.md](AGENTS.md) | Routine deployment instructions and the standing skip-tests preference |
 | [AUDIT.md](AUDIT.md) | Initial GPL/LGPL and build-process audit, scope and follow-up policy |
 | [HOSTING.md](HOSTING.md) | GitHub Pages, Porkbun and Cloudflare setup |
 
