@@ -59,7 +59,10 @@ try {
     const [pkg, rawLicense] = line.split("|");
     const [name, version] = pkg.split(" ");
     const license = rawLicense.replace(/ \(\*\)$/, "");
-    assert.ok(license && !/\b(?:A|L)?GPL\b/i.test(license), `GPL-family or missing license: ${line}`);
+    // self_cell offers Apache-2.0 as an alternative to GPL-2.0-only.
+    // Keep the exception exact so changed versions or license terms fail review.
+    const approvedSelfCell = name === "self_cell" && version === "v1.3.0" && license === "Apache-2.0 OR GPL-2.0-only";
+    assert.ok(license && (!/\b(?:A|L)?GPL\b/i.test(license) || approvedSelfCell), `GPL-family or missing license: ${line}`);
     assert.ok(!/^(?:gtk|gdk|glib|gio|pango|cairo|libadwaita|wayland|layer-linux)(?:$|[-\d])/.test(name), `Native dependency in web graph: ${name}`);
     return [name + version, { name, version: version.slice(1), license }];
   })).values()].sort((a, b) => a.name.localeCompare(b.name, "en"));

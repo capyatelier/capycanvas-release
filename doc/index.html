@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <!-- Color-managed artwork and native themes must not be recolored. -->
@@ -7,55 +7,57 @@
     <meta name="color-scheme" content="dark light" />
     <meta name="theme-color" content="#333333" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Capy Canvas — drawing workspace</title>
+    <title>Capy Canvas</title>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.3a5271c440d92a7f42e7.png" />
-    <script type="module" async src="assets/workspace-preload.33b4a3c42ee04706e4ba.js"></script>
-    <script>for (const href of ["assets/icons.8d1b1d3387f4dbab563a.svg","assets/pkg/layer_web_bg.57d9f2b5b25abfe1395d.wasm"]) document.head.append(Object.assign(document.createElement("link"), {rel: "preload", as: "fetch", crossOrigin: "anonymous", href}));</script>
-    <link id="workspace-style" rel="stylesheet" href="assets/style.f6e30785639a4f257b7b.css" />
-    <link rel="modulepreload" href="assets/pkg/layer_web.79f5f76e9ffc0c3a1eea.js" />
-    <link rel="modulepreload" href="assets/raster-worker-client.9b1a15ad18400dec49a7.js" />
+    <script type="module" async src="assets/workspace-preload.d00b9317df66bee6ae16.js"></script>
+    <script>for (const href of ["assets/icons.13f61f21a03f37b02872.svg","assets/pkg/layer_web_bg.bd4d1d93408b5f8b65e1.wasm"]) document.head.append(Object.assign(document.createElement("link"), {rel: "preload", as: "fetch", crossOrigin: "anonymous", href}));</script>
+    <link id="workspace-style" rel="stylesheet" href="assets/style.9f8482a4b09052780a7a.css" />
+    <link rel="modulepreload" href="assets/pkg/layer_web.677cb1299c7f1804257e.js" />
+    <link rel="modulepreload" href="assets/raster-worker-client.e08e4820128306f1d442.js" />
     <link rel="modulepreload" href="assets/document-storage.4431d5dfe1ef88a97567.js" />
     <link rel="modulepreload" href="assets/workspace-store.f591a06acda7e2734597.js" />
-    <link rel="modulepreload" href="assets/workspace-preload.33b4a3c42ee04706e4ba.js" />
+    <link rel="modulepreload" href="assets/workspace-preload.d00b9317df66bee6ae16.js" />
     <link rel="modulepreload" href="assets/workspace-switcher.ccf4e9b32fdccd5f25db.js" />
     <link rel="modulepreload" href="assets/workspace-manager.5d5872fbba0708c9f2e2.js" />
-    <link rel="modulepreload" href="assets/export-controls.536e1bd5d706551e01d9.js" />
-    <link rel="modulepreload" href="assets/shortcut-page.f57cf9061b6bec697786.js" />
-    <link rel="modulepreload" href="assets/preferences.8b0db9de3281edaabd92.js" />
-    <link rel="modulepreload" href="assets/command-bar.1792e1ab53a2ece4eca5.js" />
+    <link rel="modulepreload" href="assets/text-input.16616e189f7bf0be37f8.js" />
+    <link rel="modulepreload" href="assets/localization.d4ec6cb07a1eda6ec0e0.js" />
+    <link rel="modulepreload" href="assets/export-controls.d4d20ad9cacc1d932f62.js" />
+    <link rel="modulepreload" href="assets/shortcut-page.51d4b2b4920c140ff63f.js" />
+    <link rel="modulepreload" href="assets/preferences.34f1914b884979a5e0a9.js" />
+    <link rel="modulepreload" href="assets/command-bar.5de005dc5b10622444af.js" />
     <link rel="modulepreload" href="assets/gpu.974d8febbbb3582fae28.js" />
-    <link rel="modulepreload" href="assets/numeric.deb3d4eec594080a7074.js" />
-    <link rel="modulepreload" href="assets/range-control.e5fd92cef5e99947ce35.js" />
-    <link rel="modulepreload" href="assets/toolbar-components.818d843addc262e68e59.js" />
-    <link rel="modulepreload" href="assets/color-controls.fb677c4858302ee6f2b0.js" />
-    <link rel="modulepreload" href="assets/customization.3b6e647e3c8795bedc14.js" />
+    <link rel="modulepreload" href="assets/numeric.7914e380866517078b86.js" />
+    <link rel="modulepreload" href="assets/range-control.336fba138bef9adc2c8f.js" />
+    <link rel="modulepreload" href="assets/toolbar-components.450caceb89a0959d3cf5.js" />
+    <link rel="modulepreload" href="assets/color-controls.515861666ff868def345.js" />
+    <link rel="modulepreload" href="assets/customization.6733a5706e94aef7f69b.js" />
     <link rel="modulepreload" href="assets/tooltips.2b80f073e1d4b785fb52.js" />
-    <link rel="modulepreload" href="assets/canvas-bar.846bc81fb6d8090d6401.js" />
-    <link rel="modulepreload" href="assets/notice.b6676ce5a594feadd7a8.js" />
-    <link rel="modulepreload" href="assets/zoom-readout.4ac920e1578f6a7e407c.js" />
-    <link rel="modulepreload" href="assets/screen-status.79be7a1f511423c17ac3.js" />
-    <link rel="modulepreload" href="assets/editor-panels.9441548e8749bba15219.js" />
-    <link rel="modulepreload" href="assets/workspace-chrome.1be78322ba1262a870a9.js" />
+    <link rel="modulepreload" href="assets/canvas-bar.57a84669a084292e7d76.js" />
+    <link rel="modulepreload" href="assets/notice.061fb9e0dcf9c126ff2f.js" />
+    <link rel="modulepreload" href="assets/zoom-readout.5dc5b6f04df0fd0c361e.js" />
+    <link rel="modulepreload" href="assets/screen-status.15af69b7c188402cccb9.js" />
+    <link rel="modulepreload" href="assets/editor-panels.b6618bb5e435c11a9711.js" />
+    <link rel="modulepreload" href="assets/workspace-chrome.8c844e57ffb559912cc8.js" />
     <link rel="modulepreload" href="assets/glass.b2f9cad3a6941b8bb26b.js" />
-    <link rel="modulepreload" href="assets/drawing-tabs.fa4f384b7a998c5b92fe.js" />
+    <link rel="modulepreload" href="assets/drawing-tabs.1702a6d5628d54a0d1db.js" />
     <link rel="modulepreload" href="assets/document-recovery.5fdb416041d589c20aec.js" />
-    <link rel="modulepreload" href="assets/document-color.bdafd9d15d5a42e4a476.js" />
-    <link rel="modulepreload" href="assets/proof.2061886da29cdfd856e6.js" />
+    <link rel="modulepreload" href="assets/document-color.d4ca86b45407a3e64681.js" />
+    <link rel="modulepreload" href="assets/proof.118c837920c40b558a8c.js" />
     <link rel="modulepreload" href="assets/histogram.81a9fffcfcea60ca8b5f.js" />
     <link rel="modulepreload" href="assets/image-import.2fd690230ecc3f6aca1b.js" />
-    <link rel="modulepreload" href="assets/documents.126b7e6c53fc01a1000f.js" />
+    <link rel="modulepreload" href="assets/documents.3b04b61b36f0e9cf7c2a.js" />
     <link rel="modulepreload" href="assets/system-status.0b65cd2ebafa25dc9cf0.js" />
-    <link rel="modulepreload" href="assets/header.dd279c0974318efb215a.js" />
-    <link rel="modulepreload" href="assets/preview-panel.67af7957b4a5996ab109.js" />
-    <link rel="modulepreload" href="assets/selection-masks.9855d4d050da2031f55c.js" />
-    <link rel="modulepreload" href="assets/size-dialog.0425526ccc27a1e1f220.js" />
-    <link rel="modulepreload" href="assets/canvas-size.9e066f4fa2204cc73cb8.js" />
-    <link rel="modulepreload" href="assets/image-size.310382096dbf6ed7c45c.js" />
-    <link rel="modulepreload" href="assets/layers.c4c3b0f5004879836255.js" />
-    <link rel="modulepreload" href="assets/palettes.a52d6af3c8b2ca1a50b7.js" />
+    <link rel="modulepreload" href="assets/header.93999d6ed851650af20b.js" />
+    <link rel="modulepreload" href="assets/preview-panel.d0ec827f33c12dceb0e0.js" />
+    <link rel="modulepreload" href="assets/selection-masks.11c12f3a7ee7e941e5d0.js" />
+    <link rel="modulepreload" href="assets/size-dialog.fbd7433adf837476958f.js" />
+    <link rel="modulepreload" href="assets/canvas-size.e25809953f70c3e9d95d.js" />
+    <link rel="modulepreload" href="assets/image-size.efd5339595608cf8cae7.js" />
+    <link rel="modulepreload" href="assets/layers.1bf5f8302e2286a5c0a4.js" />
+    <link rel="modulepreload" href="assets/palettes.2007be24727df76e94d2.js" />
     <link rel="modulepreload" href="assets/stroke-recording.e95b7b5e16aab167ab0e.js" />
     <link rel="modulepreload" href="assets/filter-previews.778083869ae298b95e00.js" />
-    <link rel="modulepreload" href="assets/effects.6bf7d0142b7911916d9d.js" />
+    <link rel="modulepreload" href="assets/effects.e678e92f406ff94d2856.js" />
     <link rel="modulepreload" href="assets/pen-scroll.18dffed11bf488d1a322.js" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="./apple-touch-icon.png?v=7992eea20c5a9fbdaba3" />
@@ -63,29 +65,28 @@
     <link rel="license" href="./licenses.html" />
   </head>
   <body data-theme="dark" data-gpu="starting">
-    <main id="workspace" aria-label="Drawing workspace">
+    <main id="workspace">
       <div id="center">
         <canvas
           id="canvas"
           tabindex="0"
-          aria-label="Drawing canvas. Draw with a mouse or pen; use two fingers to pan, rotate and zoom."
         ></canvas>
       </div>
-      <section id="gpu-notice" aria-label="Canvas availability" aria-live="polite">
-        <div class="gpu-help"><h1>Starting the canvas…</h1></div>
+      <section id="gpu-notice" aria-live="polite">
+        <div class="gpu-help"></div>
       </section>
       <header id="header" class="chrome">
-        <nav id="header-start" aria-label="Application menus"></nav>
+        <nav id="header-start"></nav>
         <span id="document-title">Capy Canvas</span>
-        <nav id="header-end" aria-label="Workspace controls"></nav>
+        <nav id="header-end"></nav>
       </header>
-      <div id="canvas-status" class="chrome" aria-label="Canvas status">
+      <div id="canvas-status" class="chrome">
         <button id="view-info" type="button"></button>
       </div>
     </main>
-    <output id="status" role="status">Starting WebGPU…</output>
+    <output id="status" role="status"></output>
     <dialog id="settings" aria-labelledby="settings-title"></dialog>
-    <script type="module" src="assets/app.4d0c3159093eec4459f4.js"></script>
+    <script type="module" src="assets/app.15711ba8bbeabc8056f2.js"></script>
   <script>addEventListener("load", () => { if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js", {updateViaCache: "none"}).catch(console.error); });</script>
   </body>
 </html>

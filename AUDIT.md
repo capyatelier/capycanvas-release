@@ -1,5 +1,13 @@
 # Web-release audits
 
+## Update: source 3e0684b — web localization dependency
+
+The web graph now includes `self_cell 1.3.0` through Fluent localization.
+Its declared `Apache-2.0 OR GPL-2.0-only` terms permit choosing Apache-2.0;
+the crate archive includes `LICENSE-APACHE`. The independent cargo-deny gate
+accepts the Apache option. The host inventory check now recognizes only this
+exact crate version and license expression, so changes to either require review.
+
 ## Update: source 8b37ee2 — default workspace pinning
 
 Reviewed `8b37ee270b0ac238e959e41c9a40fcb130d030b0` against `0a59ea5`

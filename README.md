@@ -53,7 +53,8 @@ not enter the release. All application build work calls the exported source's
 
 Before compilation, the wrapper runs this repository's independent permissive
 license policy against the entire locked Rust workspace and rejects GPL-family
-or native UI dependencies in the web graph. It runs the upstream packaging unit
+dependencies without a reviewed permissive alternative, as well as native UI
+dependencies in the web graph. It runs the upstream packaging unit
 tests. Before replacing `doc/`, it checks the generated notices, single Wasm
 module, imports, package inventory, manifest and every precache integrity hash.
 An existing package must match its recorded manifest before it can be replaced.
