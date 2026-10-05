@@ -1,27 +1,27 @@
 # Deployment instructions
 
 This repository hosts the built Capy Canvas PWA at
-https://editor.capycanvas.art/. Deployments come from published releases of
-`capyatelier/capycanvas` and are built on GitHub, never on a workstation.
+https://editor.capycanvas.art/. The editor runs the latest `main` of
+`capyatelier/capycanvas`, built on GitHub when someone runs the deploy workflow,
+never on a workstation.
 
-- `.github/workflows/deploy.yml` checks every hour for a newer published
-  release. It builds that release's commit with `release/build.mjs`, which runs
-  the license policy, notice and package checks, commits `doc/`,
-  `release/manifest.json` and the pinned `release/source.json`, and starts
-  `pages.yml`, which verifies the committed package and publishes `doc/`.
+- `.github/workflows/deploy.yml` builds the chosen source commit with
+  `release/build.mjs`, which runs the license policy, notice and package checks,
+  commits `doc/`, `release/manifest.json` and the pinned `release/source.json`,
+  and starts `pages.yml`, which verifies the committed package and publishes
+  `doc/`.
 - A request to "deploy" means running that workflow, then confirming the Pages
   run and the live site:
 
   ```bash
   gh workflow run deploy.yml --repo capyatelier/capycanvas-release
-  gh workflow run deploy.yml --repo capyatelier/capycanvas-release -f tag=v1.0.2
+  gh workflow run deploy.yml --repo capyatelier/capycanvas-release -f ref=<commit>
   ```
 
-  The first deploys the latest published release; the second deploys a
-  specific release, which is also how to roll back.
-- To ship source changes, publish a release in `capyatelier/capycanvas`. Never
-  build, hand-edit or commit `doc/` locally; local builds (README) only test
-  changes to `release/`.
+  The first deploys the current `main`; the second deploys a specific branch,
+  tag or commit, which is also how to roll back.
+- Never build, hand-edit or commit `doc/` locally; local builds (README) only
+  test changes to `release/`.
 - Hosting and packaging scripts belong in `release/`; application build logic
   belongs in the source repository. Change a tool pin in `release/source.json`
   only together with a deploy, because `pages.yml` checks the committed package

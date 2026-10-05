@@ -13,7 +13,7 @@ with releases on `main`.
 | `doc/` | Complete committed static PWA, including Wasm and license notices |
 | `release/` | Packaging, verification, license policy and pinned source/tools |
 | `release/manifest.json` | Source revision, lockfile hash, dependency inventory, checks, Wasm imports and every published file's SHA-256 |
-| `.github/workflows/deploy.yml` | Build the latest published Capy Canvas release, commit it and start Pages |
+| `.github/workflows/deploy.yml` | Build a Capy Canvas commit, `main` by default, commit it and start Pages |
 | `.github/workflows/pages.yml` | Verify the committed package and deploy `doc/` |
 | [AGENTS.md](AGENTS.md) | How deployments run and how to check the live site |
 | [AUDIT.md](AUDIT.md) | Initial GPL/LGPL and build-process audit, scope and follow-up policy |
@@ -26,14 +26,13 @@ verifies and uploads; compilation happens in the deploy workflow. [GitHub docume
 
 ## Publish
 
-Publishing a release in `capyatelier/capycanvas` deploys it.
-`.github/workflows/deploy.yml` runs hourly, or from **Actions → Deploy release →
-Run workflow** with an optional tag. It builds the latest published release's
-commit with `release/build.mjs` and the pinned tools, commits the package, pin
-and manifest together, and starts the Pages workflow, which verifies the
-committed bytes and deploys `doc/`. Existing app tabs keep their current version
-until closed. To roll back, run the workflow with the earlier release's tag. Do
-not force-push release history.
+Run **Actions → Deploy editor → Run workflow** to deploy the current `main` of
+`capyatelier/capycanvas`. `.github/workflows/deploy.yml` builds that commit with
+`release/build.mjs` and the pinned tools, commits the package, pin and manifest
+together, and starts the Pages workflow, which verifies the committed bytes and
+deploys `doc/`. Existing app tabs keep their current version until closed. To
+roll back, run the workflow with an earlier commit or tag as `ref`. Do not
+force-push release history.
 
 ## Build locally
 
