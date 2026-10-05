@@ -13,19 +13,32 @@ with releases on `main`.
 | `doc/` | Complete committed static PWA, including Wasm and license notices |
 | `release/` | Packaging, verification, license policy and pinned source/tools |
 | `release/manifest.json` | Source revision, lockfile hash, dependency inventory, checks, Wasm imports and every published file's SHA-256 |
+| `.github/workflows/deploy.yml` | Build the latest published Capy Canvas release, commit it and start Pages |
 | `.github/workflows/pages.yml` | Verify the committed package and deploy `doc/` |
-| [AGENTS.md](AGENTS.md) | Routine deployment instructions and the standing skip-tests preference |
+| [AGENTS.md](AGENTS.md) | How deployments run and how to check the live site |
 | [AUDIT.md](AUDIT.md) | Initial GPL/LGPL and build-process audit, scope and follow-up policy |
 | [HOSTING.md](HOSTING.md) | GitHub Pages, Porkbun and Cloudflare setup |
 
 GitHub Pages' branch publishing supports `/` or `/docs`, not `/doc`. The included
 Actions workflow uploads **the contents of `doc/`** as the site root; select
-**GitHub Actions** in repository Settings → Pages. No Rust compilation or access
-to the source repository is needed in deployment CI. [GitHub documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+**GitHub Actions** in repository Settings → Pages. The Pages workflow only
+verifies and uploads; compilation happens in the deploy workflow. [GitHub documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
-## Build a release
+## Publish
 
-Install Git, Bash, tar, Node.js 22+ and the versions recorded in
+Publishing a release in `capyatelier/capycanvas` deploys it.
+`.github/workflows/deploy.yml` runs hourly, or from **Actions → Deploy release →
+Run workflow** with an optional tag. It builds the latest published release's
+commit with `release/build.mjs` and the pinned tools, commits the package, pin
+and manifest together, and starts the Pages workflow, which verifies the
+committed bytes and deploys `doc/`. Existing app tabs keep their current version
+until closed. To roll back, run the workflow with the earlier release's tag. Do
+not force-push release history.
+
+## Build locally
+
+Local builds test changes to `release/`; deployments come only from the deploy
+workflow. Install Git, Bash, tar, Node.js 22+ and the versions recorded in
 [`release/source.json`](release/source.json). The initial release uses Rust 1.96.0:
 
 ```bash
@@ -83,27 +96,6 @@ The package can run at the domain root or a repository subpath. Drawing requires
 hardware WebGPU and HTTPS (localhost is allowed). Offline app availability is
 not artwork autosave: drawings are currently in memory, and closing/reloading
 loses them. Applied preferences persist separately.
-
-## Update and publish
-
-1. Commit application changes in the source repository. Update the full source
-   commit in `release/source.json`; review dependencies, assets, toolchain changes
-   and the checklist in `AUDIT.md`. Do not merely change the pin to bypass a gate.
-2. Run the release build and checks above. Keep the entire generated `doc/` and
-   `release/manifest.json` together in a commit. Never hand-edit cached files.
-3. Review the diff, commit and push to `origin main`. The Pages workflow verifies
-   the committed bytes and uploads only `doc/`, then deploys the complete artifact.
-4. Check the Actions run and visit the HTTPS site. Existing app tabs keep their
-   current version until closed; this prevents updates interrupting a drawing.
-
-```bash
-git add doc release AUDIT.md
-git commit -m "Release Capy Canvas PWA from <source revision>"
-git push origin main
-```
-
-To roll back, revert the release commit (including its pin and manifest), verify,
-and push. GitHub deploys the restored package. Do not force-push release history.
 
 ## License
 

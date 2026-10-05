@@ -1,0 +1,71 @@
+name: Deploy release
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Capy Canvas release tag to deploy; empty deploys the latest published release
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: write
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          tag=$TAG
+          [ -n "$tag" ] || tag=$(gh release view --repo capyatelier/capycanvas --json tagName -q .tagName 2>/dev/null) || true
+          [ -n "$tag" ] || { echo "No published Capy Canvas release"; exit 0; }
+          commit=$(gh api "repos/capyatelier/capycanvas/commits/$tag" -q .sha)
+          if [ "$commit" = "$(jq -r .commit release/source.json)" ]; then echo "$tag is already deployed"; exit 0; fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+      - if: steps.release.outputs.commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: capyatelier/capycanvas
+          ref: ${{ steps.release.outputs.tag }}
+          path: source
+          persist-credentials: false
+      - if: steps.release.outputs.commit
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - if: steps.release.outputs.commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs.tag }}
+          COMMIT: ${{ steps.release.outputs.commit }}
+        run: |
+          pin() { jq -r ".$1" release/source.json; }
+          rustup toolchain install "$(pin rust)" --profile minimal --component rust-docs --component rust-src --target wasm32-unknown-unknown
+          rustup default "$(pin rust)"
+          cargo install --locked wasm-bindgen-cli --version "$(pin wasmBindgen)"
+          cargo install --locked cargo-about --features cli --version "$(pin cargoAbout)"
+          cargo install --locked cargo-deny --version "$(pin cargoDeny)"
+          cargo install --locked resvg --version "$(pin resvg)"
+          jq --arg commit "$COMMIT" '.commit = $commit' release/source.json > "$RUNNER_TEMP/source.json"
+          mv "$RUNNER_TEMP/source.json" release/source.json
+          node release/build.mjs source --skip-tests
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc release/manifest.json release/source.json
+          git commit -m "Deploy editor $TAG"
+          git push origin HEAD:main
+          gh workflow run pages.yml --ref main
