@@ -38,7 +38,8 @@ force-push release history.
 
 Local builds test changes to `release/`; deployments come only from the deploy
 workflow. Install Git, Bash, tar, Node.js 22+ and the versions recorded in
-[`release/source.json`](release/source.json). The initial release uses Rust 1.96.0:
+[`release/source.json`](release/source.json); deploys take the Rust version
+from the source repository's release workflow:
 
 ```bash
 rustup toolchain install 1.96.0 --profile minimal --component rust-docs --component rust-src --target wasm32-unknown-unknown

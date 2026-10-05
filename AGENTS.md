@@ -23,9 +23,10 @@ never on a workstation.
 - Never build, hand-edit or commit `doc/` locally; local builds (README) only
   test changes to `release/`.
 - Hosting and packaging scripts belong in `release/`; application build logic
-  belongs in the source repository. Change a tool pin in `release/source.json`
-  only together with a deploy, because `pages.yml` checks the committed package
-  against it, and never to get past a failed gate.
+  belongs in the source repository. The deploy takes the Rust version from the
+  source repository's release workflow. Change the other tool pins in
+  `release/source.json` only together with a deploy, because `pages.yml` checks
+  the committed package against them, and never to get past a failed gate.
 - Never force-push.
 
 ## Verify the live site
