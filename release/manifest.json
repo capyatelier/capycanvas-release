@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/capyatelier/capycanvas",
-    "commit": "3e0684b0817ea5181d01d17362a5f6f5615bbe4f",
-    "cargoLockSha256": "f9d04651c8a13a72a2d7c6d4799e339124c59183b53bcead3b47171bb68920fa"
+    "commit": "67c93fe65aabf4035e6497b67487c63166d3ef70",
+    "cargoLockSha256": "d85c7f7c4d92145134d88ed8f194e46b75cc34fe446e8a72697aea95c3376dc0"
   },
   "domain": "editor.capycanvas.art",
   "target": "wasm32-unknown-unknown",
   "profile": "web-release",
   "tools": {
-    "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
-    "node": "v24.17.0",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "node": "v24.21.0",
     "wasmBindgen": "0.2.128",
     "cargoAbout": "0.9.2",
     "cargoDeny": "0.20.2",
@@ -22,7 +22,7 @@
     "upstreamUnitTests": "not run",
     "upstreamBrowserTests": "not run"
   },
-  "workerVersion": "04a3736c3b3d7e64dfc77a3324da715af1193f53f4b20c6a24b540342420afa9",
+  "workerVersion": "049b913967e88aaf6516e79486837f18e849fb9ba94ce01029782cc182c8ff52",
   "dependencies": [
     {
       "name": "adler2",
@@ -381,42 +381,42 @@
     },
     {
       "name": "layer-color",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-core",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-engine",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-render",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-render-wgpu",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-ui",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-web",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
       "name": "layer-workspace",
-      "version": "0.1.0",
+      "version": "1.0.2",
       "license": "MIT OR Apache-2.0"
     },
     {
@@ -820,6 +820,11 @@
       "license": "MIT/Apache-2.0"
     },
     {
+      "name": "typed-path",
+      "version": "0.12.3",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
       "name": "typenum",
       "version": "1.20.1",
       "license": "MIT OR Apache-2.0"
@@ -940,6 +945,11 @@
       "license": "BSD-2-Clause OR Apache-2.0 OR MIT"
     },
     {
+      "name": "zip",
+      "version": "8.6.0",
+      "license": "MIT"
+    },
+    {
       "name": "zmij",
       "version": "1.0.21",
       "license": "MIT"
@@ -963,32 +973,477 @@
   "wasmImports": [
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
+      "name": "__wbg_new_227d7c05414eb861",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webproject_new",
+      "name": "__wbg_stack_3b0d974bbf31e44f",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_then_7a850dae4493f353",
+      "name": "__wbg_error_757e9472f8410341",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webcolorcandidate_new",
+      "name": "__wbg__wbg_cb_unref_997e73d32238e655",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_iterator_22ddeb808cf55a6f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_get_6cf5a4d4d8ad3c5a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_is_function_fcda5e3902d732fe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_call_269c5566fbede3eb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_is_object_edb6b15aa3afe12e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_next_95053e306b1c3aed",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_queueMicrotask_85c90f6987555d65",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_resolve_35ec7e0c6af4c82c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_ffa92086ea89f79c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_isArray_5674713bb7b79043",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_of_1a3f47170341cefe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_of_1c173c2ad96e2f7e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_then_b830475380919203",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_queueMicrotask_f6a1fa10b81d1fc0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_a32a1ab6c6655abe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_message_1cbc5bc03dcf1dee",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_name_6e2a5da46a9ae1e7",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_8d36e20aa758e411",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_isSafeInteger_8f51c743827d1ec5",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_now_d1fb6650485d7f3e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_bebc3f4757acf305",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_entries_972a87586902cf87",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_is_61443cc073056436",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_length_31bdaf014f5fbde2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_prototypesetcall_ae9f5e7459250748",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_length_2ea75db9a3294a06",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_prototypesetcall_1629b854cfbe3b87",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_length_8768c6f6941913e3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_prototypesetcall_804a1eb1b047ccb9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_1da3429bc3c4541c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_from_slice_4ee02165f9de919e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_with_byte_offset_and_length_492c969e8b5da8a4",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_buffer_4a989bded7035f57",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_slice_ec88db741786524b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_byteOffset_46eb015f52b6ad7d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_9cfc0f17d60ff0af",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_from_slice_a500ec81601be48f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_buffer_c76fa2830d92f5bb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_from_slice_2221cabb71753908",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_with_byte_offset_and_length_0c2d39ee6aa209f8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_parse_6937a9050adfb0e1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_stringify_54b3d9b61602aee6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_get_989d0a1309644f2b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_has_464f8b9416279d65",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_a377297433dfea63",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_is_undefined_8c687d0b90d5b524",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_static_accessor_GLOBAL_THIS_1e7044f654e934db",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_static_accessor_SELF_d8b50611246a6d92",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_static_accessor_GLOBAL_8eb4cd83130a11a0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_static_accessor_WINDOW_fd0bc376bf0f8b42",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_ArrayBuffer_d4ff01f8247925ae",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_Error_fe6fa771c78ee4cf",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_Uint8Array_598adc0fef426aa8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_Uint32Array_bdf7d66e393ed2b1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_getRandomValues_a678b7300e8ed57f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_now_e7c6795a7f81e10f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_clearBuffer_82ba999c294f42fb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_getBindGroupLayout_349f9101ad6d4d76",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setPipeline_5146f7b8d2b4af5c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setBindGroup_c83391351ce68826",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_dispatchWorkgroups_56b943172790add0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_end_82fd0c12ba185009",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_copyBufferToBuffer_9c174b96fb08d551",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_limits_06bcb36c8409843b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_writeBuffer_f4bb3f54adfe1330",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_end_b57473834b877409",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setScissorRect_889235eeb784732b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setPipeline_b6f981027e02cd16",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setBindGroup_11bdbb60cc8b54b9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_draw_086a9578fc9898c2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createComputePipeline_224fa2618d9948a0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createRenderPipeline_0ebb7ebc653e9207",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setBindGroup_0b7c2a055ef1f314",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_dispatchWorkgroupsIndirect_efe17f2da3a39a3f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_pushErrorScope_fa7df784c43bdb51",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_clearBuffer_3d5a3057c3c8a9bf",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setBindGroup_418c3e0eb6943ce0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setVertexBuffer_cbf4ca1627c02f4c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_setIndexBuffer_241097e303986c14",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_drawIndexed_638959aae942557c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_features_dec7bd2fd3d91bd6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_70a09ee68d6b1b26",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createCommandEncoder_3352d1ffc36c6fc0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_resolveQuerySet_770f23fabac49845",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_info_971d8b9db3dae69f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_13d25b81ab403f5e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_6be42768c690e380",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_get_with_ref_key_6412cf3094599694",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_in_50072d4d6e45c193",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_string_get_92ab86bb19cbc12f",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_length_4e1adc0d42e23620",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_get_b1f0ab13c737f856",
       "kind": "function"
     },
     {
@@ -1013,42 +1468,22 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_13d25b81ab403f5e",
+      "name": "__wbg___wbindgen_is_string_c4f7cb494a2a21f1",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_bf6dde4923b9b059",
+      "name": "__wbg_get_b1f0ab13c737f856",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webpreparedimages_new",
+      "name": "__wbg___wbindgen_jsval_loose_eq_3c30021c243b64cd",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_websourcecandidate_new",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_call_6bcf8d3e20937e46",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_resolve_35ec7e0c6af4c82c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_call_7bbd9cceba9949ad",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_webclip_new",
+      "name": "__wbg___wbindgen_boolean_get_7a12af2b3f899c5a",
       "kind": "function"
     },
     {
@@ -1058,7 +1493,47 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_webgpu_new",
+      "name": "__wbg_set_bf6dde4923b9b059",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_Error_67e7344beaa85059",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_is_bigint_60fc0336cb14f5d7",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_number_get_1dc732b810cb937c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_bigint_get_as_i64_b482365c149396c8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg___wbindgen_jsval_eq_9fdcd3c0a860dd3b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_Map_1ff6a2b54c899f0d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_Number_c54e7112a3fa7e3e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_call_6bcf8d3e20937e46",
       "kind": "function"
     },
     {
@@ -1068,12 +1543,72 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_webcolorcandidate_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_websourcecandidate_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_webtone_new",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_call_269c5566fbede3eb",
+      "name": "__wbg___wbindgen_is_null_5160b3e381865372",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webproject_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_websessionproject_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webclip_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_width_b5e609025d3f7451",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_height_c15ee46a1345e9af",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_onuncapturederror_bb813f1102da2296",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webgpu_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_error_756c5934221e6fee",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_call_7bbd9cceba9949ad",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_limits_601ad2e086ef8141",
       "kind": "function"
     },
     {
@@ -1088,27 +1623,47 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_new_227d7c05414eb861",
+      "name": "__wbg_set_width_4c3a2252e0dea033",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_stack_3b0d974bbf31e44f",
+      "name": "__wbg_set_height_698fb3b255bc1348",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_error_757e9472f8410341",
+      "name": "__wbg_destroy_275564a0a8b8d071",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_get_with_ref_key_6412cf3094599694",
+      "name": "__wbg_instanceof_DomException_ef94c1e709e3e062",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_6be42768c690e380",
+      "name": "__wbg_message_d6ab3d8a5aedce1c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_webpreparedimages_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_weblookup_new",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_then_7a850dae4493f353",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_onSubmittedWorkDone_1190213cee1ecf7e",
       "kind": "function"
     },
     {
@@ -1118,17 +1673,672 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_getRandomValues_a678b7300e8ed57f",
+      "name": "__wbg___wbindgen_throw_5d9e815e6fdf150f",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_clearBuffer_3d5a3057c3c8a9bf",
+      "name": "__wbg___wbindgen_debug_string_0e68cf47c9cbd9b0",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_clearBuffer_82ba999c294f42fb",
+      "name": "__wbg_instanceof_Window_a3b8566f0a9c5d1a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_querySelectorAll_fdbf93e11103921d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_get_95e4d462165c92ae",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_width_f52a20e39808b138",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_navigator_d25c0f071226f233",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_document_c7f486c52d63d24e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_height_1202ad0eab43cbe0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_new_12e5d807044fbfe3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_getContext_5ff6bd600503b094",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_navigator_d217ca64c4bbff48",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_getContext_e0c05ffee530bdcf",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_performance_3fcf6e32a7e1ed0a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_reason_b4fa3af867fc4430",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_message_ab4cad9eeb386607",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_error_8c8dff942c7c4f11",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_valueOf_24fc886d85bf55b5",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_unmap_6a96b14c9ef5f7f5",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_GpuValidationError_7659e07b12d4e184",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_message_2aad50368e15e8f1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_instanceof_GpuOutOfMemoryError_5c3b8a2499f59adb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createRenderPipelineAsync_5d1472d1f672d6b6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createComputePipelineAsync_51f59036dc7fb5e2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxTextureDimension1D_aabf6add54decfe2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxTextureDimension2D_dd598b27e9c0c1c4",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxTextureDimension3D_f944266c65dfd1a9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxTextureArrayLayers_0e699147ad00502d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxBindGroups_4e424afe6ce86ca2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxBindGroupsPlusVertexBuffers_52369f089736ef9d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxBindingsPerBindGroup_7d035da36821c44f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxDynamicUniformBuffersPerPipelineLayout_0e835fda711fc7e6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxDynamicStorageBuffersPerPipelineLayout_226b0b70910aa16c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxSampledTexturesPerShaderStage_6675f5e91d9a728a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxSamplersPerShaderStage_1910fa38a6ed1e1f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxStorageBuffersPerShaderStage_a285f3ebca51ca0d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxStorageTexturesPerShaderStage_7aa946f0fc322a2b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxUniformBuffersPerShaderStage_bee5f00a4d706c7f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxUniformBufferBindingSize_59fa6be7cfbeeb53",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxStorageBufferBindingSize_2e244bded070b18d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxVertexBuffers_75d881156591f5da",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxBufferSize_423f4a084e32a195",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxVertexAttributes_5cf6392c4e9033fe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxVertexBufferArrayStride_548baa887375d865",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxInterStageShaderVariables_8c4a1d727e2aa35a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_minUniformBufferOffsetAlignment_ab7d52a5293b22bd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_minStorageBufferOffsetAlignment_5ba9b77792bdadb3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxColorAttachments_d924670762b9e250",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxColorAttachmentBytesPerSample_c4cd9126f6d287c6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxComputeWorkgroupStorageSize_57b297355cfb6204",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxComputeInvocationsPerWorkgroup_707a3868f7cebb59",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxComputeWorkgroupSizeX_0a4d99463cbd6e5e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxComputeWorkgroupSizeY_85123ea0587f7558",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxComputeWorkgroupSizeZ_a3186b4c5267d44f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_maxComputeWorkgroupsPerDimension_4158f95e673d54c4",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_description_83b8a393160021b9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_isFallbackAdapter_4c8cc3b18677460a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_subgroupMinSize_03feb6ee0cda6775",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_subgroupMaxSize_b43be0aa16182403",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_has_eafa12e457ea88fb",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_texture_95f2bfdf7767e76f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mip_level_f3745730372683d5",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_x_f470b03dd54724cd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_y_4c44eb40ebca5bfc",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_z_2e6820ef0f5821ed",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_origin_gpu_origin_3d_dict_0619d4860adb4eb6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_aspect_b1a9909bf315433f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_Window_a2a6c4d665047b14",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_gpu_afdd4387c7afe5f9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_WorkerGlobalScope_2664448a7c667d67",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_module_392eeaa269f203b0",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entry_point_71cef95c137b5774",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_5080a858117ad2c1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_offset_f64_457756429ede426d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_shader_location_3fb9f6a012eba494",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_array_stride_f64_6816040e5e7598c3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_attributes_9e38cb1dde387a5b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_step_mode_3cbbdeba1e5dfd62",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_buffers_5d0e0c50791f710e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_75dc1ca3f2421cff",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_gpu_auto_layout_mode_06a2b95af1043098",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_vertex_77ed7a1229239b5a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_e02179cf97e95763",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_23f7f32549751d43",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_compare_a90de4e3714397ab",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_write_enabled_31a821ee1fb3b0b3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_bias_95abf479cae3f3cd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_bias_clamp_ba3d0b8348151350",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_bias_slope_scale_6b2584d93f5b9cd2",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_compare_080c9e492ff36990",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_fail_op_b5c64541d1b6b482",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_fail_op_d59d0187e4111dfe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_pass_op_3cf10feb3d76ab97",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_back_c54d0443b8b6a957",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_front_3ff3f8385852efff",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_read_mask_021ef4271b24352c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_stencil_write_mask_ec1c12237e094bdd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_depth_stencil_b7cffc59ad4da529",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_7f2bdbfb101b1ae1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_dst_factor_865ba9aaf187890c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_operation_00a77386523b88f9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_src_factor_6f2c9ec8e4d3d979",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_alpha_106f21a936a85eba",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_color_8ecace4011f47d2e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_blend_1a801617945f7945",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_write_mask_42d89f182ade6b2d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_module_715d37652c4998ec",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_targets_674b33931e512fb1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entry_point_b70f98f5025a114d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_fragment_d2b0ec97d7cf8d47",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_count_8ff0c9474e39a849",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mask_c1079e551ec360dc",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_alpha_to_coverage_enabled_3372ce329447b8f1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_multisample_ff72a7a5456cbeb7",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_cull_mode_85d2b4ab0ce3a564",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_front_face_d3f8a2e07e7b25dd",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_strip_index_format_70313df755145d5e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_topology_b92cfe523bd9653b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_unclipped_depth_32b7caf29fa5633d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_primitive_e796cf76f0ff89f3",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_module_c9946af218d23b53",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entry_point_ac8db535971761fe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_4b5d5b12fbb72a76",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_gpu_auto_layout_mode_ee432e515c357fa8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_compute_bc754d9e37f6e4c9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_09e2da5f8522dbe8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_queue_7b62c28143d44293",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_device_210484a77b675c9c",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_f009e603f7d4c28e",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_configure_1e2c1c9edad07d26",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_unconfigure_835307f58dc68d80",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_features_5cac120c28ba0475",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_power_preference_b42d00a8facfbade",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_requestAdapter_a539af006419f2e9",
       "kind": "function"
     },
     {
@@ -1263,11 +2473,6 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_resolveQuerySet_770f23fabac49845",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_label_17b4858e1eef23dd",
       "kind": "function"
     },
@@ -1294,11 +2499,6 @@
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_beginComputePass_b9a325184985e6ff",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_copyBufferToBuffer_9c174b96fb08d551",
       "kind": "function"
     },
     {
@@ -1378,347 +2578,12 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_setPipeline_5146f7b8d2b4af5c",
+      "name": "__wbg_setVertexBuffer_6db3b60e99280744",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_setBindGroup_c83391351ce68826",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setBindGroup_0b7c2a055ef1f314",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_dispatchWorkgroups_56b943172790add0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_dispatchWorkgroupsIndirect_efe17f2da3a39a3f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_getBindGroupLayout_349f9101ad6d4d76",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_gpu_afdd4387c7afe5f9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_reason_b4fa3af867fc4430",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_message_ab4cad9eeb386607",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_error_8c8dff942c7c4f11",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_valueOf_24fc886d85bf55b5",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_drawIndexed_638959aae942557c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setPipeline_b6f981027e02cd16",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setIndexBuffer_241097e303986c14",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setScissorRect_889235eeb784732b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_draw_086a9578fc9898c2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_writeBuffer_f4bb3f54adfe1330",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_unmap_6a96b14c9ef5f7f5",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_pushErrorScope_fa7df784c43bdb51",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_onuncapturederror_bb813f1102da2296",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_70a09ee68d6b1b26",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createCommandEncoder_3352d1ffc36c6fc0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createRenderPipeline_0ebb7ebc653e9207",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createComputePipeline_224fa2618d9948a0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_limits_06bcb36c8409843b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_destroy_275564a0a8b8d071",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_features_dec7bd2fd3d91bd6",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_limits_601ad2e086ef8141",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_info_971d8b9db3dae69f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setBindGroup_418c3e0eb6943ce0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_end_b57473834b877409",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_message_2aad50368e15e8f1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_onSubmittedWorkDone_1190213cee1ecf7e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_writeTexture_30e592e8c061c3d9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_submit_077c85cc28e36892",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_mapAsync_b0597127f5037286",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_getMappedRange_fb54c6327b2d8d20",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createBuffer_d800e9b1d41b2ee5",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createTexture_ed7e9fc04dd54d84",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_popErrorScope_182b8e03671d81ef",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createQuerySet_2dc8cde53df9849d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createBindGroup_f539b26ca341308f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createShaderModule_cefa51336cb288ae",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createPipelineLayout_6eab52c327118937",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createBindGroupLayout_b1bd63b4e88459d8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createRenderPipelineAsync_5d1472d1f672d6b6",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createComputePipelineAsync_51f59036dc7fb5e2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createSampler_9bd91d7e928c0060",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_lost_bb454eb62101af1a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_queue_7b62c28143d44293",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_features_5cac120c28ba0475",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_requestDevice_5cb8a582e55d08cb",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_createView_da41c2d2cb212715",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_alpha_106f21a936a85eba",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_color_8ecace4011f47d2e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_description_83b8a393160021b9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_subgroupMaxSize_b43be0aa16182403",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_subgroupMinSize_03feb6ee0cda6775",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_isFallbackAdapter_4c8cc3b18677460a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_module_392eeaa269f203b0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entry_point_71cef95c137b5774",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_buffers_5d0e0c50791f710e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_x_f470b03dd54724cd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_y_4c44eb40ebca5bfc",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_z_2e6820ef0f5821ed",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_buffer_1548ae88a9188037",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_size_f64_2f591b0654540477",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_offset_f64_127e8a0aa5c5485a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_unconfigure_835307f58dc68d80",
+      "name": "__wbg_getPreferredCanvasFormat_0ef5034c8902201b",
       "kind": "function"
     },
     {
@@ -1728,257 +2593,52 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_configure_1e2c1c9edad07d26",
+      "name": "__wbg_set_usage_2365e2704b1fdb10",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_module_715d37652c4998ec",
+      "name": "__wbg_set_alpha_mode_5544568dbac50280",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entry_point_b70f98f5025a114d",
+      "name": "__wbg_set_mode_7edfbc344ef9c650",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_targets_674b33931e512fb1",
+      "name": "__wbg_set_tone_mapping_320c1aad31db2e7f",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_binding_b6cee57f35ac5190",
+      "name": "__wbg_set_view_formats_9c2f01a6f3b365c7",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_8fd8658b30d86ecf",
+      "name": "__wbg_new_typed_7d4574ab4b8446c8",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_gpu_texture_view_4cffe7bc7c8e5cbe",
+      "name": "__wbg_set_required_limits_837f62d865e7cfac",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_resource_gpu_buffer_binding_33099b25da65b610",
+      "name": "__wbg_set_required_features_bbab71414c45e621",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_dst_factor_865ba9aaf187890c",
+      "name": "__wbg_set_label_92cd3811e96b487c",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_src_factor_6f2c9ec8e4d3d979",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_operation_00a77386523b88f9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_front_face_d3f8a2e07e7b25dd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_topology_b92cfe523bd9653b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_cull_mode_85d2b4ab0ce3a564",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_unclipped_depth_32b7caf29fa5633d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_strip_index_format_70313df755145d5e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxBindGroups_4e424afe6ce86ca2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxBufferSize_423f4a084e32a195",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxVertexBuffers_75d881156591f5da",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxColorAttachments_d924670762b9e250",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxVertexAttributes_5cf6392c4e9033fe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxTextureArrayLayers_0e699147ad00502d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxTextureDimension1D_aabf6add54decfe2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxTextureDimension2D_dd598b27e9c0c1c4",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxTextureDimension3D_f944266c65dfd1a9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxBindingsPerBindGroup_7d035da36821c44f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxComputeWorkgroupSizeX_0a4d99463cbd6e5e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxComputeWorkgroupSizeY_85123ea0587f7558",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxComputeWorkgroupSizeZ_a3186b4c5267d44f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxSamplersPerShaderStage_1910fa38a6ed1e1f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxVertexBufferArrayStride_548baa887375d865",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxStorageBufferBindingSize_2e244bded070b18d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxUniformBufferBindingSize_59fa6be7cfbeeb53",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxInterStageShaderVariables_8c4a1d727e2aa35a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxComputeWorkgroupStorageSize_57b297355cfb6204",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxBindGroupsPlusVertexBuffers_52369f089736ef9d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_minStorageBufferOffsetAlignment_5ba9b77792bdadb3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_minUniformBufferOffsetAlignment_ab7d52a5293b22bd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxComputeWorkgroupsPerDimension_4158f95e673d54c4",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxStorageBuffersPerShaderStage_a285f3ebca51ca0d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxUniformBuffersPerShaderStage_bee5f00a4d706c7f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxColorAttachmentBytesPerSample_c4cd9126f6d287c6",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxComputeInvocationsPerWorkgroup_707a3868f7cebb59",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxSampledTexturesPerShaderStage_6675f5e91d9a728a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxStorageTexturesPerShaderStage_7aa946f0fc322a2b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxDynamicStorageBuffersPerPipelineLayout_226b0b70910aa16c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_maxDynamicUniformBuffersPerPipelineLayout_0e835fda711fc7e6",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_GpuValidationError_7659e07b12d4e184",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_5080a858117ad2c1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_offset_f64_457756429ede426d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_shader_location_3fb9f6a012eba494",
+      "name": "__wbg_requestDevice_5cb8a582e55d08cb",
       "kind": "function"
     },
     {
@@ -2003,182 +2663,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_7f2bdbfb101b1ae1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_write_mask_42d89f182ade6b2d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_blend_1a801617945f7945",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_required_limits_837f62d865e7cfac",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_required_features_bbab71414c45e621",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_92cd3811e96b487c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_alpha_to_coverage_enabled_3372ce329447b8f1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mask_c1079e551ec360dc",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_count_8ff0c9474e39a849",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_GpuOutOfMemoryError_5c3b8a2499f59adb",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_compare_080c9e492ff36990",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_fail_op_d59d0187e4111dfe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_pass_op_3cf10feb3d76ab97",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_fail_op_b5c64541d1b6b482",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mode_7edfbc344ef9c650",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_bias_95abf479cae3f3cd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_23f7f32549751d43",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_back_c54d0443b8b6a957",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_compare_a90de4e3714397ab",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_front_3ff3f8385852efff",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_bias_clamp_ba3d0b8348151350",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_read_mask_021ef4271b24352c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_stencil_write_mask_ec1c12237e094bdd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_write_enabled_31a821ee1fb3b0b3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_bias_slope_scale_6b2584d93f5b9cd2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_module_c9946af218d23b53",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entry_point_ac8db535971761fe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setVertexBuffer_6db3b60e99280744",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setVertexBuffer_cbf4ca1627c02f4c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_setBindGroup_11bdbb60cc8b54b9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mag_filter_db8e6b42d4f8846d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_min_filter_d435bbfc5a637757",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_compare_817cf3695599eaa6",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_lod_max_clamp_db24179f67f3aa31",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_lod_min_clamp_2bbce566e9fefa04",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mipmap_filter_62fb49a84b0747ff",
+      "name": "__wbg_createBuffer_d800e9b1d41b2ee5",
       "kind": "function"
     },
     {
@@ -2198,6 +2683,36 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_set_compare_817cf3695599eaa6",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_lod_max_clamp_db24179f67f3aa31",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_lod_min_clamp_2bbce566e9fefa04",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mag_filter_db8e6b42d4f8846d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_min_filter_d435bbfc5a637757",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mipmap_filter_62fb49a84b0747ff",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_max_anisotropy_84749fdcec362dc4",
       "kind": "function"
     },
@@ -2208,32 +2723,12 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_has_eafa12e457ea88fb",
+      "name": "__wbg_createSampler_9bd91d7e928c0060",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
       "name": "__wbg_set_format_283dca56552f07a3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_sample_count_481c255a12054e1d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_view_formats_427069064d8b7139",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_dimension_3da9d03131a9f446",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mip_level_count_44bc46a1ae6f6daa",
       "kind": "function"
     },
     {
@@ -2253,7 +2748,32 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_end_82fd0c12ba185009",
+      "name": "__wbg_set_dimension_3da9d03131a9f446",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mip_level_count_44bc46a1ae6f6daa",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_sample_count_481c255a12054e1d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_view_formats_427069064d8b7139",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createTexture_ed7e9fc04dd54d84",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_popErrorScope_182b8e03671d81ef",
       "kind": "function"
     },
     {
@@ -2273,22 +2793,42 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_attributes_9e38cb1dde387a5b",
+      "name": "__wbg_createQuerySet_2dc8cde53df9849d",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_array_stride_f64_6816040e5e7598c3",
+      "name": "__wbg_set_binding_b6cee57f35ac5190",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_step_mode_3cbbdeba1e5dfd62",
+      "name": "__wbg_set_resource_8fd8658b30d86ecf",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_454e3a091b390cd4",
+      "name": "__wbg_set_resource_gpu_texture_view_4cffe7bc7c8e5cbe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_buffer_1548ae88a9188037",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_offset_f64_127e8a0aa5c5485a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_size_f64_2f591b0654540477",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_resource_gpu_buffer_binding_33099b25da65b610",
       "kind": "function"
     },
     {
@@ -2298,7 +2838,77 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_set_layout_454e3a091b390cd4",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_label_cfe64bca8945ee30",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createBindGroup_f539b26ca341308f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_code_5d5b0b9e2fd0dca7",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_c7987704d29f284b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createShaderModule_cefa51336cb288ae",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_bind_group_layouts_458c44ba55100b82",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_612add98a4398f92",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createPipelineLayout_6eab52c327118937",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_binding_81b3fac7f7acaf8d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_visibility_d8a6821789538c25",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_type_43e0092f16775979",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_sampler_89cb4a7efcfc6005",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_multisampled_039f032dc4b67367",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_external_texture_7f966c604c4f8098",
       "kind": "function"
     },
     {
@@ -2318,92 +2928,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_alpha_mode_5544568dbac50280",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_device_210484a77b675c9c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_f009e603f7d4c28e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_tone_mapping_320c1aad31db2e7f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_view_formats_9c2f01a6f3b365c7",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_usage_2365e2704b1fdb10",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_buffer_8d0ac64ad20dfc84",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_visibility_d8a6821789538c25",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_binding_81b3fac7f7acaf8d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_sampler_89cb4a7efcfc6005",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_texture_a33be3fe02ac6264",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_storage_texture_786aea7c5773b6c1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_external_texture_7f966c604c4f8098",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_type_43e0092f16775979",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_aspect_b1a9909bf315433f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_texture_95f2bfdf7767e76f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mip_level_f3745730372683d5",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_origin_gpu_origin_3d_dict_0619d4860adb4eb6",
       "kind": "function"
     },
     {
@@ -2413,17 +2938,57 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_multisampled_039f032dc4b67367",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
       "name": "__wbg_set_view_dimension_893e2d16561e56e8",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_power_preference_b42d00a8facfbade",
+      "name": "__wbg_set_texture_a33be3fe02ac6264",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_format_92732ea75d3b79f5",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_access_a099cfbbeec9b96f",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_view_dimension_f2c5fe4bf927c3fe",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_storage_texture_786aea7c5773b6c1",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_entries_6f866302103b81e9",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_label_17202740051e9722",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_createBindGroupLayout_b1bd63b4e88459d8",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_lost_bb454eb62101af1a",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_then_8ebf7f4d2b402f98",
       "kind": "function"
     },
     {
@@ -2443,12 +3008,22 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_aspect_a48d046965270281",
+      "name": "__wbg_writeTexture_30e592e8c061c3d9",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_66735b94bd868ba2",
+      "name": "__wbg_submit_077c85cc28e36892",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_getMappedRange_fb54c6327b2d8d20",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_mapAsync_b0597127f5037286",
       "kind": "function"
     },
     {
@@ -2458,12 +3033,12 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_base_mip_level_8b6093e875e7c65d",
+      "name": "__wbg_set_format_66735b94bd868ba2",
       "kind": "function"
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_mip_level_count_047936c630acee7b",
+      "name": "__wbg_set_aspect_a48d046965270281",
       "kind": "function"
     },
     {
@@ -2478,6 +3053,16 @@
     },
     {
       "module": "./layer_web_bg.js",
+      "name": "__wbg_set_base_mip_level_8b6093e875e7c65d",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
+      "name": "__wbg_set_mip_level_count_047936c630acee7b",
+      "kind": "function"
+    },
+    {
+      "module": "./layer_web_bg.js",
       "name": "__wbg_set_label_3f2ccaafef5ff7c9",
       "kind": "function"
     },
@@ -2488,517 +3073,7 @@
     },
     {
       "module": "./layer_web_bg.js",
-      "name": "__wbg_set_code_5d5b0b9e2fd0dca7",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_c7987704d29f284b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_bind_group_layouts_458c44ba55100b82",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_612add98a4398f92",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_75dc1ca3f2421cff",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_vertex_77ed7a1229239b5a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_multisample_ff72a7a5456cbeb7",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_fragment_d2b0ec97d7cf8d47",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_depth_stencil_b7cffc59ad4da529",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_primitive_e796cf76f0ff89f3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_gpu_auto_layout_mode_06a2b95af1043098",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_e02179cf97e95763",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_entries_6f866302103b81e9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_17202740051e9722",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_4b5d5b12fbb72a76",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_compute_bc754d9e37f6e4c9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_layout_gpu_auto_layout_mode_ee432e515c357fa8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_label_09e2da5f8522dbe8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_access_a099cfbbeec9b96f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_format_92732ea75d3b79f5",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_view_dimension_f2c5fe4bf927c3fe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_getPreferredCanvasFormat_0ef5034c8902201b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_requestAdapter_a539af006419f2e9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_Window_a2a6c4d665047b14",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_WorkerGlobalScope_2664448a7c667d67",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_then_8ebf7f4d2b402f98",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_typed_7d4574ab4b8446c8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_Window_a3b8566f0a9c5d1a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_document_c7f486c52d63d24e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_navigator_d217ca64c4bbff48",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_error_756c5934221e6fee",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_querySelectorAll_fdbf93e11103921d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_get_95e4d462165c92ae",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_height_1202ad0eab43cbe0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_getContext_5ff6bd600503b094",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_12e5d807044fbfe3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_width_f52a20e39808b138",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_height_698fb3b255bc1348",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_getContext_e0c05ffee530bdcf",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_width_b5e609025d3f7451",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_height_c15ee46a1345e9af",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_width_4c3a2252e0dea033",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_navigator_d25c0f071226f233",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_performance_3fcf6e32a7e1ed0a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_now_e7c6795a7f81e10f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_8d36e20aa758e411",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_ffa92086ea89f79c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_bebc3f4757acf305",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_1da3429bc3c4541c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_byteOffset_46eb015f52b6ad7d",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_length_31bdaf014f5fbde2",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_prototypesetcall_ae9f5e7459250748",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_from_slice_4ee02165f9de919e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_with_byte_offset_and_length_492c969e8b5da8a4",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_9cfc0f17d60ff0af",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_slice_ec88db741786524b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_buffer_4a989bded7035f57",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_length_8768c6f6941913e3",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_prototypesetcall_804a1eb1b047ccb9",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_from_slice_2221cabb71753908",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_with_byte_offset_and_length_0c2d39ee6aa209f8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_buffer_c76fa2830d92f5bb",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_Uint8Array_598adc0fef426aa8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_instanceof_ArrayBuffer_d4ff01f8247925ae",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_now_d1fb6650485d7f3e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_parse_6937a9050adfb0e1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_of_1c173c2ad96e2f7e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_isArray_5674713bb7b79043",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_new_a32a1ab6c6655abe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_name_6e2a5da46a9ae1e7",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_isSafeInteger_8f51c743827d1ec5",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_is_61443cc073056436",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_entries_972a87586902cf87",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_iterator_22ddeb808cf55a6f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_static_accessor_GLOBAL_THIS_1e7044f654e934db",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_static_accessor_SELF_d8b50611246a6d92",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_static_accessor_GLOBAL_8eb4cd83130a11a0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_static_accessor_WINDOW_fd0bc376bf0f8b42",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_get_989d0a1309644f2b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_set_a377297433dfea63",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_then_b830475380919203",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_queueMicrotask_f6a1fa10b81d1fc0",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_queueMicrotask_85c90f6987555d65",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_next_95053e306b1c3aed",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_get_6cf5a4d4d8ad3c5a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_string_get_92ab86bb19cbc12f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_number_get_1dc732b810cb937c",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_in_50072d4d6e45c193",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_throw_5d9e815e6fdf150f",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_is_null_5160b3e381865372",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_jsval_eq_9fdcd3c0a860dd3b",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_Number_c54e7112a3fa7e3e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg_Error_67e7344beaa85059",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_is_bigint_60fc0336cb14f5d7",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_is_object_edb6b15aa3afe12e",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_is_string_c4f7cb494a2a21f1",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_boolean_get_7a12af2b3f899c5a",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_is_function_fcda5e3902d732fe",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_is_undefined_8c687d0b90d5b524",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_jsval_loose_eq_3c30021c243b64cd",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_bigint_get_as_i64_b482365c149396c8",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg__wbg_cb_unref_997e73d32238e655",
-      "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbg___wbindgen_debug_string_0e68cf47c9cbd9b0",
+      "name": "__wbg_createView_da41c2d2cb212715",
       "kind": "function"
     },
     {
@@ -3075,11 +3150,6 @@
       "module": "./layer_web_bg.js",
       "name": "__wbindgen_generic_000000000000000e",
       "kind": "function"
-    },
-    {
-      "module": "./layer_web_bg.js",
-      "name": "__wbindgen_generic_000000000000000f",
-      "kind": "function"
     }
   ],
   "files": {
@@ -3091,9 +3161,9 @@
       "bytes": 3161,
       "sha256": "7992eea20c5a9fbdaba31c5a62d0fa3606f3ee911666e4e7902277792d105e6d"
     },
-    "assets/app.15711ba8bbeabc8056f2.js": {
-      "bytes": 123500,
-      "sha256": "15711ba8bbeabc8056f24b6c759c78b8e3567ff0acaf15fc2a1379d78b4c0abd"
+    "assets/app.e8a536c31307d0eec587.js": {
+      "bytes": 126972,
+      "sha256": "e8a536c31307d0eec587024e463452fc6941c0ca3edf3ba01a3f8480ebf9c6b0"
     },
     "assets/brush-previews/1-dark.77ee146647534933e2ef.png": {
       "bytes": 3708,
@@ -3431,57 +3501,69 @@
       "bytes": 23682,
       "sha256": "e782c2d1201096becd32388462ae01236791dc5cb4e67a17331339abd2cf05f8"
     },
-    "assets/canvas-bar.57a84669a084292e7d76.js": {
-      "bytes": 8643,
-      "sha256": "57a84669a084292e7d76609bc79aef3c5ec06eaf242c557c43b5585290ba4b6d"
+    "assets/brush-sizes.9577a5c0d2d87afc73f5.js": {
+      "bytes": 1501,
+      "sha256": "9577a5c0d2d87afc73f5c1412299c07917e153324c43662c6be89b05816eb0c6"
+    },
+    "assets/canvas-bar.65dda215557aea7cea59.js": {
+      "bytes": 8688,
+      "sha256": "65dda215557aea7cea5957b336515854f871dab003b47a652559375a928d5d66"
     },
     "assets/canvas-size.e25809953f70c3e9d95d.js": {
       "bytes": 2803,
       "sha256": "e25809953f70c3e9d95d5e2fdbb05acfa8ec3c71ee78fc1c52a6d0ace28146fe"
     },
-    "assets/color-controls.515861666ff868def345.js": {
-      "bytes": 7043,
-      "sha256": "515861666ff868def34571c32ff35d1e49be7a13f8e86491e79f1bd4c891fe5f"
+    "assets/color-controls.68358366309dea985c2f.js": {
+      "bytes": 4870,
+      "sha256": "68358366309dea985c2f4a7578aa31e517a87ccb94d4546882fcfd9df041d615"
     },
-    "assets/command-bar.5de005dc5b10622444af.js": {
-      "bytes": 7701,
-      "sha256": "5de005dc5b10622444af1ad0dd285a958a64d35f2c7250f436f511d1e0b09d7e"
+    "assets/color-editor.482e1e09152b3044dae4.js": {
+      "bytes": 27381,
+      "sha256": "482e1e09152b3044dae4793dc6fe3561a5d0898c80996da72b910044a4a085a6"
     },
-    "assets/customization.6733a5706e94aef7f69b.js": {
-      "bytes": 34666,
-      "sha256": "6733a5706e94aef7f69b0e15e67d1f8cd64a7e3142dbeef0e755f8c51a08b097"
+    "assets/color-wheel.8aea63bffecc630a0a88.js": {
+      "bytes": 5258,
+      "sha256": "8aea63bffecc630a0a8896991ec2f6dc2a5575007f7b972409683b523183cf12"
     },
-    "assets/document-color.d4ca86b45407a3e64681.js": {
-      "bytes": 7216,
-      "sha256": "d4ca86b45407a3e646811ee1cc7a8b073369c4c3b12f09bd5a33cdc6a6b25513"
+    "assets/command-bar.710366d4624ec8bdba9d.js": {
+      "bytes": 7948,
+      "sha256": "710366d4624ec8bdba9d85cff189bcfb84317deaf5b3608be505620999240b29"
     },
-    "assets/document-recovery.5fdb416041d589c20aec.js": {
-      "bytes": 5622,
-      "sha256": "5fdb416041d589c20aec824adfc0dbd476132b811d950a8aee88e07117695b7c"
+    "assets/customization.5e3f35c8c654e4d09e3f.js": {
+      "bytes": 37972,
+      "sha256": "5e3f35c8c654e4d09e3fd2fb4ef00fa4609897e199dd81ff0767713577a7d970"
+    },
+    "assets/document-color.9555743afbd83106b8e5.js": {
+      "bytes": 7824,
+      "sha256": "9555743afbd83106b8e5b45f5a798c7b474d0f4ae324cee7047fecfc161c1b84"
+    },
+    "assets/document-recovery.ea172042c55213e815f8.js": {
+      "bytes": 11732,
+      "sha256": "ea172042c55213e815f83a47197dcbc82f79ce265cc13772e6d4299da1200adf"
     },
     "assets/document-storage.4431d5dfe1ef88a97567.js": {
       "bytes": 2458,
       "sha256": "4431d5dfe1ef88a97567c35ec7d00069a79c6b4124f6c7b0a2b8a92f3f1d1e0d"
     },
-    "assets/documents.3b04b61b36f0e9cf7c2a.js": {
-      "bytes": 29797,
-      "sha256": "3b04b61b36f0e9cf7c2a0296635c1426fdd981eab1085e17389ce70d10adcf95"
+    "assets/documents.d874596bad1a5cea1cca.js": {
+      "bytes": 37328,
+      "sha256": "d874596bad1a5cea1cca7e5cd3ecd5a7c081f05146e19a3351f2b6ae3e55fc6e"
     },
-    "assets/drawing-tabs.1702a6d5628d54a0d1db.js": {
+    "assets/drawing-tabs.da5293e786548e9325d9.js": {
       "bytes": 15908,
-      "sha256": "1702a6d5628d54a0d1db9423f1c14324cbef85eb35853d0f3c18fb8c464430e0"
+      "sha256": "da5293e786548e9325d9061101bfda63259accbfc90b150f43e3e7b141b5b562"
     },
-    "assets/editor-panels.b6618bb5e435c11a9711.js": {
-      "bytes": 32606,
-      "sha256": "b6618bb5e435c11a971130d0d5c7420f1e275e821f1eadd8245e3a173150f238"
+    "assets/editor-panels.f637219afc8e1522a395.js": {
+      "bytes": 29608,
+      "sha256": "f637219afc8e1522a39558a8b6da9930819cdfba8d4ce2d1dab35c1a5abbf92f"
     },
-    "assets/effects.e678e92f406ff94d2856.js": {
-      "bytes": 18829,
-      "sha256": "e678e92f406ff94d2856f71368b31bee52aa9ea3e3f00888c611ebfe4cf9b25c"
+    "assets/effects.eb03207513bec053e12d.js": {
+      "bytes": 26144,
+      "sha256": "eb03207513bec053e12db8fe8a53a636ed5bce6d3db6cd819c303b5d2acc3b8c"
     },
-    "assets/export-controls.d4d20ad9cacc1d932f62.js": {
-      "bytes": 18443,
-      "sha256": "d4d20ad9cacc1d932f62c77701ec6e13ecda9fd88099b55569ffbef6c7a0c003"
+    "assets/export-controls.9b08388dbf4f666a62bd.js": {
+      "bytes": 19781,
+      "sha256": "9b08388dbf4f666a62bdf9dd89a1a945e8e893419942bad164fc0b6fdc1a01c1"
     },
     "assets/filter-previews.778083869ae298b95e00.js": {
       "bytes": 2295,
@@ -3495,13 +3577,17 @@
       "bytes": 5510,
       "sha256": "974d8febbbb3582fae28627d4fc08522d24c0c26df6b17b4a1f65a38034ec535"
     },
-    "assets/header.93999d6ed851650af20b.js": {
-      "bytes": 27049,
-      "sha256": "93999d6ed851650af20b585028ec046e79efc86997b37ebdc53e1a6bc6b77abf"
+    "assets/gradient.a7abd8e21115fbc0782d.js": {
+      "bytes": 9856,
+      "sha256": "a7abd8e21115fbc0782d1031e790c8ac9653fcebcd4a6bddf7c7ee9a0c11705b"
     },
-    "assets/histogram.81a9fffcfcea60ca8b5f.js": {
-      "bytes": 5404,
-      "sha256": "81a9fffcfcea60ca8b5f81d8be9666b613c7cc3fe40dcf27a5daf03f717947cb"
+    "assets/header.badac7aed2c5545bf499.js": {
+      "bytes": 30696,
+      "sha256": "badac7aed2c5545bf4998505be5e90fb49b146429140b9a0294d5d00e4df9fb9"
+    },
+    "assets/histogram.6e1a7615a512174e25c4.js": {
+      "bytes": 5130,
+      "sha256": "6e1a7615a512174e25c40e2d63563a328127c0d39a6d5be9cf0e8b056c5042d3"
     },
     "assets/icon-180.7992eea20c5a9fbdaba3.png": {
       "bytes": 3161,
@@ -3599,6 +3685,10 @@
       "bytes": 410,
       "sha256": "1862da5308af4ccaf41ef3e13ea872410c0a924df2a11d8459436c1c3e0d9300"
     },
+    "assets/icons/layer-channel_mixer-symbolic.d6e203b2b7b23aabe709.svg": {
+      "bytes": 305,
+      "sha256": "d6e203b2b7b23aabe709530b165ef61f237a664bb7aff9442d9bd1a7829005fb"
+    },
     "assets/icons/layer-check-symbolic.ee42a3e6be05b2a036e0.svg": {
       "bytes": 358,
       "sha256": "ee42a3e6be05b2a036e00b4715796f3e60523205eb6d66f96faa5311cbeb7b8b"
@@ -3610,6 +3700,10 @@
     "assets/icons/layer-chromatic-aberration-symbolic.2805c454c81c8d9b8043.svg": {
       "bytes": 265,
       "sha256": "2805c454c81c8d9b80430c60fbed9b8e34b21ab569d14a042f4dcf3a975859b3"
+    },
+    "assets/icons/layer-clarity-symbolic.fa44924d34e79758d5d2.svg": {
+      "bytes": 419,
+      "sha256": "fa44924d34e79758d5d2da10f10b67efe3f62bdaae6214bd00fd9368424e368e"
     },
     "assets/icons/layer-clear-outside-symbolic.8b7e62df316b32914bd9.svg": {
       "bytes": 548,
@@ -3646,6 +3740,10 @@
     "assets/icons/layer-color_balance-symbolic.dfef11fb4553fef16570.svg": {
       "bytes": 369,
       "sha256": "dfef11fb4553fef1657095bb6525e5b21b5c0ee980d938bb0f04ca1defcb9642"
+    },
+    "assets/icons/layer-color_lookup-symbolic.fd1b511da141bfa0c2fe.svg": {
+      "bytes": 310,
+      "sha256": "fd1b511da141bfa0c2fef450a77893aad9b32ec1250813666edf4fd420cc3a34"
     },
     "assets/icons/layer-color-circle-symbolic.a5a672c40f32e2fd92a8.svg": {
       "bytes": 268,
@@ -3759,6 +3857,14 @@
       "bytes": 133,
       "sha256": "58cab81040e64e06dd6f3f6f1966eca571d1bab3fafab11eacc19d634b8c7fde"
     },
+    "assets/icons/layer-cursor-tool-brush-symbolic.edcb8b20daa1fccd3a1c.svg": {
+      "bytes": 427,
+      "sha256": "edcb8b20daa1fccd3a1cbf2c516d026226dea7fd5b0c5eeb82aa76530af508af"
+    },
+    "assets/icons/layer-cursor-tool-symbolic.26aa7319d66ee0034428.svg": {
+      "bytes": 255,
+      "sha256": "26aa7319d66ee0034428a4116d4cd4aa70f91d283840c3d3c816829e693d62af"
+    },
     "assets/icons/layer-cursor-triangle-symbolic.c475d4ba25f578d2aacf.svg": {
       "bytes": 140,
       "sha256": "c475d4ba25f578d2aacfde6a9c2f69692d015896b1244411debd0463ddf67d47"
@@ -3779,6 +3885,10 @@
       "bytes": 325,
       "sha256": "43d6f1314f1ffb2a271ee0278e7a5915031ec4e7b9986bbceec27e5f067252b3"
     },
+    "assets/icons/layer-dehaze-symbolic.53089581e889237021d9.svg": {
+      "bytes": 274,
+      "sha256": "53089581e889237021d95a1c1a8cffdb352341c6377ce26a04b2b2dc93cc30dc"
+    },
     "assets/icons/layer-delete-symbolic.a3fa02a0625da34c3343.svg": {
       "bytes": 272,
       "sha256": "a3fa02a0625da34c3343a344c5a69b06d281026389745d8e0e6440837ece638a"
@@ -3786,6 +3896,10 @@
     "assets/icons/layer-denoise-symbolic.5648770158f62093c71b.svg": {
       "bytes": 306,
       "sha256": "5648770158f62093c71ba25332535b0f4a682556e26b2a465edfaff27a616ab5"
+    },
+    "assets/icons/layer-desaturate-symbolic.af8101ec154b184cd8f7.svg": {
+      "bytes": 247,
+      "sha256": "af8101ec154b184cd8f70ec754f2b1b62d74e20a514cb1283b4d7e97519d5476"
     },
     "assets/icons/layer-deselect-symbolic.92f8ddd43f739cac8515.svg": {
       "bytes": 294,
@@ -3834,6 +3948,10 @@
     "assets/icons/layer-edge-width-symbolic.cf818efbfa29bae26c98.svg": {
       "bytes": 297,
       "sha256": "cf818efbfa29bae26c98f25529772ff8967620d73d5e3d822ac00d27ebe98aa5"
+    },
+    "assets/icons/layer-effect-link-symbolic.c2c69080fe36fd797a5c.svg": {
+      "bytes": 503,
+      "sha256": "c2c69080fe36fd797a5c2ba3b0d2789d646ad07a42e557f7815f0f3a61bf71fa"
     },
     "assets/icons/layer-ellipse-both-symbolic.c04e2ab09aacaa99d565.svg": {
       "bytes": 262,
@@ -3959,25 +4077,25 @@
       "bytes": 340,
       "sha256": "8824e69cee455af8f06baf8b058da7d4f1cd8d1187de0e496d133e6c01596e86"
     },
-    "assets/icons/layer-gradient-radial-transparent-symbolic.edba6c7bd8ac8e8960d9.svg": {
-      "bytes": 374,
-      "sha256": "edba6c7bd8ac8e8960d99183e03f6b8a8dbe411f9ca043dc28b85bd10d6998a1"
+    "assets/icons/layer-gradient-reflected-symbolic.d526a32257ab0117e9bd.svg": {
+      "bytes": 332,
+      "sha256": "d526a32257ab0117e9bd528b4cedeafdcf4da0d6c0338d8b1d4b8189d2612d2c"
     },
     "assets/icons/layer-gradient-symbolic.bcaf41ea8e236aec0516.svg": {
       "bytes": 439,
       "sha256": "bcaf41ea8e236aec05161e68d686aa20e680900537b7aec44f158d79e2b96f66"
     },
-    "assets/icons/layer-gradient-transparent-symbolic.78cb957515459b4ca657.svg": {
-      "bytes": 352,
-      "sha256": "78cb957515459b4ca6576d65fafb0e06832668da18d6d3769baa53bacb740ccd"
-    },
     "assets/icons/layer-grain-symbolic.0cd9f1a0ce90f9f365b4.svg": {
       "bytes": 556,
       "sha256": "0cd9f1a0ce90f9f365b46f12a991dbbd7bd05ffb55b0ff0e6c79ec7d69243648"
     },
-    "assets/icons/layer-grip-symbolic.258f461bcfa33a125d89.svg": {
-      "bytes": 313,
-      "sha256": "258f461bcfa33a125d89113c05a84b89e015f8337e0ef4ef5042312a53735db2"
+    "assets/icons/layer-grip-symbolic.76d116fe9a1a1c37abfa.svg": {
+      "bytes": 289,
+      "sha256": "76d116fe9a1a1c37abfaea7b00cf485022b753428f61f95d090fe1d4b4ef3b6b"
+    },
+    "assets/icons/layer-group-pass-through-symbolic.c300456f97eb55fa26f9.svg": {
+      "bytes": 333,
+      "sha256": "c300456f97eb55fa26f9c9d1174f68f9efe402cb59d19aafbe24bb174b552834"
     },
     "assets/icons/layer-halftone-symbolic.e686d1aed3cc2a8701a3.svg": {
       "bytes": 408,
@@ -4047,6 +4165,10 @@
       "bytes": 333,
       "sha256": "ca3f49d543dfa80a3675fd1d3abd1f70a3ca4b3275c7c4055f73ce0b44786313"
     },
+    "assets/icons/layer-invert-symbolic.ecbfeacae329dcbb0fb0.svg": {
+      "bytes": 241,
+      "sha256": "ecbfeacae329dcbb0fb092b4e4ac201a024fc0ceda4ab7609d2f8fcadd0e41af"
+    },
     "assets/icons/layer-iridescence-symbolic.35bd3a4a958140c94a78.svg": {
       "bytes": 234,
       "sha256": "35bd3a4a958140c94a78fed65631d3a7e4ea7d3055d83c28ca7ff02ab9a7ebe5"
@@ -4087,9 +4209,9 @@
       "bytes": 158,
       "sha256": "ba6adc86c9adf7fed0f12190f981787e0fb417f64cdb43607ce64c228018a469"
     },
-    "assets/icons/layer-link-symbolic.4cd2d7081664ed727f16.svg": {
-      "bytes": 313,
-      "sha256": "4cd2d7081664ed727f16f721b844fb6a5631a17502e7de41da240953772fb571"
+    "assets/icons/layer-link-symbolic.3469625892cc7cb0923a.svg": {
+      "bytes": 320,
+      "sha256": "3469625892cc7cb0923a8a57e8798aad86b6abbf295bf89ea3d29b926acc160f"
     },
     "assets/icons/layer-liquify-symbolic.6c3412784399da0232bc.svg": {
       "bytes": 1651,
@@ -4126,6 +4248,10 @@
     "assets/icons/layer-minus-symbolic.7deca782c8516d2be808.svg": {
       "bytes": 258,
       "sha256": "7deca782c8516d2be8085a91dfc67bbbae8d3e0b1f8895a21ea0dd1271a29f41"
+    },
+    "assets/icons/layer-more-small-symbolic.16acc12a8c967cebea95.svg": {
+      "bytes": 198,
+      "sha256": "16acc12a8c967cebea956809ebfe6d0ad938559b14e1a807e92cf651b250cc71"
     },
     "assets/icons/layer-more-symbolic.408368ba9f12967c0f51.svg": {
       "bytes": 270,
@@ -4183,10 +4309,6 @@
       "bytes": 279,
       "sha256": "33f6a7c95a3b1085602c77d1cf9dcc63c19873c6dd9bdc80e1fe88c7f8617d18"
     },
-    "assets/icons/layer-paper-symbolic.b169dd33faec37f4337b.svg": {
-      "bytes": 223,
-      "sha256": "b169dd33faec37f4337bdc5068f43e3deceaf1bf7de9ea846b8f9d91b31a8e71"
-    },
     "assets/icons/layer-paste-in-place-symbolic.d6119b7fffb0070e516c.svg": {
       "bytes": 367,
       "sha256": "d6119b7fffb0070e516c67e37fcb9896fa8f62e925f42a390932564a1d096e4d"
@@ -4214,6 +4336,10 @@
     "assets/icons/layer-perspective-symbolic.bc9009a4f4a237970d2a.svg": {
       "bytes": 398,
       "sha256": "bc9009a4f4a237970d2af3230dbe29aad10d219e486b661bb33bbf2cf4c4e4a6"
+    },
+    "assets/icons/layer-photo_filter-symbolic.6da66d29f44034c9e5d2.svg": {
+      "bytes": 307,
+      "sha256": "6da66d29f44034c9e5d2f3cf525b4de6401d296aa5ab5b8b115d8a06caf8338d"
     },
     "assets/icons/layer-pin-symbolic.6e006cd17ecacc7a825b.svg": {
       "bytes": 194,
@@ -4383,9 +4509,17 @@
       "bytes": 258,
       "sha256": "62715014377c5f48cb1b79f6bdb4f14bb8922feb2818fc1745a6ea2d89e75876"
     },
+    "assets/icons/layer-selective_color-symbolic.06b445432cfd7b6a5c56.svg": {
+      "bytes": 334,
+      "sha256": "06b445432cfd7b6a5c563f6d9b67d0481ac9d58e1f019b5e7f0a9e07d010e8d7"
+    },
     "assets/icons/layer-settings-symbolic.792d51cf281148198e77.svg": {
       "bytes": 365,
       "sha256": "792d51cf281148198e77e78c14708bc90ae53462bdef94b0177e66a8540ca1b3"
+    },
+    "assets/icons/layer-shadows-highlights-symbolic.1d9d2d4358a3504cc0e8.svg": {
+      "bytes": 400,
+      "sha256": "1d9d2d4358a3504cc0e8901f69c52b87020210bef06c62008e0d9695df699d13"
     },
     "assets/icons/layer-sharpen-symbolic.3069633f500a3b966d8e.svg": {
       "bytes": 177,
@@ -4443,6 +4577,10 @@
       "bytes": 226,
       "sha256": "41e20700834a3444ad8d9f79ca95f7b23042af690e764a52d43bb21919fa83d6"
     },
+    "assets/icons/layer-threshold-symbolic.ef6df6c317a990cef399.svg": {
+      "bytes": 143,
+      "sha256": "ef6df6c317a990cef39900009c091abb9f0ac27e0a2598d8f7cbacc1cdb861e3"
+    },
     "assets/icons/layer-tonal-bright-hdr-symbolic.8fb429b38c9d087aa21f.svg": {
       "bytes": 521,
       "sha256": "8fb429b38c9d087aa21ffbe0e9a7f2c00b7607a79e591df4f77612752b887d30"
@@ -4475,6 +4613,10 @@
       "bytes": 410,
       "sha256": "59804d8c1053e5366d77e8668ccfc16b2c2ef415a7b18b57c29f0417fd58b81a"
     },
+    "assets/icons/layer-tool-group-symbolic.4b66fddb613afec18387.svg": {
+      "bytes": 207,
+      "sha256": "4b66fddb613afec18387c8fad76f7b04b0120827961d05354788468859382d90"
+    },
     "assets/icons/layer-toolbar-symbolic.c28184cc043bd3145ceb.svg": {
       "bytes": 387,
       "sha256": "c28184cc043bd3145cebc0f48fbe50ad3868c78909afb18e01a8e4739d8d22cc"
@@ -4494,6 +4636,10 @@
     "assets/icons/layer-undo-symbolic.04adc640c989dc473065.svg": {
       "bytes": 285,
       "sha256": "04adc640c989dc4730655994b14d6f791fe8b642e59edb5d1ec84876b133ffa4"
+    },
+    "assets/icons/layer-unlink-symbolic.88bb2dddf67ffb4441bc.svg": {
+      "bytes": 293,
+      "sha256": "88bb2dddf67ffb4441bca27404111a9b51225027c7afdda975422ebcecf88a0c"
     },
     "assets/icons/layer-up-symbolic.83375c5cd82ab6cde565.svg": {
       "bytes": 270,
@@ -4526,6 +4672,10 @@
     "assets/icons/layer-watercolor-symbolic.7ec40350a4539ad43303.svg": {
       "bytes": 309,
       "sha256": "7ec40350a4539ad43303fa3fc9011722223d099cb6102c723c657facbd210da1"
+    },
+    "assets/icons/layer-waveform-symbolic.f63275554e7d11b31f0c.svg": {
+      "bytes": 314,
+      "sha256": "f63275554e7d11b31f0c09746f7db49567db58050639228c7b4551993b15297b"
     },
     "assets/icons/layer-website-symbolic.b94a5974cd92ed44ab14.svg": {
       "bytes": 450,
@@ -4563,89 +4713,97 @@
       "bytes": 1309,
       "sha256": "adc886ce0a33f63e8896c9c49c86383767cfd2421ae925a6ffdd6842f2c556ee"
     },
-    "assets/icons.13f61f21a03f37b02872.svg": {
-      "bytes": 95509,
-      "sha256": "13f61f21a03f37b02872d84816ea62a22d369f213d3d54403cf76cfcadc6447b"
+    "assets/icons.1d84df31959fdeafa6a1.svg": {
+      "bytes": 100774,
+      "sha256": "1d84df31959fdeafa6a1f132408da12bf9e37a7b6a4b069cdcab2dc393ea4f41"
     },
-    "assets/image-import.2fd690230ecc3f6aca1b.js": {
-      "bytes": 3292,
-      "sha256": "2fd690230ecc3f6aca1b53f0485f9569f9eb708c428b6bb2efe94ba0f4ebe105"
+    "assets/image-import.5be6b14f8c0d0a271bba.js": {
+      "bytes": 3568,
+      "sha256": "5be6b14f8c0d0a271bbaaa51c723b87d9d76b950bff93cc2610dc225eb6a87b2"
     },
     "assets/image-size.efd5339595608cf8cae7.js": {
       "bytes": 2370,
       "sha256": "efd5339595608cf8cae79b9dce397e817f8fbea157ab03b13b50d0baac3e459d"
     },
-    "assets/layers.1bf5f8302e2286a5c0a4.js": {
-      "bytes": 22942,
-      "sha256": "1bf5f8302e2286a5c0a4632473b6c2781217875331c9c062d3361139b20d94b4"
+    "assets/layers.8e43a58c4288f95efa99.js": {
+      "bytes": 30597,
+      "sha256": "8e43a58c4288f95efa9971bf73d9762aa4d9b5d7326691ccefdf753a924ef44c"
     },
-    "assets/localization.d4ec6cb07a1eda6ec0e0.js": {
-      "bytes": 1556,
-      "sha256": "d4ec6cb07a1eda6ec0e06e416c8847269addd464bbd3967336bcfedd51469592"
+    "assets/localization.feed520889eb8a39d851.js": {
+      "bytes": 1867,
+      "sha256": "feed520889eb8a39d8512dc28ca47c2ded210dd3cee3675c86b2de85cb590e85"
+    },
+    "assets/navigation-controls.3ffbb38e54bfa2032e9a.js": {
+      "bytes": 971,
+      "sha256": "3ffbb38e54bfa2032e9ab986308cba60607c16a18d6192e7890f4e40c3380a92"
     },
     "assets/notice.061fb9e0dcf9c126ff2f.js": {
       "bytes": 2527,
       "sha256": "061fb9e0dcf9c126ff2fb5cc3f537467913fd285fd7b70905b282821e48c1a62"
     },
-    "assets/numeric.7914e380866517078b86.js": {
-      "bytes": 8257,
-      "sha256": "7914e380866517078b86ebae8f07d632f37e4b298cf6049910e15da8c8da622b"
+    "assets/numeric.b6628878c8236ede9e4c.js": {
+      "bytes": 11027,
+      "sha256": "b6628878c8236ede9e4c588d24ff0323dde10e3835db00a480b0cb9753e3a10b"
     },
-    "assets/palettes.2007be24727df76e94d2.js": {
-      "bytes": 27062,
-      "sha256": "2007be24727df76e94d2664452786ce14550c15085018052166bc131c5887bb7"
+    "assets/palettes.9aaed001c80c875e9dc8.js": {
+      "bytes": 26877,
+      "sha256": "9aaed001c80c875e9dc8688c2b3f870814b3e3b6d84e08f2942e5d1eb6a76faa"
     },
     "assets/pen-scroll.18dffed11bf488d1a322.js": {
       "bytes": 2686,
       "sha256": "18dffed11bf488d1a32216c91a0118d1be0e7be85481370981ed02c311f51441"
     },
-    "assets/pkg/layer_web_bg.bd4d1d93408b5f8b65e1.wasm": {
-      "bytes": 24957057,
-      "sha256": "bd4d1d93408b5f8b65e1ce128d629969a71d2d6b952aad02aa0dceaa19534fb1"
+    "assets/pkg/layer_web_bg.157e4b2f8bfc6229ac1e.wasm": {
+      "bytes": 35505604,
+      "sha256": "157e4b2f8bfc6229ac1ee511b76ea21ebf2c31b96b144e18e04c14f02e16657c"
     },
-    "assets/pkg/layer_web.677cb1299c7f1804257e.js": {
-      "bytes": 181565,
-      "sha256": "677cb1299c7f1804257e91b3b63ecede7cee56a59531edae5a73e5d984b26e7f"
+    "assets/pkg/layer_web.df6984a45521049494c5.js": {
+      "bytes": 206510,
+      "sha256": "df6984a45521049494c5b6d5d23837e68038f3877d61defcce1f9d3de61a7223"
     },
-    "assets/preferences.34f1914b884979a5e0a9.js": {
+    "assets/preferences.b40d9313f5ffdf3c52c5.js": {
       "bytes": 27847,
-      "sha256": "34f1914b884979a5e0a9f313320a4f8d7341b2820ea105bf3fc6cdb6a976edc2"
+      "sha256": "b40d9313f5ffdf3c52c5939e5664a610e61c3609db26ebc75201bb9ab964c4d9"
     },
-    "assets/preview-panel.d0ec827f33c12dceb0e0.js": {
+    "assets/preview-panel.7f6979308669c43ddeea.js": {
       "bytes": 3071,
-      "sha256": "d0ec827f33c12dceb0e0f9dfdd6974dd387e23258eacd2a90d5dcdf0d742602f"
+      "sha256": "7f6979308669c43ddeeae53e6f4d16b5a12ae23021b7306d91b287798d7f2c3a"
     },
-    "assets/proof-worker.0190175cae271d911ac5.js": {
-      "bytes": 436,
-      "sha256": "0190175cae271d911ac5c209d3eef77c47c5f780f158ab38eb8ffe2ffe06ef48"
+    "assets/proof-worker.4f34f93cb476b157f38d.js": {
+      "bytes": 469,
+      "sha256": "4f34f93cb476b157f38ddb5585b8e2f985219a404b081552fd268d54849cf86a"
     },
-    "assets/proof.118c837920c40b558a8c.js": {
-      "bytes": 25050,
-      "sha256": "118c837920c40b558a8cb60ba28dec57913d43f2d377d5cd762deeaa3b56d315"
+    "assets/proof.6487e104269de5732f1a.js": {
+      "bytes": 25918,
+      "sha256": "6487e104269de5732f1a293180057d1579752c49807dd265caa328b2b285720f"
     },
-    "assets/range-control.336fba138bef9adc2c8f.js": {
-      "bytes": 5472,
-      "sha256": "336fba138bef9adc2c8f604941beee7ea2d37d4548bf8a25f296367b80b0de2a"
+    "assets/range-control.2713fdae37dfed3c565b.js": {
+      "bytes": 5547,
+      "sha256": "2713fdae37dfed3c565bc9573eb0c32b35f6beff49f5aa6622cd51ed5f24e49b"
     },
-    "assets/raster-worker-client.e08e4820128306f1d442.js": {
-      "bytes": 4551,
-      "sha256": "e08e4820128306f1d44271b6152e7d1a85d370572677d9fce48e1bb8fe21d207"
+    "assets/raster-worker-client.2c189f029d9c3242681b.js": {
+      "bytes": 5392,
+      "sha256": "2c189f029d9c3242681b4579c7d9dc92ebf810dafef046d07b19be62c8807e3b"
     },
-    "assets/raster-worker.b0aa65c656d9ca548295.js": {
-      "bytes": 11381,
-      "sha256": "b0aa65c656d9ca54829586dfa6f5400a984a22e7d1c5554edeb19b8de5d1aa36"
+    "assets/raster-worker.1882086228a63a5809dc.js": {
+      "bytes": 13016,
+      "sha256": "1882086228a63a5809dc21439ff1496f18dfe567d61617f2d1497786168d5679"
     },
-    "assets/screen-status.15af69b7c188402cccb9.js": {
-      "bytes": 3460,
-      "sha256": "15af69b7c188402cccb98fc2752ee8cbc110889c486c1ee7e2fcad727fce6878"
+    "assets/restart-store.ed5f9f21a80272c7f643.js": {
+      "bytes": 6994,
+      "sha256": "ed5f9f21a80272c7f643fa5afa2f3b648d2be5d88b56981315b60a115783a33b"
     },
-    "assets/selection-masks.11c12f3a7ee7e941e5d0.js": {
-      "bytes": 1168,
-      "sha256": "11c12f3a7ee7e941e5d06f372b75740c994b682c2c3240ffb369e384c59e00a2"
+    "assets/screen-status.1a769633d37d77379552.js": {
+      "bytes": 3599,
+      "sha256": "1a769633d37d773795523ca1843bf14f721d3edb0bf5dd88f5c067d3a60b9e33"
     },
-    "assets/shortcut-page.51d4b2b4920c140ff63f.js": {
+    "assets/selection-masks.9c73937cd2c77e41e3cf.js": {
+      "bytes": 1296,
+      "sha256": "9c73937cd2c77e41e3cf284891c015dc6b491e2c8b9eca1c191dd0209a148fb4"
+    },
+    "assets/shortcut-page.ecfc4b017166214c65ed.js": {
       "bytes": 30618,
-      "sha256": "51d4b2b4920c140ff63fd914a9defc9820adfc23a7f106c374ff0ff87b68ae62"
+      "sha256": "ecfc4b017166214c65edd8a1d52b07316afba5c54fe7e283ef28b6adb5fdf000"
     },
     "assets/size-dialog.fbd7433adf837476958f.js": {
       "bytes": 3061,
@@ -4655,9 +4813,9 @@
       "bytes": 4521,
       "sha256": "e95b7b5e16aab167ab0e11f93c61df8e1132806185a9171c244b16fea367211d"
     },
-    "assets/style.9f8482a4b09052780a7a.css": {
-      "bytes": 116870,
-      "sha256": "9f8482a4b09052780a7a2a0ada9001f12c8234b58a9da5d735c0bc4a7be91382"
+    "assets/style.1456511794a9b9112b99.css": {
+      "bytes": 131028,
+      "sha256": "1456511794a9b9112b99c78f88f3d1b478dc10365f01a9050f5d76f4791ceeab"
     },
     "assets/system-status.0b65cd2ebafa25dc9cf0.js": {
       "bytes": 3948,
@@ -4667,57 +4825,57 @@
       "bytes": 1800,
       "sha256": "16616e189f7bf0be37f8b4b70ee8ab78baed896626145323549f1a3fea0efc6d"
     },
-    "assets/toolbar-components.450caceb89a0959d3cf5.js": {
-      "bytes": 24490,
-      "sha256": "450caceb89a0959d3cf5075be8b42adec62c6810b4ad000cc39b3eea953f27a1"
+    "assets/toolbar-components.9eddd55e2261e5dea53d.js": {
+      "bytes": 27389,
+      "sha256": "9eddd55e2261e5dea53d7ab78e020b3239516f0afd4a85b08e83f236f62d6c08"
     },
     "assets/tooltips.2b80f073e1d4b785fb52.js": {
       "bytes": 4897,
       "sha256": "2b80f073e1d4b785fb52dacce74538eb531addb6db9e23e9ebf0654767808b9a"
     },
-    "assets/workspace-chrome.8c844e57ffb559912cc8.js": {
-      "bytes": 16402,
-      "sha256": "8c844e57ffb559912cc8a665b8b397a005e6ad571b074050d7c6ccdd6a7d95e8"
+    "assets/workspace-chrome.a785a98bacb3d0e3c1df.js": {
+      "bytes": 16564,
+      "sha256": "a785a98bacb3d0e3c1df97bc0b4673e51b14b7f13219387a83bc580d666453ca"
     },
-    "assets/workspace-manager.5d5872fbba0708c9f2e2.js": {
-      "bytes": 10775,
-      "sha256": "5d5872fbba0708c9f2e2a498af693570a22d253b5684bb94112e15128722bc58"
+    "assets/workspace-manager.0151590ea8229d7ae21c.js": {
+      "bytes": 12165,
+      "sha256": "0151590ea8229d7ae21c1ed3858bcfb12ff926289da4b5539dc3ff385965b042"
     },
-    "assets/workspace-preload.d00b9317df66bee6ae16.js": {
+    "assets/workspace-preload.9b047719f232f3b3b23c.js": {
       "bytes": 1025,
-      "sha256": "d00b9317df66bee6ae1696efdffe7a094669b14cafd8974ab623524c0dff360e"
+      "sha256": "9b047719f232f3b3b23c01aefa788442049aa9fbe3cbbfb90be51170ec1f62f5"
     },
-    "assets/workspace-store.f591a06acda7e2734597.js": {
-      "bytes": 5012,
-      "sha256": "f591a06acda7e273459754a9d40925fa467cc1765d193d5203690279afe9a375"
+    "assets/workspace-store.7ccde0a02d0dc2bd0121.js": {
+      "bytes": 5145,
+      "sha256": "7ccde0a02d0dc2bd0121269110938211027d11d3e1833133ad6007d9e8ccffd3"
     },
-    "assets/workspace-switcher.ccf4e9b32fdccd5f25db.js": {
-      "bytes": 12812,
-      "sha256": "ccf4e9b32fdccd5f25db7c2c95796a40156789f027fb47c2fa54a29822e5550d"
+    "assets/workspace-switcher.1eb9c3d8985b71818539.js": {
+      "bytes": 13675,
+      "sha256": "1eb9c3d8985b718185396a18bd2687aee167a3ff3ea674fe9d2eac251dbb2549"
     },
-    "assets/workspace-worker.837bc000a2d252ea32b4.js": {
+    "assets/workspace-worker.9fb0963a39a9eda2584c.js": {
       "bytes": 607,
-      "sha256": "837bc000a2d252ea32b4f7a9b1740a8a1eb96cf4bda817e260ac0aba3bfcaa4d"
+      "sha256": "9fb0963a39a9eda2584ce725716154c16747c75abb4185aa2272e1f61dfb37b1"
     },
-    "assets/zoom-readout.5dc5b6f04df0fd0c361e.js": {
-      "bytes": 3255,
-      "sha256": "5dc5b6f04df0fd0c361edc513399643f37b0f4e77c2066744ccde052dd43401a"
+    "assets/zoom-readout.7158f8682d25eb467cf2.js": {
+      "bytes": 4525,
+      "sha256": "7158f8682d25eb467cf2ad49a1ee03d57d772acd8b11246461350bd9ff620ba3"
     },
     "BRANDING.md": {
-      "bytes": 3535,
-      "sha256": "6a72d433280560b0bc11869752f7f56d4582614ac0baeac2144dd50a991c4782"
+      "bytes": 3543,
+      "sha256": "d2c82d34919ae33924d97101816b03c95bd5ed795edb46a2ffd88d77fd12bbbb"
     },
     "CNAME": {
       "bytes": 22,
       "sha256": "3eaa15e649adb0c90c294f61fe7c631e63202c415bb528e6113ce8e513e55248"
     },
     "dependency-licenses.html": {
-      "bytes": 180496,
-      "sha256": "e106731b5fc611bae115dba3341b6bbb236aeb5412b87bb186a1392bf714ea22"
+      "bytes": 181685,
+      "sha256": "243d7176e645a361d8b5bb3b26ce19aa20cedb62aef0eea794d333315aa84396"
     },
     "index.html": {
-      "bytes": 6196,
-      "sha256": "f5317580bc7c8acaed5549b9cb9293b062e9b9894f008af9fa7651a1de7413e8"
+      "bytes": 6702,
+      "sha256": "d352a12f7f15fe73dfd1be7132006be7fd2fdb8864977b535ac811019e15f775"
     },
     "LICENSE": {
       "bytes": 548,
@@ -4732,24 +4890,24 @@
       "sha256": "86d6bf54bb06e47b1967ade92cf3b73e4d0340f636b08ac4a4f3a4e40239d9bb"
     },
     "licenses.html": {
-      "bytes": 46396,
-      "sha256": "190b5fbaefd4d47aa96a48b500e3347b1e568845b1b1561b1401fc9a0e399c40"
+      "bytes": 49246,
+      "sha256": "241ad2390963179acff584010bf76672dc9040f77da930472548420c0eee51d5"
     },
     "manifest.webmanifest": {
       "bytes": 1012,
       "sha256": "851edaf19d3478236bb81ad7f4874e40e0cb029c4ec7486fbaff34db73c66f1b"
     },
     "rust-toolchain-notices.html": {
-      "bytes": 15404403,
-      "sha256": "139ebc62da648fa8dfea9d11ca6919ac417e8bfaffa08795341a414097a1fe24"
+      "bytes": 14423589,
+      "sha256": "d518ae2d76bc7a1f0cbf0069b8deafb56efc39c2614cab74a859ef0b467f8373"
     },
     "sw.js": {
-      "bytes": 60436,
-      "sha256": "bca36ddf61e545da2fc1df78274a15a5e7550edc2477b30095278352b6b2986f"
+      "bytes": 63425,
+      "sha256": "5c9ebbde343c98c4acb2a5c2430d30db4c62c15fa43a9bc179001826475e2353"
     },
     "THIRD_PARTY_NOTICES.md": {
-      "bytes": 29267,
-      "sha256": "89da84b6c850ab77a10cc7dc2c6504b8a38b6bf7d9c25a772f438ae7e81f687d"
+      "bytes": 32097,
+      "sha256": "35eb8382f3b2b132de68b8f4d3a1555b817cba428c11e78ff9b8186212b148aa"
     }
   }
 }

@@ -260,7 +260,7 @@ The artwork subject to the separate license below is:
 
 These owner-supplied marks are the Zen button choices. This scope also includes
 copies embedded in application resources and app icons generated from the
-default mark for GTK, Android and the PWA.
+default mark for GTK, Android, iPadOS and the PWA.
 
 Other generic interface icons, brush masks and generated brush previews are
 not branding assets and remain MIT OR Apache-2.0. Any future branding asset
@@ -551,10 +551,14 @@ including build/dev dependencies and non-Linux targets. An allowed license is
 not permission to omit its copyright notices or other distribution conditions.
 
 The native frontend uses GTK, libadwaita and their system dependencies. Normal
-Linux packages include a replaceable GTK 4.22.4 library with the null-surface
-tablet-pad startup guard. Its LGPL-2.1-or-later license, complete pinned upstream
-source, local patch, build recipe and hash manifest are shipped under
-`share/doc/capycanvas-gtk`; the library is in `lib/capycanvas/gtk`. Libadwaita
+Linux packages include a replaceable GTK 4.22.4 library with tablet-pad focus
+and pen-entry cursor fixes. The pad patch backports Jerome Abela's
+[GTK !10171](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/10171), commit
+`c6613dd0ad4e1bde77b6cd2e48cfcc80c8e63f33`, and extends its focus/device checks to
+all pad-event producers. The GTK patches retain LGPL-2.1-or-later terms.
+The license, complete pinned upstream source, patches, build recipe and hash
+manifest are shipped under `share/doc/capycanvas-gtk`; the library is in
+`lib/capycanvas/gtk`. Libadwaita
 and GTK's dependencies remain separately installed. They are not relicensed to
 Apache-2.0. In particular,
 [GTK](https://www.gtk.org/docs/architecture/) and
@@ -868,5 +872,66 @@ Alliance for Open Media Patent License 1.0
 2.12. Specification. “Specification” means the specification designated by
       the Alliance for Open Media as a Final Deliverable for which this
       License was issued.
+```
+
+## ZIP package reading — MIT
+
+`zip` 8.6.0 is an unmodified crates.io dependency from
+&lt;https://github.com/zip-rs/zip2&gt;. The Capy package reader applies its restricted
+header and inventory rules around this archive parser. Its original notice follows.
+
+```text
+The MIT License (MIT)
+
+Copyright (c) 2014 Mathijs van de Nes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### Portable path parsing — MIT
+
+`typed-path` 0.12.3 is an unmodified transitive dependency of `zip`, from
+&lt;https://github.com/chipsenkbeil/typed-path&gt;. Its MIT license option follows.
+
+```text
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
 ```
 </pre></html>
