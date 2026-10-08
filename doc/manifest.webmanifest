@@ -1,7 +1,5 @@
 {
   "id": "./",
-  "name": "Capy Canvas",
-  "short_name": "Capy Canvas",
   "description": "A GPU-powered drawing workspace.",
   "start_url": "./",
   "scope": "./",
@@ -48,5 +46,8 @@
       "type": "image/png",
       "purpose": "any"
     }
-  ]
+  ],
+  "lang": "en",
+  "name": "Capy Canvas",
+  "short_name": "Capy Canvas"
 }
