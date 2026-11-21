@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "repository": "https://github.com/babymastodon/capycanvas",
+    "repository": "https://github.com/capyatelier/capycanvas",
     "commit": "87219b8d901db53898ad26c34f6c19d20dad3f04",
     "cargoLockSha256": "7690240db9d2cdf2c3ea52f355cceee1b94209c09bc0d65ff8643f451caf03ad"
   },
@@ -10,7 +10,7 @@
   "profile": "web-release",
   "tools": {
     "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
-    "node": "v24.22.2",
+    "node": "v24.22.3",
     "wasmBindgen": "0.2.128",
     "cargoAbout": "0.9.2",
     "cargoDeny": "0.20.2",
