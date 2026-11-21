@@ -2,7 +2,7 @@
 
 This repository hosts the built Capy Canvas PWA at
 https://editor.capycanvas.art/. The editor runs the latest `main` of
-`babymastodon/capycanvas`, built on GitHub when someone runs the deploy workflow,
+`capyatelier/capycanvas`, built on GitHub when someone runs the deploy workflow,
 never on a workstation, and served by Cloudflare.
 
 - `.github/workflows/deploy.yml` builds the chosen source commit with
@@ -13,8 +13,8 @@ never on a workstation, and served by Cloudflare.
 - A request to "deploy" means running that workflow and confirming the live site:
 
   ```bash
-  gh workflow run deploy.yml --repo babymastodon/capycanvas-release
-  gh workflow run deploy.yml --repo babymastodon/capycanvas-release -f ref=<commit>
+  gh workflow run deploy.yml --repo capyatelier/capycanvas-release
+  gh workflow run deploy.yml --repo capyatelier/capycanvas-release -f ref=<commit>
   ```
 
   The first deploys the current `main`; the second deploys a specific branch,

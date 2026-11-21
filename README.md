@@ -1,11 +1,11 @@
 # Capy Canvas PWA releases
 
-Built releases of [Capy Canvas](https://github.com/babymastodon/capycanvas) for
+Built releases of [Capy Canvas](https://github.com/capyatelier/capycanvas) for
 **https://editor.capycanvas.art/**. This repository owns hosting and final release
 layout. Application code, compilation, icons, license harvesting and PWA generation
 live in the source repository, normally checked out alongside this one as `../capycanvas`.
 
-The upstream remote is `git@github.com:babymastodon/capycanvas-release.git` (`origin`),
+The upstream remote is `git@github.com:capyatelier/capycanvas-release.git` (`origin`),
 with releases on `main`.
 
 | Path | Purpose |
