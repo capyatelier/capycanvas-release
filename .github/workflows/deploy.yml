@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: Capy Canvas branch, tag or commit to deploy
-        default: main
+        description: Published Capy Canvas release tag to deploy, such as v1.1.0
+        required: true
 
 permissions:
   contents: read
@@ -28,6 +28,9 @@ jobs:
           REF: ${{ inputs.ref }}
         run: |
           repository=$GITHUB_REPOSITORY_OWNER/capycanvas
+          if ! [[ "$REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then echo "::error::Deploy a published release tag such as v1.1.0, not $REF."; exit 1; fi
+          state=$(gh release view "$REF" --repo "$repository" --json isDraft,isPrerelease -q '"\(.isDraft) \(.isPrerelease)"') || { echo "::error::$REF is not a release of $repository."; exit 1; }
+          [ "$state" = "false false" ] || { echo "::error::$REF is a draft or pre-release; deploy only published releases."; exit 1; }
           commit=$(gh api "repos/$repository/commits/$REF" -q .sha)
           if [ "$commit" = "$(jq -r .commit release/source.json)" ] && [ "https://github.com/$repository" = "$(jq -r .repository release/source.json)" ]; then echo "$commit is already built"; exit 0; fi
           echo "repository=$repository" >> "$GITHUB_OUTPUT"

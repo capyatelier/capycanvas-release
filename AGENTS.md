@@ -1,7 +1,7 @@
 # Deployment instructions
 
 This repository hosts the built Capy Canvas PWA at
-https://editor.capycanvas.art/. The editor runs the latest `main` of
+https://editor.capycanvas.art/. The editor runs the latest published release of
 `capyatelier/capycanvas`, built on GitHub when someone runs the deploy workflow,
 never on a workstation, and served by Cloudflare.
 
@@ -13,12 +13,11 @@ never on a workstation, and served by Cloudflare.
 - A request to "deploy" means running that workflow and confirming the live site:
 
   ```bash
-  gh workflow run deploy.yml --repo capyatelier/capycanvas-release
-  gh workflow run deploy.yml --repo capyatelier/capycanvas-release -f ref=<commit>
+  gh workflow run deploy.yml --repo capyatelier/capycanvas-release -f ref=v1.1.0
   ```
 
-  The first deploys the current `main`; the second deploys a specific branch,
-  tag or commit, which is also how to roll back. A run whose commit is already
+  `ref` must be a published release tag; the workflow refuses branches, commits,
+  drafts and pre-releases. Deploying an earlier release tag rolls back. A run whose commit is already
   built redeploys the committed package.
 - Never build, hand-edit or commit `doc/` locally; local builds (README) only
   test changes to `release/`.

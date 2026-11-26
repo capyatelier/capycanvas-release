@@ -13,7 +13,7 @@ with releases on `main`.
 | `doc/` | Complete committed static PWA, including Wasm and license notices |
 | `release/` | Packaging, verification, license policy and pinned source/tools |
 | `release/manifest.json` | Source revision, lockfile hash, dependency inventory, checks, Wasm imports and every published file's SHA-256 |
-| `.github/workflows/deploy.yml` | Build a Capy Canvas commit, `main` by default, and commit it |
+| `.github/workflows/deploy.yml` | Build a published Capy Canvas release and commit it |
 | `release/cloudflare/` | Verify the committed package and deploy `doc/` to Cloudflare |
 | [AGENTS.md](AGENTS.md) | How deployments run and how to check the live site |
 | [AUDIT.md](AUDIT.md) | Initial GPL/LGPL and build-process audit, scope and follow-up policy |
@@ -21,13 +21,14 @@ with releases on `main`.
 
 ## Publish
 
-Run **Actions → Deploy editor → Run workflow** to deploy the current `main` of
-`capycanvas` from the same GitHub owner. `.github/workflows/deploy.yml` builds that
+Run **Actions → Deploy editor → Run workflow** with a published release tag of
+`capycanvas` from the same GitHub owner, such as `v1.1.0`; the workflow refuses
+branches, commits, drafts and pre-releases. `.github/workflows/deploy.yml` builds that
 commit with `release/build.mjs` and the pinned tools, commits the package, pin and
 manifest together, then runs `release/cloudflare/deploy.mjs`, which verifies the
 committed bytes and deploys `doc/` ([HOSTING.md](HOSTING.md)). Existing app tabs
 keep their current version until closed. To roll back, run the workflow with an
-earlier commit or tag as `ref`. Do not force-push
+earlier release tag as `ref`. Do not force-push
 release history.
 
 ## Build locally
