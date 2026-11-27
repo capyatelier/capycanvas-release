@@ -5,7 +5,7 @@ import { liveCopy, bindCopy } from './localization.feed520889eb8a39d851.js';
 import {createDrawingTabs} from './drawing-tabs.c0188136d7648db54ce9.js';
 import {createDocumentRecovery} from './document-recovery.6ac11ace59250adf14d9.js';
 import {chooseDocumentColor} from './document-color.8db9f7c0d27c21206489.js';
-import {createProof} from './proof.df99935c6de5afc8df45.js';
+import {createProof} from './proof.c2beeee7ab220db55de6.js';
 import {latinKey} from './text-input.821066b4c3204772eddd.js';
 import {chooseExport,chooseSourceProfile,localizeProfileLibraries} from './export-controls.cc3dc7d6c21da43698d3.js';
 
@@ -18,7 +18,7 @@ export const exportFormats={
   Webp:["webp","image/webp"],
 };
 import {createImageImport} from './image-import.918da264d00a13101a2e.js';
-import {createNewDrawing, screenInfo} from './new-drawing.8007da7f910c2fd58fa4.js';
+import {createNewDrawing, screenInfo} from './new-drawing.d126e5c954b2bfc5f250.js';
 // Browser file transport; document checkpoints, stale-edit guards and unsaved
 // decisions stay in UiSession. File handles never enter a project or localStorage.
 export function createDocuments({app,bootstrap,delivery,state,canvas,canvasReady,dispatch,applyChange,wake,element,button,icon,dropdown,numberField,message,gpuOperation,rasterWorker,resumeCanvas,contentChanged,refreshInputContext,showMenu}) {

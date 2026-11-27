@@ -3,7 +3,7 @@ import {createPageKit} from './page-kit.8cb0ef137e9fd2f8a2d7.js';
 import {createContextPopover} from './context-popover.8b3d13b805dabbf11c00.js';
 import {addScrollbar} from './scrollbars.4afff20abf66f8e418f6.js';
 import {liveCopy,bindCopy} from './localization.feed520889eb8a39d851.js';
-import {createRasterWorker} from './raster-worker-client.03349c75aef1d060aea7.js';
+import {createRasterWorker} from './raster-worker-client.08a87af96753798091c1.js';
 import {wheelPainter,wheelPicker,hueStopCache,wheelHit,rgba,json} from './color-wheel.d19ef994d5736bb42b41.js';
 
 let services = null, worker = null;

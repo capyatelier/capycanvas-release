@@ -1,5 +1,5 @@
 import {liveCopy,bindCopy} from './localization.feed520889eb8a39d851.js';
-import {chooseColor} from './color-editor.c3a3c1edbcd276c7da9c.js';
+import {chooseColor} from './color-editor.6bf6bfac42fa850cb7a5.js';
 // Color numbers, parsing and display transforms come from the shared Rust model.
 export const colorCss = preview => `rgba(${preview.rgba.slice(0, 3).map(v => v * 255).join(',')},${preview.rgba[3]})`;
 

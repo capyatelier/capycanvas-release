@@ -1,5 +1,5 @@
-import {createToolbarComponent} from './toolbar-components.34f8f8a18e7d2b4a0745.js';
-import {updatePaintPairIcon} from './color-controls.5cc15575c104d8dc246d.js';
+import {createToolbarComponent} from './toolbar-components.bc12ad8e9948afcd5ded.js';
+import {updatePaintPairIcon} from './color-controls.772a29fc8d42fe09f83a.js';
 import {browserDragThreshold} from './pen-scroll.eca71eff48a2c188fc25.js';
 
 export function createPhone({app,state,workspace,capy,header,element,button,icon,dropdown,place,dispatch,rasterWorker,customization,changed}) {

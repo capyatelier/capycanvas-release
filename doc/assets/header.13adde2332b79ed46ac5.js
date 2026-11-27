@@ -2,7 +2,7 @@ import {liveCopy,bindCopy} from './localization.feed520889eb8a39d851.js';
 import {composingKey} from './text-input.821066b4c3204772eddd.js';
 // Retained DOM projection of Rust's title bar. DOM measurements are inputs;
 // allocation, overflow, drag slots, validation and publication stay in Rust.
-import { pickerButtonAction, updatePaintPairIcon } from './color-controls.5cc15575c104d8dc246d.js';
+import { pickerButtonAction, updatePaintPairIcon } from './color-controls.772a29fc8d42fe09f83a.js';
 
 export function headerButtonHint(spec, command, editing) {
   return !editing && spec.disabled_reason || command?.tooltip || spec.label;

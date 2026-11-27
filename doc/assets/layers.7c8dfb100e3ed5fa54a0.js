@@ -1,6 +1,6 @@
 import {liveCopy,bindCopy} from './localization.feed520889eb8a39d851.js';
 import {createContextPopover} from './context-popover.8b3d13b805dabbf11c00.js';
-import { chooseColor } from "./color-editor.c3a3c1edbcd276c7da9c.js";
+import { chooseColor } from "./color-editor.6bf6bfac42fa850cb7a5.js";
 import { chooseTexture, paperThumbnail } from "./paper-picker.4ef54b96e51e1b7a93ff.js";
 import { addScrollbar } from "./scrollbars.4afff20abf66f8e418f6.js";
 import { layerTouchInput } from './layer-touch.83212a15fee5915a95cc.js';

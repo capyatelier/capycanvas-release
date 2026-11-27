@@ -2,7 +2,7 @@ import {createBubbleInput} from './bubble-input.4ed9d1d574599828dc81.js';
 import {colorTouchInput} from './color-touch.58763ac64b037025337d.js';
 import {createLayerInspector} from './layer-inspector.a0bdfd2e241297415e65.js';
 import {wheelPainter,hueStopCache,rgba,json} from './color-wheel.d19ef994d5736bb42b41.js';
-import {createLayerThumbnails} from './layers.12ebc0e07b30ef30cfed.js';
+import {createLayerThumbnails} from './layers.7c8dfb100e3ed5fa54a0.js';
 import {bubbleColor} from './bubble-color.00cef5085eb9476ca022.js';
 import {bubbleShadow} from './bubble-shadow.569a572734a98eb6107a.js';
 

@@ -1,7 +1,7 @@
 import { captureSliderContacts, createNumberField } from './numeric.cc99d15499d5b92dbeb4.js';
 import { createRangeControl } from './range-control.fc7f8f2cc1ecea45a5c0.js';
 import { bindCopy, liveCopy } from './localization.feed520889eb8a39d851.js';
-import {gradientButton} from './gradient.1d186c009ed039bab154.js';
+import {gradientButton} from './gradient.7b43450bd60ce5e6f6de.js';
 const key = value => JSON.stringify(value, (_, v) => typeof v === 'bigint' ? String(v) : v);
 const rectangle = ({x,y,width,height}) => ({x,y,width,height});
 const semantic = ({label, tooltip, disabled_reason, ...value}) => value;
