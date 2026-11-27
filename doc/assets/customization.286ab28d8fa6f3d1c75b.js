@@ -1,0 +1,683 @@
+import { brushSizeGrid } from "./brush-sizes.964142ec1d0ad9621f25.js";
+import { composingKey } from "./text-input.821066b4c3204772eddd.js";
+import { createToolbarComponent } from "./toolbar-components.34f8f8a18e7d2b4a0745.js";
+import { colorButton, pickerButtonAction, updatePaintPairIcon } from './color-controls.5cc15575c104d8dc246d.js';
+import {liveCopy} from './localization.feed520889eb8a39d851.js';
+import {middleEllipsis} from './text-layout.33016bf56f6708faace8.js';
+import {createDialogHost} from './dialog-host.3c011c1583a283bef6c1.js';
+import {createPageKit} from './page-kit.8cb0ef137e9fd2f8a2d7.js';
+import {addScrollbar} from './scrollbars.4afff20abf66f8e418f6.js';
+import {createContextPopover,menuIndicatorGutter} from './context-popover.8b3d13b805dabbf11c00.js';
+// DOM presentation of the shared Rust customization models. This module owns
+// widgets and animation, not catalogs, validation, selection or docking policy.
+export function createCustomization({ app, catalog, state, paintPair, workspace, panels, groups,
+  element, button, icon, dropdown, numberField, panelFrame,
+  dispatch, draggable, grip, place, updateZen, editor, rasterWorker }) {
+  const send = (action) => dispatch({ type: "customize", action });
+  const common = liveCopy(app, 'bootstrap_view').common;
+  const kit=createPageKit({element,icon});
+  const views = new Map(), fields = new Map(), panelViewKeys = new WeakMap();
+  let textContext;
+  function fitMenuLabel(label) {
+    if(!label.isConnected||!label.clientWidth)return;
+    textContext??=document.createElement('canvas').getContext('2d');
+    textContext.font=getComputedStyle(label).font;
+    label.firstElementChild.textContent=middleEllipsis(label.menuText,label.clientWidth,text=>textContext.measureText(text).width);
+  }
+  const menuLabels=new ResizeObserver(entries=>{for(const {target} of entries)fitMenuLabel(target);});
+  const tileResize = new ResizeObserver(entries => {
+    for (const { target: strip } of entries) {
+      if (!strip.isConnected || !strip.dataset.axis) continue;
+      layoutTiles(strip, app.panel_tiles(strip.dataset.panel, strip.clientWidth, strip.clientHeight,
+        strip.dataset.axis, strip.dataset.standalone === "true", strip.dataset.tileStyle));
+    }
+  });
+  const displayColors=()=>state().layer_tools.mask_editing?.colors??state().colors;
+  let anchor = [320, 120], expanded = null, animation = 0, popupControl = null, menuCommand = null, menuHost=null;
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const contextPopover=createContextPopover({element}),context=contextPopover.root;
+  const menuBody=container=>container===context?contextPopover.body:container;
+  let contextAnchor,contextPresentation;
+  workspace.append(context);
+  const popup = element("div", "tile-popover"); popup.popover = "auto"; workspace.append(popup);
+  const closeMenuHost=event=>{if(event.type==='close'||event.newState==='closed')dismissContext();};
+  function closeContext(restoreFocus=false) {
+    const focus=context.menuFocus;
+    if(context.matches(':popover-open'))context.hidePopover();
+    context.menuOwner?.setAttribute('aria-expanded','false');context.menuOwner=null;context.menuFocus=null;
+    for(const type of ['close','beforetoggle'])menuHost?.removeEventListener(type,closeMenuHost);menuHost=null;
+    if(context.parentNode!==workspace)workspace.append(context);
+    if(restoreFocus&&focus?.isConnected)focus.focus({preventScroll:true});
+  }
+  const closeDropdown=()=>closeContext(context.menuOwner?.classList.contains('dropdown'));
+  context.addEventListener("toggle", e=>{if(e.newState==='closed')closeContext();else context.menuOwner?.setAttribute('aria-expanded','true');updateZen();});
+  window.addEventListener("pointerdown", (e) => {
+    const trigger=context.menuOwner?.contains(e.target);
+    if (context.matches(":popover-open") && !context.contains(e.target)&&!trigger) closeContext();
+  }, { capture: true });
+  window.addEventListener("keydown", (e) => {
+    if (composingKey(e)) return;
+    if (e.key === "Escape" && context.matches(":popover-open")) {
+      closeContext(true); e.preventDefault(); e.stopPropagation();
+    }
+  }, { capture: true });
+  popup.addEventListener("toggle", () => {
+    if (!popup.matches(":popover-open") && state().customization.control) send({ type: "close_control" });
+    updateZen();
+  });
+  const target = (node, value) => { node.dataset.context = JSON.stringify(value); return node; };
+  const menuKey = model => JSON.stringify(model, (_, value) => typeof value === "bigint" ? String(value) : value);
+  // The same recursive Rust menu drives both the header and contextual menus.
+  // Submenus replace their parent page, as in GTK's sliding popover menus.
+  const menuStructure = (model, depth) => JSON.stringify([depth,model], (key,value) => ["enabled","selected","action","command"].includes(key) ? undefined : value);
+  function menuRow(item, activate, {checks=true, submenu=false, detail=item.hint??''}={}) {
+    const row=button('',()=>activate(row.menuItem));
+    const mark=checks?element('span','menu-check'):null,label=element('span','menu-label'),caption=element('span','menu-caption'),hint=element('span','shortcut-hint');
+    label.append(caption);
+    if(mark)row.append(mark);
+    const image=element('span','menu-icon');row.append(image,label,hint);
+    if(submenu){const arrow=icon('go-next');arrow.classList.add('submenu-arrow');row.append(arrow);}
+    row.updateMenuRow=(item,detail=item.hint??'')=>{
+      row.menuItem=item;row.disabled=!item.enabled;caption.textContent=item.label;
+      if(item.ellipsis==='middle') {
+        label.menuText=item.label;row.setAttribute('aria-label',item.label);menuLabels.observe(label);fitMenuLabel(label);
+      }
+      row.setAttribute('role',item.selected==null?'menuitem':'menuitemcheckbox');
+      if(item.selected==null)row.removeAttribute('aria-checked');else row.setAttribute('aria-checked',item.selected);
+      if(mark){const checked=String(!!item.selected);if(mark.dataset.checked!==checked){mark.dataset.checked=checked;mark.replaceChildren();if(item.selected)mark.append(icon('check'));}}
+      if(image.dataset.icon!==(item.icon??'')){image.dataset.icon=item.icon??'';image.replaceChildren();if(item.icon)image.append(icon(item.icon));}
+      image.hidden=!item.icon;hint.textContent=detail;hint.hidden=!detail;
+    };
+    row.disposeMenuRow=()=>menuLabels.unobserve(label);
+    row.updateMenuRow(item,detail);return row;
+  }
+  function renderMenu(container, model, close, parents = [], path = []) {
+    container.menuView={model,close,parents,path};
+    container.menuStructureKey=menuStructure(model,parents.length);
+    container.menuPath=path;
+    container.menuModelKey=menuKey(parents[0]||model);
+    container.classList.add("workspace-menu-items");
+    container.setAttribute("aria-label", model.title);
+    const body=menuBody(container);
+    body.replaceChildren();
+    if (parents.length) {
+      const back = button(model.title, () => {
+        const {close,parents,path}=container.menuView, previous=parents.at(-1);
+        renderMenu(container, previous, close, parents.slice(0, -1), path.slice(0,-1));
+      }, "submenu-back");
+      back.prepend(icon("go-previous")); body.append(back, element("hr"));
+    }
+    const checks=menuIndicatorGutter(model.sections);
+    let separated = false;
+    model.sections.forEach((section, index) => {
+      if (!section.length) return;
+      if (separated) body.append(element("hr"));
+      separated = true;
+      for (const [itemIndex,item] of section.entries()) {
+        if (item.is_heading) { body.append(element("div", "menu-heading", item.label)); continue; }
+        const submenu = item.sections?.some(section => section.length);
+        const row = menuRow(item, item => {
+          const {model,close,parents,path}=container.menuView;
+          if (item.sections?.some(section => section.length)) renderMenu(container, { title: item.label, sections: item.sections }, close, [...parents, model], [...path,[index,itemIndex]]);
+          else {
+            if (!item.keep_open) close();
+            if (item.action) dispatch(item.action); else if (item.command != null) menuCommand?.(item.command, item);
+            if (item.keep_open) refreshContextMenu();
+          }
+        }, {checks,submenu});
+        body.append(row);
+      }
+    });
+    if (container === context && context.matches(":popover-open")) contextPopover.place(contextAnchor,contextPresentation);
+  }
+  function refreshMenu(container,model,close) {
+    const rootKey=menuKey(model);
+    if(container.menuModelKey===rootKey)return;
+    const parents=[];
+    for(const [section,index] of container.menuPath||[]) {
+      const item=model.sections[section]?.[index];
+      if(!item)break;
+      parents.push(model);model={title:item.label,sections:item.sections};
+    }
+    const path=container.menuPath?.slice(0,parents.length)??[];
+    const rows=[...menuBody(container).querySelectorAll(':scope > button:not(.submenu-back)')], items=model.sections.flat().filter(item=>!item.is_heading);
+    if(container.menuStructureKey===menuStructure(model,parents.length) && rows.length===items.length) {
+      container.menuView={model,close,parents,path};container.menuModelKey=rootKey;container.menuPath=path;
+      for(const [index,item] of items.entries()) {
+        rows[index].updateMenuRow(item);
+      }
+    } else {
+      const focused=[...menuBody(container).querySelectorAll(':scope > button')].indexOf(document.activeElement);
+      renderMenu(container,model,close,parents,path);
+      if(focused>=0)menuBody(container).querySelectorAll(':scope > button')[focused]?.focus({preventScroll:true});
+    }
+  }
+  function refreshContextMenu() {
+    if(!context.matches(':popover-open') || !context.menuOwner)return;
+    const owner=context.menuOwner;
+    const model=owner.menuModel?owner.menuModel():app.context_menu(JSON.parse(owner.dataset.context));
+    refreshMenu(context,model,closeDropdown);
+  }
+  function showContext(node, point, focus = node, presentationTarget, opening = true) {
+    const claimed = new Event("workspace-context-claimed", { bubbles: true, cancelable: true });
+    if (!node.dispatchEvent(claimed)) return;
+    node.prepareMenu?.();
+    const model = node.menuModel ? node.menuModel() : app.context_menu(JSON.parse(node.dataset.context));
+    menuCommand = node.menuCommand ?? null;
+    closeContext();
+    if (!model) return;
+    menuHost=node.closest('dialog[open],[popover]:popover-open');
+    if(menuHost){menuHost.append(context);for(const type of ['close','beforetoggle'])menuHost.addEventListener(type,closeMenuHost);}
+    context.style.minWidth=node.classList.contains('dropdown')&&point[2]!=null?`${node.getBoundingClientRect().width}px`:'';
+    const bounds=focus.getBoundingClientRect(),target=presentationTarget??(typeof node.menuTarget==='function'?node.menuTarget():node.menuTarget);
+    contextPresentation=app.menu_presentation(target??(node.menuModel?{kind:'button'}:{kind:'customization',target:JSON.parse(node.dataset.context)}));
+    contextAnchor=contextPresentation.anchor==='widget'?bounds:{x:point[0],y:point[1],width:1,height:1};
+    context.menuOwner = node; context.menuFocus = focus;
+    renderMenu(context, model, closeDropdown);
+    context.showPopover({source: node}); contextPopover.place(contextAnchor,contextPresentation,opening);
+  }
+  function openMenu(node, point, focus = node, presentationTarget) {
+    if (context.menuOwner === node && context.matches(':popover-open')) { closeContext(); return context; }
+    const r = node.getBoundingClientRect();
+    showContext(node, point || [r.left, r.bottom, r.top], focus, presentationTarget);
+    context.querySelector("button:not(:disabled)")?.focus({preventScroll:true});
+    return context;
+  }
+  function variationMarker() {
+    const node = element("span", "tool-variations");
+    node.setAttribute("aria-hidden", "true"); node.append(icon("tool-group"));
+    return node;
+  }
+  function positionPopup(node) {
+    const [x,y,top]=anchor,below=innerHeight-y-6;
+    const above=top!=null&&node.scrollHeight>below&&top-6>below;
+    node.style.maxHeight=top==null?'':`${Math.max(0,above?top-6:below)}px`;
+    const r=node.getBoundingClientRect();
+    node.style.left = `${Math.max(6, Math.min(x, innerWidth - r.width - 6))}px`;
+    node.style.top = `${Math.max(6, Math.min(above ? top - r.height : y, innerHeight - r.height - 6))}px`;
+  }
+  context.addEventListener("keydown", e => {
+    const items = [...context.querySelectorAll("button:not(:disabled)")], current = items.indexOf(document.activeElement);
+    const next = {ArrowDown:(current+1)%items.length, ArrowUp:(current-1+items.length)%items.length, Home:0, End:items.length-1}[e.key];
+    if (next != null) { e.preventDefault(); items[next]?.focus({preventScroll:true}); }
+    if (e.key === "Tab") closeDropdown();
+  });
+  function contextTarget(node) {
+    if (node.closest("input,select,textarea,.dropdown,[contenteditable=true],.scroll-thumb,[data-toolbar-field]")) return null;
+    return node.closest("[data-context]");
+  }
+  workspace.addEventListener("contextmenu", (e) => {
+    const node = contextTarget(e.target);
+    if (!node) return;
+    e.preventDefault(); showContext(node, [e.clientX, e.clientY], node, undefined, e);
+  });
+  workspace.addEventListener("keydown", e => {
+    if (e.defaultPrevented || !(e.key === "ContextMenu" || e.key === "F10" && e.shiftKey)) return;
+    const node = contextTarget(e.target); if (!node) return;
+    const r = e.target.getBoundingClientRect();
+    e.preventDefault(); e.stopPropagation(); openMenu(node, [r.left, r.bottom, r.top], e.target);
+  });
+  // Every device holds to arm tile reordering; only touch/pen holds open menus.
+  // Scrolling, dragging or cancelling retires the hold; editing keeps ownership.
+  let hold, heldPointer = null;
+  const cancelHold = () => { if (hold) clearTimeout(hold.timer); hold = null; };
+  function dismissContext(owner) {
+    if(owner&&context.menuOwner!==owner)return;
+    cancelHold();
+    closeContext();
+  }
+  workspace.addEventListener("pointerdown", (e) => {
+    cancelHold(); heldPointer = null;
+    const node = contextTarget(e.target);
+    const menuHold = e.pointerType === "touch" || e.pointerType === "pen";
+    if (!node || e.target.closest('#phone-frame') || e.button !== 0 || (!menuHold && !node.closest("[data-drag-pickup=hold]"))) return;
+    const parent = node.parentNode;
+    hold = { id: e.pointerId, x: e.clientX, y: e.clientY, timer: setTimeout(() => {
+      cancelHold();
+      if (!node.isConnected || node.parentNode !== parent) return;
+      heldPointer = e.pointerId;
+      if (menuHold) showContext(node, [e.clientX, e.clientY], e.target.closest("button,summary") || node, undefined, e);
+      else node.dispatchEvent(new Event("workspace-drag-held", { bubbles: true }));
+    }, 500) };
+  });
+  workspace.addEventListener("pointermove", (e) => {
+    if (hold?.id === e.pointerId && Math.hypot(e.clientX - hold.x, e.clientY - hold.y) > 8) cancelHold();
+  }, { capture: true });
+  for (const event of ["pointerup", "pointercancel", "dragstart", "scroll"])
+    window.addEventListener(event, cancelHold, { capture: true });
+  window.addEventListener("blur", () => dismissContext());
+  window.addEventListener("keydown", e => { if (e.key === "Escape") cancelHold(); });
+  workspace.addEventListener("pointercancel", () => dismissContext(), { capture: true });
+  workspace.addEventListener("click", (e) => {
+    if (heldPointer === e.pointerId) { heldPointer = null; e.preventDefault(); e.stopImmediatePropagation(); }
+  }, { capture: true });
+
+  // One field factory for extra compact controls, the drawer and scalar popup.
+  function field(control, label) {
+    const shared = editor.control(control); if(shared) return shared;
+    const row = element("div", "panel-field"); row.dataset.control = control;
+    let input, sync = () => {};
+    const range = (value, action) => {
+      input = numberField(catalog.opacity, label, value => dispatch(action(value)));
+      sync = () => input.update(value()); row.append(input);
+    };
+    switch (control) {
+      case "brush_size":
+        input = numberField(catalog.brush_size, label, value => dispatch({ type: "set_brush_size", value }));
+        input.onReset = () => dispatch({ type: "reset_tool_setting", id: "size" });
+        row.append(input);
+        sync = () => input.update(state().brush.diameter); break;
+      case "brush_opacity":
+        range(() => state().brush.opacity, (value) => ({ type: "set_brush_opacity", value }));
+        input.onReset = () => dispatch({ type: "reset_tool_setting", id: "opacity" }); break;
+      case "layer_opacity":
+        range(() => state().layers.find((l) => l.selected).opacity,
+          (opacity) => ({ type: "set_layer_opacity", opacity })); break;
+      case "brush_color": {
+        const context=()=>JSON.stringify([state().document_file.epoch,state().layer_tools.mask_editing?['mask',state().layer_tools.mask_editing.layer]:['artwork'],displayColors().paint_slot],(_,value)=>typeof value==='bigint'?String(value):value);
+        const picker=colorButton({app,label:"Edit Color…",element,button,current:context,
+          change:color=>dispatch({type:"color",action:{op:"definition",color}})});
+        input=picker.node;sync=()=>{const pair=paintPair();picker.update(pair.definition,{rgba:pair.rgba,in_gamut:pair.in_gamut});};row.append(input);break;
+      }
+      case "brushes":
+      case "layers": {
+        input = dropdown(label,value=>dispatch(control === "brushes"
+          ? { type: "select_brush", id: Number(value) }
+          : { type: "select_layer", id: state().layers[Number(value)].id }));
+        sync = () => {
+          const choices = control === "brushes"
+            ? catalog.brush_categories.flatMap((c) => c.brushes).map((b) => [b.id, b.label])
+            : state().layers.map((l, i) => [i, l.label]);
+          input.update({choices:choices.map(([value,label])=>({value,label})),value:control === "brushes" ? state().brush.preset : state().layers.findIndex((l) => l.selected),label:readLabel});
+        }; row.append(input); break;
+      }
+      case "size_presets":
+        input = brushSizeGrid({ app, catalog, state, dispatch, element, button });
+        row.append(input); row.disposeEditor = input.disposeEditor; sync = input.refresh;
+        break;
+      case "layer_actions":
+        row.classList.add("configuration-presets");
+        for (const id of catalog.layer_commands) {
+          const node = button("", () => dispatch({ type: "invoke", command: id }));
+          node.dataset.command = id; row.append(node);
+        }
+        sync = () => { for (const node of row.children) {
+          const command = state().commands.find((c) => c.id === node.dataset.command);
+          node.textContent = command.label; node.disabled = !command.enabled;
+        } }; break;
+      case "filter_types":
+      case "adjustments":
+      case "properties":
+      case "stats":
+        // These are complete schema-driven views, not duplicated scalar fields.
+        row.append(element("span", "", label)); break;
+      default: throw new Error(`Unknown panel control: ${control}`);
+    }
+    const readLabel=()=>[...views.values()].flatMap(v=>v.controls).find(c=>c.control===control)?.label??label;
+    const syncValue=sync;sync=()=>{const next=readLabel();if(input){input.setAttribute("aria-label",next);input.relabel?.(next);}else if(["filter_types","adjustments","properties","stats"].includes(control))row.querySelector("span").textContent=next;syncValue();};
+    fields.set(row, sync); sync(); return row;
+  }
+  function discardFields(node) {
+    node.disposeComponent?.();
+    for (const component of node.querySelectorAll("[data-toolbar-component]")) component.disposeComponent?.();
+    for (const row of fields.keys()) if (node.contains(row)) fields.delete(row);
+    node.disposeEditor?.();
+    for(const row of node.querySelectorAll("[data-control]")) row.disposeEditor?.();
+  }
+  function tileWidget(panel, view, tile) {
+    if (tile.component) return createToolbarComponent({ app, tile, view, element, button, icon, dropdown, dispatch, draggable, target, place, panel, rasterWorker });
+    const root = element("div", "tile-button tool-tile"); root.dataset.tile = tile.id;
+    const item = { kind: "tile", panel, tile: tile.id };
+    if (tile.control.kind === "divider") {
+      root.classList.add("tile-divider"); root.setAttribute("role", "separator");
+    } else {
+      const activate = () => {
+        const r = root.getBoundingClientRect(); anchor = [r.x, r.bottom + 6];
+        if (root.tileView.menu) { openMenu(node); return; }
+        dispatch({ type: "activate_tile", panel, tile: tile.id });
+      };
+      const node = button("", pickerButtonAction(() => root.tileView.resolved_control ?? tile.control,{kind:'tile',panel,tile:tile.id},dispatch,activate));
+      node.menuModel = () => app.context_menu({ kind: "tool_variants", anchor: { kind: "tile", panel, tile: tile.id } });
+      node.addEventListener('dblclick', event => {
+        if (!root.tileView.double_click) return;
+        event.preventDefault(); event.stopPropagation();
+        dispatch({type:'double_click_tool',control:root.tileView.resolved_control});
+      });
+      if (tile.control.kind === "command") { node.dataset.command = tile.control.command; node.dataset.icon = "true"; }
+      node.append(icon(tile.icon,true));
+      if (view.tile_label_lines > 0) node.append(element("span", "tile-label", tile.label));
+      node.append(variationMarker()); root.append(node);
+    }
+    target(root, item); draggable(root, item); refreshTile(root, tile); return root;
+  }
+  function refreshTile(root, tile) {
+    if (!root) return;
+    root.tileView = tile;
+    if (root.updateComponent) { root.updateComponent(tile); return; }
+    const node = root.querySelector('button'); if (!node) return;
+    node.disabled = !tile.enabled; node.title = tile.disabled_reason ?? tile.tooltip;
+    node.setAttribute('aria-label', tile.label); node.setAttribute('aria-pressed', tile.selected);
+    const label = node.querySelector('.tile-label');if(label)label.textContent=tile.label;
+    const glyph = node.querySelector('svg');
+    if (glyph?.dataset.asset !== tile.icon || glyph?.hasAttribute('data-paint-pair') !== (tile.icon === 'colors')) glyph?.replaceWith(icon(tile.icon,true));
+    const variants = root.querySelector('.tool-variations');
+    variants.hidden = !tile.has_variants;
+  }
+  function layoutTile(tile, bounds, axis, style) {
+    tile.hidden = !bounds || bounds.width <= 0 || bounds.height <= 0;
+    if (!tile.hidden) { place(tile, bounds); tile.layoutComponent?.(bounds, axis, style); }
+  }
+  function present(strip, tiles) {
+    if (strip.dataset.tileStyle === tiles.tile_style) return;
+    strip.dataset.tileStyle = tiles.tile_style;
+    strip.style.setProperty("--tile-icon-size", `${tiles.tile_icon_size}px`);
+    strip.style.setProperty("--tile-radius", `${tiles.tile_corner_radius}px`);
+    strip.dataset.labeled = String(tiles.tile_label_lines > 0);
+    strip.style.setProperty("--tile-label-lines", tiles.tile_label_lines);
+    strip.style.setProperty("--tile-label-weight", tiles.tile_label_bold ? 700 : 400);
+  }
+  function refreshPanels() {
+    views.clear();
+    for (const config of state().workspace.layout.panels) {
+      const view = app.panel_view(config.id); views.set(config.id, view);
+      let panel = panels.get(config.id);
+      if (!panel) {
+        panel = element("div", "panel tile-panel"); panelFrame(panel, false); panels.set(config.id, panel);
+      }
+      // Color/brush updates also publish this region. Retain unchanged panel
+      // DOM instead of rewriting attributes and forcing style work on every pick.
+      const viewKey = menuKey([config.content.kind, view, state().theme]);
+      if (panelViewKeys.get(panel) === viewKey) continue;
+      panelViewKeys.set(panel, viewKey);
+      const toolbar = config.content.kind === "toolbar";
+      target(panel, { kind: toolbar ? "ribbon" : "panel", panel: config.id });
+      if (toolbar) {
+        const key = JSON.stringify([config.content.tiles, view.tile_style]);
+        if (panel.dataset.tiles !== key) {
+          panel.dataset.tiles = key;
+          const old = panel.querySelector(".toolbar-controls"); if (old) { tileResize.unobserve(old); discardFields(old); }
+          const strip = element("div", "toolbar-controls");
+          strip.dataset.panel = config.id;
+          present(strip, view);
+          for (const tile of view.tiles) strip.append(tileWidget(config.id, view, tile));
+          strip.append(grip({ kind: "panel", panel: config.id }));
+          panel.replaceChildren(strip);
+          tileResize.observe(strip);
+        }
+        for (const tile of view.tiles) refreshTile(panel.querySelector(`[data-tile="${tile.id}"]`), tile);
+        panel.querySelector(".panel-grip").updatePanelTitle(view.title);
+      } else {
+        for (const control of view.controls) {
+          let row = panel.querySelector(`[data-control="${control.control}"]`);
+          if (!row) { row = field(control.control, control.label); if (!row.querySelector(".number-control")) row.prepend(element("label", "", control.label)); panel.append(row); }
+          row.hidden = !control.visible_in_panel;
+        }
+      }
+    }
+    for (const [id, panel] of panels) if (!views.has(id)) {
+      const strip = panel.querySelector(".toolbar-controls"); if (strip) tileResize.unobserve(strip);
+      discardFields(panel); panel.closest(".panel-frame").remove(); panels.delete(id);
+    }
+  }
+
+  const picker = element("dialog", "tool-picker"); picker.id = "tool-picker";
+  const pickerHeader = element("header", "dialog-header"), pickerTitle = element("h2");
+  const cancel = () => send({ type: "cancel_tools" });
+  const confirm = button("", () => send({ type: "confirm_tools" }), "suggested-action");
+  const pickerCancel=button(()=>common.cancel,cancel);pickerCancel.id='cancel-tools';
+  confirm.id = "confirm-tools"; pickerHeader.append(pickerCancel, pickerTitle, confirm);
+  const pickerBody = element("div", "tool-picker-body"), nameGroup = kit.group();
+  const nameRow = kit.entryRow({title:'',id:'toolbar-name'}), name = nameRow.input;
+  nameGroup.list.append(nameRow.line);
+  name.addEventListener("input", () => send({ type: "picker_name", name: name.value }));
+  const search = element("input", "preferences-search"); search.type = "search"; search.id = "tool-search";
+  search.addEventListener("input", () => send({ type: "picker_search", query: search.value }));
+  const searchRow = element("div", "tool-search"); searchRow.append(icon("search"), search);
+  const choices = element("div", "tool-choices"), error = element("p", "preferences-error"), count = element("span", "tool-count");
+  const catalogRoot=element('div','tool-picker-catalog');catalogRoot.style.gap=`${catalog.command_search_style.gap}px`;
+  const choicesFrame=panelFrame(choices,false);addScrollbar(choices,choicesFrame);catalogRoot.append(searchRow,choicesFrame);
+  pickerBody.append(nameGroup.section,catalogRoot,count,error); picker.append(pickerHeader, pickerBody); workspace.append(picker);
+  const pickerHost=createDialogHost({app,dialog:picker,header:pickerHeader,cancel:pickerCancel,primary:confirm,icon,copy:common,onCancel:cancel,
+    search,clearSearch:()=>send({type:'picker_search',query:''})});
+  function refreshPicker() {
+    const model = app.tool_picker();
+    if (!model) { pickerHost.hide(); return; }
+    pickerTitle.textContent = model.title; picker.setAttribute("aria-label", model.title);
+    nameRow.line.hidden = model.name == null; nameRow.label.textContent = model.name_label;
+    name.setAttribute("aria-label", model.name_label);
+    if (model.name != null && name.value !== model.name) name.value = model.name;
+    search.placeholder = model.search_hint; search.setAttribute("aria-label", model.search_hint);
+    if (search.value !== model.query) search.value = model.query;
+    count.textContent = model.selected_label;
+    error.textContent = model.error || ""; error.hidden = !model.error;
+    confirm.textContent = model.confirm_label; confirm.disabled = !model.can_confirm;
+    const key = JSON.stringify(model.choices.map(({ selected, ...c }) => c));
+    if (choices.dataset.key !== key) {
+      choices.dataset.key = key;
+      choices.replaceChildren(...model.choices.map((choice) => {
+        const row = element("label", "tool-choice"), text = element("span");
+        text.append(element("span", "", choice.label), element("small", "", choice.description));
+        const check = element("input", "panel-check"); check.type = "checkbox";
+        check.addEventListener("change", () => send({ type: "picker_select", control: choice.control, selected: check.checked }));
+        row.append(icon(choice.icon), text, check); return row;
+      }));
+    }
+    model.choices.forEach((choice, index) => {
+      const row=choices.children[index],check=row.querySelector('input'),disabled=model.disabled?.some(control=>JSON.stringify(control)===JSON.stringify(choice.control))??false;
+      check.checked=choice.selected;check.disabled=disabled;row.setAttribute('aria-disabled',String(disabled));
+    });
+    if(pickerHost.present(model.dialog)){choices.scrollTop=0;(model.name==null?search:name).focus();}
+  }
+
+  const manager = element("dialog", "toolbar-manager"); manager.id = "toolbar-manager";
+  const managerHeader = element("header", "dialog-header"), managerTitle = element("h2");
+  const closeManager = () => send({ type: "close_toolbar_manager" });
+  const managerClose = button("", closeManager, "dialog-close"); managerClose.append(icon("window-close"));
+  managerHeader.append(managerTitle, managerClose);
+  const managerBody = element("div", "toolbar-manager-body"), managerDescription = element("p");
+  const managerScroll = element("div", "toolbar-manager-scroll"), managerList = element("div", "managed-toolbars"), managerEmpty = element("p", "toolbar-manager-empty");
+  const managerDelete = button("", () => { const action = app.toolbar_manager()?.delete_action; if (action) send(action); }, "destructive-action");
+  managerDelete.id = "delete-managed-toolbar";
+  managerScroll.append(managerList, managerEmpty);
+  managerBody.append(managerDescription, managerScroll, managerDelete);
+  addScrollbar(managerScroll,managerBody);
+  manager.append(managerHeader, managerBody); workspace.append(manager);
+  const managerHost=createDialogHost({app,dialog:manager,header:managerHeader,cancel:managerClose,primary:managerClose,icon,copy:common,onCancel:closeManager});
+  function refreshManager() {
+    const model = app.toolbar_manager();
+    if (!model) { managerHost.hide(); return; }
+    managerTitle.textContent = model.title; manager.setAttribute("aria-label", model.title);
+    managerClose.setAttribute("aria-label", model.close_label);
+    managerDescription.textContent = model.description;
+    managerEmpty.textContent = model.empty_label; managerEmpty.hidden = model.toolbars.length > 0;
+    managerList.hidden = !model.toolbars.length;
+    managerDelete.textContent = model.delete_label; managerDelete.disabled = !model.delete_action;
+    const key = JSON.stringify(model.toolbars);
+    if (managerList.dataset.key !== key) {
+      managerList.dataset.key = key;
+      managerList.replaceChildren(...model.toolbars.map(toolbar => {
+        const row = button("", () => send({ type: "select_managed_toolbar", panel: toolbar.panel }));
+        row.dataset.panel = toolbar.panel;
+        const text = element("span"); text.append(element("span", "", toolbar.title), element("small", "", toolbar.subtitle));
+        row.append(icon(toolbar.icon), text); return row;
+      }));
+    }
+    for (const row of managerList.children) row.setAttribute("aria-pressed", String(row.dataset.panel === model.selected));
+    if (managerHost.present(model.dialog)) managerList.querySelector('[aria-pressed="true"]')?.focus();
+  }
+
+  const prompt = element("dialog", "toolbar-prompt"), promptTitle = element("h2"), promptMessage = element("p","alert-description");
+  prompt.id = "toolbar-prompt";
+  const promptEntry=kit.entryRow({title:'',id:'toolbar-prompt-name'}),promptNameRow=promptEntry.line,promptNameLabel=promptEntry.label,promptName=promptEntry.input;
+  promptName.addEventListener("input", () => send({ type: "toolbar_name", name: promptName.value }));
+  const promptGroup=kit.group();promptGroup.list.append(promptNameRow);
+  const promptError = element("p", "preferences-error");
+  const cancelPrompt = () => send({ type: "cancel_toolbar" });
+  const promptCancel = button("", cancelPrompt), promptConfirm = button("", () => send({ type: "confirm_toolbar" }));
+  promptConfirm.id = "confirm-toolbar";const promptActions=kit.footer({actions:[promptCancel,promptConfirm]});
+  const promptHeader=element('header','dialog-header');promptHeader.append(promptTitle);
+  const promptBody=kit.body(promptMessage,promptGroup.section,promptError);
+  prompt.append(promptHeader,promptBody.root,promptActions);workspace.append(prompt);
+  const promptHost=createDialogHost({app,dialog:prompt,header:promptHeader,cancel:promptCancel,primary:promptConfirm,icon,copy:common,onCancel:cancelPrompt});
+  promptName.addEventListener("keydown", e => {
+    if (e.key === "Enter" && !promptConfirm.disabled) { e.preventDefault(); promptConfirm.click(); }
+  });
+  function refreshPrompt() {
+    const model = app.toolbar_prompt();
+    if (!model) { promptHost.hide(); return; }
+    promptTitle.textContent = model.title; prompt.setAttribute("aria-label", model.title);
+    promptMessage.textContent = model.message; promptMessage.hidden = !model.message;
+    promptGroup.section.hidden = model.name == null;
+    promptNameLabel.textContent = model.name_label; promptName.setAttribute("aria-label", model.name_label);
+    if (model.name != null && promptName.value !== model.name) promptName.value = model.name;
+    promptError.textContent = model.error || ""; promptError.hidden = !model.error;
+    promptCancel.textContent = model.cancel_label; promptConfirm.textContent = model.confirm_label;
+    promptConfirm.disabled = !model.can_confirm;
+    promptConfirm.className = model.destructive ? "destructive-action" : "suggested-action";
+    if (promptHost.present(model.dialog) && model.name != null) { promptName.focus(); promptName.select(); }
+  }
+
+  function clearExpansion() {
+    cancelAnimationFrame(animation); animation = 0;
+    if (!expanded) return;
+    discardFields(expanded.configuration);
+    expanded.configuration.remove(); expanded.join.remove();
+    expanded.root.classList.remove("expanded-panel", "configuration-left", "configuration-right", "configuration-flush");
+    expanded.root.style.zIndex = expanded.root.dataset.zIndex;
+    place(expanded.root, expanded.docked);
+    const preview = expanded.root.querySelector(".panel-preview");
+    preview.removeAttribute("style"); expanded = null;
+  }
+  function measureExpansion() {
+    const sizing = app.expanded_panel({ viewport: [workspace.clientWidth, workspace.clientHeight], panel: expanded.panel,
+      heights: [0, 0], open: true, progress: 1 });
+    // Measure wrapping at final column widths. These are presentation facts;
+    // Rust computes the bounds, clamps and animation interpolation.
+    const panel = panels.get(expanded.panel);
+    panel.style.width = `${sizing.preview.width}px`; panel.style.height = "auto";
+    const previewHeight = panel.scrollHeight + expanded.headerHeight;
+    panel.style.width = ""; panel.style.height = "";
+    expanded.body.style.width = `${sizing.configuration.width}px`;
+    expanded.body.style.height = "auto";
+    const configurationHeight = expanded.body.scrollHeight;
+    expanded.body.style.height = "";
+    expanded.heights = [previewHeight, configurationHeight];
+  }
+  function renderExpansion() {
+    if (!expanded) return;
+    const p = reducedMotion.matches ? 1 : Math.min(1, (performance.now() - expanded.started) / catalog.panel_expansion_ms);
+    const eased = 1 - (1 - p) ** 3;
+    const e = app.expanded_panel({ viewport: [workspace.clientWidth, workspace.clientHeight], panel: expanded.panel,
+      heights: expanded.heights, open: expanded.open, progress: eased, from: expanded.from });
+    expanded.placement = e;
+    place(expanded.root, e.bounds);
+    const preview = expanded.root.querySelector(".panel-preview"); place(preview, e.preview);
+    place(expanded.configuration, e.configuration);
+    expanded.root.classList.toggle("configuration-left", e.configuration.x < e.preview.x);
+    expanded.root.classList.toggle("configuration-right", e.configuration.x >= e.preview.x);
+    expanded.root.classList.toggle("configuration-flush", !expanded.headerHeight);
+    expanded.join.hidden = !e.concave_join;
+    place(expanded.join, { x: e.configuration.x + e.configuration.width - 8, y: e.configuration.y - 8, width: 8, height: 8 });
+    const strip = panels.get(expanded.panel).querySelector(".toolbar-controls");
+    if (strip) layoutTiles(strip, app.panel_tiles(expanded.panel, e.preview.width, e.preview.height - expanded.headerHeight, expanded.axis, !expanded.headerHeight, strip.dataset.tileStyle));
+    if (p < 1) animation = requestAnimationFrame(renderExpansion);
+    else if (!expanded.open) clearExpansion();
+    else expanded.from = null;
+  }
+  function arrange(resolved) {
+    const id = state().customization.expanded;
+    const group = resolved.groups.find((g) => g.panels.includes(id));
+    if (!id || !group) {
+      if (expanded && expanded.open) { expanded.from = expanded.placement; expanded.started = performance.now(); expanded.open = false; }
+      if (expanded && !groups.has(expanded.group)) clearExpansion();
+    } else if (!expanded || expanded.panel !== id || expanded.group !== group.id || expanded.root !== groups.get(group.id)) {
+      const from = expanded?.group === group.id ? expanded.placement : null;
+      clearExpansion();
+      const view = views.get(id), root = groups.get(group.id);
+      const body = element("div", "panel-configuration-body panel");
+      body.append(element("h3", "", view.configuration_title), element("p", "", view.configuration_hint));
+      for (const control of view.controls) {
+        const row = element("div", "configuration-row"), label = element("label");
+        const check = element("input", "panel-check"); check.type = "checkbox"; check.dataset.visible = control.control;
+        check.checked = control.visible_in_panel;
+        check.addEventListener("change", () => send({ type: "set_control_visible", panel: id, control: control.control, visible: check.checked }));
+        label.append(check, document.createTextNode(control.label)); row.append(label, field(control.control, control.label)); body.append(row);
+      }
+      if (view.toolbar_options.length) {
+        const options = element("div", "toolbar-options"); body.append(options);
+        renderToolbarOptions(options, view.toolbar_options);
+      }
+      const configuration = panelFrame(body), join = element("div", "panel-column-join");
+      configuration.classList.add("panel-configuration"); join.setAttribute("aria-hidden", "true");
+      root.querySelector(".panel-columns").append(configuration, join);
+      root.classList.add("expanded-panel"); root.style.zIndex = "2000";
+      expanded = { panel: id, group: group.id, root, configuration, body, join, docked: group.bounds,
+        open: true, headerHeight: group.tabs_visible ? resolved.tab_bar_height : 0, axis: group.axis,
+        from, started: performance.now(), placement: from };
+    } else {
+      expanded.docked = group.bounds;
+      if (!expanded.open) { expanded.from = expanded.placement; expanded.started = performance.now(); expanded.open = true; }
+    }
+    // Content measurement belongs to layout updates, not every animation frame.
+    if (expanded) measureExpansion();
+    cancelAnimationFrame(animation); renderExpansion();
+  }
+  function layoutTiles(strip, geometry) {
+    present(strip, geometry);
+    const handle = strip.querySelector(":scope > .panel-grip"); handle.hidden = !geometry.grip;
+    if (geometry.grip) place(handle, geometry.grip);
+    [...strip.querySelectorAll(":scope > .tile-button")].forEach((tile, i) => layoutTile(tile, geometry.tiles[i], strip.dataset.axis, geometry.tile_style));
+  }
+  function refresh() {
+    refreshPanels(); refreshPicker(); refreshManager(); refreshPrompt();
+    for (const update of fields.values()) update();
+    if (expanded && views.has(expanded.panel)) {
+      const view = views.get(expanded.panel);
+      const title = expanded.body.querySelector('h3'), hint = expanded.body.querySelector('p');
+      if (title.textContent !== view.configuration_title) title.textContent = view.configuration_title;
+      if (hint.textContent !== view.configuration_hint) hint.textContent = view.configuration_hint;
+      for (const check of expanded.body.querySelectorAll("[data-visible]")) {
+        const control = view.controls.find(c => c.control === check.dataset.visible);
+        check.checked = control?.visible_in_panel || false;
+        const label = check.parentElement.lastChild, text = control?.label || '';
+        if (label.textContent !== text) label.textContent = text;
+      }
+      const options = expanded.body.querySelector(".toolbar-options");
+      if (options) renderToolbarOptions(options, view.toolbar_options);
+    }
+    refreshContextMenu();
+    const control = state().customization.control;
+    if (popupControl !== control) {
+      popupControl = control; discardFields(popup); popup.replaceChildren();
+      if (control) {
+        const label = [...views.values()].flatMap((v) => v.controls).find((c) => c.control === control).label;
+        const content = field(control, label);
+        if (!content.querySelector(".number-control")) popup.append(element("label", "", label));
+        popup.append(content); popup.showPopover(); positionPopup(popup);
+      } else if (popup.matches(":popover-open")) popup.hidePopover();
+    }
+    const pair=paintPair();
+    for(const svg of workspace.querySelectorAll('svg[data-paint-pair]'))updatePaintPairIcon(svg,pair);
+  }
+  function renderToolbarOptions(container, sections) {
+    const key = JSON.stringify(sections);
+    if (container.dataset.key === key) return;
+    container.dataset.key = key;
+    container.replaceChildren(...sections.filter(s => s.length).map(section => {
+      const list = element("div", "toolbar-option-group");
+      for (const item of section) {
+        const row = button("", () => dispatch(item.action)); row.disabled = !item.enabled;
+        if (item.selected != null) {
+          row.setAttribute("role", "radio"); row.setAttribute("aria-checked", item.selected);
+          row.append(element("span", "option-radio"));
+        }
+        row.append(element("span", "menu-label", item.label));
+        if (item.hint) row.append(element("span", "shortcut-hint", item.hint));
+        list.append(row);
+      }
+      return list;
+    }));
+  }
+  return { refresh, arrange, target, menuRow, renderMenu, refreshMenu, refreshContextMenu, dismissContext, openMenu, showContext, variationMarker, field, discardFields, tileWidget, refreshTile, layoutTile, present, view: (id) => views.get(id), layoutTiles,
+    placement: () => expanded?.placement ?? null };
+}
